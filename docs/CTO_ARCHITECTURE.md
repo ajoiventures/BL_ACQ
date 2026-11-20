@@ -1,8 +1,37 @@
-# Black River acquisition pilot
+# Black River platform architecture
 
 **The buyer’s question is “What can I pay for this property, and can someone else reconstruct that decision?”** Black River demonstrates that workflow on one synthetic acquisition. An analyst starts with a district thesis, three closed comparable sales and a funded purchase limit. A reviewer can follow the evidence to the ceiling, record a decision and recover the record after a restart. A second example shows what counts as collected cash across four entities.
 
 The prospective buyer is an acquisition principal working with an analyst and a controller. The principal needs a ceiling and a rationale. The analyst needs to know which evidence is missing. The controller needs to distinguish an invoice from a receipt. A pilot evaluation can measure minutes to reconstruct a decision, cases held correctly for missing evidence and whether the team can reproduce the books after a restore.
+
+## How the full system is mapped
+
+```mermaid
+flowchart LR
+    A["Intake: parcels, documents, communications"] --> B["Evidence: identity, source, scope, freshness"]
+    B --> C["Deal: eligibility, strategy, underwriting and capital"]
+    C --> D["Founder Command: review, approve or hold"]
+    D --> E["Operations: tasks, delivery, invoices and receipts"]
+    E --> F["Finance: entity ledgers, portfolio and reconciliation"]
+    F --> D
+    G["Foundation: identity, permissions, workflow state and audit"] --- B
+    G --- D
+    G --- E
+    H["Assurance: CI, swarm review, benchmarks and recovery"] --- G
+    C --> I["Analysis: CPU model and optional CUDA sensitivity grid"]
+```
+
+The deal and its evidence are the thread through the system. Sources enter with a version and scope. A decision refers to that exact evidence. A task records what was done, and a receipt establishes what was settled. The screen presents the same chain to an operator. It sends decisions to the service for validation and recording.
+
+| Platform area | Working path in this repository | Broader roadmap |
+| --- | --- | --- |
+| Intake and evidence | Synthetic parcel and evidence records, evidence expiry and an immutable underwriting packet. | Parcel and entity sources, corridor contacts, messaging and document intake, search and extraction. **E03, E08, E15, E17, E22** |
+| Deal and capital | One synthetic acquisition from district thesis and comparables to eligibility, three price ceilings and approval. Optional CUDA downside grid. | Additional property and debt strategies, capital routing, entitlement, portfolio analytics and deal throughput. **E05, E06, E09–E13, E16, E19, E34** |
+| Founder workspace | Responsive offline walkthrough plus a connected review screen on loopback. Two synthetic roles can review and approve a packet. An authorized actor can resume a versioned draft in another browser session. | Founder governance, connected map and evidence views, production identity and device acceptance. **E01, E25** |
+| Operations and finance | Durable task claims, independent approval, separate invoice and receipt evidence, four-entity reconciliation and SQLite restore. | Revenue offers and delivery, field dispatch, operating pods, building and roof systems, tax and family office. **E04, E07, E14, E18, E21** |
+| Foundation and assurance | Typed records, transactional SQLite, approval boundaries, version checks, replay tests, source guides and a GitHub workflow. | Production deployment, major integrations, reusable plugins, swarm governance, visibility, architecture modernization and benchmarks. **E02, E20, E23–E24, E26–E33** |
+
+For schedules and acceptance criteria, the private engineering master holds the full E01–E34 roadmap. The public GitHub tracker links the implemented pilot and the open delivery work. [Delivery tracker](https://github.com/ajoiventures/BL_ACQ/issues/10)
 
 ## How the swarm makes a technical decision
 
