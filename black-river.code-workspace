@@ -1,0 +1,98 @@
+{
+  "folders": [{ "name": "Black River", "path": "." }],
+  "settings": {
+    "files.exclude": { "**/__pycache__": true },
+    "search.exclude": { "**/.runs": true },
+    "workbench.startupEditor": "readme"
+  },
+  "extensions": { "recommendations": ["ms-python.python", "ms-python.debugpy"] },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Start Here",
+        "type": "shell",
+        "command": "code",
+        "windows": { "command": "code.cmd" },
+        "args": ["--reuse-window", "${workspaceFolder}/docs/START_HERE.md"],
+        "problemMatcher": []
+      },
+      {
+        "label": "Run Example",
+        "type": "process",
+        "command": "uv",
+        "args": ["run", "--no-project", "python", "-B", "tools/run_example.py"],
+        "options": { "cwd": "${workspaceFolder}" },
+        "problemMatcher": []
+      },
+      {
+        "label": "Test Asset Reports",
+        "type": "process",
+        "command": "uv",
+        "args": ["run", "--no-project", "python", "-B", "-m", "unittest", "discover", "-s", "Python_Asset_Demo", "-v"],
+        "options": { "cwd": "${workspaceFolder}" },
+        "problemMatcher": []
+      },
+      {
+        "label": "Test Source Inventory",
+        "type": "process",
+        "command": "uv",
+        "args": ["run", "--no-project", "python", "-B", "-m", "unittest", "discover", "-s", "tests", "-v"],
+        "options": { "cwd": "${workspaceFolder}" },
+        "problemMatcher": []
+      },
+      {
+        "label": "Test Guide Checker",
+        "type": "process",
+        "command": "uv",
+        "args": ["run", "--no-project", "python", "-B", "-m", "unittest", "discover", "-s", "tools", "-p", "test_check_guides.py", "-v"],
+        "options": { "cwd": "${workspaceFolder}" },
+        "problemMatcher": []
+      },
+      {
+        "label": "Run Tests",
+        "dependsOrder": "sequence",
+        "dependsOn": ["Test Asset Reports", "Test Source Inventory", "Test Guide Checker", "Check Code Guides"],
+        "group": { "kind": "test", "isDefault": true },
+        "problemMatcher": []
+      },
+      {
+        "label": "Replay Founder Workflows",
+        "type": "process",
+        "command": "uv",
+        "args": ["run", "--with", "playwright", "python", "-B", "tools/replay_founder.py", "--engine", "both"],
+        "options": { "cwd": "${workspaceFolder}" },
+        "problemMatcher": []
+      },
+      {
+        "label": "Check Code Guides",
+        "type": "process",
+        "command": "uv",
+        "args": ["run", "--no-project", "python", "-B", "tools/check_guides.py"],
+        "options": { "cwd": "${workspaceFolder}" },
+        "problemMatcher": []
+      },
+      {
+        "label": "Open Founder Demo Server",
+        "type": "process",
+        "command": "uv",
+        "args": ["run", "--no-project", "python", "-m", "http.server", "8765", "--bind", "127.0.0.1", "--directory", "web"],
+        "options": { "cwd": "${workspaceFolder}" },
+        "problemMatcher": []
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [{
+      "name": "Walk through one synthetic report",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/tools/run_example.py",
+      "cwd": "${workspaceFolder}",
+      "stopOnEntry": true,
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }]
+  }
+}

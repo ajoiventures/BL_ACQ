@@ -11,6 +11,8 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 REQUIRED = {"asset_id", "asset_name", "vendor", "warranty_end", "replacement_cost"}
+
+
 def analyze(rows, as_of, horizon=30):
     """Validate identifiers/costs; retain missing values; classify dated records."""
     if horizon < 0:
@@ -33,6 +35,7 @@ def analyze(rows, as_of, horizon=30):
         cost = None
         if raw_cost:
             try:
+                # Parse text directly to keep ordinary currency sums exact.
                 cost = Decimal(raw_cost)
             except InvalidOperation as exc:
                 raise ValueError(f"{asset_id}: invalid replacement_cost") from exc
@@ -60,6 +63,7 @@ def analyze(rows, as_of, horizon=30):
     known = total - counts["unknown"]
     known_costs = [Decimal(r["replacement_cost"]) for r in checked
                    if r["replacement_cost"] is not None]
+    # A dated asset can enter the warranty denominator. An unknown date cannot.
     summary = dict(
         as_of=as_of.isoformat(), horizon_days=horizon, total_assets=total,
         warranty_status_counts=counts, dated_assets=known,
@@ -79,7 +83,10 @@ def run(input_path, output_dir, as_of, horizon=30):
     original = input_path.read_bytes()
     with io.StringIO(original.decode("utf-8-sig"), newline="") as stream:
         reader = csv.DictReader(stream, strict=True)
-        header = reader.fieldnames or []
+        try:
+            header = reader.fieldnames or []
+        except csv.Error as exc:
+            raise ValueError(f"Invalid CSV header: {exc}") from exc
         if not REQUIRED.issubset(header):
             raise ValueError("CSV is missing required columns")
         if any(not name.strip() for name in header) or len(set(header)) != len(header):
@@ -90,6 +97,7 @@ def run(input_path, output_dir, as_of, horizon=30):
             raise ValueError(f"Invalid CSV near line {reader.line_num}: {exc}") from exc
     if os.path.lexists(output_dir):
         raise FileExistsError(output_dir)
+    # The manifest ties each output back to the exact bytes used for this run.
     manifest = dict(
         input_name=input_path.name,
         input_sha256=hashlib.sha256(original).hexdigest(),

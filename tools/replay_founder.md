@@ -1,0 +1,20 @@
+# Founder browser replay
+
+From the repository root, run a synthetic end-to-end check on any free loopback port. The runner obtains an ephemeral port, starts a file server and closes it after the checks.
+
+```powershell
+uv run --no-project --with playwright python -m playwright install chromium webkit
+uv run --no-project --with playwright python tools/replay_founder.py --engine both
+```
+
+Browser installation uses network access once. After installation the demo uses resources served from loopback. Chromium uses installed Edge or Chrome when available, then the Playwright browser. Set `FOUNDER_REPLAY_BROWSER` to select a Chromium executable. WebKit uses its Playwright installation. Request screenshots with `--screenshots PATH` to save synthetic desktop and phone images separately from the repository.
+
+## Follow the checks in the source
+
+1. `server()` serves only the demo's `web` directory. Each browser gets temporary storage. Desktop and phone use separate contexts.
+2. `walkthrough()` visits the interface, uses a keyboard skip link, and replays parcel qualification, document intake, maintenance dispatch, invoice reconciliation and a civic field note.
+3. The parcel workflow checks the missing-cash hold and attempts a repeated transition from a second tab. Settlement checks that the final action is unavailable before receipt evidence arrives.
+4. The phone imports a desktop draft, rejects a mismatched scope and version, displays the originating device's last step and retains independent events. The recovery check damages one disposable snapshot, archives its contents and verifies a clean restart.
+5. The final checks assert twelve coverage entries, three same-scope events, ten module entries, viewports from 320 to 1440 CSS pixels and zero uncaught UI exceptions. Five guided workflows execute. Other coverage entries describe capabilities or future services.
+
+The Chromium run uses a Pixel 7 device profile. The WebKit run uses an iPhone 13 profile. These cover viewport, engine and touch emulation. Native Safari, physical devices, assistive technology, OS file sharing and real services require separate testing. The suite checks specific behaviors and does not certify accessibility compliance.
