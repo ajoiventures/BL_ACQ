@@ -30,4 +30,6 @@ Read [the synthetic workflows](../web/fixtures.js) to see which record owns each
 
 ## What to open next
 
+Use **Screen Underwriting Scenarios with CUDA** in VS Code to run the sensitivity grid on an NVIDIA workstation. It verifies the result against the CPU model. See the [CUDA screening guide](guides/cuda_screen.md) for the architecture and inputs.
+
 Use the [code map](code-map.md) to compare the two verification approaches. The asset tests check records, money and publication behavior. The browser replay drives the interface and checks evidence, approvals, and handoff as a user would experience them.

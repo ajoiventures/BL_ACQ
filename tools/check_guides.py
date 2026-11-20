@@ -7,8 +7,8 @@ from urllib.parse import unquote, urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SUFFIXES = {".py", ".js", ".mjs", ".ts", ".tsx", ".css", ".html", ".sql", ".ps1", ".code-workspace"}
-HIDDEN = {".git", ".runs", ".venv", "__pycache__", "node_modules"}
+SUFFIXES = {".py", ".js", ".mjs", ".ts", ".tsx", ".css", ".html", ".sql", ".ps1", ".cmd", ".code-workspace"}
+HIDDEN = {".git", ".runs", ".venv", ".mypy_cache", ".ruff_cache", "__pycache__", "node_modules"}
 LINK = re.compile(r"\[[^\]\n]+\]\((?:<([^>]+)>|([^\s()]+))\)")
 
 
@@ -28,7 +28,12 @@ def check(root):
     for directory, children, names in root.walk():
         children[:] = [name for name in children if name not in HIDDEN]
         files.extend(directory / name for name in names)
-    sources = {p for p in files if p.suffix.lower() in SUFFIXES}
+    workflow_dir = root / ".github" / "workflows"
+    sources = {
+        p for p in files
+        if p.suffix.lower() in SUFFIXES
+        or (p.parent == workflow_dir and p.suffix in {".yml", ".yaml"})
+    }
     docs = [p for p in files if p.suffix.lower() == ".md"]
     errors = []
 

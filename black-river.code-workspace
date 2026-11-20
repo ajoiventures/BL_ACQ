@@ -10,11 +10,27 @@
     "version": "2.0.0",
     "tasks": [
       {
+        "label": "Screen Underwriting Scenarios with CUDA",
+        "type": "process",
+        "command": "uv",
+        "args": ["run", "--with-requirements", "requirements-cuda.txt", "python", "-m", "pilot.cuda_screen", "--backend", "cuda", "--compare"],
+        "options": { "cwd": "${workspaceFolder}" },
+        "problemMatcher": []
+      },
+      {
         "label": "Start Here",
         "type": "shell",
         "command": "code",
         "windows": { "command": "code.cmd" },
         "args": ["--reuse-window", "${workspaceFolder}/docs/START_HERE.md"],
+        "problemMatcher": []
+      },
+      {
+        "label": "Open CTO Architecture",
+        "type": "shell",
+        "command": "code",
+        "windows": { "command": "code.cmd" },
+        "args": ["--reuse-window", "${workspaceFolder}/docs/CTO_ARCHITECTURE.md"],
         "problemMatcher": []
       },
       {
@@ -77,6 +93,14 @@
         "type": "process",
         "command": "uv",
         "args": ["run", "--no-project", "python", "-m", "http.server", "8765", "--bind", "127.0.0.1", "--directory", "web"],
+        "options": { "cwd": "${workspaceFolder}" },
+        "problemMatcher": []
+      },
+      {
+        "label": "Open Connected Founder Review",
+        "type": "process",
+        "command": "uv",
+        "args": ["run", "--no-project", "python", "-m", "pilot.founder_service", "--port", "8766"],
         "options": { "cwd": "${workspaceFolder}" },
         "problemMatcher": []
       }

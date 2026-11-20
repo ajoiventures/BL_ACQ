@@ -229,6 +229,15 @@ ol {
 p {
   overflow-wrap: anywhere;
 }
+#review {
+  overflow-wrap: anywhere;
+}
+#review .panel {
+  min-width: 0;
+}
+.feedback {
+  pointer-events: none;
+}
 input[type="file"] {
   max-width: 100%;
 }
@@ -331,4 +340,11 @@ input[type="file"] {
   font-size: 0.78rem;
   color: #46544b;
   padding: 0.35rem 0;
+}
+.map-marker {
+  display: inline-block;
+  margin: 2rem 1rem;
+  background: #254c39;
+  color: white;
+  padding: .3rem .75rem;
 }

@@ -1,5 +1,7 @@
 # Founder review workspace
 
+For the authenticated synthetic pilot, run `python -m pilot.founder_service` from the repository root. The terminal prints the loopback URL and temporary account keys. See the [connected review walkthrough](connected_html.md) for the checkpoint and decision flow. Both the connected review and the original local demonstrations run on this server.
+
 Start in the repository root and run the local preview.
 
 ```powershell

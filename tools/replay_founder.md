@@ -11,10 +11,12 @@ Browser installation uses network access once. After installation the demo uses 
 
 ## Follow the checks in the source
 
-1. `server()` serves only the demo's `web` directory. Each browser gets temporary storage. Desktop and phone use separate contexts.
+1. `server()` serves the demo's allowlisted web assets and review API with a temporary SQLite database. Desktop and phone use separate browser contexts.
 2. `walkthrough()` visits the interface, uses a keyboard skip link, and replays parcel qualification, document intake, maintenance dispatch, invoice reconciliation and a civic field note.
 3. The parcel workflow checks the missing-cash hold and attempts a repeated transition from a second tab. Settlement checks that the final action is unavailable before receipt evidence arrives.
 4. The phone imports a desktop draft, rejects a mismatched scope and version, displays the originating device's last step and retains independent events. The recovery check damages one disposable snapshot, archives its contents and verifies a clean restart.
 5. The final checks assert twelve coverage entries, three same-scope events, ten module entries, viewports from 320 to 1440 CSS pixels and zero uncaught UI exceptions. Five guided workflows execute. Other coverage entries describe capabilities or future services.
 
 The Chromium run uses a Pixel 7 device profile. The WebKit run uses an iPhone 13 profile. These cover viewport, engine and touch emulation. Native Safari, physical devices, assistive technology, OS file sharing and real services require separate testing. The suite checks specific behaviors and does not certify accessibility compliance.
+
+The same replay starts the authenticated loopback service with a disposable database per browser engine. Independent contexts check keyboard sign-in, permitted draft resumption, conflicts, evidence inspection, review and separate founder approval. The replay intentionally discards a committed HTTP response, retries the same operation through the visible control, then checks that the history contains one independent review.
