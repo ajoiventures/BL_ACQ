@@ -2,6 +2,8 @@
 
 **Black River** is the product. **Machine of Machines** is its architectural vision. It describes a platform that coordinates specialist systems and engines so one deal can move from evidence to an accountable decision and a reconciled outcome.
 
+For a step-by-step model you can build yourself and a comparison of free and paid tools, see [How to model Black River](modeling-black-river.md).
+
 The working pilot runs as a modular application with a browser, a local Python service, and SQLite. The broader design includes separately operated parcel sources, design tools, and commercial systems. Systems engineering uses **system of systems** for a collection whose constituents can serve useful purposes independently and retain some control over their own operation and evolution. Use **subsystem**, **component**, or **engine** for an internal part of the pilot. [Systems engineering terminology](https://sebokwiki.org/wiki/System_of_Systems_%28SoS%29)
 
 ## Use the name that answers the question
