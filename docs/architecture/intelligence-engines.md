@@ -2,6 +2,8 @@
 
 The platform pairs specialized engines around one parcel or deal. Each engine should hand the next layer a result with an input version, scope and provenance. A model or simulation can prepare evidence and recommend a next step. The recorded review determines whether an operator may proceed.
 
+The [capability and layer coverage map](capability-coverage.md) shows which layers and functions run today, what remains across all 34 epics, and which products depend on each layer.
+
 ## Deal and spatial intelligence
 
 | Engine | Input → output | Delivery evidence and backlog |

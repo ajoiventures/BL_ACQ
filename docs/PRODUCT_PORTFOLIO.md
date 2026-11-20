@@ -2,6 +2,8 @@
 
 **Black River** is the product family. **Machine of Machines** is the architecture that lets the products work together. Each product card names the customer, what they bring, what they receive, and how to verify the result. These offers use the current repository and a synthetic pilot. Commercial packaging, pricing and customer validation are open.
 
+See the [capability and layer coverage map](architecture/capability-coverage.md) for the functions behind the offers, including engine dependencies and delivery evidence.
+
 ## Agents and services
 
 ### 1. Black River System Architect
