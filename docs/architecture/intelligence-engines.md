@@ -34,4 +34,4 @@ The platform pairs specialized engines around one parcel or deal. Each engine sh
 3. Show the CUDA screen as a sensitivity exercise. Use the output to explore assumptions and retain the deterministic underwriting packet for the actual review.
 4. Explain how the full design is tested. BR-ENG-308 calls for a licensed parcel progressing through GIS, Rhino, SketchUp, finance, optional ML, a reviewed dossier and reconciled payment. The executable synthetic pilot exercises its deal, decision, settlement and recovery segments.
 
-Return to the [CTO guide](../CTO_ARCHITECTURE.md), the [file map](../code-map.md) or the [delivery index](https://github.com/ajoiventures/BL_ACQ/issues/10).
+Return to the [CTO guide](../CTO_ARCHITECTURE.md), the [Machine of Machines terminology reference](system-of-systems.md), the [file map](../code-map.md) or the [delivery index](https://github.com/ajoiventures/BL_ACQ/issues/10).

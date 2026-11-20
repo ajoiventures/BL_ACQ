@@ -6,6 +6,8 @@ The prospective buyer is an acquisition principal working with an analyst and a 
 
 ## What the architecture terms mean
 
+The [Machine of Machines reference](architecture/system-of-systems.md) pairs Black River terms with industry terminology and shows how to explain the architecture at four levels of detail.
+
 | Term | Where it comes from | Black River example |
 | --- | --- | --- |
 | **System or platform** | Systems engineering and software product design. The whole set of parts that work together for a purpose. | Black River is a real estate acquisition and operations decision system. The executable pilot demonstrates one acquisition and its linked operating records. |

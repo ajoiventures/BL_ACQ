@@ -7,3 +7,5 @@ Start at the argument checks and follow a mode to its matching label. **Teach** 
 Tell the architecture story with the [CTO guide](../CTO_ARCHITECTURE.md). Use the [file map](../code-map.md) to make the story concrete in source and tests.
 
 Run `code-map.cmd engines` to see the inputs and outputs of each [intelligence engine](../architecture/intelligence-engines.md), plus the backlog items for capabilities still under development.
+
+Run `code-map.cmd terms` for the [Machine of Machines terminology](../architecture/system-of-systems.md), architecture views and buyer explanation.

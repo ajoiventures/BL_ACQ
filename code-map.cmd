@@ -9,6 +9,7 @@ if /i "%~1"=="files" goto files
 if /i "%~1"=="cuda" goto cuda
 if /i "%~1"=="verify" goto verify
 if /i "%~1"=="engines" goto engines
+if /i "%~1"=="terms" goto terms
 if not "%~1"=="" goto usage
 
 echo.
@@ -21,9 +22,11 @@ echo   [4] Open the file-by-file code map
 echo   [5] Run the CUDA screen and compare every result
 echo   [6] Verify the pilot with the CI check suite
 echo   [7] Open the intelligence engine map
+echo   [8] Open the Machine of Machines terminology
 echo   [Q] Quit
-choice /c 1234567Q /n /m "Choose an option: "
-if errorlevel 8 goto done
+choice /c 12345678Q /n /m "Choose an option: "
+if errorlevel 9 goto done
+if errorlevel 8 goto terms
 if errorlevel 7 goto engines
 if errorlevel 6 goto verify
 if errorlevel 5 goto cuda
@@ -66,8 +69,12 @@ goto finish
 call :open docs\architecture\intelligence-engines.md
 goto finish
 
+:terms
+call :open docs\architecture\system-of-systems.md
+goto finish
+
 :usage
-echo Usage: code-map.cmd [learn ^| teach ^| sell ^| files ^| cuda ^| verify ^| engines]
+echo Usage: code-map.cmd [learn ^| teach ^| sell ^| files ^| cuda ^| verify ^| engines ^| terms]
 popd
 exit /b 2
 
