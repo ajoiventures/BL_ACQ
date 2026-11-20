@@ -50,6 +50,8 @@ For schedules and acceptance criteria, the private engineering master holds the 
 
 The [intelligence engine map](architecture/intelligence-engines.md) traces the input, output, implementation evidence and roadmap ticket for each engine family.
 
+The [architecture agent and swarm learning workflow](architecture/swarm-learning.md) connects the models to a reusable review skill, verified lessons and a local learning index.
+
 ## How the swarm makes a technical decision
 
 | Batch | Engineering question | Evidence for the decision |

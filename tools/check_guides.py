@@ -29,10 +29,12 @@ def check(root):
         children[:] = [name for name in children if name not in HIDDEN]
         files.extend(directory / name for name in names)
     workflow_dir = root / ".github" / "workflows"
+    agent_dir = root / ".codex" / "agents"
     sources = {
         p for p in files
         if p.suffix.lower() in SUFFIXES
         or (p.parent == workflow_dir and p.suffix in {".yml", ".yaml"})
+        or (p.parent == agent_dir and p.suffix == ".toml")
     }
     docs = [p for p in files if p.suffix.lower() == ".md"]
     errors = []

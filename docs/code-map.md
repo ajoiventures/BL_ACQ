@@ -10,6 +10,9 @@ Pick the behavior you want to understand. The first link opens the source. The s
 | [Pilot domain tests](../tests/test_pilot_domain.py) | [Exercise independent review and reconciliation](guides/test_pilot_domain.md) |
 | [VS Code workspace](../black-river.code-workspace) | [Tasks and debugger](guides/vscode.md) |
 | [Windows teaching launcher](../code-map.cmd) | [Use the launcher](guides/code_map_cmd.md) |
+| [System Architect agent](../.codex/agents/black-river-system-architect.toml) | [Architecture agent and swarm learning](architecture/swarm-learning.md) |
+| [Learning index](../tools/learning_index.py) | [Build and query the learning index](guides/learning_index.md) |
+| [Learning index tests](../tests/test_learning_index.py) | [Verify learning retrieval and updates](guides/test_learning_index.md) |
 | [Example launcher](../tools/run_example.py) | [Run a sample and locate the output](guides/run_example.md) |
 | [Asset reporting](../Python_Asset_Demo/asset_reporting.py) | [Follow a row into the report](guides/asset_reporting.md) |
 | [Reporting tests](../Python_Asset_Demo/test_asset_reporting.py) | [Follow the reporting assertions](guides/test_asset_reporting.md) |
