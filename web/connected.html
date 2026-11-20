@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Connected review | Black River</title>
+  <link rel="stylesheet" href="style.css"><script type="module" src="connected.js"></script>
+</head>
+<body>
+  <a class="skip" tabindex="0" href="#workspace">Skip to workspace</a>
+  <header><strong>BLACK RIVER</strong><span>Connected founder review</span><span class="mode">Local simulation</span></header>
+  <main id="workspace" tabindex="-1">
+    <h1>Parcel review</h1>
+    <form id="login" class="panel">
+      <h2>Sign in</h2>
+      <label for="actor">Synthetic account</label><select id="actor"><option value="reviewer">Independent reviewer</option><option value="founder">Founder</option><option value="civic-reader">Civic reader</option></select>
+      <label for="token">Local access key</label><input id="token" type="password" required autocomplete="off">
+      <div class="controls"><button class="action">Sign in</button></div>
+      <p>Use the access key printed by the local founder service.</p>
+    </form>
+    <section id="review" hidden>
+      <div class="controls"><button id="refresh">Reload checkpoint</button><button id="logout">Sign out</button></div>
+      <div class="columns"><section class="panel"><h2>Review queue</h2><strong>Orchard parcel</strong>
+        <figure class="schematic"><div class="field"><span class="map-marker">Orchard parcel</span></div><figcaption>Illustrative location in the synthetic commercial workspace</figcaption></figure>
+        <p id="identity"></p><h3>Decision history</h3><ol id="events"></ol>
+      </section><section class="panel"><h2>Evidence and decision</h2><p id="summary"></p>
+        <details><summary>Inspect evidence</summary><p id="source"></p><ul id="gates"></ul></details>
+        <p id="draftSource"></p><label for="note">Review note</label><textarea id="note" maxlength="1500"></textarea>
+        <div class="controls"><button id="save">Save checkpoint</button><button id="decision" class="action"></button><button id="retry" hidden>Retry last request</button></div>
+      </section></div>
+    </section>
+    <p><a href="index.html">Local workflow demonstrations</a></p>
+  </main>
+  <p id="feedback" class="feedback" aria-live="polite" aria-atomic="true"></p>
+</body></html>

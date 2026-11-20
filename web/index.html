@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Black River | Founder review</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <!-- Follow the skip link into main with a keyboard. Both navigations share the same app state. -->
+    <a class="skip" tabindex="0" href="#workspace">Skip to workspace</a>
+    <header>
+      <strong>BLACK RIVER</strong><span>Founder review</span
+      ><span class="mode">Local simulation</span>
+    </header>
+    <div class="layout">
+      <aside>
+        <label for="scope">Workspace</label>
+        <select id="scope">
+          <option value="commercial">Commercial</option>
+          <option value="family">Family office</option>
+          <option value="civic">Civic Main Street</option>
+        </select>
+        <details id="navigation" open>
+          <summary>Modules</summary>
+          <nav id="modules" aria-label="Modules"></nav>
+        </details>
+      </aside>
+      <main id="workspace" tabindex="-1">
+        <h1 id="title"></h1>
+        <p><a href="connected.html">Open authenticated parcel review</a></p>
+        <div id="body"></div>
+      </main>
+    </div>
+    <nav class="mobile" aria-label="Phone navigation">
+      <button id="home">Command</button
+      ><button id="current">Current task</button
+      ><button id="more">Modules</button>
+    </nav>
+    <p id="feedback" class="feedback" aria-live="polite" aria-atomic="true"></p>
+  </body>
+</html>

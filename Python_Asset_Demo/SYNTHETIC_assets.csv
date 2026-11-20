@@ -1,0 +1,6 @@
+asset_id,asset_name,vendor,warranty_end,replacement_cost
+DEMO-001,Example pump,Vendor A,2026-09-12,1000
+DEMO-002,Example fan,Vendor B,2026-09-13,500
+DEMO-003,Example sensor,,2026-10-13,
+DEMO-004,Example light,Vendor C,2026-10-14,250
+DEMO-005,Example controller,Vendor D,,0
