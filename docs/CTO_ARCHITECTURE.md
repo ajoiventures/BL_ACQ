@@ -4,6 +4,19 @@
 
 The prospective buyer is an acquisition principal working with an analyst and a controller. The principal needs a ceiling and a rationale. The analyst needs to know which evidence is missing. The controller needs to distinguish an invoice from a receipt. A pilot evaluation can measure minutes to reconstruct a decision, cases held correctly for missing evidence and whether the team can reproduce the books after a restore.
 
+## What the architecture terms mean
+
+| Term | Where it comes from | Black River example |
+| --- | --- | --- |
+| **System or platform** | Systems engineering and software product design. The whole set of parts that work together for a purpose. | Black River is a real estate acquisition and operations decision system. The executable pilot demonstrates one acquisition and its linked operating records. |
+| **Business domain** | Business analysis and domain-driven design. The subject the software models. | Property acquisition, underwriting, construction, and portfolio operations. A parcel, offer, invoice, and receipt are business concepts. |
+| **Layer** | Software architecture. A grouping by responsibility, such as presenting information, applying business rules, or storing records. | The browser presents the evidence and records user intent. The service enforces review and authorization. SQLite stores drafts and decisions. A layer here is a logical boundary. Several layers can run on the same machine. |
+| **Engine** | Software design shorthand for a component that performs specialized calculations, applies rules, or processes data. | The underwriting engine computes the purchase ceilings. The CUDA engine processes a grid of downside assumptions. Search, GIS and optimization use the same word for different kinds of work. |
+| **Module and service** | Software implementation and deployment. A module organizes code. A service provides an interface other parts can call. | `pilot/underwriting.py` is a module. The connected Founder review is a local HTTP service. A calculation engine may live inside a module and be called from a service. |
+| **Workflow** | Operations and business process design. The ordered work that produces a result. | Intake → qualify → underwrite → review → approve or hold → record settlement. One workflow uses several engines and layers. |
+
+In the Orchard example, underwriting belongs to the real estate finance domain. The underwriting engine applies the rules in the decision layer. The workflow sends the resulting packet to a reviewer, then stores the decision. Those terms describe three different aspects of the same event. [Underwriting guide](guides/underwriting.md)
+
 ## How the full system is mapped
 
 ```mermaid
@@ -32,6 +45,8 @@ The deal and its evidence are the thread through the system. Sources enter with 
 | Foundation and assurance | Typed records, transactional SQLite, approval boundaries, version checks, replay tests, source guides and a GitHub workflow. | Production deployment, major integrations, reusable plugins, swarm governance, visibility, architecture modernization and benchmarks. **E02, E20, E23–E24, E26–E33** |
 
 For schedules and acceptance criteria, the private engineering master holds the full E01–E34 roadmap. The public GitHub tracker links the implemented pilot and the open delivery work. [Delivery tracker](https://github.com/ajoiventures/BL_ACQ/issues/10)
+
+The [intelligence engine map](architecture/intelligence-engines.md) traces the input, output, implementation evidence and roadmap ticket for each engine family.
 
 ## How the swarm makes a technical decision
 

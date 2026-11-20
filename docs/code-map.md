@@ -27,6 +27,7 @@ Pick the behavior you want to understand. The first link opens the source. The s
 | [Connector guard](../pilot/connectors.py) | [Review a scoped request](guides/pilot_connectors.md) |
 | [Connector tests](../tests/test_connectors.py) | [Exercise one-use approval](guides/test_connectors.md) |
 | [Pull request checks](../.github/workflows/checks.yml) | [Run the pilot checks](guides/pilot_checks.md) |
+| [Release check runner](../tools/check_pilot.py) | [Reproduce the hosted checks locally](guides/check_pilot.md) |
 | [Pilot acceptance](../pilot/acceptance.py) | [Reproduce and restore a synthetic pilot](guides/pilot_acceptance.md) |
 | [Acceptance tests](../tests/test_acceptance.py) | [Verify recovery and rejection](guides/test_acceptance.md) |
 | [Pilot record contracts](../pilot/contracts.py) | [Follow typed records](guides/pilot_contracts.md) |

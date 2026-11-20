@@ -19,4 +19,6 @@ Browser installation uses network access once. After installation the demo uses 
 
 The Chromium run uses a Pixel 7 device profile. The WebKit run uses an iPhone 13 profile. These cover viewport, engine and touch emulation. Native Safari, physical devices, assistive technology, OS file sharing and real services require separate testing. The suite checks specific behaviors and does not certify accessibility compliance.
 
+Use the [physical handset acceptance checklist](../docs/physical-device-acceptance.md) to record those results for issue #12.
+
 The same replay starts the authenticated loopback service with a disposable database per browser engine. Independent contexts check keyboard sign-in, permitted draft resumption, conflicts, evidence inspection, review and separate founder approval. The replay intentionally discards a committed HTTP response, retries the same operation through the visible control, then checks that the history contains one independent review.
