@@ -11,3 +11,5 @@ Run `code-map.cmd engines` to see the inputs and outputs of each [intelligence e
 Run `code-map.cmd terms` for the [Machine of Machines terminology](../architecture/system-of-systems.md), architecture views and buyer explanation.
 
 Run `code-map.cmd learning` for the [architecture agent and swarm workflow](../architecture/swarm-learning.md), including how to retrieve a prior lesson.
+
+Run `code-map.cmd products` for the [product portfolio](../PRODUCT_PORTFOLIO.md), including the buyer, deliverable and trial for each product.

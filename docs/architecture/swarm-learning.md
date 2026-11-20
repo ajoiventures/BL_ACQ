@@ -1,5 +1,7 @@
 # Architecture agent and swarm learning
 
+The [product portfolio](../PRODUCT_PORTFOLIO.md) describes System Architect and Swarm Review as separate offers and shows the tools each can use.
+
 Black River's **System Architect** traces a business requirement through the system boundary, responsible component, behavior, and test. The same [project skill](../../.agents/skills/black-river-system-modeling/SKILL.md) gives the swarm a shared modeling procedure. Ask Codex to use `black_river_system_architect` from this checkout, or invoke `$black-river-system-modeling` for the procedure alone. Codex discovers a project agent from its [TOML definition](../../.codex/agents/black-river-system-architect.toml). [OpenAI custom-agent configuration](https://learn.chatgpt.com/docs/agent-configuration/subagents)
 
 ## Run one architecture review

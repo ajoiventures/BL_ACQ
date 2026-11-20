@@ -6,6 +6,8 @@ On Windows, run `code-map.cmd` for the architecture, a live teaching demo, a CTO
 
 The [System Architect and swarm workflow](docs/architecture/swarm-learning.md) covers model review, lessons and search. The [technical review](docs/architecture/technical-review.md) grades the work against its source and verification evidence.
 
+The [product portfolio](docs/PRODUCT_PORTFOLIO.md) describes the agent, swarm service, individual tools, and operating products. Open it on Windows with `code-map.cmd products`.
+
 - [Start Here](docs/START_HERE.md) — run the examples, set a breakpoint, and inspect the output.
 - [Code map](docs/code-map.md) — find the file guide for each maintained source.
 - [Founder review](web/index.html) — serve this page locally using the instructions in Start Here.

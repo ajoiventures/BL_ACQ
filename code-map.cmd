@@ -11,6 +11,7 @@ if /i "%~1"=="verify" goto verify
 if /i "%~1"=="engines" goto engines
 if /i "%~1"=="terms" goto terms
 if /i "%~1"=="learning" goto learning
+if /i "%~1"=="products" goto products
 if not "%~1"=="" goto usage
 
 echo.
@@ -25,9 +26,11 @@ echo   [6] Verify the pilot with the CI check suite
 echo   [7] Open the intelligence engine map
 echo   [8] Open the Machine of Machines terminology
 echo   [9] Open the architecture agent and learning workflow
+echo   [P] Open the product portfolio
 echo   [Q] Quit
-choice /c 123456789Q /n /m "Choose an option: "
-if errorlevel 10 goto done
+choice /c 123456789PQ /n /m "Choose an option: "
+if errorlevel 11 goto done
+if errorlevel 10 goto products
 if errorlevel 9 goto learning
 if errorlevel 8 goto terms
 if errorlevel 7 goto engines
@@ -80,8 +83,12 @@ goto finish
 call :open docs\architecture\swarm-learning.md
 goto finish
 
+:products
+call :open docs\PRODUCT_PORTFOLIO.md
+goto finish
+
 :usage
-echo Usage: code-map.cmd [learn ^| teach ^| sell ^| files ^| cuda ^| verify ^| engines ^| terms ^| learning]
+echo Usage: code-map.cmd [learn ^| teach ^| sell ^| files ^| cuda ^| verify ^| engines ^| terms ^| learning ^| products]
 popd
 exit /b 2
 
