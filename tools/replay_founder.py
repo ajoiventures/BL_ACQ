@@ -134,7 +134,8 @@ def walkthrough(url, browser, engine_name, device, screenshot_dir=None):
     mobile.locator("#scope").select_option("family")
     select_item(mobile, "Pump maintenance")
     mobile.get_by_text("Device handoff", exact=True).click()
-    send({**exported, "version": "obsolete"})
+    obsolete = {**exported, "version": "obsolete"}
+    send(obsolete)
     expect(mobile.locator("#feedback")).to_contain_text("evidence version")
     send(exported)
     expect(mobile.get_by_label("Review note")).to_have_value("Synthetic checkpoint A")
@@ -182,6 +183,7 @@ def walkthrough(url, browser, engine_name, device, screenshot_dir=None):
     assert not errors, errors
     desktop.close()
     phone.close()
+    return raw, (json.dumps(obsolete, indent=2) + "\n").encode()
 
 
 def connected(url, browser, device, keys):
@@ -266,7 +268,14 @@ if __name__ == "__main__":
     parser.add_argument(
         "--engine", choices=("chromium", "webkit", "both"), default="chromium"
     )
+    parser.add_argument(
+        "--handoff-fixtures",
+        type=Path,
+        help="New directory for the verified synthetic draft and stale control from each engine",
+    )
     args = parser.parse_args()
+    if args.handoff_fixtures and args.handoff_fixtures.exists():
+        parser.error("--handoff-fixtures requires a new output directory")
     with sync_playwright() as engine:
         for name in ("chromium", "webkit") if args.engine == "both" else (args.engine,):
             options = {"executable_path": executable()} if name == "chromium" else {}
@@ -275,10 +284,16 @@ if __name__ == "__main__":
                 server() as (url, keys),
                 getattr(engine, name).launch(**options) as browser,
             ):
-                walkthrough(
+                valid_draft, stale_draft = walkthrough(
                     url, browser, name, engine.devices[device_name], args.screenshots
                 )
                 connected(url, browser, engine.devices[device_name], keys)
+                # Publish the exact exported fixture and its stale control after the replay passes.
+                if args.handoff_fixtures:
+                    folder = args.handoff_fixtures / name
+                    folder.mkdir(parents=True)
+                    (folder / "valid-draft.json").write_bytes(valid_draft)
+                    (folder / "stale-draft.json").write_bytes(stale_draft)
                 print(
                     f"PASS | {name} {browser.version} + {device_name} emulation | five local workflows, authenticated resume, conflict, interrupted retry, independent decisions, keyboard and touch"
                 )

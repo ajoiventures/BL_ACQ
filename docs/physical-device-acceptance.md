@@ -9,6 +9,8 @@ Use this checklist for GitHub issue #12. A product reviewer performs each row on
 3. On Windows at the same tested revision, switch to Family office and open Pump maintenance. Complete **Review request**, save a distinct synthetic note, and export the draft from **Device handoff**. Record the expected scope, record ID, evidence version, note and originating step. Transfer the file through the approved test-device file channel. Prepare one copy with an obsolete evidence version for the stale-input case.
 4. Start each handset with fresh site data using a dedicated test profile. Run the handoff checks before the maintenance workflow so that the incoming origin checkpoint can be compared with an empty local action history.
 
+You can also prepare the drafts using the Windows replay at the tested revision. Run `uv run --with-requirements requirements-checks.txt python tools/replay_founder.py --engine chromium --handoff-fixtures .runs/handset-fixtures` with a fresh output directory. The `chromium` subdirectory contains `valid-draft.json` and `stale-draft.json`. For this export, the workstation completed three steps through **Approve simulated dispatch**, and the note is **Synthetic checkpoint A**. Record that the desktop setup used this replay. Transfer the JSON files through the approved device channel and run the same physical acceptance matrix. [Replay guide](../tools/replay_founder.md)
+
 ## Device evidence matrix
 
 Fill each cell with pass, fail or blocked, the date, and an evidence or defect reference. The initial entries below reserve space for physical results.

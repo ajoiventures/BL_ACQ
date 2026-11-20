@@ -21,4 +21,6 @@ The Chromium run uses a Pixel 7 device profile. The WebKit run uses an iPhone 13
 
 Use the [physical handset acceptance checklist](../docs/physical-device-acceptance.md) to record those results for issue #12.
 
+Pass `--handoff-fixtures .runs/handset-fixtures` with a fresh output directory to keep the browser-exported draft and the stale-version control after the replay passes. The files are written under the selected engine name. The valid export is also the input for the wrong-workspace test. These files contain fictional evidence and never include the connected service's login keys.
+
 The same replay starts the authenticated loopback service with a disposable database per browser engine. Independent contexts check keyboard sign-in, permitted draft resumption, conflicts, evidence inspection, review and separate founder approval. The replay intentionally discards a committed HTTP response, retries the same operation through the visible control, then checks that the history contains one independent review.
