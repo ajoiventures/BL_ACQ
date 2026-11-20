@@ -56,6 +56,12 @@ def allowed(path):
     return target.suffix == ".md" and str(target.parent) in DIRECTORIES | {LESSONS}
 
 
+def provenance_allowed(path):
+    target = PurePosixPath(path)
+    return allowed(path) or (str(target.parent) in {"pilot", "tests", "tools", "web", "Python_Asset_Demo"}
+                             and target.suffix in {".py", ".js", ".html", ".css", ".sql"})
+
+
 def lesson_info(lines, files):
     """Review fields must appear in the opening metadata block."""
     fields = {}
@@ -70,8 +76,9 @@ def lesson_info(lines, files):
             fields[name] = value.strip()
     if fields.get("Review") != "accepted":
         return None
-    if not fields.get("Reviewed by") or fields.get("Source") not in files:
-        raise ValueError("Accepted lesson needs a reviewer and a tracked, repository-relative source")
+    source = fields.get("Source", "")
+    if not fields.get("Reviewed by") or source not in files or not provenance_allowed(source):
+        raise ValueError("Accepted lesson needs a reviewer and a tracked source in a maintained code or documentation directory")
     return {"reviewer": fields["Reviewed by"], "source": fields["Source"],
             "source_blob": files[fields["Source"]]}
 

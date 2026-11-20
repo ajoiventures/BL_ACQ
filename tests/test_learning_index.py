@@ -87,6 +87,11 @@ class LearningIndexTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "tracked"):
             build(self.repo, self.db)
         self.assertEqual(search(self.db, "zephyr"), before)
+        self.stage("attachments/private.md", "Personal notes")
+        self.stage("docs/learning/bad.md", "# Claim\nReview: accepted\nReviewed by: test reviewer\nSource: attachments/private.md\n")
+        with self.assertRaisesRegex(ValueError, "maintained"):
+            build(self.repo, self.db)
+        self.assertEqual(search(self.db, "zephyr"), before)
 
     def test_foreign_database_is_preserved(self):
         conn = sqlite3.connect(self.db)
