@@ -40,5 +40,16 @@ Pick the behavior you want to understand. The first link opens the source. The s
 | [Founder service tests](../tests/test_founder_service.py) | [Replay authenticated requests](../tests/test_founder_service.md) |
 | [Connected review markup](../web/connected.html) | [Inspect review and evidence controls](../web/connected_html.md) |
 | [Connected review client](../web/connected.js) | [Resume a versioned draft](../web/connected_js.md) |
+| [Valuation mathematics](../pilot/valuation.py) | [Read cash flows and terminal value](guides/valuation.md) |
+| [Valuation decision layer](../pilot/valuation_layer.py) | [Follow evidence and entry-price policy](guides/valuation_layer.md) |
+| [Immutable valuation storage](../pilot/valuation_store.py) | [Follow a saved research run](guides/valuation_store.md) |
+| [Financial engine tests](../tests/test_valuation.py) | [Check financial invariants](guides/test_valuation.md) |
+| [Valuation policy tests](../tests/test_valuation_layer.py) | [Test the evidence and price boundary](guides/test_valuation_layer.md) |
+| [Valuation API tests](../tests/test_valuation_service.py) | [Test authenticated valuation delivery](guides/test_valuation_service.md) |
+| [Valuation command line](../tools/run_valuation.py) | [Run a valuation from JSON](guides/run_valuation.md) |
+| [Valuation browser replay](../tools/replay_valuation.py) | [Verify history, retry and mobile research](guides/replay_valuation.md) |
+| [Valuation markup](../web/valuation.html) | [Explore valuation page structure](../web/valuation_html.md) |
+| [Valuation client](../web/valuation.js) | [Follow calculation and saved runs](../web/valuation_js.md) |
+| [Valuation presentation](../web/valuation.css) | [Inspect responsive valuation layout](../web/valuation_css.md) |
 
 The [five-row sample](../Python_Asset_Demo/SYNTHETIC_assets.csv) supplies the reporting inputs. The [founder workflow guide](../web/README.md) walks through the browser simulation. For a first debugging session, follow [Start Here](START_HERE.md).

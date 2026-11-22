@@ -1,0 +1,130 @@
+{
+  "id": "synthetic_property",
+  "label": "Synthetic income property",
+  "description": "Income-property DCF with annual capital expenditure, sale costs and a debt bridge.",
+  "request": {
+    "schema_version": "1.0",
+    "deal_id": "BR-VAL-SYNTH-PROPERTY",
+    "asset_id": "SYNTHETIC-INCOME-PROPERTY",
+    "as_of": "2026-11-21",
+    "model_type": "property_dcf",
+    "assumptions": {
+      "noi": 60000.0,
+      "growth_rate": 0.025,
+      "discount_rate": 0.1,
+      "terminal_cap_rate": 0.065,
+      "annual_capex": 7500.0,
+      "selling_cost_rate": 0.06,
+      "years": 10,
+      "debt": 350000.0,
+      "cash": 25000.0,
+      "units": 1
+    },
+    "market": {
+      "price": null,
+      "as_of": null,
+      "source_id": "synthetic-property-quote"
+    },
+    "policy": {
+      "margin_of_safety": 0.3,
+      "max_downside_probability": 0.35,
+      "max_source_age_days": 365,
+      "max_quote_age_days": 7
+    },
+    "sources": [
+      {
+        "id": "synthetic-property-assumptions",
+        "title": "Synthetic income-property assumptions",
+        "url": "https://example.invalid/black-river/valuation/synthetic-property",
+        "observed_on": "2026-11-21",
+        "verified": false,
+        "kind": "assumptions",
+        "notes": "Invented property data. NOI is after ordinary operating expenses but before separately modeled annual capital expenditure. Debt is an equity-bridge balance, not a debt-service schedule. No actual parcel, rent roll, appraisal, lender terms, or comparable sales is represented.",
+        "issues": [
+          "synthetic_inputs",
+          "illustrative_probabilities",
+          "no_loan_schedule"
+        ]
+      },
+      {
+        "id": "synthetic-property-quote",
+        "title": "No asking price supplied for the synthetic property",
+        "url": "https://example.invalid/black-river/valuation/synthetic-property-quote",
+        "observed_on": null,
+        "verified": false,
+        "kind": "quote",
+        "notes": "There is no observed asking or transaction price.",
+        "issues": [
+          "missing_quote"
+        ]
+      }
+    ],
+    "input_source_ids": [
+      "synthetic-property-assumptions"
+    ],
+    "scenarios": [
+      {
+        "id": "base",
+        "label": "Illustrative base case",
+        "probability": 0.5,
+        "shock": {},
+        "source_ids": [
+          "synthetic-property-assumptions"
+        ]
+      },
+      {
+        "id": "downside",
+        "label": "Illustrative slower leasing and higher repair costs",
+        "probability": 0.3,
+        "shock": {
+          "near_term_growth_delta": -0.02,
+          "long_term_growth_delta": -0.01,
+          "discount_rate_delta": 0.02,
+          "reinvestment_multiplier": 1.25,
+          "one_time_cost": 30000.0,
+          "duration_years": 2
+        },
+        "source_ids": [
+          "synthetic-property-assumptions"
+        ]
+      },
+      {
+        "id": "upside",
+        "label": "Illustrative stronger property cash flow",
+        "probability": 0.2,
+        "shock": {
+          "near_term_growth_delta": 0.01,
+          "long_term_growth_delta": 0.005,
+          "discount_rate_delta": -0.005,
+          "reinvestment_multiplier": 0.95,
+          "one_time_cost": 0.0,
+          "duration_years": 2
+        },
+        "source_ids": [
+          "synthetic-property-assumptions"
+        ]
+      }
+    ],
+    "qualification": {
+      "buyable": "unknown",
+      "fundable": "unknown",
+      "sellable": "unknown"
+    },
+    "qualification_source_ids": {
+      "buyable": [],
+      "fundable": [],
+      "sellable": []
+    },
+    "claims": [
+      {
+        "id": "synthetic-income-property-book-debt",
+        "amount": 350000.0,
+        "in_cash_flows": false,
+        "in_equity_bridge": true,
+        "source_id": "synthetic-property-assumptions"
+      }
+    ],
+    "notes": "Synthetic demonstration in absolute USD; one unit is the whole equity interest. NOI excludes separately modeled annual capital expenditure. No amortization schedule, income taxes, live market price, or supported acquisition qualification is supplied. This does not establish monthly distributable cash flow after financing.",
+    "illustrative": true
+  }
+}

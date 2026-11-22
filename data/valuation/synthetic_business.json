@@ -1,0 +1,138 @@
+{
+  "id": "synthetic_business",
+  "label": "Synthetic service business",
+  "description": "Scalar corporate DCF with illustrative base, downside and upside operating assumptions.",
+  "request": {
+    "schema_version": "1.0",
+    "deal_id": "BR-VAL-SYNTH-BUSINESS",
+    "asset_id": "SYNTHETIC-SERVICE-BUSINESS",
+    "as_of": "2026-11-21",
+    "model_type": "corporate_dcf",
+    "assumptions": {
+      "revenue": 1200000.0,
+      "operating_margin": 0.18,
+      "growth_rate": 0.08,
+      "target_margin": 0.2,
+      "tax_rate": 0.25,
+      "wacc": 0.14,
+      "terminal_growth": 0.025,
+      "sales_to_capital": 2.5,
+      "terminal_roic": 0.15,
+      "years": 10,
+      "cash": 50000.0,
+      "non_operating_assets": 0.0,
+      "debt": 200000.0,
+      "debt_like_claims": 0.0,
+      "units": 1000.0
+    },
+    "market": {
+      "price": null,
+      "as_of": null,
+      "source_id": "synthetic-business-quote"
+    },
+    "policy": {
+      "margin_of_safety": 0.3,
+      "max_downside_probability": 0.35,
+      "max_source_age_days": 365,
+      "max_quote_age_days": 7
+    },
+    "sources": [
+      {
+        "id": "synthetic-business-assumptions",
+        "title": "Synthetic service-business assumptions",
+        "url": "https://example.invalid/black-river/valuation/synthetic-business",
+        "observed_on": "2026-11-21",
+        "verified": false,
+        "kind": "assumptions",
+        "notes": "Invented inputs for exercising corporate DCF. No actual business, financial statements, quote, seller terms, lender offer, or exit buyer is represented.",
+        "issues": [
+          "synthetic_inputs",
+          "illustrative_probabilities"
+        ]
+      },
+      {
+        "id": "synthetic-business-quote",
+        "title": "No market quote supplied for the synthetic business",
+        "url": "https://example.invalid/black-river/valuation/synthetic-business-quote",
+        "observed_on": null,
+        "verified": false,
+        "kind": "quote",
+        "notes": "There is no observed market price.",
+        "issues": [
+          "missing_quote"
+        ]
+      }
+    ],
+    "input_source_ids": [
+      "synthetic-business-assumptions"
+    ],
+    "scenarios": [
+      {
+        "id": "base",
+        "label": "Illustrative base case",
+        "probability": 0.5,
+        "shock": {},
+        "source_ids": [
+          "synthetic-business-assumptions"
+        ]
+      },
+      {
+        "id": "downside",
+        "label": "Illustrative operating downside",
+        "probability": 0.3,
+        "shock": {
+          "near_term_growth_delta": -0.04,
+          "near_term_margin_delta": -0.03,
+          "long_term_growth_delta": -0.025,
+          "long_term_margin_delta": -0.025,
+          "discount_rate_delta": 0.02,
+          "reinvestment_multiplier": 1.1,
+          "one_time_cost": 25000.0,
+          "duration_years": 2
+        },
+        "source_ids": [
+          "synthetic-business-assumptions"
+        ]
+      },
+      {
+        "id": "upside",
+        "label": "Illustrative operating improvement",
+        "probability": 0.2,
+        "shock": {
+          "near_term_growth_delta": 0.03,
+          "near_term_margin_delta": 0.02,
+          "long_term_growth_delta": 0.02,
+          "long_term_margin_delta": 0.02,
+          "discount_rate_delta": 0.0,
+          "reinvestment_multiplier": 0.95,
+          "one_time_cost": 0.0,
+          "duration_years": 2
+        },
+        "source_ids": [
+          "synthetic-business-assumptions"
+        ]
+      }
+    ],
+    "qualification": {
+      "buyable": "unknown",
+      "fundable": "unknown",
+      "sellable": "unknown"
+    },
+    "qualification_source_ids": {
+      "buyable": [],
+      "fundable": [],
+      "sellable": []
+    },
+    "claims": [
+      {
+        "id": "synthetic-service-business-book-debt",
+        "amount": 200000.0,
+        "in_cash_flows": false,
+        "in_equity_bridge": true,
+        "source_id": "synthetic-business-assumptions"
+      }
+    ],
+    "notes": "Synthetic demonstration in absolute USD and 1,000 ownership units. Scalar assumptions exercise the default forecast path. Scenario inputs and probabilities are illustrative. Buyable, fundable and sellable remain unknown; no current quote is supplied.",
+    "illustrative": true
+  }
+}

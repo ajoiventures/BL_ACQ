@@ -22,6 +22,7 @@ def main():
         ("source guides", [PYTHON, "tools/check_guides.py"]),
         ("pilot recovery", [PYTHON, "-m", "pilot.acceptance"]),
         ("browser replay", [PYTHON, "tools/replay_founder.py", "--engine", "both"]),
+        ("valuation browser replay", [PYTHON, "tools/replay_valuation.py", "--engine", "both"]),
     )
     for label, command in checks:
         print(f"Checking {label}", flush=True)

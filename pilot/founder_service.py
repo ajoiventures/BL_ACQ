@@ -32,6 +32,9 @@ STATIC = {
     "fixtures.js",
     "connected.html",
     "connected.js",
+    "valuation.html",
+    "valuation.css",
+    "valuation.js",
 }
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS founder_active_evidence (
@@ -78,10 +81,13 @@ def fixture():
 
 
 def prepare(path):
+    from .valuation_store import initialize
+
     frozen = fixture()
     revision = frozen["packet_digest"]
     with Store(path, scope=SCOPE, actor="fixture-loader") as store:
         store.connection.executescript(SCHEMA)
+        initialize(store.connection)
         with store.transaction():
             store.save(Parcel("orchard-parcel", "Synthetic County", "DEMO-001"))
             store.save(Deal(RECORD, "orchard-parcel", "Orchard parcel"))
@@ -322,7 +328,8 @@ class Handler(BaseHTTPRequestHandler):
                 raise Rejected(403, "Same-origin JSON requests required.")
             try:
                 length = int(self.headers.get("Content-Length", 0))
-                if not 1 <= length <= 16384:
+                maximum = 65536 if path.startswith("/api/valuation/") else 16384
+                if not 1 <= length <= maximum:
                     raise ValueError
                 body = json.loads(self.rfile.read(length))
                 if not isinstance(body, dict):
@@ -356,6 +363,9 @@ class Handler(BaseHTTPRequestHandler):
                 "br_session=; Path=/; HttpOnly; SameSite=Strict; Max-Age=0",
             )
             return
+        if path.startswith("/api/valuation/"):
+            self.valuation_route(method, path, body if method == "POST" else None)
+            return
         matches = re.fullmatch(r"/api/workspaces/([\w-]+)/records/([\w-]+)", path)
         if not matches:
             raise Rejected(404, "Resource unavailable.")
@@ -372,6 +382,46 @@ class Handler(BaseHTTPRequestHandler):
                 with store.transaction():
                     result = read_record(store.connection, actor)
         self.respond(200, result)
+
+    def valuation_route(self, method, path, body):
+        from .valuation_layer import evaluate
+        from .valuation_store import Conflict, get_run, list_runs, save_run
+
+        if path == "/api/valuation/examples" and method == "GET":
+            examples = [json.loads(p.read_text(encoding="utf-8"))
+                        for p in sorted((ROOT / "data" / "valuation").glob("*.json"))]
+            self.respond(200, {"examples": examples})
+            return
+        cookie = SimpleCookie()
+        cookie.load(self.headers.get("Cookie", ""))
+        actor = self.server.identify(cookie["br_session"].value if "br_session" in cookie else "")
+        if actor not in ("reviewer", "founder"):
+            raise Rejected(403, "Valuation research requires the commercial workspace.")
+        try:
+            if path == "/api/valuation/evaluate" and method == "POST":
+                self.respond(200, evaluate(body))
+                return
+            with Store(self.server.db, scope=SCOPE, actor=actor) as store:
+                if path == "/api/valuation/runs" and method == "POST":
+                    if set(body) != {"request_id", "packet"}:
+                        raise ValueError("Saving a run requires request_id and packet")
+                    self.respond(200, save_run(store, body["request_id"], body["packet"]))
+                    return
+                if path == "/api/valuation/runs" and method == "GET":
+                    self.respond(200, {"runs": list_runs(store)})
+                    return
+                match = re.fullmatch(r"/api/valuation/runs/(VR-[a-f0-9]{24})", path)
+                if match and method == "GET":
+                    result = get_run(store, match[1])
+                    if result is None:
+                        raise Rejected(404, "Valuation run not found")
+                    self.respond(200, result)
+                    return
+        except Conflict as error:
+            raise Rejected(409, str(error)) from None
+        except (ValueError, OverflowError) as error:
+            raise Rejected(400, str(error)) from None
+        raise Rejected(404, "Valuation resource unavailable")
 
     def dispatch(self, method):
         try:
@@ -399,6 +449,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     with Server(args.database, args.port) as server:
         print(f"Open http://127.0.0.1:{server.server_port}/connected.html")
+        print(f"Valuation http://127.0.0.1:{server.server_port}/valuation.html")
         print("Synthetic local access keys expire on server restart.")
         for name, key in server.keys.items():
             print(f"{name}  {key}")

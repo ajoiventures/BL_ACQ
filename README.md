@@ -13,3 +13,9 @@ The [product portfolio](docs/PRODUCT_PORTFOLIO.md) describes the agent, swarm se
 - [Founder review](web/index.html) — serve this page locally using the instructions in Start Here.
 
 The public examples use synthetic records. Domain selection and review actions in the browser demonstrate the workflow on a local device.
+
+## Valuation & Risk
+
+The [valuation workspace](docs/valuation.md) adds corporate and property discounted cash flow, event scenarios, reverse valuation, source checks, entry-price policy and immutable research runs. Start `python -m pilot.founder_service`, then open `http://127.0.0.1:8765/valuation.html` with a local reviewer or founder key.
+
+The dated Nvidia example reproduces its source workbook numerically while keeping conflicting dates and the unverified price visible. Existing acquisition approvals and settlement remain separate from valuation research.
