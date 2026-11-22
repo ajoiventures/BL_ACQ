@@ -4,6 +4,19 @@ Pick the behavior you want to understand. The first link opens the source. The s
 
 | Source | File guide |
 | --- | --- |
+| [Document evidence engine](../pilot/document_evidence.py) | [Trace source identity and reviews](guides/document_evidence.md) |
+| [Document evidence tests](../tests/test_document_evidence.py) | [Verify accepted-input projections](guides/test_document_evidence.md) |
+| [Offer probability engine](../pilot/offer_probability.py) | [Follow conditional economics and pursuit value](guides/offer_probability.md) |
+| [Probability engine tests](../tests/test_offer_probability.py) | [Verify event and precision semantics](guides/test_offer_probability.md) |
+| [Document-to-offer application layer](../pilot/document_offer_layer.py) | [Map reviewed evidence into economics](guides/document_offer_layer.md) |
+| [Application layer tests](../tests/test_document_offer_layer.py) | [Verify source changes and holds](guides/test_document_offer_layer.md) |
+| [Document-to-offer command line](../tools/run_document_offer.py) | [Run the four-stage quote demonstration](guides/run_document_offer.md) |
+| [Builder scheduler](../tools/schedule_builder_work.py) | [Plan dependency-ready work and resources](guides/schedule_builder_work.md) |
+| [Builder scheduler tests](../tests/test_builder_schedule.py) | [Verify resource and ownership constraints](guides/test_builder_schedule.md) |
+| [Product integrator agent](../.codex/agents/br-product-integrator.toml) | [Coordinate the development swarm](guides/br-product-integrator.md) |
+| [Evidence builder agent](../.codex/agents/br-evidence-builder.toml) | [Assign document and workflow work](guides/br-evidence-builder.md) |
+| [Quantitative builder agent](../.codex/agents/br-quant-builder.toml) | [Assign financial and CUDA work](guides/br-quant-builder.md) |
+| [Quality builder agent](../.codex/agents/br-quality-builder.toml) | [Review delivery evidence independently](guides/br-quality-builder.md) |
 | [Deal qualification and underwriting](../pilot/underwriting.py) | [Follow the purchase ceiling](guides/underwriting.md) |
 | [Service ledger](../pilot/ledger.py) | [Trace invoice and receipt entries](guides/ledger.md) |
 | [Synthetic acquisition and accounting fixture](../pilot/scenario.py) | [Replay the Orchard scenario](guides/scenario.md) |

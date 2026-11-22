@@ -1,0 +1,104 @@
+{
+  "schema_version": "br-offer-probability/1",
+  "model_id": "hypothetical-duplex-probability-v1",
+  "deal_id": "BR-DEMO-DUPLEX-001",
+  "as_of": "2026-11-22",
+  "timezone": "America/New_York",
+  "currency": "USD",
+  "probability_basis": "assumed",
+  "illustrative": true,
+  "provenance": "Teaching assumptions only. No seller data, comparable sales, lender approval, or calibrated probability model was supplied.",
+  "event_horizon_note": "One proposed negotiation action; acquisition completes within the offer package timeline if agreement occurs. Rejection has zero continuation value. No observation horizon has been calibrated to historical records.",
+  "cost_note": "The $15000 allowance is spent once in every closed scenario. Closed profit includes pursuit expenses in the buyer closing budget. Rejection loss $500 and failed-acquisition loss $5000 are TOTAL prospective unrecovered costs in mutually exclusive branches. Sunk costs before this decision are excluded. Refundable deposits are not losses. The 3000-dollar 60-day timing cost is an additional assumption, not an automatic consequence of later closing.",
+  "selling_cost_bp": 600,
+  "buyer_closing_cents": 1150000,
+  "spent_additional_allowance_cents": 1500000,
+  "required_profit_cents": 4500000,
+  "no_agreement_total_loss_cents": 50000,
+  "agreement_no_close_total_loss_cents": 500000,
+  "closing_given_agreement_bp": 8500,
+  "scenarios": [
+    {
+      "id": "strong",
+      "weight_bp": 2000,
+      "resale_cents": 70000000,
+      "renovation_cents": 3500000,
+      "carry_cents": 1800000
+    },
+    {
+      "id": "baseline",
+      "weight_bp": 5000,
+      "resale_cents": 67500000,
+      "renovation_cents": 3500000,
+      "carry_cents": 1800000
+    },
+    {
+      "id": "slow_costlier",
+      "weight_bp": 2500,
+      "resale_cents": 65000000,
+      "renovation_cents": 4500000,
+      "carry_cents": 2400000
+    },
+    {
+      "id": "severe",
+      "weight_bp": 500,
+      "resale_cents": 60000000,
+      "renovation_cents": 5500000,
+      "carry_cents": 3000000
+    }
+  ],
+  "policy": {
+    "mode": "baseline",
+    "required_floor_probability_bp": 9000,
+    "required_closing_days": 60
+  },
+  "offers": [
+    {
+      "id": "A",
+      "kind": "new_offer",
+      "price_cents": 50000000,
+      "closing_days": 30,
+      "incremental_timing_cents": 0,
+      "agreement_bp": null
+    },
+    {
+      "id": "E",
+      "kind": "new_counter",
+      "price_cents": 50200000,
+      "closing_days": 60,
+      "incremental_timing_cents": 300000,
+      "agreement_bp": 2500
+    },
+    {
+      "id": "B",
+      "kind": "new_counter",
+      "price_cents": 50500000,
+      "closing_days": 60,
+      "incremental_timing_cents": 300000,
+      "agreement_bp": 4500
+    },
+    {
+      "id": "D",
+      "kind": "new_counter",
+      "price_cents": 50700000,
+      "closing_days": 60,
+      "incremental_timing_cents": 300000,
+      "agreement_bp": 6500
+    },
+    {
+      "id": "C",
+      "kind": "accept_live_counter",
+      "price_cents": 51000000,
+      "closing_days": 60,
+      "incremental_timing_cents": 300000,
+      "agreement_bp": 10000,
+      "counter_premise": {
+        "exact_terms": true,
+        "authorized": true,
+        "still_open": true,
+        "effectively_accepted": true,
+        "reference": "illustrative-counter-C-premise-only"
+      }
+    }
+  ]
+}

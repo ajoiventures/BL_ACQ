@@ -1,0 +1,12 @@
+{
+  "schema_version": "br.no-ai-runtime-verification.v1",
+  "reviewed_on": "2026-11-22",
+  "case": "four-stage synthetic quote demonstration",
+  "test": "tests.test_document_offer_layer.DocumentOfferLayerTests.test_complete_workflow_without_network_or_ai_credentials",
+  "result": "passed",
+  "ai_credentials": "empty within test",
+  "socket_construction": "forbidden within test",
+  "execution_allowed": false,
+  "runtime_agents_enabled": false,
+  "scope": "Tested local demonstration only; no blanket claim about future services."
+}

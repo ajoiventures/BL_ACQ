@@ -1,0 +1,138 @@
+{
+  "schema_version": "br.document-engine-build-verification.v1",
+  "reviewed_on": "2026-11-22",
+  "timezone": "America/New_York",
+  "reviewer": "development integrator /root",
+  "reviewer_kind": "agent",
+  "base_revision": "0c44b1e036c41145aa080f3afa542e9387f490e0",
+  "revision_basis": "Reviewed working-tree sources are identified by content hashes; this report is versioned with the implementation.",
+  "scope": "Local deterministic evidence/probability engines, application composition, build-time scheduler, 14-skill catalog and 84-ticket plan.",
+  "tests": [
+    {
+      "command": "python3 -m unittest discover -s tests",
+      "discovered": 216,
+      "passed": 215,
+      "skipped": 1,
+      "failures": 0,
+      "skip_reason": "Real CUDA parity is opt-in; no CUDA execution claim."
+    },
+    {
+      "command": "python3 -m unittest discover -s Python_Asset_Demo",
+      "discovered": 9,
+      "passed": 9,
+      "skipped": 0,
+      "failures": 0
+    },
+    {
+      "command": "python3 -m unittest discover -s tools -p 'test_*.py'",
+      "discovered": 1,
+      "passed": 1,
+      "skipped": 0,
+      "failures": 0
+    }
+  ],
+  "new_test_groups": {
+    "document_evidence": 13,
+    "offer_probability": {
+      "passed": 18,
+      "skipped": 1
+    },
+    "document_offer_layer": 11,
+    "builder_schedule": 19
+  },
+  "checks": {
+    "configured_fatal_lint": "passed: ruff 0.14.10, E9/F63/F7/F82 across pilot/tests/tools/Python_Asset_Demo",
+    "existing_scoped_type_gate": "passed: mypy 1.19.1, contracts.py/connectors.py/cuda_screen.py only",
+    "source_guides": "passed: 72 maintained source/config files, 103 Markdown documents, zero errors after final documentation edits",
+    "agent_profiles": "four new TOML profiles parse and contain name/description/developer_instructions",
+    "synthetic_recovery": {
+      "reconciled": true,
+      "restored": true,
+      "review_events": 2,
+      "settled_invoices": 2
+    },
+    "browser_acceptance": "blocked before assertions: Chromium socket() failed: Operation not permitted",
+    "valuation_browser_replay": "not rerun after the shared browser-launch restriction was reproduced",
+    "full_project_gate": "not passed; browser acceptance remains outstanding",
+    "cuda_runtime": "not executed",
+    "r_runtime": "not executed",
+    "reviewed_plan_scheduler_regression": "19 scheduler tests passed again after ticket-status reconciliation"
+  },
+  "runtime_probe": {
+    "Rscript": null,
+    "nvidia_smi": null,
+    "cupy_import_available": false
+  },
+  "demonstration": {
+    "source": "synthetic quote fixture",
+    "original_quote_cents": 3500000,
+    "revised_quote_cents": 5500000,
+    "offer_B_before": {
+      "price_cents": 50500000,
+      "baseline_profit_cents": 4700000,
+      "expected_profit_given_close_cents": 3670000,
+      "probability_loss_given_close": 0.05,
+      "policy_passed": true
+    },
+    "offer_B_after": {
+      "price_cents": 50500000,
+      "baseline_profit_cents": 2700000,
+      "expected_profit_given_close_cents": 1670000,
+      "probability_loss_given_close": 0.3,
+      "policy_passed": false
+    },
+    "revised_ranked_candidates": [],
+    "execution_allowed": false,
+    "ai_enabled": false,
+    "runtime_agents_enabled": false,
+    "R_exchange_executed_by": "Python only"
+  },
+  "ticket_status_counts": {
+    "completed": 20,
+    "planned": 59,
+    "deferred": 5
+  },
+  "source_sha256": {
+    "pilot/document_evidence.py": "0cba9e98cceb152456b52e652c59a0b413fb2c70feee723f3ccd070b38960732",
+    "pilot/offer_probability.py": "08c5ffc39424b1c914ff7207b70bcba43472e2e6c92e9551dfc692fb64ca34cb",
+    "pilot/document_offer_layer.py": "0f4727c1482c0aa35353c4a82452f17cdb8ee265f524868a5bde5148e544a1e6",
+    "tools/run_document_offer.py": "267a7699a029e43dde417bd892630c4800f601ee83f9cd3647e4fb600333f924",
+    "tools/schedule_builder_work.py": "9ece55398a7c0c27b718b1cf31bc6e2cc1f33a6f29e1c7b6911a613cc95d500e",
+    "tests/test_document_evidence.py": "8a671f8980c2a2e427a89308719a0ed13f4c6602dc6e4ca0cba2bd51be4215ad",
+    "tests/test_offer_probability.py": "77e5deb2defcb31e0dbd3b1c5d5e9fc7888abfa5db5f9bd3e1cc0ed28513aedc",
+    "tests/test_document_offer_layer.py": "f6f3934052cf3b384a9b2cda65d7ec3ae63fd2abf91e0f7ca5cd8f8955067d3a",
+    "tests/test_builder_schedule.py": "dfa3a66538ced4a0b8bd1b205250614b6600e29e101a5f30b01a1a597d1dcf89",
+    "config/builder-skills.json": "c03047b2bc55ebfd5c82c3b9be49aad12f4bf29ab8ccebccd264a0f77ddc722c",
+    "config/build-ticket-plan.json": "489ec3237ce0eafbac41065cf64d96bffae163cae7a61c4e0cec860583245c2e",
+    "data/document_evidence/duplex_quote.json": "101a696064b0196bdedd84e6af201aa0acb0e0bf8fa9c3b1e0be86131a91cba4",
+    "data/offer_probability/duplex.json": "d39fc549815f88281f7b5641f4d82d0965bb26dd141c4b8e024502f532e5d5da"
+  },
+  "limits": [
+    "Synthetic evidence and assumed probabilities are not real transaction evidence or calibrated forecasts.",
+    "Caller-supplied review identities do not establish authentication or independent human review.",
+    "Business-date as-of projection is not complete knowledge-time replay.",
+    "Generalized reconciliation, full liquidity/cost coverage, empirical calibration, multi-round negotiation and service integration remain open.",
+    "No production service, AI provider, runtime agent or actual transaction was deployed."
+  ],
+  "personal_skills": {
+    "installed": 14,
+    "verification": "All active remote skill paths and frontmatter names verified; SKILL/reference content and generated interface values verified during each installation.",
+    "names": [
+      "br-build-product",
+      "br-build-evidence-engine",
+      "br-build-document-workflows",
+      "br-build-financial-engine",
+      "br-build-probability-engine",
+      "br-build-deal-workflow",
+      "br-build-cuda-compute",
+      "br-build-r-validation",
+      "br-build-review-interface",
+      "br-build-data-connectors",
+      "br-build-model-validation",
+      "br-build-ai-adapters",
+      "br-build-release-operations",
+      "br-coordinate-builder-resources"
+    ],
+    "forward_test": "Four representative complex skills tested by a fresh-context reviewer against actual project artifacts; clarifications incorporated."
+  }
+}

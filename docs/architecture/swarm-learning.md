@@ -1,5 +1,12 @@
 # Architecture agent and swarm learning
 
+**Current boundary (November 22, 2026):** the active swarm consists of builders
+working on this codebase. The deterministic engines and application layer run
+without product AI agents. Follow [the builder swarm plan](builder-swarm.md)
+and [engine/layer boundaries](document-engine-layers.md) for the current scope.
+Product-facing AI and runtime swarms discussed as future offers below are not
+enabled by the development swarm.
+
 The [product portfolio](../PRODUCT_PORTFOLIO.md) describes System Architect and Swarm Review as separate offers and shows the tools each can use.
 
 Black River's **System Architect** traces a business requirement through the system boundary, responsible component, behavior, and test. The same [project skill](../../.agents/skills/black-river-system-modeling/SKILL.md) gives the swarm a shared modeling procedure. Ask Codex to use `black_river_system_architect` from this checkout, or invoke `$black-river-system-modeling` for the procedure alone. Codex discovers a project agent from its [TOML definition](../../.codex/agents/black-river-system-architect.toml). [OpenAI custom-agent configuration](https://learn.chatgpt.com/docs/agent-configuration/subagents)

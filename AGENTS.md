@@ -1,5 +1,29 @@
 # Black River engineering preferences
 
+## Builder swarm and product runtime
+
+Standing user instruction, November 22, 2026: the swarm builds the product;
+the AI layer comes later. Development agents may inspect, implement and test
+the software within their assigned scopes. Their roles and installed builder
+skills are development tools, not agents running inside the product.
+
+Build in this order: deterministic domain engines; application services and
+versioned interfaces; review interfaces; optional document-AI adapters; and
+only later, separately specified bounded runtime agents. The current engine
+and application layer must operate without an LLM, NVIDIA inference service,
+model download, API credential or network dependency. CUDA numerical kernels
+are ordinary compute and do not make the financial engine an AI system.
+
+Treat the NVIDIA document-AI integration as a future provider interface.
+Current manual/native inputs remain explicit. A future model may propose
+candidate claims; it may not self-verify evidence, overwrite financial policy,
+manufacture calibrated outcome probabilities or advance transaction status.
+Keep provider scores separate from evidence validity and event probabilities.
+
+Make build status precise: specified, implemented, tested and deployed are
+different. State which checks and runtimes actually ran. Builder configuration
+must not imply that product agents or NVIDIA services have been deployed.
+
 ## CUDA utilization
 
 Standing user instruction, November 22, 2026: **"Remember always code to maximize the utilization of CUDA."**
