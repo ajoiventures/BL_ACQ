@@ -33,3 +33,35 @@ GPU acceleration should extend the user's control over the model.
 See [the CUDA architecture decision](docs/architecture/cuda-screening.md) for
 current implementation scope and the [screening guide](docs/guides/cuda_screen.md)
 for the existing CPU/CUDA comparison command.
+
+## R, Python and CUDA
+
+Standing user instruction, November 22, 2026: **"Include R."**
+
+Include R in the architecture for statistical research, econometrics,
+time-to-event analysis, uncertainty and model diagnostics, independent
+validation, and reproducible analytical reports. Apply these capabilities to
+property economics, offer outcomes and negotiation-to-closing research when
+the necessary evidence exists. Do not invent calibrated acceptance or closing
+probabilities from an unvalidated score.
+
+Keep the operational workflow and authoritative financial rules in the shared
+Python services. R should call those calculations through a versioned batch
+interface rather than establish a conflicting production formula set. Small
+independent R reference calculations are useful for validation and learning.
+Evaluate reticulate for calling the Python/CUDA backend, typed Arrow/Parquet
+artifacts for data exchange, and R torch for suitable GPU tensor workloads.
+Ordinary R code does not become CUDA code merely because R is in the stack.
+
+Carry deal/offer/scenario IDs, source and model versions, currency, units,
+time zones and explicit numeric types across every interface. Preserve integer
+cents and rounding; check conversion ranges, missing values and array order.
+Keep computational batches on the GPU where practical and return only the
+required outputs. The CUDA visibility, parity and benchmarking requirements
+above apply equally to R-originated work.
+
+When adding an executable R component, pin its packages with renv, bind the
+intended Python environment explicitly, and record the tested runtime/GPU
+compatibility. R integration is currently an architecture requirement, not an
+implemented or benchmarked runtime. See the R section in the
+[CUDA architecture decision](docs/architecture/cuda-screening.md).
