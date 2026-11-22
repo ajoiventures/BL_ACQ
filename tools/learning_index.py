@@ -1,4 +1,4 @@
-"""Build and search a cited offline TF-IDF index from the repository's Git index."""
+"""Index approved repository notes, builder contracts and lessons from Git blobs."""
 import argparse
 from collections import Counter
 from contextlib import closing
@@ -15,9 +15,22 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 APP_ID = 0x42524C49
 FORMAT_VERSION = 1
-DIRECTORIES = {"docs", "docs/guides", "docs/architecture", "pilot", "tools", "web", "tests"}
+DIRECTORIES = {"docs", "docs/guides", "docs/architecture", "docs/plans",
+               "pilot", "tools", "web", "tests"}
 LESSONS = "docs/learning"
 MODEL_SKILL = ".agents/skills/black-river-system-modeling/SKILL.md"
+# Register reference metadata explicitly. Do not recursively collect config,
+# agent directories, personal skills, credentials, or working-tree files.
+BUILDER_ARTIFACTS = {
+    "config/builder-skills.json",
+    "config/build-ticket-plan.json",  # Historical work breakdown; retain its provenance.
+    "config/docai-ticket-plan.json",
+    "config/swarm-library-extension.json",
+    ".codex/agents/br-product-integrator.toml",
+    ".codex/agents/br-evidence-builder.toml",
+    ".codex/agents/br-quant-builder.toml",
+    ".codex/agents/br-quality-builder.toml",
+}
 # Common grammatical words are poor evidence of topical relevance in short queries.
 STOP = set("a an and are as at be by for from in is it of on or the to with".split())
 
@@ -51,7 +64,7 @@ def tracked(root):
 
 def allowed(path):
     target = PurePosixPath(path)
-    if path in {"README.md", MODEL_SKILL}:
+    if path in {"README.md", MODEL_SKILL} | BUILDER_ARTIFACTS:
         return True
     return target.suffix == ".md" and str(target.parent) in DIRECTORIES | {LESSONS}
 

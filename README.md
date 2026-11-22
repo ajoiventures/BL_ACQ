@@ -1,30 +1,51 @@
 # Black River acquisition workspace
 
-## Build the engine, then the layer
+## Doc AI product and existing builder library
 
-The current [builder roadmap and ticket plan](docs/plans/document-engine-tickets.md)
-contains 14 skill families and 84 capability tickets. The development swarm
-builds the software; optional AI services and product agents are later phases.
+The active [Doc AI ticket plan](docs/plans/docai-ticket-plan.md) separates
+document intake, processing, evidence and review from the builder swarm used
+to implement them. The [current-state audit](docs/architecture/docai-current-state.md)
+identifies reusable filing and evidence code, an unverified local model client,
+and the missing general Doc AI application integration. There is no verified
+NVIDIA Doc AI connection in the inspected workspaces.
+
+The 14 builder skills extend the established swarm library through the
+[library crosswalk](config/swarm-library-extension.json). Existing leaders,
+skill IDs, project tickets and independent review remain authoritative.
+The older [84-ticket evidence/acquisition plan](docs/plans/document-engine-tickets.md)
+is preserved as related work; it does not gate the first Doc AI evaluation.
 See the [builder coordination architecture](docs/architecture/builder-swarm.md)
 and [engine/application boundaries](docs/architecture/document-engine-layers.md).
 
-Run the deterministic evidence-to-offer demonstration:
+Inspect the active offline Doc AI schedule:
+
+```sh
+python tools/schedule_builder_work.py --plan config/docai-ticket-plan.json --output .runs/docai-schedule.json
+```
+
+Provider contracts and disabled/fake-adapter tests can be built now. A first
+live provider evaluation follows the document, review and connection readiness
+gates in the plan; it does not wait for the entire financial platform.
+
+The retained deterministic evidence-to-offer demonstration is a downstream
+acquisition consumer, not the general Doc AI application:
 
 ```sh
 python tools/run_document_offer.py --output .runs/document-offer.json --r-export .runs/document-offer-r
-python tools/schedule_builder_work.py --plan config/build-ticket-plan.json --output .runs/builder-schedule.json
 ```
 
 The first command traces reviewed renovation quotes through source history,
 offer economics and a typed R review exchange. It executes without AI or a
-network connection. The second produces an offline development schedule with
+network connection. The schedule command above produces an offline plan with
 dependency, resource, file-ownership and quality constraints; it does not
 launch agents or schedule a production job. Output paths must be new.
 
 Read the [demonstration guide](docs/guides/run_document_offer.md) and
 [scheduler guide](docs/guides/schedule_builder_work.md) for the interfaces and
-actual execution limits. The [build verification record](docs/plans/document-engine-verification.md)
-separates current evidence from future work.
+actual execution limits. The [correction verification record](docs/plans/docai-correction-verification.md)
+records the current plan and library-index checks; the
+[original build verification](docs/plans/document-engine-verification.md)
+preserves evidence for the acquisition-consumer demonstration.
 
 ## Explore the existing workspace
 

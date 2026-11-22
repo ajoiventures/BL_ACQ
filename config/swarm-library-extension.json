@@ -1,0 +1,1655 @@
+{
+  "schema_version": "br.swarm-library-extension.v1",
+  "reviewed_on": "2026-11-22",
+  "purpose": "Add software-builder procedures to the existing swarm/skills library, while separating the Doc AI product, its model providers, and build-time coordination.",
+  "catalog_authority": {
+    "canonical_document_ids": [
+      "BR-SWARM-001",
+      "BR-SWARM-SKILLS-001",
+      "BR-ENG-MASTER-001"
+    ],
+    "authority_rule": "Canonical organization and skill IDs remain authoritative. This repository file is a versioned extension/crosswalk, not a replacement catalog or proof of a live library import.",
+    "inspected_skill_specification": "BR-SWARM-SKILLS-001: SK-01 through SK-30 plus the SK-31 through SK-35 addendum; metadata and applicable ownership were reviewed.",
+    "engineering_master_status": "Referenced for alignment; this crosswalk does not certify completion of the 338-requirement master.",
+    "private_source_handling": "No private source document body or Drive locator is embedded here.",
+    "registration_channels": {
+      "canonical_documentation": "Documentation registration in BR-SWARM-001 and BR-SWARM-SKILLS-001 is a separate publication channel; its delivery evidence is tracked independently from an application import.",
+      "personal_procedures": "Installation and correction of the 14 personal builder procedures do not import an organizational application database.",
+      "repository_learning_index": "BL_ACQ tools/learning_index.py integrates the local collection into the repository learning index; this is distinct from runtime provider connection and organizational database import.",
+      "organizational_database": "No organizational application database import or migration was performed by this crosswalk."
+    }
+  },
+  "collection": {
+    "id": "software_builders",
+    "builder_skill_count": 14,
+    "task_profile_count": 4,
+    "existing_leader_ids": [
+      "L1",
+      "L2",
+      "L3",
+      "L4"
+    ],
+    "existing_specialist_roster": "SW-00 through SW-15; preserve existing IDs",
+    "new_leaders_created": 0,
+    "new_runtime_agents_created": 0,
+    "personal_skill_installation": "Fourteen personal procedures were previously installed; that is distinct from importing this collection into the canonical application library."
+  },
+  "referenced_existing_skills": [
+    {
+      "id": "SK-01",
+      "title": "Strategy Registry & Execution State"
+    },
+    {
+      "id": "SK-03",
+      "title": "Entity & Ownership Resolution"
+    },
+    {
+      "id": "SK-10",
+      "title": "Deterministic Property Underwriting"
+    },
+    {
+      "id": "SK-11",
+      "title": "Acquisition Structuring & Offer Drafts"
+    },
+    {
+      "id": "SK-14",
+      "title": "Construction Draw & Refinance Simulator"
+    },
+    {
+      "id": "SK-18",
+      "title": "Treasury, Accounting & Consolidation"
+    },
+    {
+      "id": "SK-25",
+      "title": "Portfolio KPI & Exception Monitoring"
+    },
+    {
+      "id": "SK-26",
+      "title": "Human Approval & Independent Audit"
+    },
+    {
+      "id": "SK-27",
+      "title": "Data Security & Civic Firewall"
+    },
+    {
+      "id": "SK-28",
+      "title": "Engineering Reliability & Testing"
+    },
+    {
+      "id": "SK-29",
+      "title": "Agent Workflow & Field Evidence"
+    }
+  ],
+  "skill_mappings": [
+    {
+      "builder_skill": "br-build-product",
+      "source_catalog_owner_alias": "architect_integrator",
+      "collection": "software_builders",
+      "existing_skill_ids": [
+        "SK-01",
+        "SK-28",
+        "SK-29"
+      ],
+      "accountability": {
+        "leader": "L1",
+        "owner": "SW-00",
+        "supporting_leader": "L2",
+        "supporting_specialists": [],
+        "router": "SW-00",
+        "independent_review_owner": "SW-13"
+      },
+      "capability_ids": [
+        "BR-PROD-01",
+        "BR-PROD-02",
+        "BR-PROD-03",
+        "BR-PROD-04",
+        "BR-PROD-05",
+        "BR-PROD-06"
+      ],
+      "integration_purpose": "Plan and integrate software work under the existing coordinator; do not create another leader roster.",
+      "mapping_status": "specified_crosswalk",
+      "library_import_status": "not_established_by_this_file",
+      "runtime_effect": "No model worker, provider connection, product agent or financial authority is created."
+    },
+    {
+      "builder_skill": "br-build-evidence-engine",
+      "source_catalog_owner_alias": "evidence_builder",
+      "collection": "software_builders",
+      "existing_skill_ids": [
+        "SK-29",
+        "SK-28",
+        "SK-26",
+        "SK-27"
+      ],
+      "accountability": {
+        "leader": "L2",
+        "owner": "SW-00",
+        "supporting_leader": "L4",
+        "supporting_specialists": [
+          "SW-09"
+        ],
+        "router": "SW-00",
+        "independent_review_owner": "SW-13"
+      },
+      "capability_ids": [
+        "BR-EVID-01",
+        "BR-EVID-02",
+        "BR-EVID-03",
+        "BR-EVID-04",
+        "BR-EVID-05",
+        "BR-EVID-06"
+      ],
+      "integration_purpose": "Implement document/evidence primitives; document operating accountability remains with L4/SW-09.",
+      "mapping_status": "specified_crosswalk",
+      "library_import_status": "not_established_by_this_file",
+      "runtime_effect": "No model worker, provider connection, product agent or financial authority is created."
+    },
+    {
+      "builder_skill": "br-build-document-workflows",
+      "source_catalog_owner_alias": "evidence_builder",
+      "collection": "software_builders",
+      "existing_skill_ids": [
+        "SK-29",
+        "SK-28",
+        "SK-27"
+      ],
+      "accountability": {
+        "leader": "L4",
+        "owner": "SW-09",
+        "supporting_leader": "L2",
+        "supporting_specialists": [
+          "SW-00"
+        ],
+        "router": "SW-00",
+        "independent_review_owner": "SW-13"
+      },
+      "capability_ids": [
+        "BR-DOC-01",
+        "BR-DOC-02",
+        "BR-DOC-03",
+        "BR-DOC-04",
+        "BR-DOC-05",
+        "BR-DOC-06"
+      ],
+      "integration_purpose": "Extend existing filing, mail and review interfaces; distinguish generic documents from financial consumers.",
+      "mapping_status": "specified_crosswalk",
+      "library_import_status": "not_established_by_this_file",
+      "runtime_effect": "No model worker, provider connection, product agent or financial authority is created."
+    },
+    {
+      "builder_skill": "br-build-financial-engine",
+      "source_catalog_owner_alias": "quant_builder",
+      "collection": "software_builders",
+      "existing_skill_ids": [
+        "SK-10",
+        "SK-14",
+        "SK-18",
+        "SK-28"
+      ],
+      "accountability": {
+        "leader": "L3",
+        "owner": "SW-05",
+        "supporting_leader": "L2",
+        "supporting_specialists": [
+          "SW-00"
+        ],
+        "router": "SW-00",
+        "independent_review_owner": "SW-13"
+      },
+      "capability_ids": [
+        "BR-FIN-01",
+        "BR-FIN-02",
+        "BR-FIN-03",
+        "BR-FIN-04",
+        "BR-FIN-05",
+        "BR-FIN-06"
+      ],
+      "integration_purpose": "Maintain deterministic finance as a downstream consumer and domain capability, not a prerequisite for Doc AI extraction.",
+      "mapping_status": "specified_crosswalk",
+      "library_import_status": "not_established_by_this_file",
+      "runtime_effect": "No model worker, provider connection, product agent or financial authority is created."
+    },
+    {
+      "builder_skill": "br-build-probability-engine",
+      "source_catalog_owner_alias": "quant_builder",
+      "collection": "software_builders",
+      "existing_skill_ids": [
+        "SK-11",
+        "SK-10",
+        "SK-25",
+        "SK-28"
+      ],
+      "accountability": {
+        "leader": "L3",
+        "owner": "SW-04",
+        "supporting_leader": "L2",
+        "supporting_specialists": [
+          "SW-05",
+          "SW-00"
+        ],
+        "router": "SW-00",
+        "independent_review_owner": "SW-13"
+      },
+      "capability_ids": [
+        "BR-PROB-01",
+        "BR-PROB-02",
+        "BR-PROB-03",
+        "BR-PROB-04",
+        "BR-PROB-05",
+        "BR-PROB-06"
+      ],
+      "integration_purpose": "Model acquisition decisions and conditional outcomes; do not equate extraction scores with outcome probabilities.",
+      "mapping_status": "specified_crosswalk",
+      "library_import_status": "not_established_by_this_file",
+      "runtime_effect": "No model worker, provider connection, product agent or financial authority is created."
+    },
+    {
+      "builder_skill": "br-build-deal-workflow",
+      "source_catalog_owner_alias": "evidence_builder",
+      "collection": "software_builders",
+      "existing_skill_ids": [
+        "SK-01",
+        "SK-11",
+        "SK-26",
+        "SK-29"
+      ],
+      "accountability": {
+        "leader": "L3",
+        "owner": "SW-04",
+        "supporting_leader": "L4",
+        "supporting_specialists": [
+          "SW-09",
+          "SW-00"
+        ],
+        "router": "SW-00",
+        "independent_review_owner": "SW-13"
+      },
+      "capability_ids": [
+        "BR-FLOW-01",
+        "BR-FLOW-02",
+        "BR-FLOW-03",
+        "BR-FLOW-04",
+        "BR-FLOW-05",
+        "BR-FLOW-06"
+      ],
+      "integration_purpose": "Build acquisition workflow consumers without making their states the document-processing state machine.",
+      "mapping_status": "specified_crosswalk",
+      "library_import_status": "not_established_by_this_file",
+      "runtime_effect": "No model worker, provider connection, product agent or financial authority is created."
+    },
+    {
+      "builder_skill": "br-build-cuda-compute",
+      "source_catalog_owner_alias": "quant_builder",
+      "collection": "software_builders",
+      "existing_skill_ids": [
+        "SK-28"
+      ],
+      "accountability": {
+        "leader": "L2",
+        "owner": "SW-00",
+        "supporting_leader": "L3",
+        "supporting_specialists": [
+          "SW-05"
+        ],
+        "router": "SW-00",
+        "independent_review_owner": "SW-13"
+      },
+      "capability_ids": [
+        "BR-CUDA-01",
+        "BR-CUDA-02",
+        "BR-CUDA-03",
+        "BR-CUDA-04",
+        "BR-CUDA-05",
+        "BR-CUDA-06"
+      ],
+      "integration_purpose": "Provide a shared engineering specialization; select document versus financial GPU workloads explicitly.",
+      "mapping_status": "specified_crosswalk",
+      "library_import_status": "not_established_by_this_file",
+      "runtime_effect": "No model worker, provider connection, product agent or financial authority is created."
+    },
+    {
+      "builder_skill": "br-build-r-validation",
+      "source_catalog_owner_alias": "quality_builder",
+      "collection": "software_builders",
+      "existing_skill_ids": [
+        "SK-28",
+        "SK-10",
+        "SK-25"
+      ],
+      "accountability": {
+        "leader": "L3",
+        "owner": "SW-05",
+        "supporting_leader": "L2",
+        "supporting_specialists": [
+          "SW-00"
+        ],
+        "router": "SW-00",
+        "independent_review_owner": "SW-13"
+      },
+      "capability_ids": [
+        "BR-R-01",
+        "BR-R-02",
+        "BR-R-03",
+        "BR-R-04",
+        "BR-R-05",
+        "BR-R-06"
+      ],
+      "integration_purpose": "Author statistical/reference work; SW-13 independently assesses it. An R author must not approve its own work.",
+      "mapping_status": "specified_crosswalk",
+      "library_import_status": "not_established_by_this_file",
+      "runtime_effect": "No model worker, provider connection, product agent or financial authority is created."
+    },
+    {
+      "builder_skill": "br-build-review-interface",
+      "source_catalog_owner_alias": "architect_integrator",
+      "collection": "software_builders",
+      "existing_skill_ids": [
+        "SK-28",
+        "SK-26"
+      ],
+      "accountability": {
+        "leader": "L2",
+        "owner": "SW-00",
+        "supporting_leader": "L4",
+        "supporting_specialists": [
+          "SW-09"
+        ],
+        "router": "SW-00",
+        "independent_review_owner": "SW-13"
+      },
+      "capability_ids": [
+        "BR-UX-01",
+        "BR-UX-02",
+        "BR-UX-03",
+        "BR-UX-04",
+        "BR-UX-05",
+        "BR-UX-06"
+      ],
+      "integration_purpose": "Build operator interfaces for the selected workflow; offer comparison controls remain a financial consumer.",
+      "mapping_status": "specified_crosswalk",
+      "library_import_status": "not_established_by_this_file",
+      "runtime_effect": "No model worker, provider connection, product agent or financial authority is created."
+    },
+    {
+      "builder_skill": "br-build-data-connectors",
+      "source_catalog_owner_alias": "evidence_builder",
+      "collection": "software_builders",
+      "existing_skill_ids": [
+        "SK-28",
+        "SK-29",
+        "SK-27",
+        "SK-03"
+      ],
+      "accountability": {
+        "leader": "L2",
+        "owner": "SW-00",
+        "supporting_leader": "L4",
+        "supporting_specialists": [
+          "SW-09"
+        ],
+        "router": "SW-00",
+        "independent_review_owner": "SW-13"
+      },
+      "capability_ids": [
+        "BR-DATA-01",
+        "BR-DATA-02",
+        "BR-DATA-03",
+        "BR-DATA-04",
+        "BR-DATA-05",
+        "BR-DATA-06"
+      ],
+      "integration_purpose": "Implement authorized source adapters and identity lineage; preserve source/domain restrictions.",
+      "mapping_status": "specified_crosswalk",
+      "library_import_status": "not_established_by_this_file",
+      "runtime_effect": "No model worker, provider connection, product agent or financial authority is created."
+    },
+    {
+      "builder_skill": "br-build-model-validation",
+      "source_catalog_owner_alias": "quality_builder",
+      "collection": "software_builders",
+      "existing_skill_ids": [
+        "SK-26",
+        "SK-28"
+      ],
+      "accountability": {
+        "leader": "L2",
+        "owner": "SW-13",
+        "supporting_leader": "L3",
+        "supporting_specialists": [
+          "SW-05"
+        ],
+        "router": "SW-00",
+        "independent_review_owner": "SW-13"
+      },
+      "capability_ids": [
+        "BR-VAL-01",
+        "BR-VAL-02",
+        "BR-VAL-03",
+        "BR-VAL-04",
+        "BR-VAL-05",
+        "BR-VAL-06"
+      ],
+      "integration_purpose": "Exercise independent review under SW-13; the author or integrator cannot impersonate its acceptance authority.",
+      "mapping_status": "specified_crosswalk",
+      "library_import_status": "not_established_by_this_file",
+      "runtime_effect": "No model worker, provider connection, product agent or financial authority is created."
+    },
+    {
+      "builder_skill": "br-build-ai-adapters",
+      "source_catalog_owner_alias": "evidence_builder",
+      "collection": "software_builders",
+      "existing_skill_ids": [
+        "SK-28",
+        "SK-29",
+        "SK-27"
+      ],
+      "accountability": {
+        "leader": "L2",
+        "owner": "SW-00",
+        "supporting_leader": "L4",
+        "supporting_specialists": [
+          "SW-09"
+        ],
+        "router": "SW-00",
+        "independent_review_owner": "SW-13"
+      },
+      "capability_ids": [
+        "BR-AI-01",
+        "BR-AI-02",
+        "BR-AI-03",
+        "BR-AI-04",
+        "BR-AI-05",
+        "BR-AI-06"
+      ],
+      "integration_purpose": "Build provider contracts and disabled adapters for document processing; actual activation is a separate evidenced milestone.",
+      "mapping_status": "specified_crosswalk",
+      "library_import_status": "not_established_by_this_file",
+      "runtime_effect": "No model worker, provider connection, product agent or financial authority is created."
+    },
+    {
+      "builder_skill": "br-build-release-operations",
+      "source_catalog_owner_alias": "quality_builder",
+      "collection": "software_builders",
+      "existing_skill_ids": [
+        "SK-28",
+        "SK-25",
+        "SK-26"
+      ],
+      "accountability": {
+        "leader": "L2",
+        "owner": "SW-00",
+        "supporting_leader": "L4",
+        "supporting_specialists": [
+          "SW-09"
+        ],
+        "router": "SW-00",
+        "independent_review_owner": "SW-13"
+      },
+      "capability_ids": [
+        "BR-OPS-01",
+        "BR-OPS-02",
+        "BR-OPS-03",
+        "BR-OPS-04",
+        "BR-OPS-05",
+        "BR-OPS-06"
+      ],
+      "integration_purpose": "Use existing release and audit responsibilities; distinguish an offline build artifact from a deployed service.",
+      "mapping_status": "specified_crosswalk",
+      "library_import_status": "not_established_by_this_file",
+      "runtime_effect": "No model worker, provider connection, product agent or financial authority is created."
+    },
+    {
+      "builder_skill": "br-coordinate-builder-resources",
+      "source_catalog_owner_alias": "architect_integrator",
+      "collection": "software_builders",
+      "existing_skill_ids": [
+        "SK-01",
+        "SK-28",
+        "SK-29"
+      ],
+      "accountability": {
+        "leader": "L1",
+        "owner": "SW-00",
+        "supporting_leader": "L2",
+        "supporting_specialists": [],
+        "router": "SW-00",
+        "independent_review_owner": "SW-13"
+      },
+      "capability_ids": [
+        "BR-COORD-01",
+        "BR-COORD-02",
+        "BR-COORD-03",
+        "BR-COORD-04",
+        "BR-COORD-05",
+        "BR-COORD-06"
+      ],
+      "integration_purpose": "Extend existing coordination with an advisory resource projection; retain authoritative ticket transitions in the existing engine.",
+      "mapping_status": "specified_crosswalk",
+      "library_import_status": "not_established_by_this_file",
+      "runtime_effect": "No model worker, provider connection, product agent or financial authority is created."
+    }
+  ],
+  "task_profiles": [
+    {
+      "path": ".codex/agents/br-product-integrator.toml",
+      "existing_accountability": {
+        "leader": "L1",
+        "coordinator": "SW-00",
+        "engineering_leader": "L2"
+      },
+      "kind": "temporary_software_build_task_profile"
+    },
+    {
+      "path": ".codex/agents/br-evidence-builder.toml",
+      "existing_accountability": {
+        "engineering_leader": "L2",
+        "document_leader": "L4",
+        "document_owner": "SW-09",
+        "coordinator": "SW-00"
+      },
+      "kind": "temporary_software_build_task_profile"
+    },
+    {
+      "path": ".codex/agents/br-quant-builder.toml",
+      "existing_accountability": {
+        "engineering_leader": "L2",
+        "finance_leader": "L3",
+        "financial_owner": "SW-05",
+        "decision_owner": "SW-04"
+      },
+      "kind": "temporary_software_build_task_profile"
+    },
+    {
+      "path": ".codex/agents/br-quality-builder.toml",
+      "existing_accountability": {
+        "review_owner": "SW-13",
+        "engineering_leader": "L2"
+      },
+      "kind": "temporary_software_build_task_profile",
+      "constraint": "Independent review is a separate responsibility and evidence trail; a named profile or session alone does not establish authenticated independent approval."
+    }
+  ],
+  "execution_authority": {
+    "canonical_ticket_runtime": {
+      "workspace": "existing Founder Command workspace",
+      "paths": [
+        "backend/core/tickets.py",
+        "backend/ticket_routes.py"
+      ],
+      "domain": "PROJECT_INTERNAL",
+      "status": "existing implemented engine; authenticated runtime availability not probed in this audit"
+    },
+    "advisory_resource_planner": {
+      "workspace": "BL_ACQ",
+      "path": "tools/schedule_builder_work.py",
+      "status": "implemented offline list scheduler",
+      "may_launch_workers": false,
+      "may_close_canonical_tickets": false,
+      "may_grant_approval": false
+    },
+    "integration_state": "No automatic runtime bridge between the advisory planner and canonical ticket engine has been established by this file.",
+    "review_rule": "SW-13 remains a separate audit responsibility. A builder self-report, personal skill installation, scheduler completed flag or named task profile does not grant independent approval.",
+    "planning_estimate_policy": "Three-point estimates are assumed active builder minutes for one scoped increment against the inspected source. They are not measured throughput, elapsed delivery promises, or production capacity. Credential provisioning, remote environment setup, human review queues and external waits are excluded; observed blockers must update estimates before dispatch. One execution lane is reserved per item; integrator handoff and SW-13 review occur separately under the shared capacity limit."
+  },
+  "reuse_targets": [
+    {
+      "workspace": "existing Founder Command workspace",
+      "path": "filing/inbox.py",
+      "symbols": [
+        "extract",
+        "file_document"
+      ],
+      "observed_status": "implemented source; file_document is the preserved intake entry point"
+    },
+    {
+      "workspace": "existing Founder Command workspace",
+      "path": "backend/main.py",
+      "symbols": [
+        "RenewalIntake",
+        "classify_renewal"
+      ],
+      "observed_status": "implemented user-reviewed text workflow; not automatic extraction"
+    },
+    {
+      "workspace": "existing Founder Command workspace",
+      "path": "scripts/local_model.py",
+      "symbols": [
+        "extract",
+        "grade"
+      ],
+      "observed_status": "implemented Ollama text client and smoke-test logic; runtime invocation unverified"
+    },
+    {
+      "workspace": "existing Founder Command workspace",
+      "path": "scripts/model_mcp.py",
+      "symbols": [
+        "classify_mail"
+      ],
+      "observed_status": "implemented loopback adapter; authenticated connection/registration unverified"
+    },
+    {
+      "workspace": "existing Founder Command workspace",
+      "path": "site_academy/runner.py",
+      "symbols": [
+        "load_skills",
+        "start",
+        "act",
+        "status"
+      ],
+      "observed_status": "existing evidence/handoff runner for site/urban/planning; builder curriculum extension planned"
+    },
+    {
+      "workspace": "modular Founder Command workspace",
+      "path": "apps/api/black_river_api/services.py",
+      "symbols": [
+        "create_evidence"
+      ],
+      "observed_status": "implemented subject/work-item/domain-bound evidence; no Doc AI extraction integration established"
+    },
+    {
+      "workspace": "BL_ACQ",
+      "path": "pilot/document_evidence.py",
+      "symbols": [
+        "CandidateProvider",
+        "NativeJsonProvider",
+        "DisabledAIProvider",
+        "EvidenceStore"
+      ],
+      "observed_status": "deterministic evidence foundation; AI schema/dispatch boundary not plug-ready"
+    },
+    {
+      "workspace": "BL_ACQ",
+      "path": "pilot/document_offer_layer.py",
+      "symbols": [
+        "evaluate_with_evidence"
+      ],
+      "observed_status": "implemented financial consumer; not the generic Doc AI application layer"
+    }
+  ],
+  "legacy_plan_crosswalk": {
+    "source": "config/build-ticket-plan.json",
+    "count": 84,
+    "status_policy": "Original statuses are snapshots, not redefined here. Completed acceptance remains scoped to its original bounded increment; no Doc AI connection follows.",
+    "categories": [
+      "docai_foundation",
+      "shared_builder_tooling",
+      "downstream_acquisition",
+      "general_platform",
+      "future_ai"
+    ],
+    "items": [
+      {
+        "ticket_id": "BR-BUILD-001",
+        "capability_id": "BR-PROD-01",
+        "builder_skill": "br-build-product",
+        "legacy_status_snapshot": "completed",
+        "category": "shared_builder_tooling",
+        "disposition": "Register within the existing software-builder collection; orchestration remains outside the Doc AI product runtime."
+      },
+      {
+        "ticket_id": "BR-BUILD-002",
+        "capability_id": "BR-PROD-02",
+        "builder_skill": "br-build-product",
+        "legacy_status_snapshot": "completed",
+        "category": "shared_builder_tooling",
+        "disposition": "Register within the existing software-builder collection; orchestration remains outside the Doc AI product runtime."
+      },
+      {
+        "ticket_id": "BR-BUILD-003",
+        "capability_id": "BR-PROD-03",
+        "builder_skill": "br-build-product",
+        "legacy_status_snapshot": "completed",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-004",
+        "capability_id": "BR-PROD-04",
+        "builder_skill": "br-build-product",
+        "legacy_status_snapshot": "completed",
+        "category": "shared_builder_tooling",
+        "disposition": "Register within the existing software-builder collection; orchestration remains outside the Doc AI product runtime."
+      },
+      {
+        "ticket_id": "BR-BUILD-005",
+        "capability_id": "BR-PROD-05",
+        "builder_skill": "br-build-product",
+        "legacy_status_snapshot": "completed",
+        "category": "shared_builder_tooling",
+        "disposition": "Register within the existing software-builder collection; orchestration remains outside the Doc AI product runtime."
+      },
+      {
+        "ticket_id": "BR-BUILD-006",
+        "capability_id": "BR-PROD-06",
+        "builder_skill": "br-build-product",
+        "legacy_status_snapshot": "planned",
+        "category": "shared_builder_tooling",
+        "disposition": "Register within the existing software-builder collection; orchestration remains outside the Doc AI product runtime."
+      },
+      {
+        "ticket_id": "BR-BUILD-007",
+        "capability_id": "BR-EVID-01",
+        "builder_skill": "br-build-evidence-engine",
+        "legacy_status_snapshot": "completed",
+        "category": "docai_foundation",
+        "disposition": "Reuse or adapt for the Doc AI product through existing filing and mail/evidence interfaces; status remains scoped to the old acceptance evidence."
+      },
+      {
+        "ticket_id": "BR-BUILD-008",
+        "capability_id": "BR-EVID-02",
+        "builder_skill": "br-build-evidence-engine",
+        "legacy_status_snapshot": "completed",
+        "category": "docai_foundation",
+        "disposition": "Reuse or adapt for the Doc AI product through existing filing and mail/evidence interfaces; status remains scoped to the old acceptance evidence."
+      },
+      {
+        "ticket_id": "BR-BUILD-009",
+        "capability_id": "BR-EVID-03",
+        "builder_skill": "br-build-evidence-engine",
+        "legacy_status_snapshot": "completed",
+        "category": "docai_foundation",
+        "disposition": "Reuse or adapt for the Doc AI product through existing filing and mail/evidence interfaces; status remains scoped to the old acceptance evidence."
+      },
+      {
+        "ticket_id": "BR-BUILD-010",
+        "capability_id": "BR-EVID-04",
+        "builder_skill": "br-build-evidence-engine",
+        "legacy_status_snapshot": "completed",
+        "category": "docai_foundation",
+        "disposition": "Reuse or adapt for the Doc AI product through existing filing and mail/evidence interfaces; status remains scoped to the old acceptance evidence."
+      },
+      {
+        "ticket_id": "BR-BUILD-011",
+        "capability_id": "BR-EVID-05",
+        "builder_skill": "br-build-evidence-engine",
+        "legacy_status_snapshot": "completed",
+        "category": "docai_foundation",
+        "disposition": "Reuse or adapt for the Doc AI product through existing filing and mail/evidence interfaces; status remains scoped to the old acceptance evidence."
+      },
+      {
+        "ticket_id": "BR-BUILD-012",
+        "capability_id": "BR-EVID-06",
+        "builder_skill": "br-build-evidence-engine",
+        "legacy_status_snapshot": "completed",
+        "category": "docai_foundation",
+        "disposition": "Reuse or adapt for the Doc AI product through existing filing and mail/evidence interfaces; status remains scoped to the old acceptance evidence."
+      },
+      {
+        "ticket_id": "BR-BUILD-013",
+        "capability_id": "BR-DOC-01",
+        "builder_skill": "br-build-document-workflows",
+        "legacy_status_snapshot": "planned",
+        "category": "docai_foundation",
+        "disposition": "Reuse or adapt for the Doc AI product through existing filing and mail/evidence interfaces; status remains scoped to the old acceptance evidence."
+      },
+      {
+        "ticket_id": "BR-BUILD-014",
+        "capability_id": "BR-DOC-02",
+        "builder_skill": "br-build-document-workflows",
+        "legacy_status_snapshot": "completed",
+        "category": "docai_foundation",
+        "disposition": "Reuse or adapt for the Doc AI product through existing filing and mail/evidence interfaces; status remains scoped to the old acceptance evidence."
+      },
+      {
+        "ticket_id": "BR-BUILD-015",
+        "capability_id": "BR-DOC-03",
+        "builder_skill": "br-build-document-workflows",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-016",
+        "capability_id": "BR-DOC-04",
+        "builder_skill": "br-build-document-workflows",
+        "legacy_status_snapshot": "planned",
+        "category": "docai_foundation",
+        "disposition": "Reuse or adapt for the Doc AI product through existing filing and mail/evidence interfaces; status remains scoped to the old acceptance evidence."
+      },
+      {
+        "ticket_id": "BR-BUILD-017",
+        "capability_id": "BR-DOC-05",
+        "builder_skill": "br-build-document-workflows",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-018",
+        "capability_id": "BR-DOC-06",
+        "builder_skill": "br-build-document-workflows",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-019",
+        "capability_id": "BR-FIN-01",
+        "builder_skill": "br-build-financial-engine",
+        "legacy_status_snapshot": "completed",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-020",
+        "capability_id": "BR-FIN-02",
+        "builder_skill": "br-build-financial-engine",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-021",
+        "capability_id": "BR-FIN-03",
+        "builder_skill": "br-build-financial-engine",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-022",
+        "capability_id": "BR-FIN-04",
+        "builder_skill": "br-build-financial-engine",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-023",
+        "capability_id": "BR-FIN-05",
+        "builder_skill": "br-build-financial-engine",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-024",
+        "capability_id": "BR-FIN-06",
+        "builder_skill": "br-build-financial-engine",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-025",
+        "capability_id": "BR-PROB-01",
+        "builder_skill": "br-build-probability-engine",
+        "legacy_status_snapshot": "completed",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-026",
+        "capability_id": "BR-PROB-02",
+        "builder_skill": "br-build-probability-engine",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-027",
+        "capability_id": "BR-PROB-03",
+        "builder_skill": "br-build-probability-engine",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-028",
+        "capability_id": "BR-PROB-04",
+        "builder_skill": "br-build-probability-engine",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-029",
+        "capability_id": "BR-PROB-05",
+        "builder_skill": "br-build-probability-engine",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-030",
+        "capability_id": "BR-PROB-06",
+        "builder_skill": "br-build-probability-engine",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-031",
+        "capability_id": "BR-FLOW-01",
+        "builder_skill": "br-build-deal-workflow",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-032",
+        "capability_id": "BR-FLOW-02",
+        "builder_skill": "br-build-deal-workflow",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-033",
+        "capability_id": "BR-FLOW-03",
+        "builder_skill": "br-build-deal-workflow",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-034",
+        "capability_id": "BR-FLOW-04",
+        "builder_skill": "br-build-deal-workflow",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-035",
+        "capability_id": "BR-FLOW-05",
+        "builder_skill": "br-build-deal-workflow",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-036",
+        "capability_id": "BR-FLOW-06",
+        "builder_skill": "br-build-deal-workflow",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-037",
+        "capability_id": "BR-CUDA-01",
+        "builder_skill": "br-build-cuda-compute",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-038",
+        "capability_id": "BR-CUDA-02",
+        "builder_skill": "br-build-cuda-compute",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-039",
+        "capability_id": "BR-CUDA-03",
+        "builder_skill": "br-build-cuda-compute",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-040",
+        "capability_id": "BR-CUDA-04",
+        "builder_skill": "br-build-cuda-compute",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-041",
+        "capability_id": "BR-CUDA-05",
+        "builder_skill": "br-build-cuda-compute",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-042",
+        "capability_id": "BR-CUDA-06",
+        "builder_skill": "br-build-cuda-compute",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-043",
+        "capability_id": "BR-R-01",
+        "builder_skill": "br-build-r-validation",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-044",
+        "capability_id": "BR-R-02",
+        "builder_skill": "br-build-r-validation",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-045",
+        "capability_id": "BR-R-03",
+        "builder_skill": "br-build-r-validation",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-046",
+        "capability_id": "BR-R-04",
+        "builder_skill": "br-build-r-validation",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-047",
+        "capability_id": "BR-R-05",
+        "builder_skill": "br-build-r-validation",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-048",
+        "capability_id": "BR-R-06",
+        "builder_skill": "br-build-r-validation",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-049",
+        "capability_id": "BR-UX-01",
+        "builder_skill": "br-build-review-interface",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-050",
+        "capability_id": "BR-UX-02",
+        "builder_skill": "br-build-review-interface",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-051",
+        "capability_id": "BR-UX-03",
+        "builder_skill": "br-build-review-interface",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-052",
+        "capability_id": "BR-UX-04",
+        "builder_skill": "br-build-review-interface",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-053",
+        "capability_id": "BR-UX-05",
+        "builder_skill": "br-build-review-interface",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-054",
+        "capability_id": "BR-UX-06",
+        "builder_skill": "br-build-review-interface",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-055",
+        "capability_id": "BR-DATA-01",
+        "builder_skill": "br-build-data-connectors",
+        "legacy_status_snapshot": "planned",
+        "category": "docai_foundation",
+        "disposition": "Reuse or adapt for the Doc AI product through existing filing and mail/evidence interfaces; status remains scoped to the old acceptance evidence."
+      },
+      {
+        "ticket_id": "BR-BUILD-056",
+        "capability_id": "BR-DATA-02",
+        "builder_skill": "br-build-data-connectors",
+        "legacy_status_snapshot": "planned",
+        "category": "docai_foundation",
+        "disposition": "Reuse or adapt for the Doc AI product through existing filing and mail/evidence interfaces; status remains scoped to the old acceptance evidence."
+      },
+      {
+        "ticket_id": "BR-BUILD-057",
+        "capability_id": "BR-DATA-03",
+        "builder_skill": "br-build-data-connectors",
+        "legacy_status_snapshot": "planned",
+        "category": "docai_foundation",
+        "disposition": "Reuse or adapt for the Doc AI product through existing filing and mail/evidence interfaces; status remains scoped to the old acceptance evidence."
+      },
+      {
+        "ticket_id": "BR-BUILD-058",
+        "capability_id": "BR-DATA-04",
+        "builder_skill": "br-build-data-connectors",
+        "legacy_status_snapshot": "planned",
+        "category": "downstream_acquisition",
+        "disposition": "Retain as a financial/deal consumer or adjacent work; remove as a blanket prerequisite for generic document processing."
+      },
+      {
+        "ticket_id": "BR-BUILD-059",
+        "capability_id": "BR-DATA-05",
+        "builder_skill": "br-build-data-connectors",
+        "legacy_status_snapshot": "planned",
+        "category": "docai_foundation",
+        "disposition": "Reuse or adapt for the Doc AI product through existing filing and mail/evidence interfaces; status remains scoped to the old acceptance evidence."
+      },
+      {
+        "ticket_id": "BR-BUILD-060",
+        "capability_id": "BR-DATA-06",
+        "builder_skill": "br-build-data-connectors",
+        "legacy_status_snapshot": "planned",
+        "category": "docai_foundation",
+        "disposition": "Reuse or adapt for the Doc AI product through existing filing and mail/evidence interfaces; status remains scoped to the old acceptance evidence."
+      },
+      {
+        "ticket_id": "BR-BUILD-061",
+        "capability_id": "BR-VAL-01",
+        "builder_skill": "br-build-model-validation",
+        "legacy_status_snapshot": "completed",
+        "category": "shared_builder_tooling",
+        "disposition": "Register within the existing software-builder collection; orchestration remains outside the Doc AI product runtime."
+      },
+      {
+        "ticket_id": "BR-BUILD-062",
+        "capability_id": "BR-VAL-02",
+        "builder_skill": "br-build-model-validation",
+        "legacy_status_snapshot": "planned",
+        "category": "shared_builder_tooling",
+        "disposition": "Register within the existing software-builder collection; orchestration remains outside the Doc AI product runtime."
+      },
+      {
+        "ticket_id": "BR-BUILD-063",
+        "capability_id": "BR-VAL-03",
+        "builder_skill": "br-build-model-validation",
+        "legacy_status_snapshot": "planned",
+        "category": "shared_builder_tooling",
+        "disposition": "Register within the existing software-builder collection; orchestration remains outside the Doc AI product runtime."
+      },
+      {
+        "ticket_id": "BR-BUILD-064",
+        "capability_id": "BR-VAL-04",
+        "builder_skill": "br-build-model-validation",
+        "legacy_status_snapshot": "planned",
+        "category": "shared_builder_tooling",
+        "disposition": "Register within the existing software-builder collection; orchestration remains outside the Doc AI product runtime."
+      },
+      {
+        "ticket_id": "BR-BUILD-065",
+        "capability_id": "BR-VAL-05",
+        "builder_skill": "br-build-model-validation",
+        "legacy_status_snapshot": "planned",
+        "category": "shared_builder_tooling",
+        "disposition": "Register within the existing software-builder collection; orchestration remains outside the Doc AI product runtime."
+      },
+      {
+        "ticket_id": "BR-BUILD-066",
+        "capability_id": "BR-VAL-06",
+        "builder_skill": "br-build-model-validation",
+        "legacy_status_snapshot": "planned",
+        "category": "shared_builder_tooling",
+        "disposition": "Register within the existing software-builder collection; orchestration remains outside the Doc AI product runtime."
+      },
+      {
+        "ticket_id": "BR-BUILD-067",
+        "capability_id": "BR-AI-01",
+        "builder_skill": "br-build-ai-adapters",
+        "legacy_status_snapshot": "completed",
+        "category": "docai_foundation",
+        "disposition": "Reuse the protocol/disabled stub only. Current ingestion hardcodes NativeJsonProvider and the claim schema rejects AI method/version metadata; the provider boundary is not plug-ready."
+      },
+      {
+        "ticket_id": "BR-BUILD-068",
+        "capability_id": "BR-AI-02",
+        "builder_skill": "br-build-ai-adapters",
+        "legacy_status_snapshot": "deferred",
+        "category": "future_ai",
+        "disposition": "Preserve legacy deferred status. Move provider design and offline contract work into the corrected Doc AI plan now; gate actual provider calls on a bounded integration milestone rather than the entire finance release."
+      },
+      {
+        "ticket_id": "BR-BUILD-069",
+        "capability_id": "BR-AI-03",
+        "builder_skill": "br-build-ai-adapters",
+        "legacy_status_snapshot": "deferred",
+        "category": "future_ai",
+        "disposition": "Preserve legacy deferred status. Move provider design and offline contract work into the corrected Doc AI plan now; gate actual provider calls on a bounded integration milestone rather than the entire finance release."
+      },
+      {
+        "ticket_id": "BR-BUILD-070",
+        "capability_id": "BR-AI-04",
+        "builder_skill": "br-build-ai-adapters",
+        "legacy_status_snapshot": "deferred",
+        "category": "future_ai",
+        "disposition": "Preserve legacy deferred status. Move provider design and offline contract work into the corrected Doc AI plan now; gate actual provider calls on a bounded integration milestone rather than the entire finance release."
+      },
+      {
+        "ticket_id": "BR-BUILD-071",
+        "capability_id": "BR-AI-05",
+        "builder_skill": "br-build-ai-adapters",
+        "legacy_status_snapshot": "deferred",
+        "category": "future_ai",
+        "disposition": "Preserve legacy deferred status. Move provider design and offline contract work into the corrected Doc AI plan now; gate actual provider calls on a bounded integration milestone rather than the entire finance release."
+      },
+      {
+        "ticket_id": "BR-BUILD-072",
+        "capability_id": "BR-AI-06",
+        "builder_skill": "br-build-ai-adapters",
+        "legacy_status_snapshot": "deferred",
+        "category": "future_ai",
+        "disposition": "Product-runtime agents remain separately deferred and are not required to connect document inference."
+      },
+      {
+        "ticket_id": "BR-BUILD-073",
+        "capability_id": "BR-OPS-01",
+        "builder_skill": "br-build-release-operations",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-074",
+        "capability_id": "BR-OPS-02",
+        "builder_skill": "br-build-release-operations",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-075",
+        "capability_id": "BR-OPS-03",
+        "builder_skill": "br-build-release-operations",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-076",
+        "capability_id": "BR-OPS-04",
+        "builder_skill": "br-build-release-operations",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-077",
+        "capability_id": "BR-OPS-05",
+        "builder_skill": "br-build-release-operations",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-078",
+        "capability_id": "BR-OPS-06",
+        "builder_skill": "br-build-release-operations",
+        "legacy_status_snapshot": "planned",
+        "category": "general_platform",
+        "disposition": "Retain as shared platform or later work; require it only when it changes the next Doc AI action."
+      },
+      {
+        "ticket_id": "BR-BUILD-079",
+        "capability_id": "BR-COORD-01",
+        "builder_skill": "br-coordinate-builder-resources",
+        "legacy_status_snapshot": "completed",
+        "category": "shared_builder_tooling",
+        "disposition": "Register within the existing software-builder collection; orchestration remains outside the Doc AI product runtime."
+      },
+      {
+        "ticket_id": "BR-BUILD-080",
+        "capability_id": "BR-COORD-02",
+        "builder_skill": "br-coordinate-builder-resources",
+        "legacy_status_snapshot": "completed",
+        "category": "shared_builder_tooling",
+        "disposition": "Register within the existing software-builder collection; orchestration remains outside the Doc AI product runtime."
+      },
+      {
+        "ticket_id": "BR-BUILD-081",
+        "capability_id": "BR-COORD-03",
+        "builder_skill": "br-coordinate-builder-resources",
+        "legacy_status_snapshot": "planned",
+        "category": "shared_builder_tooling",
+        "disposition": "Register within the existing software-builder collection; orchestration remains outside the Doc AI product runtime."
+      },
+      {
+        "ticket_id": "BR-BUILD-082",
+        "capability_id": "BR-COORD-04",
+        "builder_skill": "br-coordinate-builder-resources",
+        "legacy_status_snapshot": "completed",
+        "category": "shared_builder_tooling",
+        "disposition": "Register within the existing software-builder collection; orchestration remains outside the Doc AI product runtime."
+      },
+      {
+        "ticket_id": "BR-BUILD-083",
+        "capability_id": "BR-COORD-05",
+        "builder_skill": "br-coordinate-builder-resources",
+        "legacy_status_snapshot": "completed",
+        "category": "shared_builder_tooling",
+        "disposition": "Register within the existing software-builder collection; orchestration remains outside the Doc AI product runtime."
+      },
+      {
+        "ticket_id": "BR-BUILD-084",
+        "capability_id": "BR-COORD-06",
+        "builder_skill": "br-coordinate-builder-resources",
+        "legacy_status_snapshot": "planned",
+        "category": "shared_builder_tooling",
+        "disposition": "Register within the existing software-builder collection; orchestration remains outside the Doc AI product runtime."
+      }
+    ]
+  },
+  "planned_library_integration": [
+    {
+      "id": "SWLIB-01",
+      "title": "Register the software-builder collection inside the existing library",
+      "status": "planned",
+      "external_ticket_created": false,
+      "parent_existing_ticket": "BR-T012",
+      "existing_skill_ids": [
+        "SK-28",
+        "SK-29"
+      ],
+      "owner": {
+        "leader": "L1",
+        "specialist": "SW-00",
+        "reviewer": "SW-13"
+      },
+      "dependencies": [],
+      "acceptance_criteria": [
+        "Keep existing SK-01 through SK-35 and L1-L4/SW-00-SW-15 identities.",
+        "Map all 14 builder procedures and four task profiles to their existing owners and provenance.",
+        "Import only through a reviewed additive manifest/adapter; do not replace operating skills with builder procedures."
+      ],
+      "target_reuse_paths": [
+        "config/swarm-library-extension.json",
+        "existing skills registry/import adapter"
+      ],
+      "target_path_status": "Paths refer to their owning audited workspaces or planned adapters; no migration or live import was performed by this crosswalk.",
+      "estimated_minutes": 60,
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "estimate_basis": "Planning assumption: one active builder increment using the inspected interfaces; low assumes compatible contracts, point includes implementation and focused verification, high allows one compatibility/review revision. Not measured throughput or an elapsed delivery commitment; excludes external provisioning and waiting.",
+      "required_resources": {
+        "agent_worker": 0,
+        "integrator": 1,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scope_workspace": "BL_ACQ",
+      "write_scopes": [
+        "config/swarm-library-extension.json",
+        "tools/learning_index.py",
+        "tests/test_learning_index.py"
+      ],
+      "write_scope_status": "Proposed narrow scopes for future implementation. New paths are planned files; these paths do not assert current existence. Shared-file work requires an exclusive lease; unlisted edits require coordinator reassignment before work begins."
+    },
+    {
+      "id": "SWLIB-02",
+      "title": "Bridge the advisory plan to the authoritative ticket engine",
+      "status": "planned",
+      "external_ticket_created": false,
+      "parent_existing_ticket": "BR-T012",
+      "existing_skill_ids": [
+        "SK-28",
+        "SK-29"
+      ],
+      "owner": {
+        "leader": "L2",
+        "specialist": "SW-00",
+        "reviewer": "SW-13"
+      },
+      "dependencies": [
+        "SWLIB-01"
+      ],
+      "acceptance_criteria": [
+        "Preserve PROJECT_INTERNAL ticket IDs, versions, history and allowed transitions.",
+        "Define an explicit mapping between advisory planned/completed fields and canonical ticket states; do not import completed as closed.",
+        "Only existing authorized transition APIs can submit review evidence or change canonical state; duplicate imports must be idempotent.",
+        "Before reusing existing business-engine idempotency patterns, reproduce requests with the same idempotency key and a different actor or changed evidence/source payload; reject those collisions without returning another actor's result or mutating canonical state.",
+        "An exact authorized retry returns the same canonical job/ticket identity and the same documented payload type and shape as the first successful response; record a focused regression fixture for first-response versus replay behavior."
+      ],
+      "target_reuse_paths": [
+        "backend/core/tickets.py",
+        "backend/ticket_routes.py",
+        "tools/schedule_builder_work.py",
+        "new reviewed compatibility adapter"
+      ],
+      "target_path_status": "Paths refer to their owning audited workspaces or planned adapters; no migration or live import was performed by this crosswalk.",
+      "estimated_minutes": 120,
+      "estimated_minutes_range": [
+        80,
+        240
+      ],
+      "estimate_basis": "Planning assumption: one active builder increment using the inspected interfaces; low assumes compatible contracts, point includes implementation and focused verification, high allows one compatibility/review revision. Not measured throughput or an elapsed delivery commitment; excludes external provisioning and waiting.",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scope_workspace": "existing Founder Command workspace",
+      "write_scopes": [
+        "backend/core/builder_plan_bridge.py",
+        "backend/builder_plan_routes.py",
+        "tests/test_builder_plan_bridge.py"
+      ],
+      "write_scope_status": "Proposed narrow scopes for future implementation. New paths are planned files; these paths do not assert current existence. Shared-file work requires an exclusive lease; unlisted edits require coordinator reassignment before work begins."
+    },
+    {
+      "id": "SWLIB-03",
+      "title": "Add resource planning as an existing coordinator service",
+      "status": "planned",
+      "external_ticket_created": false,
+      "parent_existing_ticket": "BR-T012",
+      "existing_skill_ids": [
+        "SK-28",
+        "SK-29"
+      ],
+      "owner": {
+        "leader": "L2",
+        "specialist": "SW-00",
+        "reviewer": "SW-13"
+      },
+      "dependencies": [
+        "SWLIB-02"
+      ],
+      "acceptance_criteria": [
+        "Project ready work from canonical status/version snapshots; keep estimates separate from execution facts.",
+        "Preserve one owner and writer per conflicting scope, observed worker capacity and explicit runtime requirements.",
+        "Record per-dispatch runtime/cost/time limits and handoff state before any future worker execution; the current planner remains advisory."
+      ],
+      "target_reuse_paths": [
+        "tools/schedule_builder_work.py",
+        "existing coordinator resource projection"
+      ],
+      "target_path_status": "Paths refer to their owning audited workspaces or planned adapters; no migration or live import was performed by this crosswalk.",
+      "estimated_minutes": 90,
+      "estimated_minutes_range": [
+        60,
+        180
+      ],
+      "estimate_basis": "Planning assumption: one active builder increment using the inspected interfaces; low assumes compatible contracts, point includes implementation and focused verification, high allows one compatibility/review revision. Not measured throughput or an elapsed delivery commitment; excludes external provisioning and waiting.",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scope_workspace": "BL_ACQ",
+      "write_scopes": [
+        "tools/schedule_builder_work.py",
+        "tests/test_builder_schedule.py"
+      ],
+      "write_scope_status": "Proposed narrow scopes for future implementation. New paths are planned files; these paths do not assert current existence. Shared-file work requires an exclusive lease; unlisted edits require coordinator reassignment before work begins."
+    },
+    {
+      "id": "SWLIB-04",
+      "title": "Qualify builder procedures through the existing Academy runner",
+      "status": "planned",
+      "external_ticket_created": false,
+      "parent_existing_ticket": "BR-T012",
+      "existing_skill_ids": [
+        "SK-28"
+      ],
+      "owner": {
+        "leader": "L1",
+        "specialist": "SW-00",
+        "reviewer": "SW-13"
+      },
+      "dependencies": [
+        "SWLIB-01"
+      ],
+      "acceptance_criteria": [
+        "Extend the registry/curriculum boundary instead of creating a second Academy database.",
+        "Preserve existing site/urban/planning studies and append-only evidence.",
+        "Separate submitter from SW-13 acceptance, require an independent review artifact, and record demonstrated maturity without claiming live capability from specifications."
+      ],
+      "target_reuse_paths": [
+        "site_academy/runner.py",
+        "existing Academy registry extension",
+        "qualification fixtures and review artifacts"
+      ],
+      "target_path_status": "Paths refer to their owning audited workspaces or planned adapters; no migration or live import was performed by this crosswalk.",
+      "estimated_minutes": 90,
+      "estimated_minutes_range": [
+        60,
+        180
+      ],
+      "estimate_basis": "Planning assumption: one active builder increment using the inspected interfaces; low assumes compatible contracts, point includes implementation and focused verification, high allows one compatibility/review revision. Not measured throughput or an elapsed delivery commitment; excludes external provisioning and waiting.",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scope_workspace": "existing Founder Command workspace",
+      "write_scopes": [
+        "site_academy/runner.py",
+        "site_academy/software_builders.json",
+        "tests/test_builder_academy.py"
+      ],
+      "write_scope_status": "Proposed narrow scopes for future implementation. New paths are planned files; these paths do not assert current existence. Shared-file work requires an exclusive lease; unlisted edits require coordinator reassignment before work begins."
+    },
+    {
+      "id": "SWLIB-05",
+      "title": "Connect bounded private builder dispatch through the existing adapter",
+      "status": "planned",
+      "external_ticket_created": false,
+      "parent_existing_ticket": "BR-T016",
+      "existing_skill_ids": [
+        "SK-28",
+        "SK-29"
+      ],
+      "owner": {
+        "leader": "L2",
+        "specialist": "SW-00",
+        "reviewer": "SW-13"
+      },
+      "dependencies": [
+        "SWLIB-02",
+        "SWLIB-03"
+      ],
+      "acceptance_criteria": [
+        "Implement and verify authenticated registration and exact tool scope; loopback source code is not proof of a chat connection.",
+        "Return and resume the same canonical job/ticket ID across retries and handoffs.",
+        "Keep credentials server-side and preserve zero financial/external transaction authority; prove one bounded end-to-end invocation before calling it connected.",
+        "A builder dispatch adapter exposes explicitly scoped builder tools; the existing model-only classify_mail tool is not repurposed as a general execution authority."
+      ],
+      "target_reuse_paths": [
+        "scripts/model_mcp.py",
+        "existing authenticated private connector boundary",
+        "existing job/ticket handoff adapter"
+      ],
+      "target_path_status": "Paths refer to their owning audited workspaces or planned adapters; no migration or live import was performed by this crosswalk.",
+      "estimated_minutes": 180,
+      "estimated_minutes_range": [
+        90,
+        360
+      ],
+      "estimate_basis": "Planning assumption: one active builder increment using the inspected interfaces; low assumes compatible contracts, point includes implementation and focused verification, high allows one compatibility/review revision. Not measured throughput or an elapsed delivery commitment; excludes external provisioning and waiting.",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scope_workspace": "existing Founder Command workspace",
+      "write_scopes": [
+        "scripts/builder_mcp.py",
+        "tests/test_builder_mcp.py"
+      ],
+      "write_scope_status": "Proposed narrow scopes for future implementation. New paths are planned files; these paths do not assert current existence. Shared-file work requires an exclusive lease; unlisted edits require coordinator reassignment before work begins."
+    },
+    {
+      "id": "SWLIB-06",
+      "title": "Route corrections into the existing workstream and preserve continuity",
+      "status": "planned",
+      "external_ticket_created": false,
+      "parent_existing_ticket": "BR-T043",
+      "existing_skill_ids": [
+        "SK-28",
+        "SK-29"
+      ],
+      "owner": {
+        "leader": "L1",
+        "specialist": "SW-00",
+        "reviewer": "SW-13"
+      },
+      "dependencies": [
+        "SWLIB-01",
+        "SWLIB-02"
+      ],
+      "acceptance_criteria": [
+        "Use existing prompt intake to recover the active objective and preserve the original wording privately.",
+        "Route Doc AI product work to BR-T004/BR-T019 and builder-library work to BR-T012; connect BR-T016 only where a channel integration is actually needed.",
+        "A correction updates the existing job/handoff; it does not manufacture a new organization or duplicate unrelated tickets."
+      ],
+      "target_reuse_paths": [
+        "backend/intake_routes.py",
+        "existing prompt-review endpoint",
+        "existing job/handoff record"
+      ],
+      "target_path_status": "Paths refer to their owning audited workspaces or planned adapters; no migration or live import was performed by this crosswalk.",
+      "estimated_minutes": 90,
+      "estimated_minutes_range": [
+        45,
+        180
+      ],
+      "estimate_basis": "Planning assumption: one active builder increment using the inspected interfaces; low assumes compatible contracts, point includes implementation and focused verification, high allows one compatibility/review revision. Not measured throughput or an elapsed delivery commitment; excludes external provisioning and waiting.",
+      "required_resources": {
+        "agent_worker": 0,
+        "integrator": 1,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scope_workspace": "existing Founder Command workspace",
+      "write_scopes": [
+        "backend/intake_routes.py",
+        "tests/test_builder_intake_continuity.py"
+      ],
+      "write_scope_status": "Proposed narrow scopes for future implementation. New paths are planned files; these paths do not assert current existence. Shared-file work requires an exclusive lease; unlisted edits require coordinator reassignment before work begins."
+    }
+  ],
+  "audit_limits": [
+    "Source and prior records inspected; no live model/provider/connector calls made.",
+    "Running configuration and the separate Acer installation were not probed.",
+    "No canonical library import, external issue creation or ticket closure was performed.",
+    "The existing local model client is not a NVIDIA document OCR/Parse service."
+  ]
+}

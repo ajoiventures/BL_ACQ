@@ -2,23 +2,38 @@
 
 ## Builder swarm and product runtime
 
-Standing user instruction, November 22, 2026: the swarm builds the product;
-the AI layer comes later. Development agents may inspect, implement and test
-the software within their assigned scopes. Their roles and installed builder
-skills are development tools, not agents running inside the product.
+Latest user correction, November 22, 2026: this workstream is the **Doc AI
+product**. The builder swarm belongs to the existing swarm/skills library and
+builds that product; it is not embedded in the document-processing runtime.
+Read `config/docai-ticket-plan.json`, `config/swarm-library-extension.json` and
+`docs/architecture/docai-current-state.md` before assigning this workstream.
+The older 84-ticket acquisition/evidence plan remains historical and related
+work, not the Doc AI critical path.
 
-Build in this order: deterministic domain engines; application services and
-versioned interfaces; review interfaces; optional document-AI adapters; and
-only later, separately specified bounded runtime agents. The current engine
-and application layer must operate without an LLM, NVIDIA inference service,
-model download, API credential or network dependency. CUDA numerical kernels
-are ordinary compute and do not make the financial engine an AI system.
+Extend BR-SWARM-001 and BR-SWARM-SKILLS-001; preserve existing L1–L4 ownership,
+SW-00 coordination, SW-13 independent review, SK-01–35 and established ticket
+IDs. The four `br-*` agent profiles are task execution profiles within that
+organization. Reuse the existing PROJECT_INTERNAL ticket register and Academy
+review workflow through compatibility-tested adapters. The offline scheduler
+is a planning tool, not a second authority for ticket closure. Inspect the
+current authoritative workspace before porting code from audited snapshots.
 
-Treat the NVIDIA document-AI integration as a future provider interface.
-Current manual/native inputs remain explicit. A future model may propose
-candidate claims; it may not self-verify evidence, overwrite financial policy,
-manufacture calibrated outcome probabilities or advance transaction status.
-Keep provider scores separate from evidence validity and event probabilities.
+Build the smallest document intake, processing, candidate-evidence and review
+workflow. Design the provider contract and test disabled/fake adapters in
+parallel with that core. Extend the existing `filing.file_document` interface;
+keep acquisition calculations in downstream consumers. A first bounded live
+AI evaluation follows document identity, source provenance, review, error,
+provider version, authorized sample and cost/runtime readiness gates. It does
+not require finishing finance, probability, R, household scale or all 84 old
+tickets. Production provider enablement follows measured evaluation.
+
+Preserve a useful manual/native path without an LLM or model service. A real
+AI extraction must have a truthful method and provider/run provenance; never
+label it `native_json` to bypass the current evidence schema. Provider scores
+are separate from reviewed evidence validity and event probabilities. Models
+may propose claims, not self-verify them or change transaction authority.
+Bounded product agents are a separate future design decision. CUDA numerical
+kernels and ordinary queue workers do not by themselves create an AI agent.
 
 Make build status precise: specified, implemented, tested and deployed are
 different. State which checks and runtimes actually ran. Builder configuration

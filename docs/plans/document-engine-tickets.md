@@ -1,6 +1,16 @@
 # Document engine builder tickets and roadmap
 
-The canonical plan is [config/build-ticket-plan.json](../../config/build-ticket-plan.json). It contains 14 epics and 84 tickets, one for each capability in [the builder catalog](../../config/builder-skills.json). This page explains the plan; consult the JSON for current statuses, exact acceptance criteria, deliverables, resource needs and completion evidence.
+## Scope correction — November 22, 2026
+
+This earlier 84-capability evidence/acquisition build plan is retained with
+its original IDs, completion evidence and estimates. The active Doc AI
+workstream is [the corrected Doc AI plan](docai-ticket-plan.md). Its provider
+readiness milestone does not depend on completing this entire plan.
+The [swarm-library crosswalk](../../config/swarm-library-extension.json)
+registers the builder procedures in the existing organization; it does not
+create a second swarm runtime or ticket authority.
+
+The retained historical plan is [config/build-ticket-plan.json](../../config/build-ticket-plan.json). It contains 14 epics and 84 tickets, one for each capability in [the builder catalog](../../config/builder-skills.json). This page explains the plan; consult the JSON for current statuses, exact acceptance criteria, deliverables, resource needs and completion evidence.
 
 ## Scope and delivery meaning
 

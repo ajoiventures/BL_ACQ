@@ -1,20 +1,32 @@
-# Document evidence, acquisition engines, and later AI
+# Doc AI engine, application layer and optional providers
 
 ## Architecture decision
 
-Build the product's financial and evidence mechanics as inspectable code.
-Use the current swarm to build that code. Keep AI service inference and
-product-agent autonomy outside the default runtime.
+The product in the active workstream is Doc AI. Reuse native filing, document
+identity, candidate facts and review mechanisms as inspectable code. The
+existing swarm library supplies builders; it is separate from this product.
+The [current-state audit](docai-current-state.md) records what exists, what is
+unverified and what is missing. The [active plan](../plans/docai-ticket-plan.md)
+governs implementation. The prior quote-to-offer build remains useful as a
+downstream acquisition consumer.
 
 The distinction is operational:
 
 | Layer | Responsibility | Default dependency |
 | --- | --- | --- |
-| Engine core | Validate/store evidence, calculate finances and conditional probability outcomes | Ordinary code and explicitly supplied data |
-| Application layer | Apply reviewed evidence to permitted model fields, recompute and preserve traces | Engine APIs |
-| Interface and integrations | Let an operator inspect sources, assumptions, results and actions | Application services |
-| Later assistive AI | Propose extractions, retrieve evidence, or explain a result | Optional provider adapters and evaluation |
-| Later product agents | Execute separately permitted bounded workflows, if justified | Independently designed authority, tools and operating controls |
+| Doc AI engine | Identify/archive documents, extract native content, validate candidate facts and preserve provenance/review | Deterministic code; optional extraction backend |
+| Doc AI application layer | Coordinate intake jobs, retries, review/correction, filing, reprocessing and exports | Document and evidence contracts plus existing service controls |
+| Optional AI provider layer | Propose extracted content/facts through a versioned adapter | Selected local or hosted provider, readiness and evaluation |
+| Downstream consumers | Apply accepted facts to mail, records, acquisitions or other domains | Reviewed, domain-bound facts |
+| Builder swarm engine/layer | Schedule development work and route artifacts through existing ticket and review machinery | Development tooling, separate from Doc AI runtime |
+| Possible future product agents | Execute separately specified bounded workflows | Separate design and authorization; not required for document extraction |
+
+"AI later" means live inference is connected after the small document/review
+workflow is ready. Provider interfaces, configuration/status and fake-adapter
+tests are early work. Neither completion of financial models nor a complete
+swarm runtime is a prerequisite for first Doc AI evaluation. Existing local
+Ollama client code is reusable but its live connection is unverified. NVIDIA
+inference is not connected in the inspected implementation.
 
 An ordinary code engine can evaluate uncertain outcomes using explicit
 probability inputs. Probabilistic calculations do not require an LLM or an
@@ -24,28 +36,47 @@ autonomous agent.
 
 ```mermaid
 flowchart TD
-    A["Manual or native structured input"] --> E["Evidence engine"]
-    E --> P{"Reviewed projection ready?"}
-    P -->|No| R["Resolve source review"]
-    R --> E
-    P -->|Yes| L["Document application layer"]
-    L --> F["Financial and probability engines"]
-    F --> O["Research output and trace"]
-    O --> U["Operator interface"]
-    X["Later optional AI provider"] -. candidate claims .-> E
+    A["Existing filing intake"] --> D["Document identity and archive"]
+    D --> N["Native extraction"]
+    D -. selected backend .-> X["Optional AI provider"]
+    N --> E["Candidate evidence"]
+    X -. versioned results .-> E
+    E --> R["Doc AI review and correction"]
+    R --> P{"Accepted projection?"}
+    P -->|No| R
+    P -->|Yes| C["Domain consumer adapters"]
+    C --> F["Acquisition consumer"]
+    C --> M["Mail and records consumers"]
 ```
 
-The dotted provider edge is a future interface. It is not a deployed model
-service. Core modules do not import or call an AI provider.
+This is the target composition, not a claim that these snapshots are already
+integrated. The dotted provider edge is disabled/unimplemented integration.
+The current EvidenceStore accepts only manual/native_json methods and the
+JSON bundle copies structured claims. A versioned contract change is needed
+before truthful AI provenance can be accepted; do not disguise AI as native.
 
-## Core engines
+## Shared swarm engine and layer
+
+Reuse the existing PROJECT_INTERNAL ticket engine for durable build IDs,
+dependencies, optimistic concurrency, evidence and SW-13 closure. Reuse the
+Academy artifact/review runner through a build adapter. Attach the offline
+resource scheduler as an advisory planning service. Preserve business
+simulation states in their existing domain. A compatibility gate must cover
+idempotency collisions and response consistency before shared engine reuse.
+
+The swarm application layer is the existing authenticated work/skills/review
+interface plus development executor adapters. The current scheduling script
+does not launch workers, and a profile does not establish a deployed agent.
+See [builder coordination](builder-swarm.md) for ownership and handoffs.
+
+## Preserved acquisition/evidence engines
 
 The existing acquisition workspace contains financial, valuation, funding,
 ledger, storage, review, and connector authorization modules. Extend the
 owning engine rather than moving its formulas into a document parser, user
 interface, prompt, or independent production R implementation.
 
-The document-evidence engine owns identity, provenance, review, time validity,
+The acquisition document-evidence engine owns identity, provenance, review, time validity,
 versioning, conflict detection, and accepted-input projection. The probability
 engine owns the offer/scenario schema, event-tree calculation, conditioning,
 cost treatment, constraints, and optional bounded numerical batches.
@@ -62,7 +93,12 @@ Relevant implementation paths for this increment are:
 Existence of a path does not establish execution or production readiness.
 Use the implementation tests and current delivery report for those claims.
 
-## Evidence contract
+## Existing acquisition evidence contract
+
+The general Doc AI contract must add domain/subject/case references, binary
+document intake, extraction-run identity, truthful method/provider metadata,
+completeness and page/span locations. It must not force every document into a
+financial deal. The following describes the preserved acquisition projection.
 
 A candidate input needs the following semantic fields, regardless of the
 storage representation:
@@ -86,7 +122,7 @@ A newly entered claim is a candidate. A newer document does not authorize its
 own values merely because it supersedes an older file. Accepted projections
 must still evaluate review, deal binding, time, units, and conflicts.
 
-## Application-layer binding contract
+## Downstream acquisition binding contract
 
 The application layer receives an immutable offer packet and an explicit list
 of evidence bindings. Each binding names the evidence field, target group,
@@ -190,7 +226,7 @@ numeric checks, calibration, survival analysis and reporting. The Python
 rules remain authoritative. The [R exchange guide](../guides/r-evidence-validation.md)
 states the actual current export contract and runtime limitations.
 
-## Later NVIDIA layer
+## Optional NVIDIA provider milestone
 
 Current official NVIDIA documentation describes NeMo Retriever Library as
 document-extraction and retrieval orchestration. Individual Parse, OCR,
@@ -204,13 +240,17 @@ cannot be copied unchanged into that service. Supported device profiles and
 the library's integration capabilities must be checked for the exact selected
 versions.
 
-The future provider contract returns candidate claims, locations, model and
+The early provider contract must return candidate claims, locations, model and
 method versions, errors, and raw supporting output. The same source-review
 and application-binding rules apply. Model inference scores do not become
 deal-outcome probabilities.
 
-No cloud document upload, model installation, provider invocation, or
-autonomous runtime is enabled by this architecture document.
+A first live test is a bounded evaluation after native intake, provenance,
+review, error handling, endpoint/auth, allowed-data, version and budget gates.
+Hosted client implementation does not require a local GPU; self-hosted
+inference does. Production enablement follows held-out quality, review-burden,
+latency/cost and recovery evidence. Retrieval/reranking can follow the first
+useful reviewed extraction. No provider is enabled by this document.
 
 Primary references, checked for this architecture on November 22, 2026:
 

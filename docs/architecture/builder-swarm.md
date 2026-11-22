@@ -2,20 +2,25 @@
 
 ## Decision and scope
 
-The swarm is the development team used to build the product. Its agents inspect
+The existing swarm supplies the development team used to build Doc AI. Its agents inspect
 requirements, implement code, challenge assumptions, test behavior, and hand
 changes to an integrator. They are not processes inside the acquisition product.
 
 A skill is a reusable development procedure. An agent is a temporary worker
 assigned a bounded task and the relevant skills. An engine is executable
-business or numerical code. An application layer coordinates engines and
+processing, workflow or numerical code. An application layer coordinates engines and
 records. None of these definitions requires a product LLM or autonomous agent.
 
-The default product path must run without NVIDIA inference, an LLM endpoint,
-or an autonomous-agent scheduler. Document AI is a later optional provider
-layer. Any later product-agent runtime is a further, separate decision.
+The native/manual document path remains useful without inference. Build the
+provider contract and disabled/fake-adapter tests alongside the document core;
+connect one real provider at a bounded readiness milestone. Any later product
+agent runtime is a further, separate decision. Builders are not document
+processing workers inside the product.
 
-This boundary applies to this acquisition and document-evidence increment.
+The [Doc AI plan](../plans/docai-ticket-plan.md) is the active workstream.
+The [source audit](docai-current-state.md) distinguishes existing filing,
+evidence, local-model client code and missing integration. Preserve the
+previous acquisition/evidence increment as a downstream demonstration.
 Earlier portfolio descriptions of agent and review services remain broader
 commercial possibilities; they do not establish an embedded runtime in this
 increment. The [existing coverage map](capability-coverage.md) retains the
@@ -28,14 +33,30 @@ accessibility, localization, review workload, unit economics, and representative
 capacity. The goal is not a measured capacity result. Wall Street-level rigor
 remains a validation target, not an institutional-readiness claim.
 
-## Four builder leaders
+## Extend the existing organization
+
+BR-SWARM-001 and BR-SWARM-SKILLS-001 retain L1–L4 ownership, SW-00
+coordination, SW-13 independent review, SK-01–35 and the existing specialist
+roster. The [library extension](../../config/swarm-library-extension.json)
+maps the 14 procedural builder skills into that organization. It preserves
+domain Academy collections; it does not replace them.
+
+The audited organizational code already contains a PROJECT_INTERNAL ticket
+register in `backend/core/tickets.py` and a reviewed artifact workflow in
+`site_academy/runner.py`. Adapt those interfaces after compatibility review.
+The business simulation in `backend/core/swarm.py` uses underwriting and
+settlement states and is not the engineering ticket state machine. Audited
+snapshots have no verified deployment identity; do not treat a folder name as
+the canonical running service.
+
+## Four reusable task profiles
 
 | Role | Owns | Required handoff |
 | --- | --- | --- |
-| Product architect and integrator | Business boundary, shared contracts, work allocation, application integration, review experience | Source revision, integrated result, conflict resolution, and precise status |
-| Evidence and workflow engineer | Document identity, claims, review, accepted-input projection, source connectors, future provider interfaces | Reproducible evidence history, current projection, and blocking cases |
-| Financial and compute engineer | Authoritative formulas, conditional probabilities, constraints, precision, CUDA batches | Worked calculation, test evidence, backend behavior, and numeric limits |
-| Validation and release engineer | Independent references, R exchange, failure cases, recovery, release evidence | Observed successes/failures and unexecuted or unavailable paths |
+| Product architect and integrator — L1/L2, SW-00 | Doc AI boundary, shared contracts, work allocation and integration | Source revision, integrated result and precise status |
+| Evidence and workflow engineer — L2, L4/SW-09 | Intake, document identity, claims, review, connectors and provider contracts | Reproducible evidence history and blocking cases |
+| Financial and compute engineer — L2/L3, SW-04/SW-05 | Downstream financial consumers, probability, precision and suitable CUDA batches | Worked calculation, backend behavior and numeric limits |
+| Validation and release engineer — SW-13 review | Independent evidence checks, evaluation, recovery and release evidence | Observed successes/failures and unexecuted paths |
 
 The current resource profile allows three worker agents plus one reserved
 integrator. The four roles describe responsibilities; a role is not a
@@ -48,8 +69,9 @@ previous work.
 [The builder catalog](../../config/builder-skills.json) defines 14 reusable
 skills and 84 granular capabilities. Each capability records its input,
 output, acceptance criterion, dependencies, and a delivery-state field.
-A catalog entry is a specification, not proof of implementation or proof
-that a personal skill has been installed.
+A catalog entry is a specification. The personal procedures have been
+installed separately; that does not implement their 84 capabilities or prove
+a runtime is connected.
 
 | Skill | Primary responsibility |
 | --- | --- |
@@ -64,21 +86,25 @@ that a personal skill has been installed.
 | `br-build-review-interface` | Expose evidence, formulas, assumptions, and decisions clearly |
 | `br-build-data-connectors` | Ingest authorized sources with identity, time, and schema lineage |
 | `br-build-model-validation` | Challenge numerical, evidence, and runtime-boundary claims |
-| `br-build-ai-adapters` | Define optional later NVIDIA and assistive AI interfaces |
+| `br-build-ai-adapters` | Design provider interfaces now; implement and evaluate a selected optional backend at its readiness gate |
 | `br-build-release-operations` | Package, recover, observe, and stage actual capabilities |
 | `br-coordinate-builder-resources` | Maintain the DAG, resource plan, write ownership, estimates, and roadmap |
 
-The [ticket plan](../plans/document-engine-tickets.md) maps the 84 capabilities
-one-to-one to development tickets. Personal skill installation is a separate
-operation in the user's skill library. Installing a builder skill does not
-start any product service or agent.
+The [earlier ticket plan](../plans/document-engine-tickets.md) preserves the
+84-capability work breakdown and its evidence. It is not the Doc AI critical
+path. The [active plan](../plans/docai-ticket-plan.md) maps document work to
+existing BR-ENG requirements and BR-T commitments. Installing a builder skill
+does not start any product service or agent.
 
 ## Coordination and scheduling
 
-The canonical [machine-readable plan](../../config/build-ticket-plan.json)
+The active [machine-readable work breakdown](../../config/docai-ticket-plan.json)
 contains status, owner, priority, dependencies, phase gates, assumption-based
 duration, required resources, file write scopes, deliverables, and acceptance
-criteria for every ticket.
+criteria for every child item. BR-ENG-MASTER-001 remains the requirements
+authority; existing PROJECT_INTERNAL BR-T records retain execution status and
+reviewed closure. A scheduler snapshot is an advisory projection, not a second
+ticket database. Crosswalk IDs and revisions rather than overwriting history.
 
 The offline scheduler is implemented at `tools/schedule_builder_work.py` with
 `tests/test_builder_schedule.py`. Its scope is development planning: validate
@@ -94,9 +120,10 @@ Use the following operating rules:
    ticket exactly one worker or one integrator plus any declared special runtime.
    Treat each named owner as one builder lane, with at most one active ticket
    per owner; change assignments explicitly between planning runs.
-3. Keep CUDA capacity and R runtime capacity at zero until those environments
-   are actually available. A GPU or R ticket remains resource-blocked even if
-   its source files can be reviewed.
+3. Keep CUDA and R execution capacity at zero until those environments are
+   actually available. Source design and fake/HTTP-client tests need no local
+   GPU. Hosted inference needs an authorized endpoint and budget; self-hosted
+   inference needs compatible measured runtime capacity. Split those tasks.
 4. Prevent overlapping write scopes from running concurrently. A directory
    scope overlaps its descendants. Coordinate shared edits through one owner.
 5. Prioritize dependency-ready work using priority and the remaining critical
@@ -133,7 +160,15 @@ a reproducible invocation, meaningful check results, and limitations.
 Inspect the emitted artifacts and independently reproduce material claims.
 Reviewer consensus cannot replace source evidence or numerical validation.
 
-For this increment, the minimum integration demonstration is:
+The first Doc AI workflow must preserve originals and receipts, report native
+extraction completeness, reject malformed provider output, retain page/span
+provenance, and require independent acceptance of candidate claims. Retried
+jobs must not create duplicate document facts; changed requests reusing an
+idempotency key must fail visibly. Reviewers must see missing pages, failed
+extractions and conflicting values. Live-provider gates also require version,
+endpoint/auth, allowed-data, timeout, cost and evaluation evidence.
+
+The retained acquisition-consumer demonstration has separate checks:
 
 - An unreviewed synthetic quote cannot alter underwriting.
 - A reviewed $35,000 quote produces the original assumptions.
@@ -151,11 +186,13 @@ converted into passes to make a release appear complete.
 
 ## Roadmap boundary
 
-Engine core comes first, application composition second, and operator
-presentation/API integration follows stable contracts. Later assistive AI
-adapters may propose extracted claims or explanations through the same
-review boundaries. Product agents, if ever justified, need a separate
-validated execution and authority design.
+Stabilize the smallest document and review contracts while building the
+disabled provider seam in parallel. Deliver native intake-to-review, then a
+bounded selected-provider evaluation. Provider production enablement follows
+measured quality and operational evidence. Financial expansion, household
+scale, optional retrieval and R research do not gate first extraction.
+Product agents, if ever justified, need a separate validated execution and
+authority design.
 
 See [engine and layer contracts](document-engine-layers.md) and the
 [R exchange guide](../guides/r-evidence-validation.md).
