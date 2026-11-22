@@ -1,0 +1,7 @@
+SYNTHETIC TEST DOCUMENT - NOT PAYABLE
+Vendor: Example Café Maintenance
+Invoice: SYN-INV-105
+Invoice date: 2026-11-18
+Due date: 2026-12-02
+Currency: USD
+Total due: 79.05

@@ -1,0 +1,9 @@
+SYNTHETIC TEST DOCUMENT - NOT PAYABLE
+Vendor: Example Scan Services
+Invoice: SYN-INV-107
+Invoice date: 2026-11-20
+Due date: 2026-12-20
+Currency: USD
+Total due: 149.90
+
+IMAGE-ONLY CONTROL - NO HIDDEN TEXT LAYER

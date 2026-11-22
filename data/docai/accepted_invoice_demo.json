@@ -1,0 +1,404 @@
+{
+  "schema_version": "br.docai-accepted.v1",
+  "document": {
+    "asset_links": [],
+    "byte_count": 175,
+    "content_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b",
+    "context": {
+      "case_id": null,
+      "domain": "commercial",
+      "subject_id": "example-invoice",
+      "tenant_id": "synthetic-demo"
+    },
+    "document_class": "MEP_INVOICE",
+    "document_id": "doc-c226d047cdfde4006ec6c68f27bd5e4be972ec46",
+    "media_type": "text/plain",
+    "predecessor_document_id": null,
+    "received_at": "2026-11-22T21:33:28.820365Z",
+    "schema_version": "br.docai.v1",
+    "source_status": "synthetic",
+    "source_uri": "local://original/698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b",
+    "title": "invoice_native.txt",
+    "version": 1
+  },
+  "revision": 7,
+  "fields": {
+    "currency": {
+      "candidate": {
+        "claim_id": "claim-d15d658d2fc3ef4c3dc1f1207535539661a360dd",
+        "confidence": null,
+        "context": {
+          "case_id": null,
+          "domain": "commercial",
+          "subject_id": "example-invoice",
+          "tenant_id": "synthetic-demo"
+        },
+        "created_at": "2026-11-22T21:33:28.820808Z",
+        "currency": null,
+        "document_id": "doc-c226d047cdfde4006ec6c68f27bd5e4be972ec46",
+        "document_version": 1,
+        "field": "currency",
+        "method": "native",
+        "proposed_by": "native.invoice.labels.v1",
+        "run_id": "run-013ac6d4d67665afea212e0505fcc24e0eb3d81d",
+        "schema_version": "br.docai.v1",
+        "spans": [
+          {
+            "end": 154,
+            "page": 1,
+            "quote": "USD",
+            "start": 151,
+            "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+          }
+        ],
+        "supersedes_claim_id": null,
+        "unit": null,
+        "value": "USD",
+        "value_type": "text"
+      },
+      "review": {
+        "actor": "synthetic-demo-runner",
+        "claim_id": "claim-d15d658d2fc3ef4c3dc1f1207535539661a360dd",
+        "context": {
+          "case_id": null,
+          "domain": "commercial",
+          "subject_id": "example-invoice",
+          "tenant_id": "synthetic-demo"
+        },
+        "decision": "accept",
+        "document_id": "doc-c226d047cdfde4006ec6c68f27bd5e4be972ec46",
+        "document_version": 1,
+        "reason": "Automated synthetic demonstration only; no human approval is represented.",
+        "review_id": "demo-claim-d15d658d2fc3ef4c3dc1f1207535539661a360dd",
+        "reviewed_at": "2026-11-22T21:33:28.852465Z",
+        "run_id": "run-013ac6d4d67665afea212e0505fcc24e0eb3d81d",
+        "schema_version": "br.docai.v1",
+        "supersedes_review_id": null
+      }
+    },
+    "due_date": {
+      "candidate": {
+        "claim_id": "claim-b099f88ec369b4136cc623293a84e9c42101b6e1",
+        "confidence": null,
+        "context": {
+          "case_id": null,
+          "domain": "commercial",
+          "subject_id": "example-invoice",
+          "tenant_id": "synthetic-demo"
+        },
+        "created_at": "2026-11-22T21:33:28.820808Z",
+        "currency": null,
+        "document_id": "doc-c226d047cdfde4006ec6c68f27bd5e4be972ec46",
+        "document_version": 1,
+        "field": "due_date",
+        "method": "native",
+        "proposed_by": "native.invoice.labels.v1",
+        "run_id": "run-013ac6d4d67665afea212e0505fcc24e0eb3d81d",
+        "schema_version": "br.docai.v1",
+        "spans": [
+          {
+            "end": 140,
+            "page": 1,
+            "quote": "2026-12-15",
+            "start": 130,
+            "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+          }
+        ],
+        "supersedes_claim_id": null,
+        "unit": null,
+        "value": "2026-12-15",
+        "value_type": "date"
+      },
+      "review": {
+        "actor": "synthetic-demo-runner",
+        "claim_id": "claim-b099f88ec369b4136cc623293a84e9c42101b6e1",
+        "context": {
+          "case_id": null,
+          "domain": "commercial",
+          "subject_id": "example-invoice",
+          "tenant_id": "synthetic-demo"
+        },
+        "decision": "accept",
+        "document_id": "doc-c226d047cdfde4006ec6c68f27bd5e4be972ec46",
+        "document_version": 1,
+        "reason": "Automated synthetic demonstration only; no human approval is represented.",
+        "review_id": "demo-claim-b099f88ec369b4136cc623293a84e9c42101b6e1",
+        "reviewed_at": "2026-11-22T21:33:28.843079Z",
+        "run_id": "run-013ac6d4d67665afea212e0505fcc24e0eb3d81d",
+        "schema_version": "br.docai.v1",
+        "supersedes_review_id": null
+      }
+    },
+    "invoice_date": {
+      "candidate": {
+        "claim_id": "claim-b2065aa0b4063b924de1f76a334e98425145b250",
+        "confidence": null,
+        "context": {
+          "case_id": null,
+          "domain": "commercial",
+          "subject_id": "example-invoice",
+          "tenant_id": "synthetic-demo"
+        },
+        "created_at": "2026-11-22T21:33:28.820808Z",
+        "currency": null,
+        "document_id": "doc-c226d047cdfde4006ec6c68f27bd5e4be972ec46",
+        "document_version": 1,
+        "field": "invoice_date",
+        "method": "native",
+        "proposed_by": "native.invoice.labels.v1",
+        "run_id": "run-013ac6d4d67665afea212e0505fcc24e0eb3d81d",
+        "schema_version": "br.docai.v1",
+        "spans": [
+          {
+            "end": 119,
+            "page": 1,
+            "quote": "2026-11-20",
+            "start": 109,
+            "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+          }
+        ],
+        "supersedes_claim_id": null,
+        "unit": null,
+        "value": "2026-11-20",
+        "value_type": "date"
+      },
+      "review": {
+        "actor": "synthetic-demo-runner",
+        "claim_id": "claim-b2065aa0b4063b924de1f76a334e98425145b250",
+        "context": {
+          "case_id": null,
+          "domain": "commercial",
+          "subject_id": "example-invoice",
+          "tenant_id": "synthetic-demo"
+        },
+        "decision": "accept",
+        "document_id": "doc-c226d047cdfde4006ec6c68f27bd5e4be972ec46",
+        "document_version": 1,
+        "reason": "Automated synthetic demonstration only; no human approval is represented.",
+        "review_id": "demo-claim-b2065aa0b4063b924de1f76a334e98425145b250",
+        "reviewed_at": "2026-11-22T21:33:28.839583Z",
+        "run_id": "run-013ac6d4d67665afea212e0505fcc24e0eb3d81d",
+        "schema_version": "br.docai.v1",
+        "supersedes_review_id": null
+      }
+    },
+    "invoice_number": {
+      "candidate": {
+        "claim_id": "claim-92bc27b1d501ad350b3906f2c9d1ae82bca5a30e",
+        "confidence": null,
+        "context": {
+          "case_id": null,
+          "domain": "commercial",
+          "subject_id": "example-invoice",
+          "tenant_id": "synthetic-demo"
+        },
+        "created_at": "2026-11-22T21:33:28.820808Z",
+        "currency": null,
+        "document_id": "doc-c226d047cdfde4006ec6c68f27bd5e4be972ec46",
+        "document_version": 1,
+        "field": "invoice_number",
+        "method": "native",
+        "proposed_by": "native.invoice.labels.v1",
+        "run_id": "run-013ac6d4d67665afea212e0505fcc24e0eb3d81d",
+        "schema_version": "br.docai.v1",
+        "spans": [
+          {
+            "end": 94,
+            "page": 1,
+            "quote": "SYN-INV-001",
+            "start": 83,
+            "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+          }
+        ],
+        "supersedes_claim_id": null,
+        "unit": null,
+        "value": "SYN-INV-001",
+        "value_type": "text"
+      },
+      "review": {
+        "actor": "synthetic-demo-runner",
+        "claim_id": "claim-92bc27b1d501ad350b3906f2c9d1ae82bca5a30e",
+        "context": {
+          "case_id": null,
+          "domain": "commercial",
+          "subject_id": "example-invoice",
+          "tenant_id": "synthetic-demo"
+        },
+        "decision": "accept",
+        "document_id": "doc-c226d047cdfde4006ec6c68f27bd5e4be972ec46",
+        "document_version": 1,
+        "reason": "Automated synthetic demonstration only; no human approval is represented.",
+        "review_id": "demo-claim-92bc27b1d501ad350b3906f2c9d1ae82bca5a30e",
+        "reviewed_at": "2026-11-22T21:33:28.836621Z",
+        "run_id": "run-013ac6d4d67665afea212e0505fcc24e0eb3d81d",
+        "schema_version": "br.docai.v1",
+        "supersedes_review_id": null
+      }
+    },
+    "total_cents": {
+      "candidate": {
+        "claim_id": "claim-f0e35bd3ac9f074cab6c15deffe653a81045f962",
+        "confidence": null,
+        "context": {
+          "case_id": null,
+          "domain": "commercial",
+          "subject_id": "example-invoice",
+          "tenant_id": "synthetic-demo"
+        },
+        "created_at": "2026-11-22T21:33:28.820808Z",
+        "currency": "USD",
+        "document_id": "doc-c226d047cdfde4006ec6c68f27bd5e4be972ec46",
+        "document_version": 1,
+        "field": "total_cents",
+        "method": "native",
+        "proposed_by": "native.invoice.labels.v1",
+        "run_id": "run-013ac6d4d67665afea212e0505fcc24e0eb3d81d",
+        "schema_version": "br.docai.v1",
+        "spans": [
+          {
+            "end": 174,
+            "page": 1,
+            "quote": "1,250.00",
+            "start": 166,
+            "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+          }
+        ],
+        "supersedes_claim_id": null,
+        "unit": "cents",
+        "value": 125000,
+        "value_type": "money_cents"
+      },
+      "review": {
+        "actor": "synthetic-demo-runner",
+        "claim_id": "claim-f0e35bd3ac9f074cab6c15deffe653a81045f962",
+        "context": {
+          "case_id": null,
+          "domain": "commercial",
+          "subject_id": "example-invoice",
+          "tenant_id": "synthetic-demo"
+        },
+        "decision": "accept",
+        "document_id": "doc-c226d047cdfde4006ec6c68f27bd5e4be972ec46",
+        "document_version": 1,
+        "reason": "Automated synthetic demonstration only; no human approval is represented.",
+        "review_id": "demo-claim-f0e35bd3ac9f074cab6c15deffe653a81045f962",
+        "reviewed_at": "2026-11-22T21:33:28.846359Z",
+        "run_id": "run-013ac6d4d67665afea212e0505fcc24e0eb3d81d",
+        "schema_version": "br.docai.v1",
+        "supersedes_review_id": null
+      }
+    },
+    "vendor": {
+      "candidate": {
+        "claim_id": "claim-cbfaf67605bb9c23635ab101d11e61fc2ee9f8b5",
+        "confidence": null,
+        "context": {
+          "case_id": null,
+          "domain": "commercial",
+          "subject_id": "example-invoice",
+          "tenant_id": "synthetic-demo"
+        },
+        "created_at": "2026-11-22T21:33:28.820808Z",
+        "currency": null,
+        "document_id": "doc-c226d047cdfde4006ec6c68f27bd5e4be972ec46",
+        "document_version": 1,
+        "field": "vendor",
+        "method": "native",
+        "proposed_by": "native.invoice.labels.v1",
+        "run_id": "run-013ac6d4d67665afea212e0505fcc24e0eb3d81d",
+        "schema_version": "br.docai.v1",
+        "spans": [
+          {
+            "end": 73,
+            "page": 1,
+            "quote": "Example Mechanical Services",
+            "start": 46,
+            "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+          }
+        ],
+        "supersedes_claim_id": null,
+        "unit": null,
+        "value": "Example Mechanical Services",
+        "value_type": "text"
+      },
+      "review": {
+        "actor": "synthetic-demo-runner",
+        "claim_id": "claim-cbfaf67605bb9c23635ab101d11e61fc2ee9f8b5",
+        "context": {
+          "case_id": null,
+          "domain": "commercial",
+          "subject_id": "example-invoice",
+          "tenant_id": "synthetic-demo"
+        },
+        "decision": "accept",
+        "document_id": "doc-c226d047cdfde4006ec6c68f27bd5e4be972ec46",
+        "document_version": 1,
+        "reason": "Automated synthetic demonstration only; no human approval is represented.",
+        "review_id": "demo-claim-cbfaf67605bb9c23635ab101d11e61fc2ee9f8b5",
+        "reviewed_at": "2026-11-22T21:33:28.833447Z",
+        "run_id": "run-013ac6d4d67665afea212e0505fcc24e0eb3d81d",
+        "schema_version": "br.docai.v1",
+        "supersedes_review_id": null
+      }
+    }
+  },
+  "extractions": [
+    {
+      "api_version": null,
+      "backend": "cpu",
+      "configuration_sha256": "c9a7574a7d13f7a1a73bb6675dc8fcfab98b54e5789d676348809dfb406d8201",
+      "context": {
+        "case_id": null,
+        "domain": "commercial",
+        "subject_id": "example-invoice",
+        "tenant_id": "synthetic-demo"
+      },
+      "coverage": {
+        "complete": true,
+        "input_bytes": 175,
+        "limits": {
+          "max_chars_per_page": 20000,
+          "max_input_bytes": 16777216,
+          "max_pages": 5,
+          "max_text_bytes": 150000,
+          "max_xml_bytes": 2000000
+        },
+        "notes": [],
+        "page_basis": "logical",
+        "processed_bytes": 175,
+        "processed_pages": 1,
+        "total_pages": 1,
+        "truncated": false
+      },
+      "device": null,
+      "document_id": "doc-c226d047cdfde4006ec6c68f27bd5e4be972ec46",
+      "document_version": 1,
+      "errors": [],
+      "finished_at": "2026-11-22T21:33:28.820808Z",
+      "method": "native",
+      "model": null,
+      "model_version": null,
+      "pages": [
+        {
+          "page": 1,
+          "text": "SYNTHETIC TEST DOCUMENT - NOT PAYABLE\nVendor: Example Mechanical Services\nInvoice: SYN-INV-001\nInvoice date: 2026-11-20\nDue date: 2026-12-15\nCurrency: USD\nTotal due: 1,250.00\n",
+          "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+        }
+      ],
+      "precision": null,
+      "processor": "black-river-native",
+      "processor_version": "1.0.0;python=3.12.14",
+      "provider": null,
+      "raw_response": null,
+      "run_id": "run-013ac6d4d67665afea212e0505fcc24e0eb3d81d",
+      "schema_version": "br.docai.v1",
+      "source_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b",
+      "started_at": "2026-11-22T21:33:28.820634Z",
+      "status": "complete"
+    }
+  ],
+  "source_status": "synthetic",
+  "identity_assurance": "trusted_local_os_actor_labels",
+  "execution_authority": "none",
+  "exported_at": "2026-11-22T21:33:28.856239Z"
+}

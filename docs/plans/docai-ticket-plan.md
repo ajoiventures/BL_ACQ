@@ -17,9 +17,33 @@ The machine-readable source is `config/docai-ticket-plan.json`, using the existi
 | Local model client | Earlier local code contains an Ollama client and an unverified tool exposure. | Registration, version compatibility, authentication, allowed data and end-to-end invocation are unverified. Code presence does not establish connection. |
 | Builder coordination | The current offline scheduler and earlier durable `PROJECT_INTERNAL` ticket machinery supply useful contracts. | Reuse the existing skills/agent library and audited persistence patterns. Keep development tickets distinct from product ingestion jobs and business transaction states. |
 
-Current planning evidence is already maintained in `docs/architecture/docai-current-state.md`, `docs/architecture/document-engine-layers.md` and `config/swarm-library-extension.json`. BR-DOC-001 extends these sources instead of creating a duplicate boundary or reuse inventory. Existing read-only audits are partial evidence; canonical execution workspace/provenance and reviewed selected-adapter ownership remain open acceptance.
+Current planning evidence is already maintained in `docs/architecture/docai-current-state.md`, `docs/architecture/document-engine-layers.md` and `config/swarm-library-extension.json`. BR-DOC-001 extends these sources instead of creating a duplicate boundary or reuse inventory. The first local implementation now fixes the execution home, source provenance and selected-adapter ownership; the dated current-state section and implementation verification record provide the evidence.
 
 A ChatGPT cloud connector being available does not prove that this application's backend is connected. No live endpoint, authenticated Doc AI inference, model download or production deployment is established by this plan.
+
+## First native implementation increment — November 22, 2026
+
+Local implementation acceptance is now complete for **BR-DOC-001, 002, 003 and
+005**. This means reviewed code/artifact evidence for those child scopes; it is
+not an authenticated closure in PROJECT_INTERNAL or a production deployment.
+BR-DOC-004 and BR-DOC-008 have tested partial implementations and retain planned
+status for their remaining acceptance criteria. No source database import or
+live provider activation occurred.
+
+The working local command and exact mechanics are in the
+[Doc AI CLI guide](../guides/run_docai.md). The
+[implementation verification](docai-native-increment-verification.md) records
+executed tests, corpus results, source fingerprints and open boundaries. The
+small corpus recovered 26/32 answerable fields with 26/26 exact citations and
+22/22 required abstentions; six CSV field misses remain explicit. These are
+synthetic regression results, not population quality or scale evidence.
+
+The next dependency-ready wave is L1 completing **BR-DOC-004** access/retention
+work, L4 implementing **BR-DOC-006** durable intake jobs and L2 implementing
+**BR-DOC-007** disabled provider/mock behavior. These occupy the three bounded
+worker lanes. SW-00 integrates and SW-13 independently reviews through the
+existing organization. The selected NVIDIA real client follows BR-DOC-007;
+live evaluation still waits for A/B, real-client conformance and C prerequisites.
 
 ## Engine, application and provider responsibilities
 
@@ -27,7 +51,7 @@ The **engine** owns document identity, immutable originals, versions, extraction
 
 The **application layer** manages intake, durable jobs, status, source display, candidate review, accepted output and operations visibility. It calls engine rules instead of duplicating them. Document processing stages are ordinary software queues; naming ingestion, extraction, indexing and action stages does not create runtime agents.
 
-The **provider adapter** converts an explicitly configured service's response into unaccepted candidates. The generic seam and mock contract are built early in BR-DOC-007 and reviewed at B. BR-DOC-012 then implements one actual version-pinned client, registers it while disabled and independently checks recorded-response/contract fixtures through its injected transport. The selected implementation can wrap the audited existing Ollama client or implement the chosen NVIDIA service client; building every provider is outside this increment. Endpoint access, compatible deployed versions, permission to process specific data, bounded spend/time and measured output quality remain later conditions for the C live evaluation.
+The **provider adapter** converts an explicitly configured service's response into unaccepted candidates. The generic seam and mock contract are built early in BR-DOC-007 and reviewed at B. BR-DOC-012 then implements one actual version-pinned client, registers it while disabled and independently checks recorded-response/contract fixtures through its injected transport. NVIDIA Parse is the selected future service target in `config/docai-provider-target.json`; the audited Ollama text client remains an alternate reuse option. Building every provider is outside this increment. Endpoint access, compatible deployed versions, permission to process specific data, bounded spend/time and measured output quality remain later conditions for the C live evaluation.
 
 The **consumer boundary** publishes reviewed document facts. Acquisition economics, negotiation, offers and other workflows can consume those facts independently. They are not prerequisites for Doc AI extraction or its first provider experiment.
 
@@ -87,23 +111,41 @@ Every range below is an assumption for active builder effort in minutes. It is n
 | BR-DOC-023 | Reconcile the unavailable original document-platform specification | BR-ENG-186, BR-ENG-313, BR-ENG-314 | L1_evidence | 60–200 min |
 | BR-DOC-024 | Gate D: conduct a separately enabled monitored production pilot | BR-ENG-130, BR-ENG-185, BR-ENG-283, BR-ENG-320, BR-ENG-327, BR-ENG-328 | L4_workflow | 120–360 min |
 
-## Validated schedule snapshot
+## Validated remaining schedule snapshot
 
-The actual repository scheduler accepted this JSON, including all phase gates, IDs and dependencies. The graph is acyclic; all 24 IDs are unique; all estimates fall within their supplied ranges; file ownership and resource capacity checks pass. The plan contains **18 planned, 4 explicitly blocked and 2 deferred** children, and **0 completed** children. After dependency propagation the scheduler produces **16 schedulable, 6 blocked and 2 excluded** items.
+The actual repository scheduler accepted the updated 24-child JSON after this
+increment. The graph is acyclic and all IDs, dependencies, owner lanes, file
+write scopes and resource capacities validate. Plan statuses are **4 completed,
+14 planned, 4 explicitly blocked and 2 deferred**. After blocker propagation,
+**12 remaining children are schedulable, 6 blocked and 2 excluded**.
 
-**Ready now:** `BR-DOC-001` (SW-00 canonical workspace/provenance and reuse ownership) and `BR-DOC-003` (L3 fixtures/evaluation policy). `BR-DOC-002` follows the reviewed boundary. The three worker lanes then share the engine/seam/application queue; no worker is duplicated to manufacture concurrency.
+**Ready now and proposed concurrently:** `BR-DOC-004`, `BR-DOC-006` and
+`BR-DOC-007`. Partial artifacts do not complete their broader acceptance. The
+three workers have distinct owners and write scopes; one separate integrator
+remains reserved. CUDA and R runtime capacity remain zero in this declared
+planning profile, with no GPU/R measurement implied.
 
-With the current assumed point durations, the schedulable-scope critical-path lower bound is **710 relative minutes** and the resource-constrained heuristic schedule is **930 relative minutes**. Substituting all low or all high per-ticket estimates gives **590–1,900 relative minutes** for this same schedulable scope. This excludes blocked/future work and external waiting, and is not a probabilistic confidence interval or delivery promise. In the point-estimate simulation, B completes at minute 510 and A at minute 610.
+For the remaining schedulable scope, the assumed critical-path lower bound is
+**560 relative minutes**, and the
+resource-constrained heuristic schedule is **750
+relative minutes**. Substituting the low/high effort estimates yields
+**480–1360 relative minutes** for that same scope. These are
+assumed active-effort simulations, not promised elapsed delivery times,
+confidence intervals, measured worker speeds or bookings. Blocked/future work
+and external waiting are excluded. In the point simulation, B finishes at
+minute 240 and A at minute 460; neither gate has actually passed.
 
-Observed peak allocation in the generated schedule is 3 workers and 1 integrator, with no CUDA or R allocated. The schedule has no overlapping writes or duplicate owner bookings. The next live-evaluation work remains held by selected-client conformance and its connection/test manifest; R and CUDA measurements remain held by unavailable runtimes; the original source-reconciliation task remains held by the missing specific source.
-
-Reproduce the schedule without writing or executing product work:
+Reproduce the plan without executing product work:
 
 ```bash
 python tools/schedule_builder_work.py --plan config/docai-ticket-plan.json
 ```
 
-The exact `config/docai-ticket-plan.json` file-byte SHA-256 is `2269f4ce1dfc2edcb89dfbbd38d813cba62f71d2a330f3e7f4b385c8ad98fc26`. The scheduler canonicalizes JSON before hashing; its separate `plan_sha256` is `81843cd61e8d5ff14dba5733c55363fb3e8d82e0641d1f5a141a444f43ad4e75`. Both identify this validation input using their stated representations. A later edit or status change requires a new schedule. No implementation, provider test, R execution, GPU benchmark or deployment was performed by validating this plan.
+The exact JSON file-byte SHA-256 is `9f9755afe1ae09a72c11c27d30a6c929fdb2ebe853e86e52037512bb6df63e37`. The separate scheduler
+canonical-JSON `plan_sha256` is `72629cc981fc2ec6c28704b5694394034a2088c7c37e70d7bb93c521f98c3ea5`. The retained
+[remaining schedule](docai-native-remaining-schedule.json) identifies that input.
+The planner does not dispatch workers, authenticate reviewers or close canonical
+tickets. Subsequent edits/status changes require regeneration.
 
 ## Specific reuse and correctness risks
 
@@ -117,15 +159,21 @@ The original document-platform PDF named in BR-ENG-186 remains a source gap. Unr
 
 ## Complete child acceptance contracts
 
-These are planned deliverables. Existing files named in write scopes are to be extended; other proposed paths do not imply implemented capabilities. All children retain empty completion-evidence arrays until their acceptance is independently reviewed.
+The acceptance criteria below are preserved from the approved plan. Local
+completion and partial evidence are stated separately; a demonstrated subset
+does not silently change a broader contract or canonical ticket authority.
 
 ### BR-DOC-001 — Confirm canonical Doc AI execution workspace and reuse ownership
 
-**Parents:** BR-ENG-281, BR-ENG-286, BR-ENG-311, BR-ENG-313, BR-ENG-314. **Owner:** SW-00_integrator; SW-00 coordinates and SW-13 reviews independently. **Status:** planned. **Layer:** architecture.
+**Parents:** BR-ENG-281, BR-ENG-286, BR-ENG-311, BR-ENG-313, BR-ENG-314. **Owner:** SW-00_integrator; SW-00 coordinates and SW-13 reviews independently. **Status:** completed. **Layer:** architecture.
 
 **Dependencies:** none. **Resources:** integrator=1. **Effort:** 30–100 minutes (point assumption: 50).
 
-**Write scopes:** `docs/architecture/docai-current-state.md`, `docs/architecture/document-engine-layers.md`, `config/swarm-library-extension.json`.
+**Write scopes:** `docs/architecture/docai-current-state.md`, `docs/architecture/document-engine-layers.md`, `config/swarm-library-extension.json`, `config/docai-provider-target.json`.
+
+**Status basis:** Versioned BL_ACQ execution home, shared baseline tree, audited filing/ticket/model hashes, existing organization and L1/L2/L4/SW-00/SW-13 ownership are documented. Independent reuse review accepted the choice. NVIDIA Parse is a selected target only; deployment remains unverified.
+
+**Local completion evidence:** `docs/architecture/docai-current-state.md`, `docs/architecture/document-engine-layers.md`, `config/swarm-library-extension.json`, `config/docai-provider-target.json`, `docs/plans/docai-native-increment-verification.md`.
 
 **Reuse basis:** pilot/document_evidence.py contains reusable provenance and review rules with acquisition-oriented scope. tools/schedule_builder_work.py already validates the bounded development DAG. Earlier local filing/inbox.py and backend/core/tickets.py are reuse candidates requiring revision and contract checks; folder names are not deployment evidence. The existing docs/architecture/docai-current-state.md, docs/architecture/document-engine-layers.md and config/swarm-library-extension.json capture current-state, product-boundary and library-mapping evidence; their contents are partial fulfillment, not closure of the remaining workspace/provenance and ownership decisions.
 
@@ -140,11 +188,15 @@ These are planned deliverables. Existing files named in write scopes are to be e
 
 ### BR-DOC-002 — Version document, extraction, candidate and review contracts
 
-**Parents:** BR-ENG-124, BR-ENG-175, BR-ENG-272, BR-ENG-282, BR-ENG-286. **Owner:** L1_evidence; SW-00 coordinates and SW-13 reviews independently. **Status:** planned. **Layer:** engine.
+**Parents:** BR-ENG-124, BR-ENG-175, BR-ENG-272, BR-ENG-282, BR-ENG-286. **Owner:** L1_evidence; SW-00 coordinates and SW-13 reviews independently. **Status:** completed. **Layer:** engine.
 
 **Dependencies:** BR-DOC-001. **Resources:** agent_worker=1. **Effort:** 60–180 minutes (point assumption: 100).
 
 **Write scopes:** `pilot/document_contracts.py`, `schemas/docai`, `tests/test_docai_contracts.py`.
+
+**Status basis:** Strict br.docai.v1 neutral validators and structural schemas cover document/run/candidate/review identity, twelve classes plus UNKNOWN, typed values, exact citations, coverage/errors, truthful provider provenance and version rejection. Seventeen focused tests and independent source/interface review passed; old deal tables stay compatible.
+
+**Local completion evidence:** `pilot/document_contracts.py`, `schemas/docai/records.schema.json`, `schemas/docai/document-classes.json`, `schemas/docai/examples.json`, `tests/test_docai_contracts.py`, `docs/plans/docai-native-increment-verification.md`.
 
 **Acceptance:**
 
@@ -156,11 +208,15 @@ These are planned deliverables. Existing files named in write scopes are to be e
 
 ### BR-DOC-003 — Prepare synthetic golden files and predeclared evaluation metrics
 
-**Parents:** BR-ENG-184, BR-ENG-291, BR-ENG-317, BR-ENG-319. **Owner:** L3_quality; SW-00 coordinates and SW-13 reviews independently. **Status:** planned. **Layer:** evaluation.
+**Parents:** BR-ENG-184, BR-ENG-291, BR-ENG-317, BR-ENG-319. **Owner:** L3_quality; SW-00 coordinates and SW-13 reviews independently. **Status:** completed. **Layer:** evaluation.
 
 **Dependencies:** none. **Resources:** agent_worker=1. **Effort:** 80–240 minutes (point assumption: 120).
 
-**Write scopes:** `tests/fixtures/docai`, `docs/validation/docai-evaluation-policy.md`, `tools/docai_metrics.py`, `tests/test_docai_metrics.py`.
+**Write scopes:** `tests/fixtures/docai`, `docs/validation/docai-evaluation-policy.md`, `tools/docai_metrics.py`, `tests/test_docai_metrics.py`, `tools/evaluate_docai_native.py`, `tests/test_docai_evaluation.py`.
+
+**Status basis:** Nine synthetic originals and 54 field labels have verified hashes and independently checked spans; the scorer, split, thresholds and limitations are declared. Independent review and 37 metrics/evaluation tests passed. Measured native baseline retains six CSV field misses (26/32 grounded recall); zero reviewed accepts cannot establish review safety. Preparation is complete, provider quality is unevaluated.
+
+**Local completion evidence:** `tests/fixtures/docai/manifest.json`, `docs/validation/docai-evaluation-policy.md`, `tools/docai_metrics.py`, `tools/evaluate_docai_native.py`, `tests/test_docai_metrics.py`, `tests/test_docai_evaluation.py`, `docs/plans/docai-native-increment-verification.md`.
 
 **Acceptance:**
 
@@ -176,7 +232,11 @@ These are planned deliverables. Existing files named in write scopes are to be e
 
 **Dependencies:** BR-DOC-002. **Resources:** agent_worker=1. **Effort:** 120–300 minutes (point assumption: 180).
 
-**Write scopes:** `pilot/document_evidence.py`, `pilot/document_vault.py`, `tests/test_document_evidence.py`, `tests/test_docai_vault.py`.
+**Write scopes:** `pilot/document_evidence.py`, `pilot/document_vault.py`, `tests/test_document_evidence.py`, `tests/test_docai_vault.py`, `tests/test_docai_application.py`.
+
+**Status basis:** Append-only neutral records, contextual queries, payload-bound replay, CAS reviews/corrections, version-supersession holds and transaction recovery exist. Authenticated ACLs, revocation/retention/delete propagation, full version-family intake and general asset-link review remain open. Trusted OS actor labels are not service authorization.
+
+**Partial evidence:** `pilot/document_vault.py`, `tests/test_docai_application.py`.
 
 **Reuse basis:** pilot/document_evidence.py: EvidenceStore, append-only reviews, source hashes, supersession and conflict rules.
 
@@ -191,11 +251,15 @@ These are planned deliverables. Existing files named in write scopes are to be e
 
 ### BR-DOC-005 — Reuse native filing behind a safe document parser plugin
 
-**Parents:** BR-ENG-125, BR-ENG-180, BR-ENG-286. **Owner:** L2_engineering; SW-00 coordinates and SW-13 reviews independently. **Status:** planned. **Layer:** engine.
+**Parents:** BR-ENG-125, BR-ENG-180, BR-ENG-286. **Owner:** L2_engineering; SW-00 coordinates and SW-13 reviews independently. **Status:** completed. **Layer:** engine.
 
 **Dependencies:** BR-DOC-002. **Resources:** agent_worker=1. **Effort:** 100–320 minutes (point assumption: 180).
 
-**Write scopes:** `pilot/document_native.py`, `pilot/document_parsers`, `tests/test_docai_native.py`.
+**Write scopes:** `pilot/document_native.py`, `pilot/document_parsers`, `tests/test_docai_native.py`, `filing`, `pilot/document_invoice.py`.
+
+**Status basis:** Additive filing port preserves the interface and receipt history, binds bounded original snapshots, and reports native coverage/errors with worker time/memory bounds. Twenty-three parser cases and application adverse cases passed, with independent review. First class uses exact invoice labels and cited manual candidates; CSV is native text only, scans need OCR, PDF pages containing image/Form XObjects stay partial. This is not twelve parser implementations.
+
+**Local completion evidence:** `filing/inbox.py`, `filing/README.md`, `pilot/document_native.py`, `pilot/document_invoice.py`, `tests/test_docai_native.py`, `tests/test_docai_application.py`, `docs/plans/docai-native-increment-verification.md`.
 
 **Reuse basis:** Earlier local filing/inbox.py provides native extraction, routing, original preservation and receipts; exact migration compatibility is not yet established.
 
@@ -216,6 +280,8 @@ These are planned deliverables. Existing files named in write scopes are to be e
 
 **Write scopes:** `pilot/document_jobs.py`, `tests/test_docai_jobs.py`.
 
+**Status basis:** Planned child acceptance remains open; existing reusable code does not establish completion of this child item.
+
 **Reuse basis:** Earlier local backend/core/tickets.py has durable PROJECT_INTERNAL jobs, version conflict checks and SW-13 closure patterns; do not reuse the business transaction lifecycle.
 
 **Acceptance:**
@@ -233,6 +299,8 @@ These are planned deliverables. Existing files named in write scopes are to be e
 **Dependencies:** BR-DOC-002. **Resources:** agent_worker=1. **Effort:** 80–220 minutes (point assumption: 120).
 
 **Write scopes:** `pilot/document_providers.py`, `tests/test_docai_provider_contract.py`.
+
+**Status basis:** Planned child acceptance remains open; existing reusable code does not establish completion of this child item.
 
 **Reuse basis:** CandidateProvider protocol and DisabledAIProvider are limited stubs; NativeJsonProvider only copies already structured claims.
 
@@ -252,6 +320,10 @@ These are planned deliverables. Existing files named in write scopes are to be e
 
 **Write scopes:** `pilot/document_application.py`, `pilot/founder_service.py`, `tools/run_docai.py`, `tests/test_docai_application.py`.
 
+**Status basis:** Synchronous local intake, inspect, source traces, manual correction, review and accepted export are implemented and tested. Durable jobs/status lifecycle, authenticated review, service operations and full dependency acceptance remain open; BR-DOC-008 and Gate A are not completed.
+
+**Partial evidence:** `pilot/document_application.py`, `tools/run_docai.py`, `tests/test_docai_application.py`, `docs/guides/run_docai.md`.
+
 **Acceptance:**
 
 1. Provide a documented local/API vertical slice for upload or registered local-file intake, job status, source text, candidate list, review decisions and accepted export.
@@ -268,6 +340,8 @@ These are planned deliverables. Existing files named in write scopes are to be e
 
 **Write scopes:** `reports/validation/docai-provider-contract.json`, `docs/validation/docai-gate-b.md`.
 
+**Status basis:** Planned child acceptance remains open; existing reusable code does not establish completion of this child item.
+
 **Acceptance:**
 
 1. An independent reviewer checks the disabled and mock adapter against the frozen request/result/error schema, including provider metadata and rejected review injection.
@@ -282,6 +356,8 @@ These are planned deliverables. Existing files named in write scopes are to be e
 **Dependencies:** BR-DOC-003, BR-DOC-004, BR-DOC-005, BR-DOC-006, BR-DOC-008. **Resources:** agent_worker=1. **Effort:** 60–180 minutes (point assumption: 100).
 
 **Write scopes:** `reports/validation/docai-native-slice.json`, `docs/validation/docai-gate-a.md`.
+
+**Status basis:** Planned child acceptance remains open; existing reusable code does not establish completion of this child item.
 
 **Acceptance:**
 
@@ -299,6 +375,8 @@ These are planned deliverables. Existing files named in write scopes are to be e
 
 **Write scopes:** `pilot/document_connectors.py`, `tests/test_docai_connectors.py`, `docs/guides/docai-source-connector.md`.
 
+**Status basis:** Planned child acceptance remains open; existing reusable code does not establish completion of this child item.
+
 **Acceptance:**
 
 1. Define a source adapter for explicitly allowed folders/labels and stable source IDs/revisions, with scoped permissions, cursor pagination, quotas and retries.
@@ -314,6 +392,8 @@ These are planned deliverables. Existing files named in write scopes are to be e
 **Dependencies:** BR-DOC-003, BR-DOC-007. **Resources:** agent_worker=1. **Effort:** 140–420 minutes (point assumption: 240).
 
 **Write scopes:** `config/document-providers.json`, `requirements-docai-provider.lock`, `pilot/document_provider_client.py`, `pilot/document_providers.py`, `pilot/document_provider_preflight.py`, `tests/test_docai_selected_provider.py`, `tests/test_docai_provider_preflight.py`, `tests/fixtures/docai/provider`, `reports/validation/docai-selected-adapter.json`, `docs/guides/docai-provider-connection.md`.
+
+**Status basis:** One concrete selected adapter must be implemented, registered while disabled and independently checked offline before completion; the existing generic protocol/mock and a configuration manifest alone are insufficient.
 
 **Reuse basis:** The earlier local Ollama client is an implementation reuse candidate; registration, version compatibility and end-to-end invocation remain unverified. A selected NVIDIA client is an alternative implementation, not an additional required backend.
 
@@ -337,7 +417,7 @@ These are planned deliverables. Existing files named in write scopes are to be e
 
 **Write scopes:** `tools/evaluate_docai_provider.py`, `reports/validation/docai-live-evaluation.json`.
 
-**Current hold:** No selected provider adapter has independently reviewed offline conformance, and no endpoint, authenticated backend connection, verified service/model versions or approved test-data policy is recorded. A concrete bounded test manifest, spend ceiling and permitted activation have not been verified; this planning change does not call or enable a provider.
+**Status basis:** Planned child acceptance remains open; existing reusable code does not establish completion of this child item.
 
 **Acceptance:**
 
@@ -348,6 +428,8 @@ These are planned deliverables. Existing files named in write scopes are to be e
 5. Stop on a policy/version/schema mismatch, budget breach or safety-critical output; rejected/malformed candidates remain unaccepted and no outbound transaction or document movement is triggered.
 6. Disable the test connection after the bounded run; a successful test does not enable production, retrieval, runtime agents or access to other documents.
 
+**Blockers:** ["No selected provider adapter has independently reviewed offline conformance, and no endpoint, authenticated backend connection, verified service/model versions or approved test-data policy is recorded.", "A concrete bounded test manifest, spend ceiling and permitted activation have not been verified; this planning change does not call or enable a provider."].
+
 ### BR-DOC-014 — Independently score the live candidate quality and costs
 
 **Parents:** BR-ENG-185, BR-ENG-291, BR-ENG-317, BR-ENG-319, BR-ENG-320, BR-ENG-324. **Owner:** SW-13_independent_review; SW-00 coordinates and SW-13 reviews independently. **Status:** planned. **Layer:** quality_gate.
@@ -355,6 +437,8 @@ These are planned deliverables. Existing files named in write scopes are to be e
 **Dependencies:** BR-DOC-003, BR-DOC-013. **Resources:** agent_worker=1. **Effort:** 80–220 minutes (point assumption: 120).
 
 **Write scopes:** `reports/validation/docai-provider-verdict.json`, `docs/validation/docai-provider-evaluation.md`.
+
+**Status basis:** Planned child acceptance remains open; existing reusable code does not establish completion of this child item.
 
 **Acceptance:**
 
@@ -372,6 +456,8 @@ These are planned deliverables. Existing files named in write scopes are to be e
 
 **Write scopes:** `pilot/document_observability.py`, `tests/test_docai_observability.py`, `docs/guides/docai-operations.md`.
 
+**Status basis:** Planned child acceptance remains open; existing reusable code does not establish completion of this child item.
+
 **Acceptance:**
 
 1. Expose queue age/depth, retries, dead letters, parse coverage, review backlog, accepted/rejected rates, supported class coverage and provider configuration state.
@@ -387,6 +473,8 @@ These are planned deliverables. Existing files named in write scopes are to be e
 **Dependencies:** BR-DOC-010. **Resources:** agent_worker=1. **Effort:** 60–180 minutes (point assumption: 100).
 
 **Write scopes:** `pilot/document_exports.py`, `pilot/document_offer_layer.py`, `tests/test_docai_exports.py`, `docs/guides/docai-consumer-contract.md`.
+
+**Status basis:** Planned child acceptance remains open; existing reusable code does not establish completion of this child item.
 
 **Acceptance:**
 
@@ -404,6 +492,8 @@ These are planned deliverables. Existing files named in write scopes are to be e
 
 **Write scopes:** `tests/test_docai_adversarial.py`, `reports/validation/docai-adversarial.json`.
 
+**Status basis:** Planned child acceptance remains open; existing reusable code does not establish completion of this child item.
+
 **Acceptance:**
 
 1. Inject cross-tenant access, revoked ACL, malicious file paths, hostile document instructions, mismatched identity and forbidden review/action fields; no unintended authority or external call is granted.
@@ -419,6 +509,8 @@ These are planned deliverables. Existing files named in write scopes are to be e
 **Dependencies:** BR-DOC-002, BR-DOC-005. **Resources:** agent_worker=1. **Effort:** 160–480 minutes (point assumption: 240).
 
 **Write scopes:** `pilot/document_parsers`, `tests/test_docai_parser_coverage.py`, `docs/validation/docai-parser-coverage.md`.
+
+**Status basis:** Planned child acceptance remains open; existing reusable code does not establish completion of this child item.
 
 **Acceptance:**
 
@@ -436,6 +528,8 @@ These are planned deliverables. Existing files named in write scopes are to be e
 
 **Write scopes:** `pilot/document_retrieval.py`, `tests/test_docai_retrieval.py`, `docs/guides/docai-retrieval.md`.
 
+**Status basis:** Planned child acceptance remains open; existing reusable code does not establish completion of this child item.
+
 **Acceptance:**
 
 1. Design a revision-specific chunk/embedding/index contract with embedding model/version, typed metadata filters and full source citations.
@@ -452,7 +546,7 @@ These are planned deliverables. Existing files named in write scopes are to be e
 
 **Write scopes:** `research/docai`, `reports/validation/docai-r-validation.json`.
 
-**Current hold:** No executable R runtime is verified in the present resource profile.
+**Status basis:** Planned child acceptance remains open; existing reusable code does not establish completion of this child item.
 
 **Acceptance:**
 
@@ -462,6 +556,8 @@ These are planned deliverables. Existing files named in write scopes are to be e
 4. Record R version, package lock, exact data hashes and executed commands; an export artifact or unexecuted script is not a completed R validation.
 5. R execution is an optional independent measurement track; lack of R does not block the native product or a bounded provider experiment.
 
+**Blockers:** ["No executable R runtime is verified in the present resource profile."].
+
 ### BR-DOC-021 — Measure useful CUDA batches against the CPU reference
 
 **Parents:** BR-ENG-286, BR-ENG-288, BR-ENG-317, BR-ENG-320. **Owner:** L2_engineering; SW-00 coordinates and SW-13 reviews independently. **Status:** blocked. **Layer:** compute.
@@ -470,7 +566,7 @@ These are planned deliverables. Existing files named in write scopes are to be e
 
 **Write scopes:** `tools/benchmark_docai_cuda.py`, `tests/test_docai_cuda_contract.py`, `reports/benchmarks/docai-cuda.json`.
 
-**Current hold:** No CUDA device is verified in the present resource profile.
+**Status basis:** Planned child acceptance remains open; existing reusable code does not establish completion of this child item.
 
 **Acceptance:**
 
@@ -480,6 +576,8 @@ These are planned deliverables. Existing files named in write scopes are to be e
 4. An explicit CUDA request fails visibly when unavailable; never report a speedup from mocks, utilization percentage alone, CPU fallbacks or remote hardware assumptions.
 5. Optimize measured useful throughput within quality/cost limits. Hosted provider evaluation remains possible without local CUDA; self-hosted GPU execution is a distinct resource gate.
 
+**Blockers:** ["No CUDA device is verified in the present resource profile."].
+
 ### BR-DOC-022 — Review a scoped production candidate and rollback evidence
 
 **Parents:** BR-ENG-283, BR-ENG-295, BR-ENG-323, BR-ENG-324, BR-ENG-327. **Owner:** SW-00_integrator; SW-00 coordinates and SW-13 reviews independently. **Status:** planned. **Layer:** quality_gate.
@@ -487,6 +585,8 @@ These are planned deliverables. Existing files named in write scopes are to be e
 **Dependencies:** BR-DOC-014, BR-DOC-015, BR-DOC-017. **Resources:** integrator=1. **Effort:** 60–200 minutes (point assumption: 100).
 
 **Write scopes:** `docs/operations/docai-release-gate.md`, `reports/validation/docai-release-verdict.json`.
+
+**Status basis:** Planned child acceptance remains open; existing reusable code does not establish completion of this child item.
 
 **Acceptance:**
 
@@ -504,7 +604,7 @@ These are planned deliverables. Existing files named in write scopes are to be e
 
 **Write scopes:** `docs/plans/docai-source-reconciliation.md`.
 
-**Current hold:** The original referenced document-platform PDF required by BR-ENG-186 has not been inspected; other unrelated PDFs do not satisfy that provenance requirement.
+**Status basis:** Planned child acceptance remains open; existing reusable code does not establish completion of this child item.
 
 **Acceptance:**
 
@@ -512,6 +612,8 @@ These are planned deliverables. Existing files named in write scopes are to be e
 2. List supported, contradictory, missing and already satisfied requirements with precise source provenance; do not invent the unavailable twenty microtasks or SQL.
 3. Dedupe any needed changes against existing BR-ENG parents and this child plan; retain provenance gaps as explicit evidence states.
 4. Current verified contracts and the latest user instruction are sufficient to begin the local Doc AI slice; this historical source gap is not a blanket prerequisite.
+
+**Blockers:** ["The original referenced document-platform PDF required by BR-ENG-186 has not been inspected; other unrelated PDFs do not satisfy that provenance requirement."].
 
 ### BR-DOC-024 — Gate D: conduct a separately enabled monitored production pilot
 
@@ -521,7 +623,7 @@ These are planned deliverables. Existing files named in write scopes are to be e
 
 **Write scopes:** `docs/operations/docai-pilot-runbook.md`, `reports/operations/docai-pilot.json`.
 
-**Current hold:** No production deployment target, approved release manifest or monitored rollout scope is verified.
+**Status basis:** Planned child acceptance remains open; existing reusable code does not establish completion of this child item.
 
 **Acceptance:**
 
@@ -530,3 +632,5 @@ These are planned deliverables. Existing files named in write scopes are to be e
 3. Track actual extraction quality, review workload, latency, failure recovery and cost using production denominators; expand only with reviewed evidence.
 4. Report connection state, supported scope and deployment evidence accurately; no automatic negotiation, messages, property acquisition or runtime agent swarm is introduced.
 5. Production activation is a distinct later step. This plan and any synthetic test do not enable production or establish two-million-household capacity.
+
+**Blockers:** ["No production deployment target, approved release manifest or monitored rollout scope is verified."].

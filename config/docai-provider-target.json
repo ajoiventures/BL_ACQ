@@ -1,0 +1,38 @@
+{
+  "schema_version": "br.docai-provider-target.v1",
+  "profile_id": "nvidia-parse-2.4-disabled",
+  "selected_on": "2026-11-22",
+  "owner": "L2_engineering",
+  "independent_reviewer": "SW-13",
+  "implementation_ticket": "BR-DOC-012",
+  "status": "target_selected_not_implemented",
+  "provider": "NVIDIA",
+  "service": "NVIDIA NIM for document extraction (Parse)",
+  "documentation_release": "2.4",
+  "model_target": "nvidia/nemotron-3.5-parse",
+  "api_target": "POST /v1/parse",
+  "input_contract": "One rendered PNG or JPEG page per request; not a PDF upload or chat-completions request",
+  "runtime_registry_entry": null,
+  "endpoint": null,
+  "deployed_model_version": null,
+  "authenticated_reachability": "unverified",
+  "self_hosted_runtime": "unverified",
+  "enabled": false,
+  "live_calls_enabled": false,
+  "model_downloads_enabled": false,
+  "production_enabled": false,
+  "selection_basis": "The user explicitly requested NVIDIA document AI. Preserve the older Ollama text client as an alternate reuse option, not as proof of this selected document service.",
+  "activation_rule": "This is a planning target, not a runtime switch or implemented client. Implement BR-DOC-007 and BR-DOC-012, then satisfy gates A/B and the bounded C evaluation prerequisites before any live invocation.",
+  "implementation_requirements": [
+    "Retain original PDF identity, render each permitted page deterministically and bind page images to original page numbers and hashes.",
+    "Pin the actual service/model/API versions from the deployed manifest; documentation release does not verify the installed runtime.",
+    "Treat finish_reason=length as partial output; finish_reason=stop alone does not prove field or source completeness.",
+    "Bound page batches, queue concurrency, rendered image memory, timeouts, retries, output tokens and permitted cost.",
+    "Keep provider candidates unreviewed and preserve raw-response hashes, source spans and actual CPU/CUDA/remote execution metadata.",
+    "Verify supported hardware and precision before self-hosting; no consumer GPU compatibility or speedup is assumed."
+  ],
+  "official_sources": [
+    "https://docs.nvidia.com/nim/ingestion/parse/latest/release-notes.html",
+    "https://docs.nvidia.com/nim/ingestion/parse/latest/use-the-api.html"
+  ]
+}

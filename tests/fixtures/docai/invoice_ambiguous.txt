@@ -1,0 +1,8 @@
+SYNTHETIC TEST DOCUMENT - NOT PAYABLE
+Vendor: Example Service Lab
+Invoice: SYN-INV-003
+Invoice date: 2026-11-20
+Due date: 04/05/2026 (date convention unspecified)
+Currency: USD
+Total due: 1,250.00
+Revised total due: 1,350.00 (approval unresolved)

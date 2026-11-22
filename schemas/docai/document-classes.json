@@ -1,0 +1,483 @@
+{
+  "schema_version": "br.docai-class-registry.v1",
+  "record_schema_version": "br.docai.v1",
+  "registry_meaning": "Field contracts are declared for twelve document classes. Registered fields are not a claim of implemented extraction, validation of source truth or legal effect.",
+  "quarantine_class": "UNKNOWN",
+  "classes": [
+    {
+      "document_class": "LEASE",
+      "fields": [
+        {
+          "field": "tenant",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "landlord",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "property_reference",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "start_date",
+          "value_type": "date",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "end_date",
+          "value_type": "date",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "monthly_rent_cents",
+          "value_type": "money_cents",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "security_deposit_cents",
+          "value_type": "money_cents",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "currency",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "renewal_notice_days",
+          "value_type": "integer",
+          "required_for_generic_registration": false
+        }
+      ],
+      "native_parser_status": "not_implemented_in_this_increment"
+    },
+    {
+      "document_class": "TITLE_OE",
+      "fields": [
+        {
+          "field": "owner",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "parcel_reference",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "effective_date",
+          "value_type": "date",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "liens_count",
+          "value_type": "integer",
+          "required_for_generic_registration": false
+        }
+      ],
+      "native_parser_status": "not_implemented_in_this_increment"
+    },
+    {
+      "document_class": "NOTE_COLLATERAL",
+      "fields": [
+        {
+          "field": "borrower",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "lender",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "principal_cents",
+          "value_type": "money_cents",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "currency",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "interest_rate_basis_points",
+          "value_type": "basis_points",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "maturity_date",
+          "value_type": "date",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "collateral_reference",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        }
+      ],
+      "native_parser_status": "not_implemented_in_this_increment"
+    },
+    {
+      "document_class": "NOTE_TAPE_ROLL",
+      "fields": [
+        {
+          "field": "loan_reference",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "borrower",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "unpaid_balance_cents",
+          "value_type": "money_cents",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "currency",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "next_due_date",
+          "value_type": "date",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "status",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        }
+      ],
+      "native_parser_status": "not_implemented_in_this_increment"
+    },
+    {
+      "document_class": "ZONING_COMP_PLAN",
+      "fields": [
+        {
+          "field": "jurisdiction",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "parcel_reference",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "zoning_district",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "future_land_use",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "effective_date",
+          "value_type": "date",
+          "required_for_generic_registration": false
+        }
+      ],
+      "native_parser_status": "not_implemented_in_this_increment"
+    },
+    {
+      "document_class": "SURVEY_PLAT",
+      "fields": [
+        {
+          "field": "survey_reference",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "parcel_reference",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "survey_date",
+          "value_type": "date",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "surveyor",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "area_square_feet",
+          "value_type": "decimal",
+          "required_for_generic_registration": false
+        }
+      ],
+      "native_parser_status": "not_implemented_in_this_increment"
+    },
+    {
+      "document_class": "PERMIT_CODE_LIEN",
+      "fields": [
+        {
+          "field": "jurisdiction",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "permit_reference",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "parcel_reference",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "status",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "issued_date",
+          "value_type": "date",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "amount_cents",
+          "value_type": "money_cents",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "currency",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        }
+      ],
+      "native_parser_status": "not_implemented_in_this_increment"
+    },
+    {
+      "document_class": "INSURANCE_COI",
+      "fields": [
+        {
+          "field": "insured",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "insurer",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "policy_number",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "effective_date",
+          "value_type": "date",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "expiration_date",
+          "value_type": "date",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "coverage_cents",
+          "value_type": "money_cents",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "currency",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        }
+      ],
+      "native_parser_status": "not_implemented_in_this_increment"
+    },
+    {
+      "document_class": "MEP_INVOICE",
+      "fields": [
+        {
+          "field": "vendor",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "invoice_number",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "invoice_date",
+          "value_type": "date",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "due_date",
+          "value_type": "date",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "subtotal_cents",
+          "value_type": "money_cents",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "tax_cents",
+          "value_type": "money_cents",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "total_cents",
+          "value_type": "money_cents",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "currency",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        }
+      ],
+      "native_parser_status": "limited_declared_profile"
+    },
+    {
+      "document_class": "TAX_TRIM_TDT",
+      "fields": [
+        {
+          "field": "taxpayer",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "parcel_reference",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "tax_year",
+          "value_type": "integer",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "assessed_value_cents",
+          "value_type": "money_cents",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "tax_due_cents",
+          "value_type": "money_cents",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "currency",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "due_date",
+          "value_type": "date",
+          "required_for_generic_registration": false
+        }
+      ],
+      "native_parser_status": "not_implemented_in_this_increment"
+    },
+    {
+      "document_class": "VALUATION_OM",
+      "fields": [
+        {
+          "field": "property_reference",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "valuation_date",
+          "value_type": "date",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "asking_price_cents",
+          "value_type": "money_cents",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "noi_cents",
+          "value_type": "money_cents",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "currency",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "capitalization_rate_basis_points",
+          "value_type": "basis_points",
+          "required_for_generic_registration": false
+        }
+      ],
+      "native_parser_status": "not_implemented_in_this_increment"
+    },
+    {
+      "document_class": "PROBATE_CLOSING",
+      "fields": [
+        {
+          "field": "estate",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "case_reference",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "property_reference",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "closing_date",
+          "value_type": "date",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "gross_proceeds_cents",
+          "value_type": "money_cents",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "net_proceeds_cents",
+          "value_type": "money_cents",
+          "required_for_generic_registration": false
+        },
+        {
+          "field": "currency",
+          "value_type": "text",
+          "required_for_generic_registration": false
+        }
+      ],
+      "native_parser_status": "not_implemented_in_this_increment"
+    }
+  ],
+  "initial_native_profile": {
+    "id": "native.invoice.labels.v1",
+    "document_class": "MEP_INVOICE",
+    "required_fields": [
+      "vendor",
+      "invoice_number",
+      "invoice_date",
+      "due_date",
+      "total_cents",
+      "currency"
+    ],
+    "scope": "Exact labeled synthetic/native invoice text. Broader invoice formats remain unsupported until separately evaluated."
+  }
+}

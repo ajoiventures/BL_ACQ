@@ -1,6 +1,83 @@
 # Doc AI: audited current state and reuse boundary
 
-Reviewed: 2026-11-22. This is a source audit and a planning correction. It does not certify a running installation.
+## Implemented local increment — November 22, 2026
+
+The versioned implementation home for this increment is `ajoiventures/BL_ACQ`,
+branch `codex/document-offer-engine`, draft PR15. The starting local commit is
+`12df530eaa1e3ae73f620d71c326075de1b31c91`; its tree
+`42fe36afc14efd46fa441f76c50c6ee7b95980ec` matches the published baseline commit
+`99d9fef31535767c89aec399815b8956c9f820b8`. Local and published commit histories
+are distinct, so publication must compare trees and use a conditional branch
+update rather than overwrite an unrelated history.
+
+The existing organization remains the operating authority: BR-SWARM-001,
+BR-SWARM-SKILLS-001 and BR-ENG-MASTER-001. No private routing configuration,
+archive, ticket database or Academy database was migrated. The older source
+snapshot is reuse evidence, not proof of a running deployment. The builder
+agents work outside the product and have disjoint source ownership; the
+contracts/native/application interfaces and source-version fix were reviewed
+by a builder other than their author.
+
+**Implemented and locally tested:** neutral document/run/candidate/review
+contracts, twelve class registries, preserved native filing, bounded native
+readers, one declared invoice label parser, an append-only local vault, a
+synchronous review/correction/export CLI and synthetic-corpus scoring. Start
+with the [application mechanics](../guides/document_application.md) and
+[first increment verification](../plans/docai-native-increment-verification.md).
+
+**Open:** durable jobs and outbox recovery; authenticated application ACLs,
+revocation and retention; general class/layout coverage; provider seam/client
+implementation; any live inference or deployed Doc AI service. A local actor
+label is an attestation. It is not authenticated identity or proof of an
+independent person. The current app does not expose a document HTTP API.
+
+### Reviewed reuse provenance and adapter ownership
+
+| Inspected source | SHA-256 of audited baseline | Decision |
+| --- | --- | --- |
+| Existing generic `filing/inbox.py` | `7dac3fae6722ed660f4d4c9be66df16cfc59932eb15688226c724c9322aa7b0a` | L2 additive native port preserves public signature and receipt history; no private routes copied |
+| Existing `filing/README.md` | `36f9b6306ccc4440c6ecb1ee60504cb5d43f45a6ed7e17598aa3bc2bf7679643` | Preserve local OS-user boundary and original-retention intent |
+| Existing `backend/core/tickets.py` | `dbcea5ff44a4f355765021b2a5332cb76d149401f1a8dc7abdfc4ab58b86b6cc` | Preserve PROJECT_INTERNAL authority; bridge remains SWLIB-02, no import performed |
+| Existing `scripts/local_model.py` | `2c1daec99563f697272e985027411efc4a035ea26df30aacd9a5bf85c7a8b9ab` | Retain Ollama text client as alternate future reuse option; no runtime claimed |
+| Existing `scripts/model_mcp.py` | `38217170a27a1580917d50fe50fd12ee908048b22e22a9f45d73bef15a90e00c` | No new MCP registration or authenticated reachability claim |
+
+The old TXT/MD/CSV reader sliced the result of `read_bytes()`: its 150,000-byte
+slice did not bound the initial file allocation. The port captures at most the
+hard 16 MiB original limit, retains separate declared text/page/XML limits,
+rejects invalid UTF-8 and makes incomplete coverage explicit. PDF/DOCX work has
+bounded subprocess time and address space. PDF pages containing image/Form XObjects and
+unread DOCX extras remain partial. Fully examined scans with no native text
+remain OCR-needed; scans beyond the page limit remain partial. This is native
+content extraction with visible limits, not complete visual interpretation.
+
+L1 owns the neutral vault adapter. It composes the existing EvidenceStore
+transaction manager and leaves the deal-oriented schema and consumers intact.
+The new contracts accept truthful provider-origin candidates, but the old
+NativeJsonProvider still only copies pretyped data. Neither that helper nor a
+disabled stub constitutes a document-model connection.
+
+L2 owns the selected future NVIDIA Parse adapter under BR-DOC-012; SW-13 owns
+its independent review. The user explicitly requested NVIDIA document AI, so
+the versioned target records Parse 2.4 and `nvidia/nemotron-3.5-parse`. The
+[official release notes](https://docs.nvidia.com/nim/ingestion/parse/latest/release-notes.html)
+and [API guide](https://docs.nvidia.com/nim/ingestion/parse/latest/use-the-api.html)
+were checked on November 22, 2026. The documented request is one rendered PNG or
+JPEG page to `POST /v1/parse`, not a PDF or old chat-completions request. Length-
+limited output is partial. Installed versions, hardware and authenticated
+reachability remain unverified. See the
+[disabled implementation target](../../config/docai-provider-target.json).
+
+The generic provider seam and selected real client remain later implementation
+steps. This selection does not load a model or enable any endpoint. Source,
+review, cost/time, offline conformance and explicit bounded-data gates remain
+prerequisites for live evaluation. Finance, R, household scale and the old
+84-ticket plan are not prerequisites for that first document experiment.
+
+## Baseline source audit retained below
+
+The following sections preserve the pre-increment findings and rationale.
+References to missing integration in that baseline describe the starting state;
+the dated implementation section above records the subsequent local changes.
 
 ## What exists, and whether it is connected
 

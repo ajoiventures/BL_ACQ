@@ -49,11 +49,47 @@ flowchart TD
     C --> M["Mail and records consumers"]
 ```
 
-This is the target composition, not a claim that these snapshots are already
-integrated. The dotted provider edge is disabled/unimplemented integration.
-The current EvidenceStore accepts only manual/native_json methods and the
-JSON bundle copies structured claims. A versioned contract change is needed
-before truthful AI provenance can be accepted; do not disguise AI as native.
+The first local increment now implements filing, native extraction, the narrow
+invoice grammar, neutral candidate/review records and accepted export. The
+dotted provider edge remains unimplemented integration. The older EvidenceStore
+continues accepting its original manual/native_json methods for compatibility;
+the new `br.docai.v1` contracts carry truthful provider provenance separately.
+There is no need to relabel model output as native.
+
+## Implemented local composition — November 22, 2026
+
+`BL_ACQ` is the versioned implementation home for this increment. The initial
+baseline is local commit `12df530eaa1e3ae73f620d71c326075de1b31c91`, whose tree
+`42fe36afc14efd46fa441f76c50c6ee7b95980ec` equals the published PR15 baseline
+tree. The source audit and existing organizational authority remain distinct
+from this implementation choice. No older application database was migrated.
+
+| Owning component | Implemented operation | Boundary |
+| --- | --- | --- |
+| `filing/inbox.py` | Original archive, compatible receipt, bounded native format parsing | Local OS ownership; explicit partial/error/OCR-needed results |
+| `pilot/document_contracts.py` | Neutral document/run/candidate/review records and twelve class field registries | Registered class contracts do not imply twelve working field parsers |
+| `pilot/document_native.py` | Bind real archived bytes and native coverage to the shared run contract | CPU parsing; no provider invocation |
+| `pilot/document_invoice.py` | Exact labeled invoice grammar and integer-cent normalization | One narrow initial parser; candidates remain pending |
+| `pilot/document_vault.py` | Append-only history, context filtering, correction/review CAS and accepted projection | Composes old EvidenceStore transactions; trusted local actor labels |
+| `pilot/document_application.py` and `tools/run_docai.py` | Synchronous intake, inspect, review, correction and export | No service login, leased queue, automatic real-document approval or product agents |
+| `tools/evaluate_docai_native.py` | Run the retained synthetic corpus and report observed coverage/errors | No fabricated reviewed accepts, provider cost or calibrated probabilities |
+
+The [application guide](../guides/document_application.md) gives a source-to-field
+walkthrough. Engine parsing and review rules remain outside the application
+orchestrator. The existing downstream acquisition files below remain compatible.
+
+The selected future adapter target is NVIDIA Parse 2.4 with the documented
+Nemotron Parse model and page API, recorded in
+[`config/docai-provider-target.json`](../../config/docai-provider-target.json).
+L2 owns implementation under BR-DOC-012 and SW-13 owns independent review. This
+target is not a registered runtime client, endpoint, credential or connection.
+The generic disabled/mock seam BR-DOC-007 remains its next prerequisite.
+
+Durable jobs, authenticated ACLs and retention propagation remain open, so the
+local demonstration is partial evidence for the broader Gate A. R and CUDA are
+preserved extension tracks. Bounded hashing, strings, native parsing and SQLite
+remain on CPU; model page batching will need measured device/memory/precision
+evidence before enabling a CUDA inference implementation.
 
 ## Shared swarm engine and layer
 
@@ -95,10 +131,10 @@ Use the implementation tests and current delivery report for those claims.
 
 ## Existing acquisition evidence contract
 
-The general Doc AI contract must add domain/subject/case references, binary
-document intake, extraction-run identity, truthful method/provider metadata,
-completeness and page/span locations. It must not force every document into a
-financial deal. The following describes the preserved acquisition projection.
+The general Doc AI `br.docai.v1` contract now adds domain/subject/case references,
+binary-document identity, extraction-run identity, truthful method/provider
+metadata, completeness and page/span locations without forcing documents into
+financial deals. The following describes the preserved acquisition projection.
 
 A candidate input needs the following semantic fields, regardless of the
 storage representation:

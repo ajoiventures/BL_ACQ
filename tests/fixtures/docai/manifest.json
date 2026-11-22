@@ -1,0 +1,855 @@
+{
+  "schema_version": "br.docai-corpus.v1",
+  "corpus_id": "br-docai-native-invoices-001",
+  "version": 1,
+  "scope": "native_invoice_contract_v1",
+  "offset_unit": "unicode_codepoints",
+  "created_on": "2026-11-22",
+  "source_rights": "Original synthetic test materials authored for this repository; no personal, commercial source document or provider output was copied.",
+  "holdout_policy": "The fixed holdout is available in the repository, not cryptographically hidden or a statistically independent production sample. Do not tune implementation to its labels; if used for tuning, relabel as development and version a new holdout.",
+  "documents": [
+    {
+      "document_id": "DOC-SYN-001",
+      "source_file": "invoice_native.txt",
+      "source_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b",
+      "origin": "synthetic",
+      "document_class": "MEP_INVOICE",
+      "split": "development",
+      "scenario": "plain_native_invoice",
+      "expected_processing_status": "complete",
+      "read_limits": {},
+      "reference_texts": [
+        {
+          "page": 1,
+          "path": "invoice_native.txt",
+          "sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b",
+          "basis": "independently authored synthetic reference, not parser output"
+        }
+      ],
+      "fields": [
+        {
+          "field": "vendor",
+          "expectation": "value",
+          "canonical_value": "Example Mechanical Services",
+          "critical": false,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b",
+              "start": 46,
+              "end": 73,
+              "quote": "Example Mechanical Services"
+            }
+          ]
+        },
+        {
+          "field": "invoice_number",
+          "expectation": "value",
+          "canonical_value": "SYN-INV-001",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b",
+              "start": 83,
+              "end": 94,
+              "quote": "SYN-INV-001"
+            }
+          ]
+        },
+        {
+          "field": "invoice_date",
+          "expectation": "value",
+          "canonical_value": "2026-11-20",
+          "critical": false,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b",
+              "start": 109,
+              "end": 119,
+              "quote": "2026-11-20"
+            }
+          ]
+        },
+        {
+          "field": "due_date",
+          "expectation": "value",
+          "canonical_value": "2026-12-15",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b",
+              "start": 130,
+              "end": 140,
+              "quote": "2026-12-15"
+            }
+          ]
+        },
+        {
+          "field": "total_cents",
+          "expectation": "value",
+          "canonical_value": "125000",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b",
+              "start": 166,
+              "end": 174,
+              "quote": "1,250.00"
+            }
+          ]
+        },
+        {
+          "field": "currency",
+          "expectation": "value",
+          "canonical_value": "USD",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b",
+              "start": 151,
+              "end": 154,
+              "quote": "USD"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-SYN-002",
+      "source_file": "invoice_table.csv",
+      "source_sha256": "4dcca3302e43637a219c02861029ba6bfd4a7b848a2d0969ccc2f74a826d5c4c",
+      "origin": "synthetic",
+      "document_class": "MEP_INVOICE",
+      "split": "development",
+      "scenario": "native_table",
+      "expected_processing_status": "complete",
+      "read_limits": {},
+      "reference_texts": [
+        {
+          "page": 1,
+          "path": "invoice_table.csv",
+          "sha256": "4dcca3302e43637a219c02861029ba6bfd4a7b848a2d0969ccc2f74a826d5c4c",
+          "basis": "independently authored synthetic reference, not parser output"
+        }
+      ],
+      "fields": [
+        {
+          "field": "vendor",
+          "expectation": "value",
+          "canonical_value": "Example Heating Lab",
+          "critical": false,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "4dcca3302e43637a219c02861029ba6bfd4a7b848a2d0969ccc2f74a826d5c4c",
+              "start": 97,
+              "end": 116,
+              "quote": "Example Heating Lab"
+            }
+          ]
+        },
+        {
+          "field": "invoice_number",
+          "expectation": "value",
+          "canonical_value": "SYN-INV-002",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "4dcca3302e43637a219c02861029ba6bfd4a7b848a2d0969ccc2f74a826d5c4c",
+              "start": 63,
+              "end": 74,
+              "quote": "SYN-INV-002"
+            }
+          ]
+        },
+        {
+          "field": "invoice_date",
+          "expectation": "value",
+          "canonical_value": "2026-11-21",
+          "critical": false,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "4dcca3302e43637a219c02861029ba6bfd4a7b848a2d0969ccc2f74a826d5c4c",
+              "start": 75,
+              "end": 85,
+              "quote": "2026-11-21"
+            }
+          ]
+        },
+        {
+          "field": "due_date",
+          "expectation": "value",
+          "canonical_value": "2026-12-21",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "4dcca3302e43637a219c02861029ba6bfd4a7b848a2d0969ccc2f74a826d5c4c",
+              "start": 86,
+              "end": 96,
+              "quote": "2026-12-21"
+            }
+          ]
+        },
+        {
+          "field": "total_cents",
+          "expectation": "value",
+          "canonical_value": "48025",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "4dcca3302e43637a219c02861029ba6bfd4a7b848a2d0969ccc2f74a826d5c4c",
+              "start": 121,
+              "end": 127,
+              "quote": "480.25"
+            }
+          ]
+        },
+        {
+          "field": "currency",
+          "expectation": "value",
+          "canonical_value": "USD",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "4dcca3302e43637a219c02861029ba6bfd4a7b848a2d0969ccc2f74a826d5c4c",
+              "start": 117,
+              "end": 120,
+              "quote": "USD"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-SYN-003",
+      "source_file": "invoice_ambiguous.txt",
+      "source_sha256": "39f814d5ea6106de945b501fde81b8580ce21d3a153c32ced3acbd56065d49fc",
+      "origin": "synthetic",
+      "document_class": "MEP_INVOICE",
+      "split": "development",
+      "scenario": "conflicting_total_and_ambiguous_date",
+      "expected_processing_status": "complete",
+      "read_limits": {},
+      "reference_texts": [
+        {
+          "page": 1,
+          "path": "invoice_ambiguous.txt",
+          "sha256": "39f814d5ea6106de945b501fde81b8580ce21d3a153c32ced3acbd56065d49fc",
+          "basis": "independently authored synthetic reference, not parser output"
+        }
+      ],
+      "fields": [
+        {
+          "field": "vendor",
+          "expectation": "value",
+          "canonical_value": "Example Service Lab",
+          "critical": false,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "39f814d5ea6106de945b501fde81b8580ce21d3a153c32ced3acbd56065d49fc",
+              "start": 46,
+              "end": 65,
+              "quote": "Example Service Lab"
+            }
+          ]
+        },
+        {
+          "field": "invoice_number",
+          "expectation": "value",
+          "canonical_value": "SYN-INV-003",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "39f814d5ea6106de945b501fde81b8580ce21d3a153c32ced3acbd56065d49fc",
+              "start": 75,
+              "end": 86,
+              "quote": "SYN-INV-003"
+            }
+          ]
+        },
+        {
+          "field": "invoice_date",
+          "expectation": "value",
+          "canonical_value": "2026-11-20",
+          "critical": false,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "39f814d5ea6106de945b501fde81b8580ce21d3a153c32ced3acbd56065d49fc",
+              "start": 101,
+              "end": 111,
+              "quote": "2026-11-20"
+            }
+          ]
+        },
+        {
+          "field": "due_date",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": true,
+          "reason": "No unambiguous answer supported by the declared native-contract scope.",
+          "allowed_spans": []
+        },
+        {
+          "field": "total_cents",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": true,
+          "reason": "No unambiguous answer supported by the declared native-contract scope.",
+          "allowed_spans": []
+        },
+        {
+          "field": "currency",
+          "expectation": "value",
+          "canonical_value": "USD",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "39f814d5ea6106de945b501fde81b8580ce21d3a153c32ced3acbd56065d49fc",
+              "start": 173,
+              "end": 176,
+              "quote": "USD"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-SYN-004",
+      "source_file": "malformed.pdf",
+      "source_sha256": "33d64534197dbb88c3befa762e4538b88e5b0ea8187dfa676fe1b70aa7764cda",
+      "origin": "synthetic",
+      "document_class": "MEP_INVOICE",
+      "split": "development",
+      "scenario": "malformed_pdf",
+      "expected_processing_status": "error",
+      "read_limits": {},
+      "reference_texts": [],
+      "fields": [
+        {
+          "field": "vendor",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": false,
+          "reason": "Malformed synthetic PDF; no parsed source text exists.",
+          "allowed_spans": []
+        },
+        {
+          "field": "invoice_number",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": true,
+          "reason": "Malformed synthetic PDF; no parsed source text exists.",
+          "allowed_spans": []
+        },
+        {
+          "field": "invoice_date",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": false,
+          "reason": "Malformed synthetic PDF; no parsed source text exists.",
+          "allowed_spans": []
+        },
+        {
+          "field": "due_date",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": true,
+          "reason": "Malformed synthetic PDF; no parsed source text exists.",
+          "allowed_spans": []
+        },
+        {
+          "field": "total_cents",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": true,
+          "reason": "Malformed synthetic PDF; no parsed source text exists.",
+          "allowed_spans": []
+        },
+        {
+          "field": "currency",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": true,
+          "reason": "Malformed synthetic PDF; no parsed source text exists.",
+          "allowed_spans": []
+        }
+      ],
+      "expected_error_codes": [
+        "MALFORMED_PDF"
+      ]
+    },
+    {
+      "document_id": "DOC-SYN-005",
+      "source_file": "invoice_missing.txt",
+      "source_sha256": "63725f020750570362f19d4f57af92e040ce4e73f2b98e96be72a2a082d2112f",
+      "origin": "synthetic",
+      "document_class": "MEP_INVOICE",
+      "split": "development",
+      "scenario": "fully_read_but_missing_fields",
+      "expected_processing_status": "complete",
+      "read_limits": {},
+      "reference_texts": [
+        {
+          "page": 1,
+          "path": "invoice_missing.txt",
+          "sha256": "63725f020750570362f19d4f57af92e040ce4e73f2b98e96be72a2a082d2112f",
+          "basis": "independently authored synthetic reference, not parser output"
+        }
+      ],
+      "fields": [
+        {
+          "field": "vendor",
+          "expectation": "value",
+          "canonical_value": "Example Incomplete Services",
+          "critical": false,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "63725f020750570362f19d4f57af92e040ce4e73f2b98e96be72a2a082d2112f",
+              "start": 46,
+              "end": 73,
+              "quote": "Example Incomplete Services"
+            }
+          ]
+        },
+        {
+          "field": "invoice_number",
+          "expectation": "value",
+          "canonical_value": "SYN-INV-005",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "63725f020750570362f19d4f57af92e040ce4e73f2b98e96be72a2a082d2112f",
+              "start": 83,
+              "end": 94,
+              "quote": "SYN-INV-005"
+            }
+          ]
+        },
+        {
+          "field": "invoice_date",
+          "expectation": "value",
+          "canonical_value": "2026-11-17",
+          "critical": false,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "63725f020750570362f19d4f57af92e040ce4e73f2b98e96be72a2a082d2112f",
+              "start": 109,
+              "end": 119,
+              "quote": "2026-11-17"
+            }
+          ]
+        },
+        {
+          "field": "due_date",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": true,
+          "allowed_spans": [],
+          "reason": "No due date is present; total label has no amount. Missing values must not be invented, although native byte coverage is complete."
+        },
+        {
+          "field": "total_cents",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": true,
+          "allowed_spans": [],
+          "reason": "No due date is present; total label has no amount. Missing values must not be invented, although native byte coverage is complete."
+        },
+        {
+          "field": "currency",
+          "expectation": "value",
+          "canonical_value": "USD",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "63725f020750570362f19d4f57af92e040ce4e73f2b98e96be72a2a082d2112f",
+              "start": 130,
+              "end": 133,
+              "quote": "USD"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-SYN-105",
+      "source_file": "invoice_holdout.txt",
+      "source_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a",
+      "origin": "synthetic",
+      "document_class": "MEP_INVOICE",
+      "split": "holdout",
+      "scenario": "native_unicode_invoice",
+      "expected_processing_status": "complete",
+      "read_limits": {},
+      "reference_texts": [
+        {
+          "page": 1,
+          "path": "invoice_holdout.txt",
+          "sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a",
+          "basis": "independently authored synthetic reference, not parser output"
+        }
+      ],
+      "fields": [
+        {
+          "field": "vendor",
+          "expectation": "value",
+          "canonical_value": "Example Café Maintenance",
+          "critical": false,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a",
+              "start": 46,
+              "end": 70,
+              "quote": "Example Café Maintenance"
+            }
+          ]
+        },
+        {
+          "field": "invoice_number",
+          "expectation": "value",
+          "canonical_value": "SYN-INV-105",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a",
+              "start": 80,
+              "end": 91,
+              "quote": "SYN-INV-105"
+            }
+          ]
+        },
+        {
+          "field": "invoice_date",
+          "expectation": "value",
+          "canonical_value": "2026-11-18",
+          "critical": false,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a",
+              "start": 106,
+              "end": 116,
+              "quote": "2026-11-18"
+            }
+          ]
+        },
+        {
+          "field": "due_date",
+          "expectation": "value",
+          "canonical_value": "2026-12-02",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a",
+              "start": 127,
+              "end": 137,
+              "quote": "2026-12-02"
+            }
+          ]
+        },
+        {
+          "field": "total_cents",
+          "expectation": "value",
+          "canonical_value": "7905",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a",
+              "start": 163,
+              "end": 168,
+              "quote": "79.05"
+            }
+          ]
+        },
+        {
+          "field": "currency",
+          "expectation": "value",
+          "canonical_value": "USD",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a",
+              "start": 148,
+              "end": 151,
+              "quote": "USD"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-SYN-106",
+      "source_file": "invoice_native.pdf",
+      "source_sha256": "07c04e6dc994423c613bbbcc05604bdc1db4ed0795691193f4f61052f4facbce",
+      "origin": "synthetic",
+      "document_class": "MEP_INVOICE",
+      "split": "holdout",
+      "scenario": "native_pdf_table",
+      "expected_processing_status": "complete",
+      "read_limits": {},
+      "reference_texts": [
+        {
+          "page": 1,
+          "path": "invoice_native_pdf.reference.txt",
+          "sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5",
+          "basis": "independently authored synthetic reference, not parser output"
+        }
+      ],
+      "fields": [
+        {
+          "field": "vendor",
+          "expectation": "value",
+          "canonical_value": "Example Pipeworks",
+          "critical": false,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5",
+              "start": 46,
+              "end": 63,
+              "quote": "Example Pipeworks"
+            }
+          ]
+        },
+        {
+          "field": "invoice_number",
+          "expectation": "value",
+          "canonical_value": "SYN-INV-106",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5",
+              "start": 73,
+              "end": 84,
+              "quote": "SYN-INV-106"
+            }
+          ]
+        },
+        {
+          "field": "invoice_date",
+          "expectation": "value",
+          "canonical_value": "2026-11-19",
+          "critical": false,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5",
+              "start": 99,
+              "end": 109,
+              "quote": "2026-11-19"
+            }
+          ]
+        },
+        {
+          "field": "due_date",
+          "expectation": "value",
+          "canonical_value": "2027-01-05",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5",
+              "start": 120,
+              "end": 130,
+              "quote": "2027-01-05"
+            }
+          ]
+        },
+        {
+          "field": "total_cents",
+          "expectation": "value",
+          "canonical_value": "90618",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5",
+              "start": 156,
+              "end": 162,
+              "quote": "906.18"
+            }
+          ]
+        },
+        {
+          "field": "currency",
+          "expectation": "value",
+          "canonical_value": "USD",
+          "critical": true,
+          "allowed_spans": [
+            {
+              "page": 1,
+              "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5",
+              "start": 141,
+              "end": 144,
+              "quote": "USD"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-SYN-107",
+      "source_file": "invoice_scan.pdf",
+      "source_sha256": "94ff356a2e2e8fb87d720a4c135009ce23a121a9f3687821f7852f29c7b5c40f",
+      "origin": "synthetic",
+      "document_class": "MEP_INVOICE",
+      "split": "holdout",
+      "scenario": "image_only_pdf",
+      "expected_processing_status": "needs_ocr",
+      "read_limits": {},
+      "reference_texts": [
+        {
+          "page": 1,
+          "path": "invoice_scan.reference.txt",
+          "sha256": "03ad38ebdc438bbeee31fd7dd064fb1bb25bd7b0c88abe78b65d7aad0c177834",
+          "basis": "independently authored synthetic reference, not parser output"
+        }
+      ],
+      "fields": [
+        {
+          "field": "vendor",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": false,
+          "reason": "Image-only input: the native path has no text; the authoring transcript is not OCR output.",
+          "allowed_spans": []
+        },
+        {
+          "field": "invoice_number",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": true,
+          "reason": "Image-only input: the native path has no text; the authoring transcript is not OCR output.",
+          "allowed_spans": []
+        },
+        {
+          "field": "invoice_date",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": false,
+          "reason": "Image-only input: the native path has no text; the authoring transcript is not OCR output.",
+          "allowed_spans": []
+        },
+        {
+          "field": "due_date",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": true,
+          "reason": "Image-only input: the native path has no text; the authoring transcript is not OCR output.",
+          "allowed_spans": []
+        },
+        {
+          "field": "total_cents",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": true,
+          "reason": "Image-only input: the native path has no text; the authoring transcript is not OCR output.",
+          "allowed_spans": []
+        },
+        {
+          "field": "currency",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": true,
+          "reason": "Image-only input: the native path has no text; the authoring transcript is not OCR output.",
+          "allowed_spans": []
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-SYN-108",
+      "source_file": "invoice_over_limit.txt",
+      "source_sha256": "04d5c840ac703d0887c64634242d26e95e93f4cf7cffc918a1ce9dba6ebdba21",
+      "origin": "synthetic",
+      "document_class": "MEP_INVOICE",
+      "split": "holdout",
+      "scenario": "actual_configured_byte_limit",
+      "expected_processing_status": "partial",
+      "read_limits": {
+        "max_text_bytes": 150000
+      },
+      "reference_texts": [
+        {
+          "page": 1,
+          "path": "invoice_over_limit.txt",
+          "sha256": "04d5c840ac703d0887c64634242d26e95e93f4cf7cffc918a1ce9dba6ebdba21",
+          "basis": "independently authored synthetic reference, not parser output"
+        }
+      ],
+      "fields": [
+        {
+          "field": "vendor",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": false,
+          "reason": "All invoice fields lie after the configured max_text_bytes=150000 coverage limit.",
+          "allowed_spans": []
+        },
+        {
+          "field": "invoice_number",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": true,
+          "reason": "All invoice fields lie after the configured max_text_bytes=150000 coverage limit.",
+          "allowed_spans": []
+        },
+        {
+          "field": "invoice_date",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": false,
+          "reason": "All invoice fields lie after the configured max_text_bytes=150000 coverage limit.",
+          "allowed_spans": []
+        },
+        {
+          "field": "due_date",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": true,
+          "reason": "All invoice fields lie after the configured max_text_bytes=150000 coverage limit.",
+          "allowed_spans": []
+        },
+        {
+          "field": "total_cents",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": true,
+          "reason": "All invoice fields lie after the configured max_text_bytes=150000 coverage limit.",
+          "allowed_spans": []
+        },
+        {
+          "field": "currency",
+          "expectation": "abstain",
+          "canonical_value": null,
+          "critical": true,
+          "reason": "All invoice fields lie after the configured max_text_bytes=150000 coverage limit.",
+          "allowed_spans": []
+        }
+      ]
+    }
+  ]
+}

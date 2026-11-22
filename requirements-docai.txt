@@ -1,0 +1,2 @@
+# Optional native PDF reader. TXT/MD/CSV/DOCX and review contracts use stdlib.
+pypdf==6.21.4

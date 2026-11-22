@@ -1,0 +1,2 @@
+invoice_number,invoice_date,due_date,vendor,currency,total_due
+SYN-INV-002,2026-11-21,2026-12-21,Example Heating Lab,USD,480.25

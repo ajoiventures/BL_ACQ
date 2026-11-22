@@ -1,0 +1,130 @@
+{
+  "scope": "synthetic contract examples; not live extraction or authenticated review evidence",
+  "document": {
+    "asset_links": [],
+    "byte_count": 127,
+    "content_sha256": "f02312d58afc8ad5201674abd7a5a89a4f4c3b64befa75b66d3618ed60f8e15a",
+    "context": {
+      "case_id": null,
+      "domain": "family",
+      "subject_id": "home-services",
+      "tenant_id": "example-household"
+    },
+    "document_class": "MEP_INVOICE",
+    "document_id": "invoice-v1",
+    "media_type": "text/plain",
+    "predecessor_document_id": null,
+    "received_at": "2026-11-22T12:00:00.000000Z",
+    "schema_version": "br.docai.v1",
+    "source_status": "synthetic",
+    "source_uri": "fixture://docai/invoice.txt",
+    "title": "Synthetic service invoice",
+    "version": 1
+  },
+  "extraction": {
+    "api_version": null,
+    "backend": "cpu",
+    "configuration_sha256": "6062e14699d12086efd329ddabd5a55275f4f7eec17c6cfac26c280e64793fc5",
+    "context": {
+      "case_id": null,
+      "domain": "family",
+      "subject_id": "home-services",
+      "tenant_id": "example-household"
+    },
+    "coverage": {
+      "complete": true,
+      "input_bytes": 127,
+      "limits": {
+        "max_chars_per_page": 20000,
+        "max_input_bytes": 16777216,
+        "max_pages": 5,
+        "max_text_bytes": 150000,
+        "max_xml_bytes": 2000000
+      },
+      "notes": [
+        "Logical page 1 preserves source UTF-8 text."
+      ],
+      "page_basis": "logical",
+      "processed_bytes": 127,
+      "processed_pages": 1,
+      "total_pages": 1,
+      "truncated": false
+    },
+    "device": null,
+    "document_id": "invoice-v1",
+    "document_version": 1,
+    "errors": [],
+    "finished_at": "2026-11-22T12:00:02.000000Z",
+    "method": "native",
+    "model": null,
+    "model_version": null,
+    "pages": [
+      {
+        "page": 1,
+        "text": "Vendor: Example Service Company\nInvoice: INV-001\nInvoice date: 2026-11-20\nDue date: 2026-12-15\nTotal due: 125.00\nCurrency: USD\n",
+        "text_sha256": "f02312d58afc8ad5201674abd7a5a89a4f4c3b64befa75b66d3618ed60f8e15a"
+      }
+    ],
+    "precision": null,
+    "processor": "example.native.text",
+    "processor_version": "synthetic-example-1",
+    "provider": null,
+    "raw_response": null,
+    "run_id": "run-001",
+    "schema_version": "br.docai.v1",
+    "source_sha256": "f02312d58afc8ad5201674abd7a5a89a4f4c3b64befa75b66d3618ed60f8e15a",
+    "started_at": "2026-11-22T12:00:01.000000Z",
+    "status": "complete"
+  },
+  "candidate": {
+    "claim_id": "claim-total-001",
+    "confidence": null,
+    "context": {
+      "case_id": null,
+      "domain": "family",
+      "subject_id": "home-services",
+      "tenant_id": "example-household"
+    },
+    "created_at": "2026-11-22T12:00:03.000000Z",
+    "currency": "USD",
+    "document_id": "invoice-v1",
+    "document_version": 1,
+    "field": "total_cents",
+    "method": "native",
+    "proposed_by": "native.invoice.labels.v1",
+    "run_id": "run-001",
+    "schema_version": "br.docai.v1",
+    "spans": [
+      {
+        "end": 112,
+        "page": 1,
+        "quote": "125.00",
+        "start": 106,
+        "text_sha256": "f02312d58afc8ad5201674abd7a5a89a4f4c3b64befa75b66d3618ed60f8e15a"
+      }
+    ],
+    "supersedes_claim_id": null,
+    "unit": "cents",
+    "value": 12500,
+    "value_type": "money_cents"
+  },
+  "review": {
+    "actor": "example-reviewer",
+    "claim_id": "claim-total-001",
+    "context": {
+      "case_id": null,
+      "domain": "family",
+      "subject_id": "home-services",
+      "tenant_id": "example-household"
+    },
+    "decision": "accept",
+    "document_id": "invoice-v1",
+    "document_version": 1,
+    "reason": "Compared the amount with the preserved source.",
+    "review_id": "review-001",
+    "reviewed_at": "2026-11-22T12:00:04.000000Z",
+    "run_id": "run-001",
+    "schema_version": "br.docai.v1",
+    "supersedes_review_id": null
+  }
+}

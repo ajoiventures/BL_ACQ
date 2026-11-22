@@ -1,0 +1,96 @@
+{
+  "schema_version": "br.docai-increment-checks.v1",
+  "date": "2026-11-22",
+  "python_version": "3.12.14",
+  "baseline_tree": "42fe36afc14efd46fa441f76c50c6ee7b95980ec",
+  "checks": [
+    {
+      "name": "Focused Doc AI",
+      "command": "python -m unittest tests.test_docai_contracts tests.test_docai_native tests.test_docai_application tests.test_docai_metrics tests.test_docai_evaluation -q",
+      "status": "passed",
+      "tests": 96,
+      "skipped": 0
+    },
+    {
+      "name": "Configured repository lint",
+      "status": "passed",
+      "version": "ruff 0.14.10",
+      "selection": "E9,F63,F7,F82; includes filing"
+    },
+    {
+      "name": "Existing typed modules",
+      "status": "passed",
+      "version": "mypy 1.19.1",
+      "files": 3
+    },
+    {
+      "name": "Reporting tests",
+      "status": "passed",
+      "tests": 9,
+      "skipped": 0
+    },
+    {
+      "name": "Pilot tests",
+      "status": "passed_with_skip",
+      "tests": 316,
+      "passed": 315,
+      "skipped": 1
+    },
+    {
+      "name": "Tool tests",
+      "status": "passed",
+      "tests": 1,
+      "skipped": 0
+    },
+    {
+      "name": "Guide and local Markdown links",
+      "status": "passed",
+      "sources": 86,
+      "markdown_documents": 123,
+      "errors": 0
+    },
+    {
+      "name": "Synthetic recovery",
+      "status": "passed",
+      "reconciled": true,
+      "restored": true,
+      "review_events": 2,
+      "settled_invoices": 2
+    },
+    {
+      "name": "Founder browser replay",
+      "status": "failed_before_assertions",
+      "error": "Chromium process_singleton_posix.cc: socket() failed: Operation not permitted (1)"
+    },
+    {
+      "name": "Valuation browser replay",
+      "status": "not_reached",
+      "reason": "Sequential runner stopped at founder browser launch failure"
+    }
+  ],
+  "full_release_gate": "not_passed",
+  "provider_calls": 0,
+  "model_downloads": 0,
+  "product_agents": 0,
+  "cuda_execution": false,
+  "r_execution": false,
+  "source_sha256": {
+    "filing/inbox.py": "25550289c801378c6294a29deae86533ace226e53b53edc292c154483fd90694",
+    "pilot/document_application.py": "5355fee21edd92a3624f1117e30276bbb92ef0feb8e656f16b728879960daf9b",
+    "pilot/document_contracts.py": "aeffb1b6e7c604fc7253332bac18813eb32da0763c080bd2a1c3838cbc62eda4",
+    "pilot/document_evidence.py": "0cba9e98cceb152456b52e652c59a0b413fb2c70feee723f3ccd070b38960732",
+    "pilot/document_invoice.py": "31b0f0523b59bf620db70f07ff3dcd6f94d13161f91f01066bd2e412b0c66a5c",
+    "pilot/document_native.py": "ce1b8e63d1d8d0ae33893e68623513e37f2e5ee8b571cbb3036146a06b60719b",
+    "pilot/document_offer_layer.py": "0f4727c1482c0aa35353c4a82452f17cdb8ee265f524868a5bde5148e544a1e6",
+    "pilot/document_vault.py": "d4f96f706019f7ca84f5f8aa811202724d46a9d900bec1f7925c1c0b9dae01df",
+    "tests/test_docai_application.py": "6aeb3104ccd2e863e0740ad98a127ccd7bd9fe09fa2704ee94b5e2785cdf7800",
+    "tests/test_docai_contracts.py": "3e0a6211d7d7a5c59d8e9278694d11f10601a13d7df317749af90dcfbfae9c51",
+    "tests/test_docai_evaluation.py": "f87d3174aea92f5c8e8df00eb829bb7cfc41cc57523037e2b26b06e7ad8c86ee",
+    "tests/test_docai_metrics.py": "f17d02161607220e039f4d205770b78520c2dec05f347a7c74eca42cb139ec3d",
+    "tests/test_docai_native.py": "dba7046de33d550845e68f775d5f1f62ed4966a76f5f45ce67f0fe6312825b44",
+    "tools/docai_metrics.py": "eed6e00f781f1988c05c8ca050941f59350535261cce1d4b0d0ed75b39c40b60",
+    "tools/evaluate_docai_native.py": "cd8debbf2b2ea1ec0e47409856201597ba3494f92995b5aeefa502aaa80d8d2a",
+    "tools/run_docai.py": "b7abd06ac4e9eda68a85a93753f6fd11102c8c32431f7e424036efb4249cba31"
+  },
+  "final_native_evaluation": "data/docai/native-baseline-20261122/execution.json"
+}

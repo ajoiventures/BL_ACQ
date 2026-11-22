@@ -1,0 +1,623 @@
+{
+  "schema_version": "br.docai-predictions.v1",
+  "corpus_id": "br-docai-native-invoices-001",
+  "corpus_sha256": "f313e2d6599680333afa2a4d188f0dd9603765be16e309829b0405653d8a4378",
+  "scope": "native_invoice_contract_v1",
+  "documents": [
+    {
+      "document_id": "DOC-SYN-001",
+      "processing_status": "complete",
+      "fields": [
+        {
+          "field": "vendor",
+          "decision": "propose",
+          "canonical_value": "Example Mechanical Services",
+          "span": {
+            "end": 73,
+            "page": 1,
+            "quote": "Example Mechanical Services",
+            "start": 46,
+            "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_number",
+          "decision": "propose",
+          "canonical_value": "SYN-INV-001",
+          "span": {
+            "end": 94,
+            "page": 1,
+            "quote": "SYN-INV-001",
+            "start": 83,
+            "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_date",
+          "decision": "propose",
+          "canonical_value": "2026-11-20",
+          "span": {
+            "end": 119,
+            "page": 1,
+            "quote": "2026-11-20",
+            "start": 109,
+            "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "due_date",
+          "decision": "propose",
+          "canonical_value": "2026-12-15",
+          "span": {
+            "end": 140,
+            "page": 1,
+            "quote": "2026-12-15",
+            "start": 130,
+            "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "total_cents",
+          "decision": "propose",
+          "canonical_value": "125000",
+          "span": {
+            "end": 174,
+            "page": 1,
+            "quote": "1,250.00",
+            "start": 166,
+            "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "currency",
+          "decision": "propose",
+          "canonical_value": "USD",
+          "span": {
+            "end": 154,
+            "page": 1,
+            "quote": "USD",
+            "start": 151,
+            "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+          },
+          "review_decision": "pending"
+        }
+      ],
+      "latency_ms": 4.418663000251399,
+      "review_ms": null,
+      "reported_cost_usd": null
+    },
+    {
+      "document_id": "DOC-SYN-002",
+      "processing_status": "complete",
+      "fields": [
+        {
+          "field": "vendor",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_number",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_date",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "due_date",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "total_cents",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "currency",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        }
+      ],
+      "latency_ms": 0.5934059990977403,
+      "review_ms": null,
+      "reported_cost_usd": null
+    },
+    {
+      "document_id": "DOC-SYN-003",
+      "processing_status": "complete",
+      "fields": [
+        {
+          "field": "vendor",
+          "decision": "propose",
+          "canonical_value": "Example Service Lab",
+          "span": {
+            "end": 65,
+            "page": 1,
+            "quote": "Example Service Lab",
+            "start": 46,
+            "text_sha256": "39f814d5ea6106de945b501fde81b8580ce21d3a153c32ced3acbd56065d49fc"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_number",
+          "decision": "propose",
+          "canonical_value": "SYN-INV-003",
+          "span": {
+            "end": 86,
+            "page": 1,
+            "quote": "SYN-INV-003",
+            "start": 75,
+            "text_sha256": "39f814d5ea6106de945b501fde81b8580ce21d3a153c32ced3acbd56065d49fc"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_date",
+          "decision": "propose",
+          "canonical_value": "2026-11-20",
+          "span": {
+            "end": 111,
+            "page": 1,
+            "quote": "2026-11-20",
+            "start": 101,
+            "text_sha256": "39f814d5ea6106de945b501fde81b8580ce21d3a153c32ced3acbd56065d49fc"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "currency",
+          "decision": "propose",
+          "canonical_value": "USD",
+          "span": {
+            "end": 176,
+            "page": 1,
+            "quote": "USD",
+            "start": 173,
+            "text_sha256": "39f814d5ea6106de945b501fde81b8580ce21d3a153c32ced3acbd56065d49fc"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "due_date",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "total_cents",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        }
+      ],
+      "latency_ms": 1.7133959991042502,
+      "review_ms": null,
+      "reported_cost_usd": null
+    },
+    {
+      "document_id": "DOC-SYN-004",
+      "processing_status": "error",
+      "fields": [
+        {
+          "field": "vendor",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_number",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_date",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "due_date",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "total_cents",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "currency",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        }
+      ],
+      "latency_ms": 233.9213289997133,
+      "review_ms": null,
+      "reported_cost_usd": null
+    },
+    {
+      "document_id": "DOC-SYN-005",
+      "processing_status": "complete",
+      "fields": [
+        {
+          "field": "vendor",
+          "decision": "propose",
+          "canonical_value": "Example Incomplete Services",
+          "span": {
+            "end": 73,
+            "page": 1,
+            "quote": "Example Incomplete Services",
+            "start": 46,
+            "text_sha256": "63725f020750570362f19d4f57af92e040ce4e73f2b98e96be72a2a082d2112f"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_number",
+          "decision": "propose",
+          "canonical_value": "SYN-INV-005",
+          "span": {
+            "end": 94,
+            "page": 1,
+            "quote": "SYN-INV-005",
+            "start": 83,
+            "text_sha256": "63725f020750570362f19d4f57af92e040ce4e73f2b98e96be72a2a082d2112f"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_date",
+          "decision": "propose",
+          "canonical_value": "2026-11-17",
+          "span": {
+            "end": 119,
+            "page": 1,
+            "quote": "2026-11-17",
+            "start": 109,
+            "text_sha256": "63725f020750570362f19d4f57af92e040ce4e73f2b98e96be72a2a082d2112f"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "currency",
+          "decision": "propose",
+          "canonical_value": "USD",
+          "span": {
+            "end": 133,
+            "page": 1,
+            "quote": "USD",
+            "start": 130,
+            "text_sha256": "63725f020750570362f19d4f57af92e040ce4e73f2b98e96be72a2a082d2112f"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "due_date",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "total_cents",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        }
+      ],
+      "latency_ms": 1.90874699910637,
+      "review_ms": null,
+      "reported_cost_usd": null
+    },
+    {
+      "document_id": "DOC-SYN-105",
+      "processing_status": "complete",
+      "fields": [
+        {
+          "field": "vendor",
+          "decision": "propose",
+          "canonical_value": "Example Café Maintenance",
+          "span": {
+            "end": 70,
+            "page": 1,
+            "quote": "Example Café Maintenance",
+            "start": 46,
+            "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_number",
+          "decision": "propose",
+          "canonical_value": "SYN-INV-105",
+          "span": {
+            "end": 91,
+            "page": 1,
+            "quote": "SYN-INV-105",
+            "start": 80,
+            "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_date",
+          "decision": "propose",
+          "canonical_value": "2026-11-18",
+          "span": {
+            "end": 116,
+            "page": 1,
+            "quote": "2026-11-18",
+            "start": 106,
+            "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "due_date",
+          "decision": "propose",
+          "canonical_value": "2026-12-02",
+          "span": {
+            "end": 137,
+            "page": 1,
+            "quote": "2026-12-02",
+            "start": 127,
+            "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "total_cents",
+          "decision": "propose",
+          "canonical_value": "7905",
+          "span": {
+            "end": 168,
+            "page": 1,
+            "quote": "79.05",
+            "start": 163,
+            "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "currency",
+          "decision": "propose",
+          "canonical_value": "USD",
+          "span": {
+            "end": 151,
+            "page": 1,
+            "quote": "USD",
+            "start": 148,
+            "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a"
+          },
+          "review_decision": "pending"
+        }
+      ],
+      "latency_ms": 2.3558230004709912,
+      "review_ms": null,
+      "reported_cost_usd": null
+    },
+    {
+      "document_id": "DOC-SYN-106",
+      "processing_status": "complete",
+      "fields": [
+        {
+          "field": "vendor",
+          "decision": "propose",
+          "canonical_value": "Example Pipeworks",
+          "span": {
+            "end": 63,
+            "page": 1,
+            "quote": "Example Pipeworks",
+            "start": 46,
+            "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_number",
+          "decision": "propose",
+          "canonical_value": "SYN-INV-106",
+          "span": {
+            "end": 84,
+            "page": 1,
+            "quote": "SYN-INV-106",
+            "start": 73,
+            "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_date",
+          "decision": "propose",
+          "canonical_value": "2026-11-19",
+          "span": {
+            "end": 109,
+            "page": 1,
+            "quote": "2026-11-19",
+            "start": 99,
+            "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "due_date",
+          "decision": "propose",
+          "canonical_value": "2027-01-05",
+          "span": {
+            "end": 130,
+            "page": 1,
+            "quote": "2027-01-05",
+            "start": 120,
+            "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "total_cents",
+          "decision": "propose",
+          "canonical_value": "90618",
+          "span": {
+            "end": 162,
+            "page": 1,
+            "quote": "906.18",
+            "start": 156,
+            "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5"
+          },
+          "review_decision": "pending"
+        },
+        {
+          "field": "currency",
+          "decision": "propose",
+          "canonical_value": "USD",
+          "span": {
+            "end": 144,
+            "page": 1,
+            "quote": "USD",
+            "start": 141,
+            "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5"
+          },
+          "review_decision": "pending"
+        }
+      ],
+      "latency_ms": 187.11939199965855,
+      "review_ms": null,
+      "reported_cost_usd": null
+    },
+    {
+      "document_id": "DOC-SYN-107",
+      "processing_status": "needs_ocr",
+      "fields": [
+        {
+          "field": "vendor",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_number",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_date",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "due_date",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "total_cents",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "currency",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        }
+      ],
+      "latency_ms": 186.29776499983564,
+      "review_ms": null,
+      "reported_cost_usd": null
+    },
+    {
+      "document_id": "DOC-SYN-108",
+      "processing_status": "partial",
+      "fields": [
+        {
+          "field": "vendor",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_number",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "invoice_date",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "due_date",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "total_cents",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        },
+        {
+          "field": "currency",
+          "decision": "abstain",
+          "canonical_value": null,
+          "span": null,
+          "review_decision": "pending"
+        }
+      ],
+      "latency_ms": 1.3816950013278984,
+      "review_ms": null,
+      "reported_cost_usd": null
+    }
+  ]
+}

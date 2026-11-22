@@ -1,0 +1,792 @@
+{
+  "schema_version": "br.builder-schedule.v1",
+  "plan_sha256": "72629cc981fc2ec6c28704b5694394034a2088c7c37e70d7bb93c521f98c3ea5",
+  "build_time_only": true,
+  "runtime_agents_enabled": false,
+  "spawns_agents": false,
+  "executes_tickets": false,
+  "network_used": false,
+  "estimate_basis": "All point estimates and ranges are planning assumptions for scoped builder effort. Simulated relative schedules are not calendar bookings, measured speed, delivery commitments or production throughput.",
+  "time_unit": "relative planning minutes",
+  "algorithm": "bounded list scheduling: priority, remaining critical path, stable ID; no optimality claim",
+  "resource_profile": {
+    "agent_worker": 3,
+    "integrator": 1,
+    "cuda_device": 0,
+    "r_runtime": 0
+  },
+  "resource_basis": "Declared planning capacities; not hardware discovery",
+  "owner_concurrency_limit": 1,
+  "owner_assignment_basis": "Each named owner is one builder lane; pooled worker capacity does not duplicate that owner",
+  "reserved_integrator": 1,
+  "enabled_phases": [
+    "application",
+    "connector_contract",
+    "contracts",
+    "engine",
+    "expansion",
+    "measurement",
+    "offline_validation",
+    "provider_contract",
+    "provider_evaluation",
+    "provider_preflight",
+    "quality_review",
+    "release_review",
+    "source_reconciliation"
+  ],
+  "phase_gates": {
+    "provider_evaluation": [
+      "BR-DOC-009",
+      "BR-DOC-010",
+      "BR-DOC-012",
+      "BR-DOC-017"
+    ],
+    "quality_review": [
+      "BR-DOC-013"
+    ],
+    "production": [
+      "BR-DOC-022"
+    ]
+  },
+  "quality_gate_basis": "Gate ticket completion is asserted by plan status. This planner does not execute acceptance checks or certify quality.",
+  "completed": [
+    "BR-DOC-001",
+    "BR-DOC-002",
+    "BR-DOC-003",
+    "BR-DOC-005"
+  ],
+  "dependency_ready_now": [
+    "BR-DOC-004",
+    "BR-DOC-006",
+    "BR-DOC-007",
+    "BR-DOC-018"
+  ],
+  "proposed_starts_at_zero": [
+    "BR-DOC-004",
+    "BR-DOC-006",
+    "BR-DOC-007"
+  ],
+  "scheduled": [
+    {
+      "id": "BR-DOC-004",
+      "title": "Adapt the evidence store into a versioned Doc AI vault",
+      "owner": "L1_evidence",
+      "phase": "engine",
+      "priority": 0,
+      "start_minute": 0,
+      "end_minute": 180,
+      "estimated_minutes": 180,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/document_evidence.py",
+        "pilot/document_vault.py",
+        "tests/test_document_evidence.py",
+        "tests/test_docai_vault.py",
+        "tests/test_docai_application.py"
+      ],
+      "effective_dependencies": [
+        "BR-DOC-002"
+      ],
+      "dependency_ready_minute": 0,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 560
+    },
+    {
+      "id": "BR-DOC-006",
+      "title": "Add durable intake jobs, leases and outbox recovery",
+      "owner": "L4_workflow",
+      "phase": "engine",
+      "priority": 0,
+      "start_minute": 0,
+      "end_minute": 180,
+      "estimated_minutes": 180,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/document_jobs.py",
+        "tests/test_docai_jobs.py"
+      ],
+      "effective_dependencies": [
+        "BR-DOC-002"
+      ],
+      "dependency_ready_minute": 0,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 560
+    },
+    {
+      "id": "BR-DOC-007",
+      "title": "Build the disabled provider seam and mock adapter contract",
+      "owner": "L2_engineering",
+      "phase": "provider_contract",
+      "priority": 0,
+      "start_minute": 0,
+      "end_minute": 120,
+      "estimated_minutes": 120,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/document_providers.py",
+        "tests/test_docai_provider_contract.py"
+      ],
+      "effective_dependencies": [
+        "BR-DOC-002"
+      ],
+      "dependency_ready_minute": 0,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 360
+    },
+    {
+      "id": "BR-DOC-012",
+      "title": "Implement one version-pinned disabled provider client and preflight",
+      "owner": "L2_engineering",
+      "phase": "provider_preflight",
+      "priority": 0,
+      "start_minute": 120,
+      "end_minute": 360,
+      "estimated_minutes": 240,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "config/document-providers.json",
+        "requirements-docai-provider.lock",
+        "pilot/document_provider_client.py",
+        "pilot/document_providers.py",
+        "pilot/document_provider_preflight.py",
+        "tests/test_docai_selected_provider.py",
+        "tests/test_docai_provider_preflight.py",
+        "tests/fixtures/docai/provider",
+        "reports/validation/docai-selected-adapter.json",
+        "docs/guides/docai-provider-connection.md"
+      ],
+      "effective_dependencies": [
+        "BR-DOC-003",
+        "BR-DOC-007"
+      ],
+      "dependency_ready_minute": 120,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 240
+    },
+    {
+      "id": "BR-DOC-008",
+      "title": "Expose Doc AI intake, status, review and source trace",
+      "owner": "L4_workflow",
+      "phase": "application",
+      "priority": 0,
+      "start_minute": 180,
+      "end_minute": 360,
+      "estimated_minutes": 180,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/document_application.py",
+        "pilot/founder_service.py",
+        "tools/run_docai.py",
+        "tests/test_docai_application.py"
+      ],
+      "effective_dependencies": [
+        "BR-DOC-004",
+        "BR-DOC-005",
+        "BR-DOC-006"
+      ],
+      "dependency_ready_minute": 180,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 380
+    },
+    {
+      "id": "BR-DOC-009",
+      "title": "Gate B: independently verify the offline provider contract",
+      "owner": "SW-13_independent_review",
+      "phase": "offline_validation",
+      "priority": 0,
+      "start_minute": 180,
+      "end_minute": 240,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "reports/validation/docai-provider-contract.json",
+        "docs/validation/docai-gate-b.md"
+      ],
+      "effective_dependencies": [
+        "BR-DOC-003",
+        "BR-DOC-007"
+      ],
+      "dependency_ready_minute": 120,
+      "ready_wait_minutes": 60,
+      "wait_reasons": [
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 60
+    },
+    {
+      "id": "BR-DOC-010",
+      "title": "Gate A: verify the local native extraction and review path",
+      "owner": "SW-13_independent_review",
+      "phase": "offline_validation",
+      "priority": 0,
+      "start_minute": 360,
+      "end_minute": 460,
+      "estimated_minutes": 100,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "reports/validation/docai-native-slice.json",
+        "docs/validation/docai-gate-a.md"
+      ],
+      "effective_dependencies": [
+        "BR-DOC-003",
+        "BR-DOC-004",
+        "BR-DOC-005",
+        "BR-DOC-006",
+        "BR-DOC-008"
+      ],
+      "dependency_ready_minute": 360,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 200
+    },
+    {
+      "id": "BR-DOC-017",
+      "title": "Verify isolation, hostile inputs and recovery across the slice",
+      "owner": "L3_quality",
+      "phase": "offline_validation",
+      "priority": 0,
+      "start_minute": 360,
+      "end_minute": 510,
+      "estimated_minutes": 150,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "tests/test_docai_adversarial.py",
+        "reports/validation/docai-adversarial.json"
+      ],
+      "effective_dependencies": [
+        "BR-DOC-003",
+        "BR-DOC-004",
+        "BR-DOC-006",
+        "BR-DOC-007",
+        "BR-DOC-008"
+      ],
+      "dependency_ready_minute": 360,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 150
+    },
+    {
+      "id": "BR-DOC-011",
+      "title": "Specify and dry-run a bounded source connector",
+      "owner": "L4_workflow",
+      "phase": "connector_contract",
+      "priority": 1,
+      "start_minute": 360,
+      "end_minute": 510,
+      "estimated_minutes": 150,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/document_connectors.py",
+        "tests/test_docai_connectors.py",
+        "docs/guides/docai-source-connector.md"
+      ],
+      "effective_dependencies": [
+        "BR-DOC-002",
+        "BR-DOC-004",
+        "BR-DOC-006"
+      ],
+      "dependency_ready_minute": 180,
+      "ready_wait_minutes": 180,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "L4_workflow"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 150
+    },
+    {
+      "id": "BR-DOC-016",
+      "title": "Publish reviewed document outputs to downstream consumers",
+      "owner": "L1_evidence",
+      "phase": "application",
+      "priority": 1,
+      "start_minute": 460,
+      "end_minute": 560,
+      "estimated_minutes": 100,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/document_exports.py",
+        "pilot/document_offer_layer.py",
+        "tests/test_docai_exports.py",
+        "docs/guides/docai-consumer-contract.md"
+      ],
+      "effective_dependencies": [
+        "BR-DOC-010"
+      ],
+      "dependency_ready_minute": 460,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 100
+    },
+    {
+      "id": "BR-DOC-015",
+      "title": "Add document operations telemetry and cost visibility",
+      "owner": "L4_workflow",
+      "phase": "application",
+      "priority": 1,
+      "start_minute": 510,
+      "end_minute": 660,
+      "estimated_minutes": 150,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/document_observability.py",
+        "tests/test_docai_observability.py",
+        "docs/guides/docai-operations.md"
+      ],
+      "effective_dependencies": [
+        "BR-DOC-006",
+        "BR-DOC-008"
+      ],
+      "dependency_ready_minute": 360,
+      "ready_wait_minutes": 150,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "L4_workflow"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 150
+    },
+    {
+      "id": "BR-DOC-018",
+      "title": "Expand typed parsers through the twelve-class coverage matrix",
+      "owner": "L2_engineering",
+      "phase": "expansion",
+      "priority": 2,
+      "start_minute": 510,
+      "end_minute": 750,
+      "estimated_minutes": 240,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/document_parsers",
+        "tests/test_docai_parser_coverage.py",
+        "docs/validation/docai-parser-coverage.md"
+      ],
+      "effective_dependencies": [
+        "BR-DOC-002",
+        "BR-DOC-005"
+      ],
+      "dependency_ready_minute": 0,
+      "ready_wait_minutes": 510,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "L2_engineering"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 240
+    }
+  ],
+  "blocked": [
+    {
+      "id": "BR-DOC-013",
+      "title": "Gate C: run a bounded live extraction on synthetic/test files",
+      "phase": "provider_evaluation",
+      "reasons": [
+        {
+          "code": "declared_blocked",
+          "detail": "Ticket is marked blocked in the supplied plan"
+        },
+        {
+          "code": "declared_blocker",
+          "detail": "No selected provider adapter has independently reviewed offline conformance, and no endpoint, authenticated backend connection, verified service/model versions or approved test-data policy is recorded."
+        },
+        {
+          "code": "declared_blocker",
+          "detail": "A concrete bounded test manifest, spend ceiling and permitted activation have not been verified; this planning change does not call or enable a provider."
+        }
+      ]
+    },
+    {
+      "id": "BR-DOC-014",
+      "title": "Independently score the live candidate quality and costs",
+      "phase": "quality_review",
+      "reasons": [
+        {
+          "code": "dependency_blocked",
+          "dependencies": [
+            "BR-DOC-013"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BR-DOC-020",
+      "title": "Run independent R diagnostics and calibration when available",
+      "phase": "measurement",
+      "reasons": [
+        {
+          "code": "declared_blocked",
+          "detail": "Ticket is marked blocked in the supplied plan"
+        },
+        {
+          "code": "declared_blocker",
+          "detail": "No executable R runtime is verified in the present resource profile."
+        },
+        {
+          "code": "resource_unavailable",
+          "resource": "r_runtime",
+          "required": 1,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "BR-DOC-021",
+      "title": "Measure useful CUDA batches against the CPU reference",
+      "phase": "measurement",
+      "reasons": [
+        {
+          "code": "declared_blocked",
+          "detail": "Ticket is marked blocked in the supplied plan"
+        },
+        {
+          "code": "declared_blocker",
+          "detail": "No CUDA device is verified in the present resource profile."
+        },
+        {
+          "code": "resource_unavailable",
+          "resource": "cuda_device",
+          "required": 1,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "BR-DOC-022",
+      "title": "Review a scoped production candidate and rollback evidence",
+      "phase": "release_review",
+      "reasons": [
+        {
+          "code": "dependency_blocked",
+          "dependencies": [
+            "BR-DOC-014"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BR-DOC-023",
+      "title": "Reconcile the unavailable original document-platform specification",
+      "phase": "source_reconciliation",
+      "reasons": [
+        {
+          "code": "declared_blocked",
+          "detail": "Ticket is marked blocked in the supplied plan"
+        },
+        {
+          "code": "declared_blocker",
+          "detail": "The original referenced document-platform PDF required by BR-ENG-186 has not been inspected; other unrelated PDFs do not satisfy that provenance requirement."
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "id": "BR-DOC-019",
+      "title": "Later: add permission-aware retrieval and versioned embeddings",
+      "phase": "optional_retrieval",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "optional_retrieval"
+        },
+        {
+          "code": "deferred",
+          "detail": "Ticket is deliberately outside the active build scope"
+        }
+      ]
+    },
+    {
+      "id": "BR-DOC-024",
+      "title": "Gate D: conduct a separately enabled monitored production pilot",
+      "phase": "production",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "production"
+        },
+        {
+          "code": "deferred",
+          "detail": "Ticket is deliberately outside the active build scope"
+        }
+      ]
+    }
+  ],
+  "critical_path_lower_bound_minutes": 560,
+  "critical_path_ticket_ids": [
+    "BR-DOC-004",
+    "BR-DOC-008",
+    "BR-DOC-010",
+    "BR-DOC-016"
+  ],
+  "critical_path_scope": "Remaining schedulable work only; ignores resource, owner and write contention, excludes blocked and future work",
+  "estimated_makespan_minutes": 750,
+  "current_enabled_scope_fully_schedulable": false,
+  "resource_timeline": [
+    {
+      "minute": 0,
+      "active_ticket_ids": [
+        "BR-DOC-004",
+        "BR-DOC-006",
+        "BR-DOC-007"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 120,
+      "active_ticket_ids": [
+        "BR-DOC-004",
+        "BR-DOC-006",
+        "BR-DOC-012"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 180,
+      "active_ticket_ids": [
+        "BR-DOC-008",
+        "BR-DOC-009",
+        "BR-DOC-012"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 240,
+      "active_ticket_ids": [
+        "BR-DOC-008",
+        "BR-DOC-012"
+      ],
+      "used_resources": {
+        "agent_worker": 2,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 360,
+      "active_ticket_ids": [
+        "BR-DOC-010",
+        "BR-DOC-011",
+        "BR-DOC-017"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 460,
+      "active_ticket_ids": [
+        "BR-DOC-011",
+        "BR-DOC-016",
+        "BR-DOC-017"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 510,
+      "active_ticket_ids": [
+        "BR-DOC-015",
+        "BR-DOC-016",
+        "BR-DOC-018"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 560,
+      "active_ticket_ids": [
+        "BR-DOC-015",
+        "BR-DOC-018"
+      ],
+      "used_resources": {
+        "agent_worker": 2,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 660,
+      "active_ticket_ids": [
+        "BR-DOC-018"
+      ],
+      "used_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 750,
+      "active_ticket_ids": [],
+      "used_resources": {
+        "agent_worker": 0,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    }
+  ],
+  "counts": {
+    "tickets": 24,
+    "completed": 4,
+    "scheduled": 12,
+    "blocked": 6,
+    "excluded": 2
+  },
+  "limitations": [
+    "Durations are estimates; no calendar commitment is made",
+    "Completion statuses require independent acceptance evidence",
+    "The planner models declared resources and path ownership, not every real-world bottleneck",
+    "No product runtime AI or autonomous transaction capability is installed or enabled"
+  ]
+}

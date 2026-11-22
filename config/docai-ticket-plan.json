@@ -30,10 +30,10 @@
     "source_policy": "Use approved generic contracts and stable parent references only. Private source text, URLs, personal finances and document content stay outside this repository."
   },
   "capability_status": {
-    "engine": "Reusable evidence primitives exist; a complete document-neutral intake/extraction engine is not yet verified.",
-    "application": "A downstream offer consumer exists; a general Doc AI intake/job/review application is not yet verified.",
-    "provider": "Disabled stub and structured-claim copying exist; a compatible authenticated Doc AI backend connection is not verified.",
-    "deployment": "No model download, live provider invocation or production deployment is enabled by this plan."
+    "engine": "Implemented and locally tested neutral contracts, preserved native filing, bounded format readers, one invoice grammar and append-only local review projection. Authenticated ACLs/retention and durable jobs remain open.",
+    "application": "Implemented and locally tested synchronous local intake, inspect, review/correction and accepted export CLI. Actor labels are local attestations; the broader service and Gate A are incomplete.",
+    "provider": "NVIDIA Parse 2.4 selected as the disabled future client target. Neutral provenance contracts exist; generic seam, selected client and live connection remain unimplemented/unverified.",
+    "deployment": "No model download, live provider invocation or production deployment was performed. Builders remain outside the runtime."
   },
   "resource_profile": {
     "agent_worker": 3,
@@ -61,7 +61,9 @@
     "default_provider": "disabled",
     "production_enabled": false,
     "activation_rule": "A generic mock or valid manifest is not a real provider implementation or connection. Gate C requires the independently reviewed BR-DOC-012 selected client plus verified endpoint/auth/version/data-policy/budget/timeout/provenance and test permission; Gate D is separate.",
-    "connector_rule": "A ChatGPT cloud connector is a chat capability, not an authenticated connection in this application backend."
+    "connector_rule": "A ChatGPT cloud connector is a chat capability, not an authenticated connection in this application backend.",
+    "selected_implementation_target": "config/docai-provider-target.json",
+    "selected_adapter_owner": "L2_engineering"
   },
   "scheduling_policy": {
     "reserved_integrator": 1,
@@ -201,7 +203,7 @@
       "phase": "contracts",
       "layer": "architecture",
       "dependencies": [],
-      "status": "planned",
+      "status": "completed",
       "priority": 0,
       "estimated_minutes": 50,
       "estimated_minutes_range": [
@@ -215,7 +217,8 @@
       "write_scopes": [
         "docs/architecture/docai-current-state.md",
         "docs/architecture/document-engine-layers.md",
-        "config/swarm-library-extension.json"
+        "config/swarm-library-extension.json",
+        "config/docai-provider-target.json"
       ],
       "acceptance_criteria": [
         "Extend the current-state audit, engine/layer architecture and existing library crosswalk with the reviewed execution decision; preserve their existing findings instead of creating duplicate boundary or inventory documents.",
@@ -236,8 +239,14 @@
         "Earlier local filing/inbox.py and backend/core/tickets.py are reuse candidates requiring revision and contract checks; folder names are not deployment evidence.",
         "The existing docs/architecture/docai-current-state.md, docs/architecture/document-engine-layers.md and config/swarm-library-extension.json capture current-state, product-boundary and library-mapping evidence; their contents are partial fulfillment, not closure of the remaining workspace/provenance and ownership decisions."
       ],
-      "completion_evidence": [],
-      "status_basis": "Current documents and read-only audits are partial reuse evidence. Canonical execution workspace/provenance and reviewed selected-adapter ownership remain open; the child is not completed."
+      "completion_evidence": [
+        "docs/architecture/docai-current-state.md",
+        "docs/architecture/document-engine-layers.md",
+        "config/swarm-library-extension.json",
+        "config/docai-provider-target.json",
+        "docs/plans/docai-native-increment-verification.md"
+      ],
+      "status_basis": "Versioned BL_ACQ execution home, shared baseline tree, audited filing/ticket/model hashes, existing organization and L1/L2/L4/SW-00/SW-13 ownership are documented. Independent reuse review accepted the choice. NVIDIA Parse is a selected target only; deployment remains unverified."
     },
     {
       "id": "BR-DOC-002",
@@ -257,7 +266,7 @@
       "dependencies": [
         "BR-DOC-001"
       ],
-      "status": "planned",
+      "status": "completed",
       "priority": 0,
       "estimated_minutes": 100,
       "estimated_minutes_range": [
@@ -286,8 +295,15 @@
         "br-build-ai-adapters"
       ],
       "reuse_evidence": [],
-      "completion_evidence": [],
-      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+      "completion_evidence": [
+        "pilot/document_contracts.py",
+        "schemas/docai/records.schema.json",
+        "schemas/docai/document-classes.json",
+        "schemas/docai/examples.json",
+        "tests/test_docai_contracts.py",
+        "docs/plans/docai-native-increment-verification.md"
+      ],
+      "status_basis": "Strict br.docai.v1 neutral validators and structural schemas cover document/run/candidate/review identity, twelve classes plus UNKNOWN, typed values, exact citations, coverage/errors, truthful provider provenance and version rejection. Seventeen focused tests and independent source/interface review passed; old deal tables stay compatible."
     },
     {
       "id": "BR-DOC-003",
@@ -304,7 +320,7 @@
       "phase": "offline_validation",
       "layer": "evaluation",
       "dependencies": [],
-      "status": "planned",
+      "status": "completed",
       "priority": 0,
       "estimated_minutes": 120,
       "estimated_minutes_range": [
@@ -319,7 +335,9 @@
         "tests/fixtures/docai",
         "docs/validation/docai-evaluation-policy.md",
         "tools/docai_metrics.py",
-        "tests/test_docai_metrics.py"
+        "tests/test_docai_metrics.py",
+        "tools/evaluate_docai_native.py",
+        "tests/test_docai_evaluation.py"
       ],
       "acceptance_criteria": [
         "Create or inventory licensed synthetic/test-only originals, hashes, labels and independently checked source spans; include native text, a scan, tables, ambiguous values and malformed/truncated files.",
@@ -334,8 +352,16 @@
         "br-build-r-validation"
       ],
       "reuse_evidence": [],
-      "completion_evidence": [],
-      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+      "completion_evidence": [
+        "tests/fixtures/docai/manifest.json",
+        "docs/validation/docai-evaluation-policy.md",
+        "tools/docai_metrics.py",
+        "tools/evaluate_docai_native.py",
+        "tests/test_docai_metrics.py",
+        "tests/test_docai_evaluation.py",
+        "docs/plans/docai-native-increment-verification.md"
+      ],
+      "status_basis": "Nine synthetic originals and 54 field labels have verified hashes and independently checked spans; the scorer, split, thresholds and limitations are declared. Independent review and 37 metrics/evaluation tests passed. Measured native baseline retains six CSV field misses (26/32 grounded recall); zero reviewed accepts cannot establish review safety. Preparation is complete, provider quality is unevaluated."
     },
     {
       "id": "BR-DOC-004",
@@ -369,7 +395,8 @@
         "pilot/document_evidence.py",
         "pilot/document_vault.py",
         "tests/test_document_evidence.py",
-        "tests/test_docai_vault.py"
+        "tests/test_docai_vault.py",
+        "tests/test_docai_application.py"
       ],
       "acceptance_criteria": [
         "Preserve immutable original bytes separately from derived text, hashes, extraction runs and review events; preserve historical versions and explicit supersession.",
@@ -387,7 +414,12 @@
         "pilot/document_evidence.py: EvidenceStore, append-only reviews, source hashes, supersession and conflict rules."
       ],
       "completion_evidence": [],
-      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+      "status_basis": "Append-only neutral records, contextual queries, payload-bound replay, CAS reviews/corrections, version-supersession holds and transaction recovery exist. Authenticated ACLs, revocation/retention/delete propagation, full version-family intake and general asset-link review remain open. Trusted OS actor labels are not service authorization.",
+      "implementation_status": "partial",
+      "partial_evidence": [
+        "pilot/document_vault.py",
+        "tests/test_docai_application.py"
+      ]
     },
     {
       "id": "BR-DOC-005",
@@ -405,7 +437,7 @@
       "dependencies": [
         "BR-DOC-002"
       ],
-      "status": "planned",
+      "status": "completed",
       "priority": 0,
       "estimated_minutes": 180,
       "estimated_minutes_range": [
@@ -419,7 +451,9 @@
       "write_scopes": [
         "pilot/document_native.py",
         "pilot/document_parsers",
-        "tests/test_docai_native.py"
+        "tests/test_docai_native.py",
+        "filing",
+        "pilot/document_invoice.py"
       ],
       "acceptance_criteria": [
         "Audit and adapt the existing file_document(path, root, destination=None) contract and native TXT/MD/CSV/DOCX/text-PDF behaviors; preserve originals and receipts without copying an unrelated application.",
@@ -437,8 +471,16 @@
       "reuse_evidence": [
         "Earlier local filing/inbox.py provides native extraction, routing, original preservation and receipts; exact migration compatibility is not yet established."
       ],
-      "completion_evidence": [],
-      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+      "completion_evidence": [
+        "filing/inbox.py",
+        "filing/README.md",
+        "pilot/document_native.py",
+        "pilot/document_invoice.py",
+        "tests/test_docai_native.py",
+        "tests/test_docai_application.py",
+        "docs/plans/docai-native-increment-verification.md"
+      ],
+      "status_basis": "Additive filing port preserves the interface and receipt history, binds bounded original snapshots, and reports native coverage/errors with worker time/memory bounds. Twenty-three parser cases and application adverse cases passed, with independent review. First class uses exact invoice labels and cited manual candidates; CSV is native text only, scans need OCR, PDF pages containing image/Form XObjects stay partial. This is not twelve parser implementations."
     },
     {
       "id": "BR-DOC-006",
@@ -590,7 +632,14 @@
       ],
       "reuse_evidence": [],
       "completion_evidence": [],
-      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+      "status_basis": "Synchronous local intake, inspect, source traces, manual correction, review and accepted export are implemented and tested. Durable jobs/status lifecycle, authenticated review, service operations and full dependency acceptance remain open; BR-DOC-008 and Gate A are not completed.",
+      "implementation_status": "partial",
+      "partial_evidence": [
+        "pilot/document_application.py",
+        "tools/run_docai.py",
+        "tests/test_docai_application.py",
+        "docs/guides/run_docai.md"
+      ]
     },
     {
       "id": "BR-DOC-009",
@@ -1423,5 +1472,19 @@
       "completion_evidence": [],
       "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
     }
-  ]
+  ],
+  "updated_on": "2026-11-22",
+  "implementation_increment": {
+    "name": "native_document_review_v1",
+    "date": "2026-11-22",
+    "baseline_tree": "42fe36afc14efd46fa441f76c50c6ee7b95980ec",
+    "verification": "docs/plans/docai-native-increment-verification.md",
+    "local_status_rule": "Completed means locally implemented and reviewed for this child scope, not closed in PROJECT_INTERNAL or deployed. Partial artifacts do not complete broader acceptance.",
+    "next_parallel_wave": [
+      "BR-DOC-004",
+      "BR-DOC-006",
+      "BR-DOC-007"
+    ],
+    "estimate_note": "Existing effort ranges remain assumptions for open acceptance work. Completed work is excluded from the regenerated remaining schedule; no measured worker speed or delivery promise is inferred."
+  }
 }

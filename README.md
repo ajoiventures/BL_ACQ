@@ -5,9 +5,34 @@
 The active [Doc AI ticket plan](docs/plans/docai-ticket-plan.md) separates
 document intake, processing, evidence and review from the builder swarm used
 to implement them. The [current-state audit](docs/architecture/docai-current-state.md)
-identifies reusable filing and evidence code, an unverified local model client,
-and the missing general Doc AI application integration. There is no verified
-NVIDIA Doc AI connection in the inspected workspaces.
+identifies reusable filing and evidence code and the boundaries of the new
+local document increment. Native intake, source-linked invoice proposals,
+review/correction and accepted export now run as ordinary code. There is no
+verified NVIDIA Doc AI connection in the inspected workspaces.
+
+Run the new [local Doc AI workflow](docs/guides/run_docai.md):
+
+```sh
+python tools/run_docai.py --root /tmp/br-docai-demo demo --output /tmp/br-docai-demo/accepted-invoice.json
+```
+
+This command uses a bundled synthetic invoice and explicitly automated synthetic
+review events. New proposals from normal intake remain pending. Read the
+[application mechanics](docs/guides/document_application.md) to follow original
+bytes, typed fields, exact source quotes, revision checks and review history.
+The current application is a synchronous trusted-local-user CLI; service ACLs,
+durable jobs and the optional provider adapter remain open work.
+
+Native PDF support uses `python -m pip install -r requirements-docai.txt`.
+Evaluate the retained corpus with:
+
+```sh
+python tools/evaluate_docai_native.py --output-dir /tmp/br-docai-evaluation --split all
+```
+
+The evaluator counts misses and abstentions separately. Its tiny synthetic
+corpus is a regression baseline, not evidence of general invoice accuracy.
+See the [first implementation verification](docs/plans/docai-native-increment-verification.md).
 
 The 14 builder skills extend the established swarm library through the
 [library crosswalk](config/swarm-library-extension.json). Existing leaders,

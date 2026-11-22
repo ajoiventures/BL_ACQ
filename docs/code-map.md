@@ -78,3 +78,22 @@ Pick the behavior you want to understand. The first link opens the source. The s
 | [Corporate styles](../web/corporate.css) | [Read corporate workspace presentation](../web/corporate_css.md) |
 
 The [five-row sample](../Python_Asset_Demo/SYNTHETIC_assets.csv) supplies the reporting inputs. The [founder workflow guide](../web/README.md) walks through the browser simulation. For a first debugging session, follow [Start Here](START_HERE.md).
+
+## Native Doc AI increment
+
+| Source | Guide |
+| --- | --- |
+| [filing/inbox.py](../filing/inbox.py) | [README](../filing/README.md) |
+| [pilot/document_application.py](../pilot/document_application.py) | [document_application](guides/document_application.md) |
+| [pilot/document_contracts.py](../pilot/document_contracts.py) | [document_contracts](guides/document_contracts.md) |
+| [pilot/document_invoice.py](../pilot/document_invoice.py) | [document_invoice](guides/document_invoice.md) |
+| [pilot/document_native.py](../pilot/document_native.py) | [document_native](guides/document_native.md) |
+| [pilot/document_vault.py](../pilot/document_vault.py) | [document_vault](guides/document_vault.md) |
+| [tests/test_docai_application.py](../tests/test_docai_application.py) | [test_docai_application](guides/test_docai_application.md) |
+| [tests/test_docai_contracts.py](../tests/test_docai_contracts.py) | [test_docai_contracts](guides/test_docai_contracts.md) |
+| [tests/test_docai_evaluation.py](../tests/test_docai_evaluation.py) | [test_docai_evaluation](guides/test_docai_evaluation.md) |
+| [tests/test_docai_metrics.py](../tests/test_docai_metrics.py) | [test_docai_metrics](guides/test_docai_metrics.md) |
+| [tests/test_docai_native.py](../tests/test_docai_native.py) | [test_docai_native](guides/test_docai_native.md) |
+| [tools/docai_metrics.py](../tools/docai_metrics.py) | [docai_metrics](guides/docai_metrics.md) |
+| [tools/evaluate_docai_native.py](../tools/evaluate_docai_native.py) | [evaluate_docai_native](guides/evaluate_docai_native.md) |
+| [tools/run_docai.py](../tools/run_docai.py) | [run_docai](guides/run_docai.md) |

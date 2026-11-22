@@ -1651,5 +1651,28 @@
     "Running configuration and the separate Acer installation were not probed.",
     "No canonical library import, external issue creation or ticket closure was performed.",
     "The existing local model client is not a NVIDIA document OCR/Parse service."
-  ]
+  ],
+  "docai_execution_increment": {
+    "reviewed_on": "2026-11-22",
+    "implementation_home": "ajoiventures/BL_ACQ",
+    "branch": "codex/document-offer-engine",
+    "baseline_local_commit": "12df530eaa1e3ae73f620d71c326075de1b31c91",
+    "baseline_published_commit": "99d9fef31535767c89aec399815b8956c9f820b8",
+    "baseline_shared_tree": "42fe36afc14efd46fa441f76c50c6ee7b95980ec",
+    "scope": "Native document engine and trusted-local-user review/export increment; builder agents remain outside runtime.",
+    "native_adapter_owner": "L2_engineering",
+    "vault_adapter_owner": "L1_evidence",
+    "application_owner": "L4_workflow",
+    "selected_future_provider": "nvidia-parse-2.4-disabled",
+    "provider_adapter_owner": "L2_engineering",
+    "coordination": "SW-00",
+    "independent_review": "SW-13 role preserved; local builder review evidence does not certify an organizational tracker transition.",
+    "organizational_import_performed": false,
+    "product_agents_created": 0,
+    "live_provider_calls": 0,
+    "evidence": [
+      "docs/architecture/docai-current-state.md",
+      "docs/plans/docai-native-increment-verification.md"
+    ]
+  }
 }
