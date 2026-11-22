@@ -188,7 +188,23 @@ samples 129 evenly spaced growth rates. It supports monotonic increasing or
 decreasing observed curves. It returns `non_monotonic` for a sampled reversal or
 flat curve, `out_of_range` when the target is outside observed bounds, and `solved`
 only when a forward valuation at the implied rate matches the target within
-`max(1e-8 USD, abs(target) * 1e-10)`. Invalid inputs still raise `ValueError`.
+the reported `price_tolerance`. Invalid inputs still raise `ValueError`.
+
+There is no fixed dollar floor in the inverse solver's numerical tolerance.
+The target-relative allowance is `abs(target) * 1e-10`. A roundoff allowance
+uses eight units in the last place (ULPs) of the target and the **local**
+valuation: per-unit value and the operating-value/claim components of its equity
+bridge, converted to per-unit amounts. The larger allowance is reported as
+`price_tolerance`. This handles zero equity formed by subtracting larger values
+without allowing a distant extreme sample to loosen the price match. Near a zero
+target, the reported absolute tolerance and achieved price must be inspected;
+relative-price accuracy may be limited by cancellation in the equity bridge.
+
+Monotonicity screening compares adjacent samples using their local ULP-based
+roundoff allowances. Bisection begins in the sampled interval containing the
+target and recomputes the allowance at each evaluated point. These numerical
+allowances address floating-point resolution; they do not establish financial
+materiality, economic forecast accuracy, or an acceptable investment risk.
 
 `attainable_bounds` explicitly states its sampled basis, endpoint prices and
 sampled minimum/maximum. Sampling does not prove global monotonicity or economic

@@ -16,7 +16,9 @@ from .valuation import reverse_growth, sensitivity_grid, value_model
 
 
 VERSION = "1.0"
-MODEL_VERSION = "br-valuation-1"
+MODEL_VERSION = "br-valuation-2"
+PRICE_RELATIVE_TOLERANCE = 1e-12
+CLAIM_RELATIVE_TOLERANCE = 1e-12
 IDENTIFIER = re.compile(r"[A-Za-z0-9][A-Za-z0-9._:-]{0,99}")
 TOP_KEYS = {
     "schema_version", "deal_id", "asset_id", "as_of", "model_type", "currency",
@@ -48,6 +50,18 @@ def _integer(value, name, low, high):
     if type(value) is not int or not low <= value <= high:
         raise ValueError(f"{name} must be an integer between {low} and {high}")
     return value
+
+
+def _price_exceeds(value, reference):
+    """Compare finite model prices without an absolute currency tolerance.
+
+    Relative tolerance absorbs DCF roundoff at an equality boundary while
+    preserving the decision when economically equivalent amounts are rescaled.
+    A fixed dollar tolerance would overwhelm valid small per-unit values.
+    """
+    return value > reference and not math.isclose(
+        value, reference, rel_tol=PRICE_RELATIVE_TOLERANCE, abs_tol=0.0,
+    )
 
 
 def _text(value, name, limit=3000):
@@ -148,7 +162,7 @@ def _claims(packet, assumptions, sources):
     claims = packet.get("claims", [])
     if not isinstance(claims, list) or len(claims) > 50:
         raise ValueError("claims must be an array of at most 50 obligations")
-    identities, bridge_total = set(), 0.0
+    identities, bridge_amounts = set(), []
     for claim in claims:
         _object(claim, "claim", {"id", "amount", "in_cash_flows", "in_equity_bridge", "source_id"})
         identity = _id(claim.get("id"), "claim ID")
@@ -162,13 +176,17 @@ def _claims(packet, assumptions, sources):
         if not isinstance(claim.get("source_id"), str) or claim["source_id"] not in sources:
             raise ValueError("Claim references an unknown source")
         if bridge:
-            bridge_total += amount
+            bridge_amounts.append(amount)
     # These are reconciliation records, never a second automatic deduction.
-    available = (_number(assumptions.get("debt", 0), "debt")
-                 + _number(assumptions.get("debt_like_claims", 0), "debt_like_claims"))
-    if bridge_total > available + max(1, abs(available)) * 1e-10:
+    bridge_total = math.fsum(bridge_amounts)
+    available = math.fsum((_number(assumptions.get("debt", 0), "debt"),
+                           _number(assumptions.get("debt_like_claims", 0), "debt_like_claims")))
+    # Numerical reconciliation has no fixed dollar floor: no positive claim
+    # can match zero debt, and small balances cannot disappear as immaterial.
+    # This tolerance addresses computation; it is not an accounting materiality rule.
+    reconciled = math.isclose(bridge_total, available, rel_tol=CLAIM_RELATIVE_TOLERANCE, abs_tol=0.0)
+    if bridge_total > available and not reconciled:
         raise ValueError("Bridge obligations exceed the model's declared debt and debt-like claims")
-    reconciled = math.isclose(bridge_total, available, rel_tol=1e-10, abs_tol=1e-8)
     return {"status": "reconciled" if reconciled else "review_required",
             "declared_bridge_total": available, "reconciled_bridge_total": bridge_total,
             "unreconciled_bridge_total": max(0, available - bridge_total)}
@@ -305,9 +323,7 @@ def evaluate(packet):
     adjusted = math.fsum(x["probability"] * x["valuation"]["value_per_unit"] for x in evaluated)
     ceiling = adjusted * (1 - policy["margin_of_safety"])
     loss_probability = (math.fsum(x["probability"] for x in evaluated
-                                 if x["valuation"]["value_per_unit"] < price
-                                 and not math.isclose(x["valuation"]["value_per_unit"], price,
-                                                      rel_tol=1e-12, abs_tol=1e-9))
+                                 if _price_exceeds(price, x["valuation"]["value_per_unit"]))
                         if price is not None else None)
     qualification = _object(packet.get("qualification", {}), "qualification", {"buyable", "fundable", "sellable"})
     qrefs = _object(packet.get("qualification_source_ids", {}), "qualification_source_ids", {"buyable", "fundable", "sellable"})
@@ -326,19 +342,21 @@ def evaluate(packet):
             issues.append(f"{gate.capitalize()} qualification is {status}")
     issues = list(dict.fromkeys(issues))
     reasons = list(issues)
-    if price is not None and price > ceiling and not math.isclose(price, ceiling, rel_tol=1e-12, abs_tol=1e-9):
+    if price is not None and _price_exceeds(price, ceiling):
         reasons.append("Price exceeds the event-adjusted margin-of-safety entry ceiling")
     if (loss_probability is not None and loss_probability > policy["max_downside_probability"]
             and not math.isclose(loss_probability, policy["max_downside_probability"],
                                  rel_tol=0, abs_tol=1e-12)):
-        reasons.append("Assumed scenario loss probability exceeds the selected policy")
+        reasons.append("Assumed scenario weight below price exceeds the selected policy limit")
     if adjusted <= 0:
         reasons.append("No positive modeled equity value")
     status = "hold" if issues or adjusted <= 0 else ("watch" if reasons else "review_candidate")
     warnings = list(dict.fromkeys(
         list(baseline.get("warnings", [])) + [w for x in evaluated for w in x["valuation"].get("warnings", [])]
     ))
-    warnings.append("Scenario probabilities are user assumptions, not measured forecasts or guarantees.")
+    warnings.append("Scenario weights are user assumptions. Weight below price compares current modeled "
+                    "intrinsic value with the reference price; it does not estimate the probability of "
+                    "a realized loss over a holding period.")
     decision = {"adjusted_value": adjusted, "entry_ceiling": ceiling, "market_price": price,
                 "price_as_of": market.get("as_of"), "upside": adjusted / price - 1 if price else None,
                 "discount_to_value": 1 - price / adjusted if adjusted > 0 and price is not None else None,

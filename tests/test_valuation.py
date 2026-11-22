@@ -203,6 +203,51 @@ class InverseAndSensitivityTests(unittest.TestCase):
         self.assertIsNone(result["achieved_price"])
         self.assertLess(result["attainable_bounds"]["maximum"], 1e9)
 
+    def test_known_inverse_root_preserves_accuracy_across_monetary_scales(self):
+        known_growth = .123456
+        for scale in (1e-12, 1e-6, 1, 1e6, 1e12):
+            with self.subTest(scale=scale):
+                a = corporate(growth_rate=.1, terminal_growth=.02, sales_to_capital=10)
+                for key in ("revenue", "cash", "non_operating_assets", "debt", "debt_like_claims"):
+                    a[key] *= scale
+                target = value_model("corporate_dcf", a | {"growth_rate": known_growth})["value_per_unit"]
+                result = reverse_growth("corporate_dcf", a, None, target)
+                self.assertEqual(result["status"], "solved")
+                self.assertAlmostEqual(result["implied_growth_rate"], known_growth, places=8)
+                self.assertLessEqual(abs(result["achieved_price"] - target), result["price_tolerance"])
+                self.assertLessEqual(abs(result["achieved_price"] / target - 1), 1e-10)
+
+    def test_out_of_range_classification_preserves_monetary_scale(self):
+        for scale in (1e-12, 1e-6, 1, 1e6, 1e12):
+            with self.subTest(scale=scale):
+                a = corporate(growth_rate=.1, terminal_growth=.02, sales_to_capital=10)
+                for key in ("revenue", "cash", "non_operating_assets", "debt", "debt_like_claims"):
+                    a[key] *= scale
+                result = reverse_growth("corporate_dcf", a, None, 1000 * scale)
+                self.assertEqual(result["status"], "out_of_range")
+                self.assertIsNone(result["implied_growth_rate"])
+
+    def test_zero_target_tolerance_uses_local_bridge_scale_not_distant_samples(self):
+        known_growth = .123456
+        a = corporate(years=30, growth_rate=.1, terminal_growth=.02, sales_to_capital=100,
+                      cash=0, non_operating_assets=0, debt_like_claims=0)
+        a["debt"] = value_model("corporate_dcf", a | {"growth_rate": known_growth, "debt": 0})["enterprise_value"]
+        result = reverse_growth("corporate_dcf", a, None, 0, high=3)
+        self.assertGreater(result["attainable_bounds"]["maximum"], 1e11)
+        self.assertEqual(result["status"], "solved")
+        self.assertAlmostEqual(result["implied_growth_rate"], known_growth, places=12)
+        self.assertGreater(result["price_tolerance"], 0)
+        self.assertLess(result["price_tolerance"], 1e-10)
+        self.assertLessEqual(abs(result["achieved_price"]), result["price_tolerance"])
+
+    def test_flat_curve_has_no_unique_inverse(self):
+        # Positive-growth reinvestment exactly offsets growth's cash-flow value.
+        a = corporate(years=1, tax_rate=0, sales_to_capital=1 / 2.2, growth_rate=.3)
+        result = reverse_growth("corporate_dcf", a, None, 94, low=.01, high=.8)
+        self.assertEqual(result["status"], "non_monotonic")
+        self.assertIn("flat", result["reason"])
+        self.assertIsNone(result["implied_growth_rate"])
+
     def test_value_destroying_growth_can_be_non_monotonic(self):
         # Below zero growth there is no disinvestment; above zero, poor capital
         # efficiency destroys value. The peak at zero makes a single inverse unsafe.

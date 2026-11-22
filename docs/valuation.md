@@ -2,6 +2,8 @@
 
 The valuation engine turns operating assumptions into cash flows and equity value. The decision layer reruns the model under dated event scenarios, checks the evidence, and separates value from the proposed entry price. Every saved run carries a Deal ID, permanent asset ID, source references and a digest of its inputs and engine version.
 
+**Current maturity: research prototype.** See [institutional readiness and coverage](valuation-institutional-readiness.md) for supported uses, material gaps, desk-specific extensions and proposed acceptance gates. Tested calculations do not establish employer approval or institutional model validation.
+
 ## Run it
 
 From the repository root, with Python 3.12 or later:
@@ -40,10 +42,10 @@ Corporate operating value is the discounted value of forecast free cash flow to 
 
 For each event, change identified assumptions and rerun the cash flows. Near-term shocks expire after the specified duration. A temporary growth-rate reduction can leave a permanently lower revenue base even after the growth rate recovers. Persistent margin effects also change terminal earnings. Discount-rate and reinvestment effects remain separately visible.
 
-The layer applies a user-selected margin of safety once, to probability-weighted event-adjusted value:
+The layer applies a user-selected margin of safety once, to event-adjusted value calculated using the assumed scenario weights:
 
 ```text
-adjusted value = sum(scenario probability × scenario equity value per unit)
+adjusted value = sum(assumed scenario weight × scenario equity value per unit)
 entry ceiling = adjusted value × (1 − margin of safety)
 discount to value = (adjusted value − price) / adjusted value
 upside to value = (adjusted value − price) / price
@@ -51,7 +53,7 @@ upside to value = (adjusted value − price) / price
 
 A 30% discount to unchanged value corresponds to approximately 42.86% upside to that value. The source author's historical entry reference is displayed separately from the application's event-adjusted ceiling.
 
-Scenario probabilities are assumptions. The reported loss probability sums the weights of supplied scenarios with value below the comparison price. It is not an empirically calibrated forecast, and the scenarios do not bound every possible loss.
+**Scenario weight below price** sums the assumed weights of supplied scenarios whose current modeled intrinsic value per unit is below the reference price. The weights are user assumptions, and the measure compares modeled values with an input price. It does not estimate the probability of a realized loss over a holding period. The scenarios do not bound every possible loss. The JSON keys `downside_probability` and `max_downside_probability` are retained for compatibility; they represent this measure and its selected limit.
 
 ## Source reproduction
 
@@ -68,7 +70,7 @@ Sources carry IDs, URLs, observation dates, review assertions and unresolved iss
 Financial inputs, scenarios, price and all three qualification gates need supporting evidence. A price must reference a quote or transaction-price source. Both the price and its source observation must satisfy the quote-age limit, and the price cannot postdate the observation that supports it. Buyable, fundable and sellable are independent; a lower price does not manufacture funding or an exit market. Statuses are:
 
 - **Hold:** missing or stale evidence, an unresolved qualification, illustrative data, or nonpositive modeled equity value.
-- **Watch:** evidence checks are satisfied but price or scenario-loss policy is not.
+- **Watch:** evidence checks are satisfied but price or the scenario weight below price limit is not.
 - **Review candidate:** the declared evidence and numeric policy pass. Independent investment approval remains a separate workflow.
 
 None of these states permits order placement, fund movement or settlement. No capital is committed by this module.

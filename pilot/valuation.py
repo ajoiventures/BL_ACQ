@@ -26,6 +26,8 @@ _SHOCK_DEFAULTS = {
 _MAX_AMOUNT = 1e15
 _MAX_OUTPUT = 1e100
 _SAMPLES = 129
+_INVERSE_RELATIVE_TOLERANCE = 1e-10
+_INVERSE_ROUNDOFF_ULPS = 8
 
 
 def _number(name, value, low, high, *, open_low=False):
@@ -261,41 +263,69 @@ def reverse_growth(model_type, assumptions, shock, target_price, low=-0.20, high
     value_model(model_type, a, s)
     result = {"target_price": target, "growth_bounds": {"low": low, "high": high},
               "implied_growth_rate": None, "implied_rate": None, "achieved_price": None,
-              "iterations": 0, "attainable_bounds": None, "sample_count": 0}
+              "iterations": 0, "attainable_bounds": None, "sample_count": 0,
+              "price_tolerance": None}
     if "growth_path" in a:
         return result | {"status": "unsupported_explicit_path",
                          "reason": "An explicit growth_path overrides scalar growth_rate; no inverse is defined."}
 
     def price_at(growth):
-        return value_model(model_type, a | {"growth_rate": growth}, s)["value_per_unit"]
+        report = value_model(model_type, a | {"growth_rate": growth}, s)
+        price = report["value_per_unit"]
+        # Use the local valuation's arithmetic scale, including the equity
+        # bridge. An equity value close to zero can result from subtracting
+        # larger operating value and claims. ULPs of zero alone would miss that
+        # roundoff, while ULPs of a distant extreme sample would be too loose.
+        roundoff = _INVERSE_ROUNDOFF_ULPS * max(
+            math.ulp(report["enterprise_value"]) / a["units"],
+            math.ulp(report["net_claims"]) / a["units"],
+            math.ulp(price),
+        )
+        return price, roundoff
 
-    samples = [(low + (high - low) * i / (_SAMPLES - 1), None) for i in range(_SAMPLES)]
-    samples = [(growth, price_at(growth)) for growth, _ in samples]
-    prices = [price for _, price in samples]
-    tolerance = max(1e-8, abs(target) * 1e-10)
-    monotonic_tolerance = max(1e-10, max(abs(price) for price in prices) * 1e-12)
-    rising = any(b - a > monotonic_tolerance for a, b in zip(prices, prices[1:]))
-    falling = any(a - b > monotonic_tolerance for a, b in zip(prices, prices[1:]))
+    samples = []
+    for i in range(_SAMPLES):
+        growth = low + (high - low) * i / (_SAMPLES - 1)
+        price, roundoff = price_at(growth)
+        samples.append((growth, price, roundoff))
+    prices = [price for _, price, _ in samples]
+    target_tolerance = max(abs(target) * _INVERSE_RELATIVE_TOLERANCE,
+                           _INVERSE_ROUNDOFF_ULPS * math.ulp(target))
+    rising = any(b[1] - a[1] > max(a[2], b[2]) for a, b in zip(samples, samples[1:]))
+    falling = any(a[1] - b[1] > max(a[2], b[2]) for a, b in zip(samples, samples[1:]))
+    nearest = min(samples, key=lambda item: abs(item[1] - target))
+    tolerance = max(target_tolerance, nearest[2])
     result |= {"attainable_bounds": {"minimum": min(prices), "maximum": max(prices),
                                      "price_at_low": prices[0], "price_at_high": prices[-1],
-                                     "basis": "129 sampled growth rates"}, "sample_count": _SAMPLES}
+                                     "basis": "129 sampled growth rates"}, "sample_count": _SAMPLES,
+               "price_tolerance": tolerance}
     if rising == falling:
         return result | {"status": "non_monotonic", "reason": (
             "The sampled growth/value curve changes direction; a unique inverse is not established."
             if rising else "The sampled growth/value curve is flat; a unique inverse is not established.")}
     if target < min(prices) - tolerance or target > max(prices) + tolerance:
         return result | {"status": "out_of_range", "reason": "Target is outside the observed value range for the selected growth bounds."}
-    for growth, price in (samples[0], samples[-1]):
+    for growth, price, roundoff in (samples[0], samples[-1]):
+        tolerance = max(target_tolerance, roundoff)
         if abs(price - target) <= tolerance:
             return result | {"status": "solved", "implied_growth_rate": growth, "implied_rate": growth,
-                             "achieved_price": price, "reason": "Target verified at a growth bound."}
-    left, right = low, high
+                             "achieved_price": price, "price_tolerance": tolerance,
+                             "reason": "Target verified at a growth bound."}
+    # Begin with the sampled interval containing the target, keeping numerical
+    # precision checks local instead of using a distant global value maximum.
+    bracket = next((pair for pair in zip(samples, samples[1:])
+                    if min(pair[0][1], pair[1][1]) <= target <= max(pair[0][1], pair[1][1])), None)
+    if bracket is None:
+        return result | {"status": "out_of_range", "reason": "No sampled interval brackets the target."}
+    left, right = bracket[0][0], bracket[1][0]
     for iteration in range(1, 101):
         midpoint = (left + right) / 2
-        price = price_at(midpoint)
+        price, roundoff = price_at(midpoint)
+        tolerance = max(target_tolerance, roundoff)
         if abs(price - target) <= tolerance:
             return result | {"status": "solved", "implied_growth_rate": midpoint,
                              "implied_rate": midpoint, "achieved_price": price, "iterations": iteration,
+                             "price_tolerance": tolerance,
                              "reason": "Bisection solution independently revalued within price tolerance."}
         if (price < target) == rising:
             left = midpoint

@@ -1,6 +1,6 @@
 # Valuation browser behavior
 
-`valuation.js` edits request packets and renders responses. It never computes a DCF, event-weighted value, entry ceiling, loss probability, or reverse valuation in the browser. Local arithmetic is limited to percentage display/serialization and chart geometry. Numeric assumptions remain actual USD; field percentages are converted to decimal fractions before sending the packet.
+`valuation.js` edits request packets and renders responses. It never computes a DCF, event-weighted value, entry ceiling, scenario weight below price, or reverse valuation in the browser. The display defines scenario weights as user assumptions; the compatibility keys `downside_probability` and `max_downside_probability` do not represent a calibrated probability of realized loss. Local arithmetic is limited to percentage display/serialization and chart geometry. Numeric assumptions remain actual USD; field percentages are converted to decimal fractions before sending the packet.
 
 The page reads public examples from `GET /api/valuation/examples`, reuses an existing same-origin HTTP-only session, and signs in through `POST /api/session`. Calculations use `POST /api/valuation/evaluate`. A revision counter rejects a calculation response if an input changed while the request was in flight. Any input edit marks the displayed report stale and disables its save and export buttons.
 

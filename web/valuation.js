@@ -282,7 +282,7 @@ function renderScenarios() {
     heading.append(remove); card.append(heading);
     const grid = el("div", "field-grid");
     putField(grid, scenario, "label", ["Scenario name", "text"], { required: true });
-    putField(grid, scenario, "probability", ["Probability", "rate", "Probability of this mutually exclusive scenario. The complete scenario set must total exactly 100%."], { min: 0, max: 100, required: true });
+    putField(grid, scenario, "probability", ["Assumed weight", "rate", "Your assumed weight for this mutually exclusive scenario. The complete scenario set must total exactly 100%."], { min: 0, max: 100, required: true });
     const details = el("details", "scenario-overrides"); details.append(el("summary", "", "Cash-flow changes & source references"));
     const shockGrid = el("div", "field-grid");
     SHOCK_FIELDS.forEach(([key, label, type, help]) => {
@@ -294,12 +294,12 @@ function renderScenarios() {
     if (scenario.assumptions_override && Object.keys(scenario.assumptions_override).length) shockGrid.append(el("p", "field-help field-wide", "This scenario also has explicit assumption overrides. Review them in Advanced packet; those overrides remain active."));
     details.append(shockGrid); card.append(grid, details); list.append(card);
   });
-  setText("scenario-note", `${p.scenarios.length} of 12 scenarios. Probabilities are checked by the engine and are never rescaled automatically.`);
+  setText("scenario-note", `${p.scenarios.length} of 12 scenarios. Assumed weights are checked by the engine and are never rescaled automatically.`);
 }
 function renderPolicy() {
   const p = state.packet; const container = $("decision-fields"); container.replaceChildren();
   putField(container, p.policy, "margin_of_safety", ["Margin of safety", "rate", "Required discount from event-adjusted value. Applied once, after scenario weighting, to set the entry ceiling."], { min: 0, max: 95, required: true });
-  putField(container, p.policy, "max_downside_probability", ["Downside probability limit", "rate", "Maximum probability of scenarios whose modeled value is below the reference price. This is a scenario-based assumption, not a statistically measured loss forecast."], { min: 0, max: 100, required: true });
+  putField(container, p.policy, "max_downside_probability", ["Scenario weight below price limit", "rate", "Maximum total assumed weight of scenarios whose current modeled intrinsic value is below the reference price. This does not estimate the probability of a realized loss over a holding period."], { min: 0, max: 100, required: true });
   putField(container, p.policy, "max_source_age_days", ["Source age limit", "integer", "Maximum number of days between a source's observation and the analysis date."], { min: 1, max: 3650, required: true });
   putField(container, p.policy, "max_quote_age_days", ["Price age limit", "integer", "Maximum age in days of the reference price observation."], { min: 0, max: 365, required: true });
   const q = $("qualification-fields"); q.replaceChildren();
@@ -377,7 +377,7 @@ function renderReport() {
   const priceDate = r.decision.price_as_of || state.evaluatedPacket?.market?.as_of;
   const historical = !priceDate || state.evaluatedPacket?.illustrative;
   setText("upside-label", historical ? "Input gap to value" : "Upside to value");
-  setText("price-context-note", !finite(r.decision.market_price) ? "No reference price supplied. Price comparisons and downside probability are unavailable." : !priceDate ? "Historical input comparison — price unverified. The reference price has no observation date; these percentages are input comparisons, not current market upside." : state.evaluatedPacket?.illustrative ? `Illustrative input comparison. Reference price dated ${dateLabel(priceDate)}; no live quote is connected.` : `Reference price observed ${dateLabel(priceDate)}. Comparisons use that observation; no live quote is connected.`);
+  setText("price-context-note", !finite(r.decision.market_price) ? "No reference price supplied. Price comparisons and scenario weight below price are unavailable." : !priceDate ? "Historical input comparison — price unverified. The reference price has no observation date; these percentages are input comparisons, not current market upside." : state.evaluatedPacket?.illustrative ? `Illustrative input comparison. Reference price dated ${dateLabel(priceDate)}; no live quote is connected.` : `Reference price observed ${dateLabel(priceDate)}. Comparisons use that observation; no live quote is connected.`);
   setText("upside-value", percent(r.decision.upside)); setText("discount-value", percent(r.decision.discount_to_value)); setText("downside-value", percent(r.decision.downside_probability, 0));
   for (const [id, value] of [["upside-value", r.decision.upside], ["discount-value", r.decision.discount_to_value]]) $(id).className = finite(value) ? value >= 0 ? "positive" : "negative" : "";
   setText("value-unit-label", `USD · ${unitLabel().toLowerCase()}`);
@@ -461,7 +461,7 @@ function renderForecast() {
 function renderScenarioResults() {
   const container = $("scenario-results"); container.replaceChildren();
   for (const scenario of state.report.scenarios || []) {
-    const card = el("article", "scenario-card"); const top = el("div", "scenario-card-top"); top.append(el("h4", "", scenario.label || scenario.id), el("span", "probability", `${percent(scenario.probability, 0)} probability`));
+    const card = el("article", "scenario-card"); const top = el("div", "scenario-card-top"); top.append(el("h4", "", scenario.label || scenario.id), el("span", "probability", `${percent(scenario.probability, 0)} weight`));
     card.append(top, el("strong", "scenario-value", money(scenario.valuation?.value_per_unit)), el("p", "", `${unitLabel()}${finite(scenario.change_from_baseline) ? ` · ${percent(scenario.change_from_baseline)} vs baseline` : ""}`));
     const changes = el("ul");
     for (const [key, label, type] of SHOCK_FIELDS) {
@@ -473,7 +473,7 @@ function renderScenarioResults() {
     if (changes.children.length) card.append(changes); else card.append(el("p", "", "No operating shock applied."));
     container.append(card);
   }
-  setText("scenario-result-note", "Scenario probabilities are assumptions you supply. The event-adjusted value is calculated by the engine from this complete set of mutually exclusive outcomes.");
+  setText("scenario-result-note", "Scenario weights are assumptions you supply. The engine calculates event-adjusted value from this complete set of mutually exclusive scenarios. Scenario weight below price compares current modeled intrinsic values with the reference price; it does not estimate the probability of a realized loss over a holding period.");
 }
 function renderSensitivity() {
   const sensitivity = state.report.sensitivity || {}; const head = $("sensitivity-table").querySelector("thead"); const body = $("sensitivity-table").querySelector("tbody"); head.replaceChildren(); body.replaceChildren();

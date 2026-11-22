@@ -58,6 +58,31 @@ class ValuationLayerTests(unittest.TestCase):
         self.assertAlmostEqual(result["decision"]["baseline_entry_reference"], 70)
         self.assertEqual(result["decision"]["status"], "watch")
 
+    def test_small_valid_prices_do_not_bypass_entry_or_scenario_policy(self):
+        packet = request_fixture()
+        packet["assumptions"]["revenue"] = 1e-10
+        packet["market"]["price"] = 1e-9
+        result = evaluate(packet)
+        decision = result["decision"]
+        self.assertAlmostEqual(decision["market_price"] / decision["adjusted_value"], 10)
+        self.assertEqual(decision["status"], "watch")
+        self.assertEqual(decision["downside_probability"], 1)
+        self.assertTrue(any("entry ceiling" in reason for reason in decision["reasons"]))
+
+    def test_price_policy_is_invariant_under_economically_equivalent_scaling(self):
+        for scale in (1e-12, 1e-6, 1, 1e6, 1e12):
+            for price, status, downside in ((70, "review_candidate", 0),
+                                             (71, "watch", 0), (110, "watch", 1)):
+                with self.subTest(scale=scale, price=price):
+                    packet = request_fixture()
+                    packet["assumptions"]["revenue"] *= scale
+                    packet["market"]["price"] = price * scale
+                    decision = evaluate(packet)["decision"]
+                    self.assertAlmostEqual(decision["adjusted_value"] / scale, 100)
+                    self.assertAlmostEqual(decision["entry_ceiling"] / scale, 70)
+                    self.assertEqual(decision["status"], status)
+                    self.assertEqual(decision["downside_probability"], downside)
+
     def test_probability_weights_are_not_silently_normalized(self):
         packet = request_fixture()
         for probability in (.8, True, float("nan"), float("inf")):
@@ -163,6 +188,28 @@ class ValuationLayerTests(unittest.TestCase):
         result = evaluate(packet)
         self.assertEqual(result["obligations"]["status"], "reconciled")
         self.assertEqual(result["obligations"]["unreconciled_bridge_total"], 0)
+
+    def test_claim_reconciliation_preserves_small_balances_and_rejects_scaled_overclaims(self):
+        for scale in (1e-12, 1e-6, 1, 1e6, 1e12):
+            with self.subTest(scale=scale):
+                packet = request_fixture()
+                packet["assumptions"]["revenue"] *= scale
+                packet["market"]["price"] = 40 * scale
+                packet["assumptions"]["debt_like_claims"] = 20 * scale
+                missing = evaluate(packet)
+                self.assertEqual(missing["obligations"]["status"], "review_required")
+                self.assertEqual(missing["decision"]["status"], "hold")
+                claim = {"id": "lease", "amount": 20 * scale, "in_cash_flows": False,
+                         "in_equity_bridge": True, "source_id": "inputs"}
+                packet["claims"] = [claim]
+                self.assertEqual(evaluate(packet)["obligations"]["status"], "reconciled")
+                claim["amount"] = 20.2 * scale
+                with self.assertRaisesRegex(ValueError, "exceed"):
+                    evaluate(packet)
+                packet["assumptions"]["debt_like_claims"] = 0
+                claim["amount"] = 20 * scale
+                with self.assertRaisesRegex(ValueError, "exceed"):
+                    evaluate(packet)
 
     def test_absent_price_produces_no_implied_growth_or_allocation(self):
         packet = request_fixture()
