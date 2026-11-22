@@ -13,7 +13,7 @@ def main():
     # Keep this sequence identical on a workstation and a hosted runner.
     # Each command must pass before the acceptance suite continues.
     checks = (
-        ("lint", ["ruff", "check", "--select", "E9,F63,F7,F82", "pilot", "tests", "tools", "Python_Asset_Demo"]),
+        ("lint", ["ruff", "check", "--select", "E9,F63,F7,F82", "pilot", "filing", "tests", "tools", "Python_Asset_Demo"]),
         ("types", [PYTHON, "-m", "mypy", "--follow-imports=silent", "--ignore-missing-imports",
                    "pilot/contracts.py", "pilot/connectors.py", "pilot/cuda_screen.py"]),
         ("reporting tests", [PYTHON, "-m", "unittest", "discover", "-s", "Python_Asset_Demo"]),

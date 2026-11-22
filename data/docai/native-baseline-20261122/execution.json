@@ -1,0 +1,1572 @@
+{
+  "schema_version": "br.docai-native-evaluation.v1",
+  "started_at": "2026-11-22T21:36:27.352064Z",
+  "finished_at": "2026-11-22T21:36:27.977420Z",
+  "python_version": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "source_sha256": {
+    "tools/evaluate_docai_native.py": "cd8debbf2b2ea1ec0e47409856201597ba3494f92995b5aeefa502aaa80d8d2a",
+    "tools/docai_metrics.py": "eed6e00f781f1988c05c8ca050941f59350535261cce1d4b0d0ed75b39c40b60",
+    "pilot/document_application.py": "5355fee21edd92a3624f1117e30276bbb92ef0feb8e656f16b728879960daf9b",
+    "pilot/document_contracts.py": "aeffb1b6e7c604fc7253332bac18813eb32da0763c080bd2a1c3838cbc62eda4",
+    "pilot/document_invoice.py": "31b0f0523b59bf620db70f07ff3dcd6f94d13161f91f01066bd2e412b0c66a5c",
+    "pilot/document_native.py": "ce1b8e63d1d8d0ae33893e68623513e37f2e5ee8b571cbb3036146a06b60719b",
+    "filing/inbox.py": "25550289c801378c6294a29deae86533ace226e53b53edc292c154483fd90694"
+  },
+  "corpus_sha256": "f313e2d6599680333afa2a4d188f0dd9603765be16e309829b0405653d8a4378",
+  "split": "all",
+  "timing_basis": "perf_counter wall time per native extraction plus candidate generation; excludes corpus validation and report I/O",
+  "cache_basis": "Uncontrolled OS cache and parser startup; no steady-state or service-latency claim",
+  "review_performed": false,
+  "cost_basis": "Not measured; no operating-cost or free-service claim",
+  "provider_calls": 0,
+  "model_downloads": 0,
+  "backend": "cpu",
+  "scope": "Native reader and candidate function; archive, authenticated review and accepted export are separate tests",
+  "runs": [
+    {
+      "document": {
+        "asset_links": [],
+        "byte_count": 175,
+        "content_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "document_class": "MEP_INVOICE",
+        "document_id": "DOC-SYN-001",
+        "media_type": "text/plain",
+        "predecessor_document_id": null,
+        "received_at": "2026-11-22T21:36:27.352124Z",
+        "schema_version": "br.docai.v1",
+        "source_status": "synthetic",
+        "source_uri": "fixture://br-docai-native-invoices-001/invoice_native.txt",
+        "title": "invoice_native.txt",
+        "version": 1
+      },
+      "extraction": {
+        "api_version": null,
+        "backend": "cpu",
+        "configuration_sha256": "c9a7574a7d13f7a1a73bb6675dc8fcfab98b54e5789d676348809dfb406d8201",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "coverage": {
+          "complete": true,
+          "input_bytes": 175,
+          "limits": {
+            "max_chars_per_page": 20000,
+            "max_input_bytes": 16777216,
+            "max_pages": 5,
+            "max_text_bytes": 150000,
+            "max_xml_bytes": 2000000
+          },
+          "notes": [],
+          "page_basis": "logical",
+          "processed_bytes": 175,
+          "processed_pages": 1,
+          "total_pages": 1,
+          "truncated": false
+        },
+        "document_id": "DOC-SYN-001",
+        "document_version": 1,
+        "errors": [],
+        "finished_at": "2026-11-22T21:36:27.352676Z",
+        "method": "native",
+        "model": null,
+        "model_version": null,
+        "pages": [
+          {
+            "page": 1,
+            "text": "SYNTHETIC TEST DOCUMENT - NOT PAYABLE\nVendor: Example Mechanical Services\nInvoice: SYN-INV-001\nInvoice date: 2026-11-20\nDue date: 2026-12-15\nCurrency: USD\nTotal due: 1,250.00\n",
+            "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+          }
+        ],
+        "processor": "black-river-native",
+        "processor_version": "1.0.0;python=3.12.14",
+        "provider": null,
+        "raw_response": null,
+        "run_id": "native-eval-8d89c0608e79419fb3f056094b27f06b",
+        "schema_version": "br.docai.v1",
+        "source_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b",
+        "started_at": "2026-11-22T21:36:27.352497Z",
+        "status": "complete",
+        "device": null,
+        "precision": null
+      },
+      "candidates": [
+        {
+          "claim_id": "claim-3601790ec294cc791f27641ba24b8c691c3e5aa0",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.352676Z",
+          "currency": null,
+          "document_id": "DOC-SYN-001",
+          "document_version": 1,
+          "field": "vendor",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-8d89c0608e79419fb3f056094b27f06b",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 73,
+              "page": 1,
+              "quote": "Example Mechanical Services",
+              "start": 46,
+              "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "Example Mechanical Services",
+          "value_type": "text"
+        },
+        {
+          "claim_id": "claim-17ef0ea198f1ec4f39d2cd4f4ec260b7dca70934",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.352676Z",
+          "currency": null,
+          "document_id": "DOC-SYN-001",
+          "document_version": 1,
+          "field": "invoice_number",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-8d89c0608e79419fb3f056094b27f06b",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 94,
+              "page": 1,
+              "quote": "SYN-INV-001",
+              "start": 83,
+              "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "SYN-INV-001",
+          "value_type": "text"
+        },
+        {
+          "claim_id": "claim-5eac11523e559f1b71d96c23c7ec8984b4a8a0ba",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.352676Z",
+          "currency": null,
+          "document_id": "DOC-SYN-001",
+          "document_version": 1,
+          "field": "invoice_date",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-8d89c0608e79419fb3f056094b27f06b",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 119,
+              "page": 1,
+              "quote": "2026-11-20",
+              "start": 109,
+              "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "2026-11-20",
+          "value_type": "date"
+        },
+        {
+          "claim_id": "claim-8ccfe381c306fd653a5df0d91cc8e321ef05d7b7",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.352676Z",
+          "currency": null,
+          "document_id": "DOC-SYN-001",
+          "document_version": 1,
+          "field": "due_date",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-8d89c0608e79419fb3f056094b27f06b",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 140,
+              "page": 1,
+              "quote": "2026-12-15",
+              "start": 130,
+              "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "2026-12-15",
+          "value_type": "date"
+        },
+        {
+          "claim_id": "claim-1db4284be0f6a0a20145cbbb3ed82e41ec299f6f",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.352676Z",
+          "currency": "USD",
+          "document_id": "DOC-SYN-001",
+          "document_version": 1,
+          "field": "total_cents",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-8d89c0608e79419fb3f056094b27f06b",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 174,
+              "page": 1,
+              "quote": "1,250.00",
+              "start": 166,
+              "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": "cents",
+          "value": 125000,
+          "value_type": "money_cents"
+        },
+        {
+          "claim_id": "claim-4825d112a17cd18295561dd97bcf0a3d07c1013e",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.352676Z",
+          "currency": null,
+          "document_id": "DOC-SYN-001",
+          "document_version": 1,
+          "field": "currency",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-8d89c0608e79419fb3f056094b27f06b",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 154,
+              "page": 1,
+              "quote": "USD",
+              "start": 151,
+              "text_sha256": "698de26d12a53468eb135d4d3498917fa7599a05c14ea2a768629784869b747b"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "USD",
+          "value_type": "text"
+        }
+      ],
+      "observed_native_and_candidate_ms": 4.418663000251399
+    },
+    {
+      "document": {
+        "asset_links": [],
+        "byte_count": 128,
+        "content_sha256": "4dcca3302e43637a219c02861029ba6bfd4a7b848a2d0969ccc2f74a826d5c4c",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "document_class": "MEP_INVOICE",
+        "document_id": "DOC-SYN-002",
+        "media_type": "text/csv",
+        "predecessor_document_id": null,
+        "received_at": "2026-11-22T21:36:27.356922Z",
+        "schema_version": "br.docai.v1",
+        "source_status": "synthetic",
+        "source_uri": "fixture://br-docai-native-invoices-001/invoice_table.csv",
+        "title": "invoice_table.csv",
+        "version": 1
+      },
+      "extraction": {
+        "api_version": null,
+        "backend": "cpu",
+        "configuration_sha256": "c9a7574a7d13f7a1a73bb6675dc8fcfab98b54e5789d676348809dfb406d8201",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "coverage": {
+          "complete": true,
+          "input_bytes": 128,
+          "limits": {
+            "max_chars_per_page": 20000,
+            "max_input_bytes": 16777216,
+            "max_pages": 5,
+            "max_text_bytes": 150000,
+            "max_xml_bytes": 2000000
+          },
+          "notes": [],
+          "page_basis": "logical",
+          "processed_bytes": 128,
+          "processed_pages": 1,
+          "total_pages": 1,
+          "truncated": false
+        },
+        "document_id": "DOC-SYN-002",
+        "document_version": 1,
+        "errors": [],
+        "finished_at": "2026-11-22T21:36:27.357379Z",
+        "method": "native",
+        "model": null,
+        "model_version": null,
+        "pages": [
+          {
+            "page": 1,
+            "text": "invoice_number,invoice_date,due_date,vendor,currency,total_due\nSYN-INV-002,2026-11-21,2026-12-21,Example Heating Lab,USD,480.25\n",
+            "text_sha256": "4dcca3302e43637a219c02861029ba6bfd4a7b848a2d0969ccc2f74a826d5c4c"
+          }
+        ],
+        "processor": "black-river-native",
+        "processor_version": "1.0.0;python=3.12.14",
+        "provider": null,
+        "raw_response": null,
+        "run_id": "native-eval-348b9e9f7f06469990e28e38bbac991f",
+        "schema_version": "br.docai.v1",
+        "source_sha256": "4dcca3302e43637a219c02861029ba6bfd4a7b848a2d0969ccc2f74a826d5c4c",
+        "started_at": "2026-11-22T21:36:27.357096Z",
+        "status": "complete",
+        "device": null,
+        "precision": null
+      },
+      "candidates": [],
+      "observed_native_and_candidate_ms": 0.5934059990977403
+    },
+    {
+      "document": {
+        "asset_links": [],
+        "byte_count": 247,
+        "content_sha256": "39f814d5ea6106de945b501fde81b8580ce21d3a153c32ced3acbd56065d49fc",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "document_class": "MEP_INVOICE",
+        "document_id": "DOC-SYN-003",
+        "media_type": "text/plain",
+        "predecessor_document_id": null,
+        "received_at": "2026-11-22T21:36:27.357695Z",
+        "schema_version": "br.docai.v1",
+        "source_status": "synthetic",
+        "source_uri": "fixture://br-docai-native-invoices-001/invoice_ambiguous.txt",
+        "title": "invoice_ambiguous.txt",
+        "version": 1
+      },
+      "extraction": {
+        "api_version": null,
+        "backend": "cpu",
+        "configuration_sha256": "c9a7574a7d13f7a1a73bb6675dc8fcfab98b54e5789d676348809dfb406d8201",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "coverage": {
+          "complete": true,
+          "input_bytes": 247,
+          "limits": {
+            "max_chars_per_page": 20000,
+            "max_input_bytes": 16777216,
+            "max_pages": 5,
+            "max_text_bytes": 150000,
+            "max_xml_bytes": 2000000
+          },
+          "notes": [],
+          "page_basis": "logical",
+          "processed_bytes": 247,
+          "processed_pages": 1,
+          "total_pages": 1,
+          "truncated": false
+        },
+        "document_id": "DOC-SYN-003",
+        "document_version": 1,
+        "errors": [],
+        "finished_at": "2026-11-22T21:36:27.358008Z",
+        "method": "native",
+        "model": null,
+        "model_version": null,
+        "pages": [
+          {
+            "page": 1,
+            "text": "SYNTHETIC TEST DOCUMENT - NOT PAYABLE\nVendor: Example Service Lab\nInvoice: SYN-INV-003\nInvoice date: 2026-11-20\nDue date: 04/05/2026 (date convention unspecified)\nCurrency: USD\nTotal due: 1,250.00\nRevised total due: 1,350.00 (approval unresolved)\n",
+            "text_sha256": "39f814d5ea6106de945b501fde81b8580ce21d3a153c32ced3acbd56065d49fc"
+          }
+        ],
+        "processor": "black-river-native",
+        "processor_version": "1.0.0;python=3.12.14",
+        "provider": null,
+        "raw_response": null,
+        "run_id": "native-eval-b43801c5a96c4d68892b74196bc26af6",
+        "schema_version": "br.docai.v1",
+        "source_sha256": "39f814d5ea6106de945b501fde81b8580ce21d3a153c32ced3acbd56065d49fc",
+        "started_at": "2026-11-22T21:36:27.357841Z",
+        "status": "complete",
+        "device": null,
+        "precision": null
+      },
+      "candidates": [
+        {
+          "claim_id": "claim-312e962052ac6fce3bedef4592a61c529c7a5db8",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.358008Z",
+          "currency": null,
+          "document_id": "DOC-SYN-003",
+          "document_version": 1,
+          "field": "vendor",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-b43801c5a96c4d68892b74196bc26af6",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 65,
+              "page": 1,
+              "quote": "Example Service Lab",
+              "start": 46,
+              "text_sha256": "39f814d5ea6106de945b501fde81b8580ce21d3a153c32ced3acbd56065d49fc"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "Example Service Lab",
+          "value_type": "text"
+        },
+        {
+          "claim_id": "claim-47d36f9c2ebef6b30f6b1730ffd3af5bce721d3c",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.358008Z",
+          "currency": null,
+          "document_id": "DOC-SYN-003",
+          "document_version": 1,
+          "field": "invoice_number",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-b43801c5a96c4d68892b74196bc26af6",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 86,
+              "page": 1,
+              "quote": "SYN-INV-003",
+              "start": 75,
+              "text_sha256": "39f814d5ea6106de945b501fde81b8580ce21d3a153c32ced3acbd56065d49fc"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "SYN-INV-003",
+          "value_type": "text"
+        },
+        {
+          "claim_id": "claim-01631e3e213d7d57eede2a34859ad5afd01d3e6a",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.358008Z",
+          "currency": null,
+          "document_id": "DOC-SYN-003",
+          "document_version": 1,
+          "field": "invoice_date",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-b43801c5a96c4d68892b74196bc26af6",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 111,
+              "page": 1,
+              "quote": "2026-11-20",
+              "start": 101,
+              "text_sha256": "39f814d5ea6106de945b501fde81b8580ce21d3a153c32ced3acbd56065d49fc"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "2026-11-20",
+          "value_type": "date"
+        },
+        {
+          "claim_id": "claim-c96747e5794c7ac1d96af96e10ac913c8da279ee",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.358008Z",
+          "currency": null,
+          "document_id": "DOC-SYN-003",
+          "document_version": 1,
+          "field": "currency",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-b43801c5a96c4d68892b74196bc26af6",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 176,
+              "page": 1,
+              "quote": "USD",
+              "start": 173,
+              "text_sha256": "39f814d5ea6106de945b501fde81b8580ce21d3a153c32ced3acbd56065d49fc"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "USD",
+          "value_type": "text"
+        }
+      ],
+      "observed_native_and_candidate_ms": 1.7133959991042502
+    },
+    {
+      "document": {
+        "asset_links": [],
+        "byte_count": 76,
+        "content_sha256": "33d64534197dbb88c3befa762e4538b88e5b0ea8187dfa676fe1b70aa7764cda",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "document_class": "MEP_INVOICE",
+        "document_id": "DOC-SYN-004",
+        "media_type": "application/pdf",
+        "predecessor_document_id": null,
+        "received_at": "2026-11-22T21:36:27.359574Z",
+        "schema_version": "br.docai.v1",
+        "source_status": "synthetic",
+        "source_uri": "fixture://br-docai-native-invoices-001/malformed.pdf",
+        "title": "malformed.pdf",
+        "version": 1
+      },
+      "extraction": {
+        "api_version": null,
+        "backend": "cpu",
+        "configuration_sha256": "c9a7574a7d13f7a1a73bb6675dc8fcfab98b54e5789d676348809dfb406d8201",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "coverage": {
+          "complete": false,
+          "input_bytes": 76,
+          "limits": {
+            "max_chars_per_page": 20000,
+            "max_input_bytes": 16777216,
+            "max_pages": 5,
+            "max_text_bytes": 150000,
+            "max_xml_bytes": 2000000
+          },
+          "notes": [],
+          "page_basis": "physical",
+          "processed_bytes": 0,
+          "processed_pages": 0,
+          "total_pages": null,
+          "truncated": false
+        },
+        "document_id": "DOC-SYN-004",
+        "document_version": 1,
+        "errors": [
+          {
+            "code": "MALFORMED_PDF",
+            "message": "PDF structure or page content could not be parsed",
+            "page": null
+          }
+        ],
+        "finished_at": "2026-11-22T21:36:27.593300Z",
+        "method": "native",
+        "model": null,
+        "model_version": null,
+        "pages": [],
+        "processor": "black-river-native",
+        "processor_version": "1.0.0;python=3.12.14;pypdf=6.21.4",
+        "provider": null,
+        "raw_response": null,
+        "run_id": "native-eval-ddd148396c864cceb26749227ab16287",
+        "schema_version": "br.docai.v1",
+        "source_sha256": "33d64534197dbb88c3befa762e4538b88e5b0ea8187dfa676fe1b70aa7764cda",
+        "started_at": "2026-11-22T21:36:27.359716Z",
+        "status": "error",
+        "device": null,
+        "precision": null
+      },
+      "candidates": [],
+      "observed_native_and_candidate_ms": 233.9213289997133
+    },
+    {
+      "document": {
+        "asset_links": [],
+        "byte_count": 216,
+        "content_sha256": "63725f020750570362f19d4f57af92e040ce4e73f2b98e96be72a2a082d2112f",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "document_class": "MEP_INVOICE",
+        "document_id": "DOC-SYN-005",
+        "media_type": "text/plain",
+        "predecessor_document_id": null,
+        "received_at": "2026-11-22T21:36:27.593694Z",
+        "schema_version": "br.docai.v1",
+        "source_status": "synthetic",
+        "source_uri": "fixture://br-docai-native-invoices-001/invoice_missing.txt",
+        "title": "invoice_missing.txt",
+        "version": 1
+      },
+      "extraction": {
+        "api_version": null,
+        "backend": "cpu",
+        "configuration_sha256": "c9a7574a7d13f7a1a73bb6675dc8fcfab98b54e5789d676348809dfb406d8201",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "coverage": {
+          "complete": true,
+          "input_bytes": 216,
+          "limits": {
+            "max_chars_per_page": 20000,
+            "max_input_bytes": 16777216,
+            "max_pages": 5,
+            "max_text_bytes": 150000,
+            "max_xml_bytes": 2000000
+          },
+          "notes": [],
+          "page_basis": "logical",
+          "processed_bytes": 216,
+          "processed_pages": 1,
+          "total_pages": 1,
+          "truncated": false
+        },
+        "document_id": "DOC-SYN-005",
+        "document_version": 1,
+        "errors": [],
+        "finished_at": "2026-11-22T21:36:27.594097Z",
+        "method": "native",
+        "model": null,
+        "model_version": null,
+        "pages": [
+          {
+            "page": 1,
+            "text": "SYNTHETIC TEST DOCUMENT - NOT PAYABLE\nVendor: Example Incomplete Services\nInvoice: SYN-INV-005\nInvoice date: 2026-11-17\nCurrency: USD\nThis original is visibly incomplete; its complete bytes were provided.\nTotal due:\n",
+            "text_sha256": "63725f020750570362f19d4f57af92e040ce4e73f2b98e96be72a2a082d2112f"
+          }
+        ],
+        "processor": "black-river-native",
+        "processor_version": "1.0.0;python=3.12.14",
+        "provider": null,
+        "raw_response": null,
+        "run_id": "native-eval-d627b874694e4692ae11caa53476cb28",
+        "schema_version": "br.docai.v1",
+        "source_sha256": "63725f020750570362f19d4f57af92e040ce4e73f2b98e96be72a2a082d2112f",
+        "started_at": "2026-11-22T21:36:27.593860Z",
+        "status": "complete",
+        "device": null,
+        "precision": null
+      },
+      "candidates": [
+        {
+          "claim_id": "claim-c07dd1b08845a9c46cde5c1b1d71f3440c0e310e",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.594097Z",
+          "currency": null,
+          "document_id": "DOC-SYN-005",
+          "document_version": 1,
+          "field": "vendor",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-d627b874694e4692ae11caa53476cb28",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 73,
+              "page": 1,
+              "quote": "Example Incomplete Services",
+              "start": 46,
+              "text_sha256": "63725f020750570362f19d4f57af92e040ce4e73f2b98e96be72a2a082d2112f"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "Example Incomplete Services",
+          "value_type": "text"
+        },
+        {
+          "claim_id": "claim-586132dfc59bf3f93e1c69ed68f1db9c4178f343",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.594097Z",
+          "currency": null,
+          "document_id": "DOC-SYN-005",
+          "document_version": 1,
+          "field": "invoice_number",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-d627b874694e4692ae11caa53476cb28",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 94,
+              "page": 1,
+              "quote": "SYN-INV-005",
+              "start": 83,
+              "text_sha256": "63725f020750570362f19d4f57af92e040ce4e73f2b98e96be72a2a082d2112f"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "SYN-INV-005",
+          "value_type": "text"
+        },
+        {
+          "claim_id": "claim-8b4cae91b3e5befe71abd6186b255ea0e6d96524",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.594097Z",
+          "currency": null,
+          "document_id": "DOC-SYN-005",
+          "document_version": 1,
+          "field": "invoice_date",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-d627b874694e4692ae11caa53476cb28",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 119,
+              "page": 1,
+              "quote": "2026-11-17",
+              "start": 109,
+              "text_sha256": "63725f020750570362f19d4f57af92e040ce4e73f2b98e96be72a2a082d2112f"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "2026-11-17",
+          "value_type": "date"
+        },
+        {
+          "claim_id": "claim-11a807578ad9a2ddc3c2c18be304f22d8253b998",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.594097Z",
+          "currency": null,
+          "document_id": "DOC-SYN-005",
+          "document_version": 1,
+          "field": "currency",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-d627b874694e4692ae11caa53476cb28",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 133,
+              "page": 1,
+              "quote": "USD",
+              "start": 130,
+              "text_sha256": "63725f020750570362f19d4f57af92e040ce4e73f2b98e96be72a2a082d2112f"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "USD",
+          "value_type": "text"
+        }
+      ],
+      "observed_native_and_candidate_ms": 1.90874699910637
+    },
+    {
+      "document": {
+        "asset_links": [],
+        "byte_count": 170,
+        "content_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "document_class": "MEP_INVOICE",
+        "document_id": "DOC-SYN-105",
+        "media_type": "text/plain",
+        "predecessor_document_id": null,
+        "received_at": "2026-11-22T21:36:27.595800Z",
+        "schema_version": "br.docai.v1",
+        "source_status": "synthetic",
+        "source_uri": "fixture://br-docai-native-invoices-001/invoice_holdout.txt",
+        "title": "invoice_holdout.txt",
+        "version": 1
+      },
+      "extraction": {
+        "api_version": null,
+        "backend": "cpu",
+        "configuration_sha256": "c9a7574a7d13f7a1a73bb6675dc8fcfab98b54e5789d676348809dfb406d8201",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "coverage": {
+          "complete": true,
+          "input_bytes": 170,
+          "limits": {
+            "max_chars_per_page": 20000,
+            "max_input_bytes": 16777216,
+            "max_pages": 5,
+            "max_text_bytes": 150000,
+            "max_xml_bytes": 2000000
+          },
+          "notes": [],
+          "page_basis": "logical",
+          "processed_bytes": 170,
+          "processed_pages": 1,
+          "total_pages": 1,
+          "truncated": false
+        },
+        "document_id": "DOC-SYN-105",
+        "document_version": 1,
+        "errors": [],
+        "finished_at": "2026-11-22T21:36:27.596162Z",
+        "method": "native",
+        "model": null,
+        "model_version": null,
+        "pages": [
+          {
+            "page": 1,
+            "text": "SYNTHETIC TEST DOCUMENT - NOT PAYABLE\nVendor: Example Café Maintenance\nInvoice: SYN-INV-105\nInvoice date: 2026-11-18\nDue date: 2026-12-02\nCurrency: USD\nTotal due: 79.05\n",
+            "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a"
+          }
+        ],
+        "processor": "black-river-native",
+        "processor_version": "1.0.0;python=3.12.14",
+        "provider": null,
+        "raw_response": null,
+        "run_id": "native-eval-d0c04e885a3f4f2e98adf0cefcc341e0",
+        "schema_version": "br.docai.v1",
+        "source_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a",
+        "started_at": "2026-11-22T21:36:27.595985Z",
+        "status": "complete",
+        "device": null,
+        "precision": null
+      },
+      "candidates": [
+        {
+          "claim_id": "claim-e47663219e1b662d6a32cbff2bb739a8f086514e",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.596162Z",
+          "currency": null,
+          "document_id": "DOC-SYN-105",
+          "document_version": 1,
+          "field": "vendor",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-d0c04e885a3f4f2e98adf0cefcc341e0",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 70,
+              "page": 1,
+              "quote": "Example Café Maintenance",
+              "start": 46,
+              "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "Example Café Maintenance",
+          "value_type": "text"
+        },
+        {
+          "claim_id": "claim-f57601b34b7d4c752f2adc2df6b4d27dc07b73a4",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.596162Z",
+          "currency": null,
+          "document_id": "DOC-SYN-105",
+          "document_version": 1,
+          "field": "invoice_number",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-d0c04e885a3f4f2e98adf0cefcc341e0",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 91,
+              "page": 1,
+              "quote": "SYN-INV-105",
+              "start": 80,
+              "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "SYN-INV-105",
+          "value_type": "text"
+        },
+        {
+          "claim_id": "claim-e2739a9baf9e0dff72c7091b131b3beaf90568a9",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.596162Z",
+          "currency": null,
+          "document_id": "DOC-SYN-105",
+          "document_version": 1,
+          "field": "invoice_date",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-d0c04e885a3f4f2e98adf0cefcc341e0",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 116,
+              "page": 1,
+              "quote": "2026-11-18",
+              "start": 106,
+              "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "2026-11-18",
+          "value_type": "date"
+        },
+        {
+          "claim_id": "claim-f98b0500f6b4d42c21226662565428a5acb9babd",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.596162Z",
+          "currency": null,
+          "document_id": "DOC-SYN-105",
+          "document_version": 1,
+          "field": "due_date",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-d0c04e885a3f4f2e98adf0cefcc341e0",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 137,
+              "page": 1,
+              "quote": "2026-12-02",
+              "start": 127,
+              "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "2026-12-02",
+          "value_type": "date"
+        },
+        {
+          "claim_id": "claim-795cfe04bb6a731b8b0cc7c744a09ac7f2b33e65",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.596162Z",
+          "currency": "USD",
+          "document_id": "DOC-SYN-105",
+          "document_version": 1,
+          "field": "total_cents",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-d0c04e885a3f4f2e98adf0cefcc341e0",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 168,
+              "page": 1,
+              "quote": "79.05",
+              "start": 163,
+              "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": "cents",
+          "value": 7905,
+          "value_type": "money_cents"
+        },
+        {
+          "claim_id": "claim-b23cbf5d835ef0edf1de7fc25f47bd97440f7cf0",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.596162Z",
+          "currency": null,
+          "document_id": "DOC-SYN-105",
+          "document_version": 1,
+          "field": "currency",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-d0c04e885a3f4f2e98adf0cefcc341e0",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 151,
+              "page": 1,
+              "quote": "USD",
+              "start": 148,
+              "text_sha256": "4cd0620ab4394e9c66b39da94ff34aa3b3c487d818248ce9ce4594f46d7f3a9a"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "USD",
+          "value_type": "text"
+        }
+      ],
+      "observed_native_and_candidate_ms": 2.3558230004709912
+    },
+    {
+      "document": {
+        "asset_links": [],
+        "byte_count": 2297,
+        "content_sha256": "07c04e6dc994423c613bbbcc05604bdc1db4ed0795691193f4f61052f4facbce",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "document_class": "MEP_INVOICE",
+        "document_id": "DOC-SYN-106",
+        "media_type": "application/pdf",
+        "predecessor_document_id": null,
+        "received_at": "2026-11-22T21:36:27.598336Z",
+        "schema_version": "br.docai.v1",
+        "source_status": "synthetic",
+        "source_uri": "fixture://br-docai-native-invoices-001/invoice_native.pdf",
+        "title": "invoice_native.pdf",
+        "version": 1
+      },
+      "extraction": {
+        "api_version": null,
+        "backend": "cpu",
+        "configuration_sha256": "c9a7574a7d13f7a1a73bb6675dc8fcfab98b54e5789d676348809dfb406d8201",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "coverage": {
+          "complete": true,
+          "input_bytes": 2297,
+          "limits": {
+            "max_chars_per_page": 20000,
+            "max_input_bytes": 16777216,
+            "max_pages": 5,
+            "max_text_bytes": 150000,
+            "max_xml_bytes": 2000000
+          },
+          "notes": [],
+          "page_basis": "physical",
+          "processed_bytes": 2297,
+          "processed_pages": 1,
+          "total_pages": 1,
+          "truncated": false
+        },
+        "document_id": "DOC-SYN-106",
+        "document_version": 1,
+        "errors": [],
+        "finished_at": "2026-11-22T21:36:27.783395Z",
+        "method": "native",
+        "model": null,
+        "model_version": null,
+        "pages": [
+          {
+            "page": 1,
+            "text": "SYNTHETIC TEST DOCUMENT - NOT PAYABLE\nVendor: Example Pipeworks\nInvoice: SYN-INV-106\nInvoice date: 2026-11-19\nDue date: 2027-01-05\nCurrency: USD\nTotal due: 906.18\nDescription           Qty      Unit USD      Line USD\nInspection              2        175.00        350.00\nPart replacement         1        490.00        490.00\nTax                                              66.18\nAll names and values are fictional test content.\n",
+            "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5"
+          }
+        ],
+        "processor": "black-river-native",
+        "processor_version": "1.0.0;python=3.12.14;pypdf=6.21.4",
+        "provider": null,
+        "raw_response": null,
+        "run_id": "native-eval-47bdaf1547f644ba83a8842344cdb7cc",
+        "schema_version": "br.docai.v1",
+        "source_sha256": "07c04e6dc994423c613bbbcc05604bdc1db4ed0795691193f4f61052f4facbce",
+        "started_at": "2026-11-22T21:36:27.598472Z",
+        "status": "complete",
+        "device": null,
+        "precision": null
+      },
+      "candidates": [
+        {
+          "claim_id": "claim-683af7025f26a7618f13897df2ba18a370a7e179",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.783395Z",
+          "currency": null,
+          "document_id": "DOC-SYN-106",
+          "document_version": 1,
+          "field": "vendor",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-47bdaf1547f644ba83a8842344cdb7cc",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 63,
+              "page": 1,
+              "quote": "Example Pipeworks",
+              "start": 46,
+              "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "Example Pipeworks",
+          "value_type": "text"
+        },
+        {
+          "claim_id": "claim-5218e405d045b378f9bfd1af4025fbe522cee2f2",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.783395Z",
+          "currency": null,
+          "document_id": "DOC-SYN-106",
+          "document_version": 1,
+          "field": "invoice_number",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-47bdaf1547f644ba83a8842344cdb7cc",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 84,
+              "page": 1,
+              "quote": "SYN-INV-106",
+              "start": 73,
+              "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "SYN-INV-106",
+          "value_type": "text"
+        },
+        {
+          "claim_id": "claim-48b9f144140f175a18e8b899acb85c631a7d88c6",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.783395Z",
+          "currency": null,
+          "document_id": "DOC-SYN-106",
+          "document_version": 1,
+          "field": "invoice_date",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-47bdaf1547f644ba83a8842344cdb7cc",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 109,
+              "page": 1,
+              "quote": "2026-11-19",
+              "start": 99,
+              "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "2026-11-19",
+          "value_type": "date"
+        },
+        {
+          "claim_id": "claim-8fa1f4f7e6081629ad8504a3b8a56d4424cfe30e",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.783395Z",
+          "currency": null,
+          "document_id": "DOC-SYN-106",
+          "document_version": 1,
+          "field": "due_date",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-47bdaf1547f644ba83a8842344cdb7cc",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 130,
+              "page": 1,
+              "quote": "2027-01-05",
+              "start": 120,
+              "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "2027-01-05",
+          "value_type": "date"
+        },
+        {
+          "claim_id": "claim-2fd3fd196dbe335061905dbbb4517e58fe22f8f9",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.783395Z",
+          "currency": "USD",
+          "document_id": "DOC-SYN-106",
+          "document_version": 1,
+          "field": "total_cents",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-47bdaf1547f644ba83a8842344cdb7cc",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 162,
+              "page": 1,
+              "quote": "906.18",
+              "start": 156,
+              "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": "cents",
+          "value": 90618,
+          "value_type": "money_cents"
+        },
+        {
+          "claim_id": "claim-e3790d8a35a4844a6f123066a937d23427b4e658",
+          "confidence": null,
+          "context": {
+            "case_id": "br-docai-native-invoices-001",
+            "domain": "commercial",
+            "subject_id": "synthetic-fixtures",
+            "tenant_id": "docai-evaluation"
+          },
+          "created_at": "2026-11-22T21:36:27.783395Z",
+          "currency": null,
+          "document_id": "DOC-SYN-106",
+          "document_version": 1,
+          "field": "currency",
+          "method": "native",
+          "proposed_by": "native.invoice.labels.v1",
+          "run_id": "native-eval-47bdaf1547f644ba83a8842344cdb7cc",
+          "schema_version": "br.docai.v1",
+          "spans": [
+            {
+              "end": 144,
+              "page": 1,
+              "quote": "USD",
+              "start": 141,
+              "text_sha256": "c0354675d72c5abb402c836d23d37c08bc1025ac6f00f32d865d6c27a9b590f5"
+            }
+          ],
+          "supersedes_claim_id": null,
+          "unit": null,
+          "value": "USD",
+          "value_type": "text"
+        }
+      ],
+      "observed_native_and_candidate_ms": 187.11939199965855
+    },
+    {
+      "document": {
+        "asset_links": [],
+        "byte_count": 41250,
+        "content_sha256": "94ff356a2e2e8fb87d720a4c135009ce23a121a9f3687821f7852f29c7b5c40f",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "document_class": "MEP_INVOICE",
+        "document_id": "DOC-SYN-107",
+        "media_type": "application/pdf",
+        "predecessor_document_id": null,
+        "received_at": "2026-11-22T21:36:27.785661Z",
+        "schema_version": "br.docai.v1",
+        "source_status": "synthetic",
+        "source_uri": "fixture://br-docai-native-invoices-001/invoice_scan.pdf",
+        "title": "invoice_scan.pdf",
+        "version": 1
+      },
+      "extraction": {
+        "api_version": null,
+        "backend": "cpu",
+        "configuration_sha256": "c9a7574a7d13f7a1a73bb6675dc8fcfab98b54e5789d676348809dfb406d8201",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "coverage": {
+          "complete": false,
+          "input_bytes": 41250,
+          "limits": {
+            "max_chars_per_page": 20000,
+            "max_input_bytes": 16777216,
+            "max_pages": 5,
+            "max_text_bytes": 150000,
+            "max_xml_bytes": 2000000
+          },
+          "notes": [
+            "Native text only: image/Form XObjects were not visually interpreted; review their unexamined content",
+            "No native readable text; image OCR or manual transcription may be required"
+          ],
+          "page_basis": "physical",
+          "processed_bytes": 41250,
+          "processed_pages": 1,
+          "total_pages": 1,
+          "truncated": false
+        },
+        "document_id": "DOC-SYN-107",
+        "document_version": 1,
+        "errors": [],
+        "finished_at": "2026-11-22T21:36:27.971655Z",
+        "method": "native",
+        "model": null,
+        "model_version": null,
+        "pages": [
+          {
+            "page": 1,
+            "text": "",
+            "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "processor": "black-river-native",
+        "processor_version": "1.0.0;python=3.12.14;pypdf=6.21.4",
+        "provider": null,
+        "raw_response": null,
+        "run_id": "native-eval-a46a9c95ef69484d8536b679e6777ba7",
+        "schema_version": "br.docai.v1",
+        "source_sha256": "94ff356a2e2e8fb87d720a4c135009ce23a121a9f3687821f7852f29c7b5c40f",
+        "started_at": "2026-11-22T21:36:27.785808Z",
+        "status": "needs_ocr",
+        "device": null,
+        "precision": null
+      },
+      "candidates": [],
+      "observed_native_and_candidate_ms": 186.29776499983564
+    },
+    {
+      "document": {
+        "asset_links": [],
+        "byte_count": 159222,
+        "content_sha256": "04d5c840ac703d0887c64634242d26e95e93f4cf7cffc918a1ce9dba6ebdba21",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "document_class": "MEP_INVOICE",
+        "document_id": "DOC-SYN-108",
+        "media_type": "text/plain",
+        "predecessor_document_id": null,
+        "received_at": "2026-11-22T21:36:27.972169Z",
+        "schema_version": "br.docai.v1",
+        "source_status": "synthetic",
+        "source_uri": "fixture://br-docai-native-invoices-001/invoice_over_limit.txt",
+        "title": "invoice_over_limit.txt",
+        "version": 1
+      },
+      "extraction": {
+        "api_version": null,
+        "backend": "cpu",
+        "configuration_sha256": "c9a7574a7d13f7a1a73bb6675dc8fcfab98b54e5789d676348809dfb406d8201",
+        "context": {
+          "case_id": "br-docai-native-invoices-001",
+          "domain": "commercial",
+          "subject_id": "synthetic-fixtures",
+          "tenant_id": "docai-evaluation"
+        },
+        "coverage": {
+          "complete": false,
+          "input_bytes": 159222,
+          "limits": {
+            "max_chars_per_page": 20000,
+            "max_input_bytes": 16777216,
+            "max_pages": 5,
+            "max_text_bytes": 150000,
+            "max_xml_bytes": 2000000
+          },
+          "notes": [
+            "Only the bounded UTF-8 text prefix was extracted"
+          ],
+          "page_basis": "logical",
+          "processed_bytes": 20000,
+          "processed_pages": 1,
+          "total_pages": 1,
+          "truncated": true
+        },
+        "document_id": "DOC-SYN-108",
+        "document_version": 1,
+        "errors": [],
+        "finished_at": "2026-11-22T21:36:27.973020Z",
+        "method": "native",
+        "model": null,
+        "model_version": null,
+        "pages": [
+          {
+            "page": 1,
+            "text": "SYNTHETIC TEST DOCUMENT - CONFIGURED BYTE-LIMIT CONTROL\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is synthetic padding without any invoice field.\nThis is syntheti",
+            "text_sha256": "db7a05919d1f9d7d78d921f5927fca02c5fc86698fd15ce53bce5fc72aea9f38"
+          }
+        ],
+        "processor": "black-river-native",
+        "processor_version": "1.0.0;python=3.12.14",
+        "provider": null,
+        "raw_response": null,
+        "run_id": "native-eval-b5d35f8f3ccc4ede9d8a8ef276d219b8",
+        "schema_version": "br.docai.v1",
+        "source_sha256": "04d5c840ac703d0887c64634242d26e95e93f4cf7cffc918a1ce9dba6ebdba21",
+        "started_at": "2026-11-22T21:36:27.972336Z",
+        "status": "partial",
+        "device": null,
+        "precision": null
+      },
+      "candidates": [],
+      "observed_native_and_candidate_ms": 1.3816950013278984
+    }
+  ]
+}

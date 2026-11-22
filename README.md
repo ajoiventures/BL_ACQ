@@ -1,5 +1,79 @@
 # Black River acquisition workspace
 
+## Doc AI product and existing builder library
+
+The active [Doc AI ticket plan](docs/plans/docai-ticket-plan.md) separates
+document intake, processing, evidence and review from the builder swarm used
+to implement them. The [current-state audit](docs/architecture/docai-current-state.md)
+identifies reusable filing and evidence code and the boundaries of the new
+local document increment. Native intake, source-linked invoice proposals,
+review/correction and accepted export now run as ordinary code. There is no
+verified NVIDIA Doc AI connection in the inspected workspaces.
+
+Run the new [local Doc AI workflow](docs/guides/run_docai.md):
+
+```sh
+python tools/run_docai.py --root /tmp/br-docai-demo demo --output /tmp/br-docai-demo/accepted-invoice.json
+```
+
+This command uses a bundled synthetic invoice and explicitly automated synthetic
+review events. New proposals from normal intake remain pending. Read the
+[application mechanics](docs/guides/document_application.md) to follow original
+bytes, typed fields, exact source quotes, revision checks and review history.
+The current application is a synchronous trusted-local-user CLI; service ACLs,
+durable jobs and the optional provider adapter remain open work.
+
+Native PDF support uses `python -m pip install -r requirements-docai.txt`.
+Evaluate the retained corpus with:
+
+```sh
+python tools/evaluate_docai_native.py --output-dir /tmp/br-docai-evaluation --split all
+```
+
+The evaluator counts misses and abstentions separately. Its tiny synthetic
+corpus is a regression baseline, not evidence of general invoice accuracy.
+See the [first implementation verification](docs/plans/docai-native-increment-verification.md).
+
+The 14 builder skills extend the established swarm library through the
+[library crosswalk](config/swarm-library-extension.json). Existing leaders,
+skill IDs, project tickets and independent review remain authoritative.
+The older [84-ticket evidence/acquisition plan](docs/plans/document-engine-tickets.md)
+is preserved as related work; it does not gate the first Doc AI evaluation.
+See the [builder coordination architecture](docs/architecture/builder-swarm.md)
+and [engine/application boundaries](docs/architecture/document-engine-layers.md).
+
+Inspect the active offline Doc AI schedule:
+
+```sh
+python tools/schedule_builder_work.py --plan config/docai-ticket-plan.json --output .runs/docai-schedule.json
+```
+
+Provider contracts and disabled/fake-adapter tests can be built now. A first
+live provider evaluation follows the document, review and connection readiness
+gates in the plan; it does not wait for the entire financial platform.
+
+The retained deterministic evidence-to-offer demonstration is a downstream
+acquisition consumer, not the general Doc AI application:
+
+```sh
+python tools/run_document_offer.py --output .runs/document-offer.json --r-export .runs/document-offer-r
+```
+
+The first command traces reviewed renovation quotes through source history,
+offer economics and a typed R review exchange. It executes without AI or a
+network connection. The schedule command above produces an offline plan with
+dependency, resource, file-ownership and quality constraints; it does not
+launch agents or schedule a production job. Output paths must be new.
+
+Read the [demonstration guide](docs/guides/run_document_offer.md) and
+[scheduler guide](docs/guides/schedule_builder_work.md) for the interfaces and
+actual execution limits. The [correction verification record](docs/plans/docai-correction-verification.md)
+records the current plan and library-index checks; the
+[original build verification](docs/plans/document-engine-verification.md)
+preserves evidence for the acquisition-consumer demonstration.
+
+## Explore the existing workspace
+
 Open [the learning workspace](black-river.code-workspace) in VS Code. Start with a five-row asset report, then follow a simulated parcel through underwriting and founder review.
 
 On Windows, run `code-map.cmd` for the architecture, a live teaching demo, a CTO pitch, and the file map. The [CTO guide](docs/CTO_ARCHITECTURE.md) explains the platform and its current evidence.

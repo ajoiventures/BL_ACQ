@@ -1,0 +1,7 @@
+SYNTHETIC TEST DOCUMENT - NOT PAYABLE
+Vendor: Example Incomplete Services
+Invoice: SYN-INV-005
+Invoice date: 2026-11-17
+Currency: USD
+This original is visibly incomplete; its complete bytes were provided.
+Total due:

@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "documents": [
+    {
+      "metadata": {
+        "document_id": "quote-v1",
+        "deal_id": "BR-DEMO-DUPLEX-001",
+        "family_id": "renovation-quote",
+        "version": 1,
+        "source_uri": "fixture://duplex/quote-v1",
+        "title": "Synthetic renovation quote, initial version",
+        "received_on": "2026-11-20",
+        "effective_on": "2026-11-20",
+        "expires_on": "2026-12-20",
+        "page_count": 1,
+        "illustrative": true
+      },
+      "content_utf8": "ILLUSTRATIVE TRAINING RECORD. This is not a real contractor quote.\nDeal BR-DEMO-DUPLEX-001. Revision 1, 2026-11-20.\nRenovation base scope estimate: USD 35,000.00.\nThis teaching amount is not an assurance of final repair cost.\n"
+    },
+    {
+      "metadata": {
+        "document_id": "quote-v2",
+        "deal_id": "BR-DEMO-DUPLEX-001",
+        "family_id": "renovation-quote",
+        "version": 2,
+        "supersedes_document_id": "quote-v1",
+        "source_uri": "fixture://duplex/quote-v2",
+        "title": "Synthetic renovation quote, revised version",
+        "received_on": "2026-11-22",
+        "effective_on": "2026-11-22",
+        "expires_on": "2026-12-22",
+        "page_count": 1,
+        "illustrative": true
+      },
+      "content_utf8": "ILLUSTRATIVE TRAINING RECORD. This is not a real contractor quote.\nDeal BR-DEMO-DUPLEX-001. Revision 2, 2026-11-22, replacing revision 1.\nRenovation base scope estimate: USD 55,000.00.\nThis teaching amount is not an assurance of final repair cost.\n"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "quote-v1-renovation",
+      "deal_id": "BR-DEMO-DUPLEX-001",
+      "document_id": "quote-v1",
+      "field": "renovation_quote_cents",
+      "value": 3500000,
+      "value_type": "money_cents",
+      "unit": "cents",
+      "currency": "USD",
+      "page": 1,
+      "location": "Renovation base scope estimate, line 3",
+      "raw_text": "Renovation base scope estimate: USD 35,000.00.",
+      "entered_on": "2026-11-20",
+      "method": "native_json"
+    },
+    {
+      "claim_id": "quote-v2-renovation",
+      "deal_id": "BR-DEMO-DUPLEX-001",
+      "document_id": "quote-v2",
+      "field": "renovation_quote_cents",
+      "value": 5500000,
+      "value_type": "money_cents",
+      "unit": "cents",
+      "currency": "USD",
+      "page": 1,
+      "location": "Renovation base scope estimate, line 3",
+      "raw_text": "Renovation base scope estimate: USD 55,000.00.",
+      "entered_on": "2026-11-22",
+      "method": "native_json"
+    }
+  ]
+}

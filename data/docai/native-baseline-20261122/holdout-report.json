@@ -1,0 +1,326 @@
+{
+  "artifact_integrity": {
+    "documents": 9,
+    "field_labels": 54,
+    "files": 11,
+    "status": "verified"
+  },
+  "calibration": {
+    "reason": "No validated probability-like scores or sufficient held-out sample supplied.",
+    "status": "not_evaluated"
+  },
+  "cases": [
+    {
+      "decision": "propose",
+      "document_id": "DOC-SYN-105",
+      "expected": "value",
+      "field": "currency",
+      "span_correct": true,
+      "value_correct": true
+    },
+    {
+      "decision": "propose",
+      "document_id": "DOC-SYN-105",
+      "expected": "value",
+      "field": "due_date",
+      "span_correct": true,
+      "value_correct": true
+    },
+    {
+      "decision": "propose",
+      "document_id": "DOC-SYN-105",
+      "expected": "value",
+      "field": "invoice_date",
+      "span_correct": true,
+      "value_correct": true
+    },
+    {
+      "decision": "propose",
+      "document_id": "DOC-SYN-105",
+      "expected": "value",
+      "field": "invoice_number",
+      "span_correct": true,
+      "value_correct": true
+    },
+    {
+      "decision": "propose",
+      "document_id": "DOC-SYN-105",
+      "expected": "value",
+      "field": "total_cents",
+      "span_correct": true,
+      "value_correct": true
+    },
+    {
+      "decision": "propose",
+      "document_id": "DOC-SYN-105",
+      "expected": "value",
+      "field": "vendor",
+      "span_correct": true,
+      "value_correct": true
+    },
+    {
+      "decision": "propose",
+      "document_id": "DOC-SYN-106",
+      "expected": "value",
+      "field": "currency",
+      "span_correct": true,
+      "value_correct": true
+    },
+    {
+      "decision": "propose",
+      "document_id": "DOC-SYN-106",
+      "expected": "value",
+      "field": "due_date",
+      "span_correct": true,
+      "value_correct": true
+    },
+    {
+      "decision": "propose",
+      "document_id": "DOC-SYN-106",
+      "expected": "value",
+      "field": "invoice_date",
+      "span_correct": true,
+      "value_correct": true
+    },
+    {
+      "decision": "propose",
+      "document_id": "DOC-SYN-106",
+      "expected": "value",
+      "field": "invoice_number",
+      "span_correct": true,
+      "value_correct": true
+    },
+    {
+      "decision": "propose",
+      "document_id": "DOC-SYN-106",
+      "expected": "value",
+      "field": "total_cents",
+      "span_correct": true,
+      "value_correct": true
+    },
+    {
+      "decision": "propose",
+      "document_id": "DOC-SYN-106",
+      "expected": "value",
+      "field": "vendor",
+      "span_correct": true,
+      "value_correct": true
+    },
+    {
+      "decision": "abstain",
+      "document_id": "DOC-SYN-107",
+      "expected": "abstain",
+      "field": "currency",
+      "span_correct": false,
+      "value_correct": false
+    },
+    {
+      "decision": "abstain",
+      "document_id": "DOC-SYN-107",
+      "expected": "abstain",
+      "field": "due_date",
+      "span_correct": false,
+      "value_correct": false
+    },
+    {
+      "decision": "abstain",
+      "document_id": "DOC-SYN-107",
+      "expected": "abstain",
+      "field": "invoice_date",
+      "span_correct": false,
+      "value_correct": false
+    },
+    {
+      "decision": "abstain",
+      "document_id": "DOC-SYN-107",
+      "expected": "abstain",
+      "field": "invoice_number",
+      "span_correct": false,
+      "value_correct": false
+    },
+    {
+      "decision": "abstain",
+      "document_id": "DOC-SYN-107",
+      "expected": "abstain",
+      "field": "total_cents",
+      "span_correct": false,
+      "value_correct": false
+    },
+    {
+      "decision": "abstain",
+      "document_id": "DOC-SYN-107",
+      "expected": "abstain",
+      "field": "vendor",
+      "span_correct": false,
+      "value_correct": false
+    },
+    {
+      "decision": "abstain",
+      "document_id": "DOC-SYN-108",
+      "expected": "abstain",
+      "field": "currency",
+      "span_correct": false,
+      "value_correct": false
+    },
+    {
+      "decision": "abstain",
+      "document_id": "DOC-SYN-108",
+      "expected": "abstain",
+      "field": "due_date",
+      "span_correct": false,
+      "value_correct": false
+    },
+    {
+      "decision": "abstain",
+      "document_id": "DOC-SYN-108",
+      "expected": "abstain",
+      "field": "invoice_date",
+      "span_correct": false,
+      "value_correct": false
+    },
+    {
+      "decision": "abstain",
+      "document_id": "DOC-SYN-108",
+      "expected": "abstain",
+      "field": "invoice_number",
+      "span_correct": false,
+      "value_correct": false
+    },
+    {
+      "decision": "abstain",
+      "document_id": "DOC-SYN-108",
+      "expected": "abstain",
+      "field": "total_cents",
+      "span_correct": false,
+      "value_correct": false
+    },
+    {
+      "decision": "abstain",
+      "document_id": "DOC-SYN-108",
+      "expected": "abstain",
+      "field": "vendor",
+      "span_correct": false,
+      "value_correct": false
+    }
+  ],
+  "corpus_id": "br-docai-native-invoices-001",
+  "corpus_sha256": "f313e2d6599680333afa2a4d188f0dd9603765be16e309829b0405653d8a4378",
+  "counts": {
+    "abstention_required_fields": 12,
+    "abstentions": 12,
+    "answerable_fields": 12,
+    "answerable_proposals": 12,
+    "claimed_accepted_fields": 0,
+    "correct_abstentions": 12,
+    "correct_spans": 12,
+    "correct_values": 12,
+    "critical_false_accepts": 0,
+    "documents": 4,
+    "errors": 0,
+    "false_accepts": 0,
+    "false_proposals": 0,
+    "grounded_correct_values": 12,
+    "labeled_fields": 24,
+    "labeled_proposals": 12,
+    "missing_documents": 0,
+    "missing_fields": 0,
+    "processing_status_correct": 4,
+    "proposals": 12,
+    "reported_documents": 4,
+    "unexpected_fields": 0
+  },
+  "latency": {
+    "mean_ms": 94.28866875032327,
+    "median_ms": 94.32679400015331,
+    "reported_documents": 4,
+    "total_ms": 377.15467500129307
+  },
+  "limitations": [
+    "Review decisions and usage are reported input, not authenticated or independently observed here.",
+    "Synthetic corpus scores do not establish provider quality, production readiness, or population accuracy.",
+    "Null rates mean zero denominator; missing output is not a successful abstention."
+  ],
+  "metrics": {
+    "document_reporting_coverage": {
+      "denominator": 4,
+      "numerator": 4,
+      "value": 1.0
+    },
+    "exact_value_accuracy": {
+      "denominator": 12,
+      "numerator": 12,
+      "value": 1.0
+    },
+    "field_precision": {
+      "denominator": 12,
+      "numerator": 12,
+      "value": 1.0
+    },
+    "field_recall": {
+      "denominator": 12,
+      "numerator": 12,
+      "value": 1.0
+    },
+    "grounded_value_recall": {
+      "denominator": 12,
+      "numerator": 12,
+      "value": 1.0
+    },
+    "processing_status_accuracy": {
+      "denominator": 4,
+      "numerator": 4,
+      "value": 1.0
+    },
+    "proposal_coverage": {
+      "denominator": 24,
+      "numerator": 12,
+      "value": 0.5
+    },
+    "required_abstention_accuracy": {
+      "denominator": 12,
+      "numerator": 12,
+      "value": 1.0
+    },
+    "span_fidelity": {
+      "denominator": 12,
+      "numerator": 12,
+      "value": 1.0
+    },
+    "value_precision": {
+      "denominator": 12,
+      "numerator": 12,
+      "value": 1.0
+    },
+    "value_recall": {
+      "denominator": 12,
+      "numerator": 12,
+      "value": 1.0
+    }
+  },
+  "processing_status_counts": {
+    "complete": 2,
+    "error": 0,
+    "needs_ocr": 1,
+    "partial": 1,
+    "unsupported": 0
+  },
+  "reported_cost": {
+    "currency": "USD",
+    "reported_documents": 0,
+    "total": null
+  },
+  "review_time": {
+    "mean_ms": null,
+    "median_ms": null,
+    "reported_documents": 0,
+    "total_ms": null
+  },
+  "runtime": {
+    "backend": "cpu_reference",
+    "inference_performed": false,
+    "network_used": false
+  },
+  "schema_version": "br.docai-metrics.v1",
+  "scope": "native_invoice_contract_v1",
+  "split": "holdout"
+}

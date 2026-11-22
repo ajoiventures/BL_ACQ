@@ -4,6 +4,22 @@ Black River has **338 master requirements across 34 epics**. The [product portfo
 
 ## What runs and what remains
 
+### Document and probability increment
+
+The November 22, 2026 [builder ticket plan](../plans/document-engine-tickets.md)
+adds a bounded 84-ticket work breakdown alongside the 338-requirement master.
+The current increment implements immutable document claims/reviews, exact
+conditional offer economics, a reviewed-input application layer and an offline
+builder scheduler. It reuses the existing underwriting and finance context;
+it does not replace the ledger, workflow authority or corporate models.
+
+The [verification record](../plans/document-engine-verification.md) distinguishes
+executed CPU behavior, broader open capabilities, unavailable R/CUDA execution,
+browser limitations and later AI. The [code map](../code-map.md) links each new
+source and agent profile to its guide. The earlier coverage table below remains
+the wider portfolio inventory; historical runtime claims there are not new
+execution claims for this increment.
+
 | Layer | Working evidence in the checkout | Remaining scope |
 | --- | --- | --- |
 | **Intake and evidence** | Synthetic parcel and comparable records, source references, freshness, coordinate validation, scoped immutable evidence. The UI rehearses document intake. | Authorized county and parcel ingestion, live document parsing and retrieval, consent, trusted communication and CRM sources. **E03, E08, E15, E17, E22** |

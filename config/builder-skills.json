@@ -1,0 +1,1540 @@
+{
+  "schema_version": "br.builder-skills.v1",
+  "created_on": "2026-11-22",
+  "purpose": "Reusable build-time procedures for the acquisition and document-evidence product increment; capability specifications are not completion claims.",
+  "scope_boundary": {
+    "included": "Document provenance, reviewed-input workflows, existing finance and deal engines, probability evaluation, CUDA design, R validation, interfaces, connectors, assurance, later AI adapters, and release operations.",
+    "excluded_from_this_increment": "Full implementation of all 338 master requirements, new property strategies, live provider deployments, actual transactions, trained predictive models, and autonomous product agents.",
+    "existing_master_reference": "docs/architecture/capability-coverage.md",
+    "capability_state_rule": "Each capability is specified. Change its delivery_state only with source, test, runtime, and review evidence for that capability.",
+    "scale_goal": "Future goal: serve two million U.S. households, including immigrants. The initial segment, participant incentive, payer/revenue model, accessibility/localization, representative workload and unit economics require validation before scale.",
+    "professional_rigor": "Wall Street-level rigor is a validation target; this catalog and prototype do not establish institutional readiness or approval."
+  },
+  "runtime_policy": {
+    "builder_swarm": "active development method; temporary builders produce code, tests, contracts, and guides",
+    "skills": "reusable development instructions; installing a skill does not deploy a runtime process",
+    "product_core": "ordinary deterministic code plus explicitly supplied probability assumptions",
+    "product_ai_enabled": false,
+    "product_autonomous_agents_enabled": false,
+    "nvidia_document_services": "later optional adapters; not required by the default product",
+    "R_runtime": "must be observed and dependency-locked before claiming executed integration",
+    "CUDA_runtime": "explicit backend; availability, parity, and speed claims require real hardware evidence",
+    "builder_scheduler": "offline planning tool; does not launch agents, call services, or run inside the product"
+  },
+  "agent_roles": [
+    {
+      "id": "architect_integrator",
+      "role": "Product architect and integrator",
+      "responsibility": "Own boundaries, shared contracts, task allocation, application integration, review experience, and truthful delivery status."
+    },
+    {
+      "id": "evidence_builder",
+      "role": "Evidence and workflow engineer",
+      "responsibility": "Own document identity, immutable claims, source review, accepted inputs, connector boundaries, and disabled future AI interfaces."
+    },
+    {
+      "id": "quant_builder",
+      "role": "Financial and compute engineer",
+      "responsibility": "Own authoritative financial semantics, conditional probability calculations, scenario policies, and CUDA batch design."
+    },
+    {
+      "id": "quality_builder",
+      "role": "Validation and release engineer",
+      "responsibility": "Own independent checks, R exchange/reproducibility, failure cases, release evidence, operational observability, and recovery."
+    }
+  ],
+  "skills": [
+    {
+      "name": "br-build-product",
+      "display_name": "Black River Product Builder",
+      "description": "Plan, integrate, and verify changes to the Black River acquisition product. Use for product architecture, builder-swarm work allocation, engine-before-layer sequencing, and resolving cross-component boundaries.",
+      "owner": "architect_integrator",
+      "phase": "foundation",
+      "scope_now": [
+        "Map requirements to existing code and tests.",
+        "Define component contracts and allocate isolated builder tasks.",
+        "Integrate a deterministic evidence-to-underwriting demonstration."
+      ],
+      "scope_future": [
+        "Expand the validated foundation to additional strategies and operating products.",
+        "Evaluate optional product AI only after the non-AI workflow is stable."
+      ],
+      "capabilities": [
+        {
+          "id": "BR-PROD-01",
+          "action": "Record the product and builder boundary",
+          "input": "User objective, session instructions, AGENTS.md, current architecture",
+          "output": "Versioned boundary decision naming build-time agents and product runtime components",
+          "acceptance": "The ordinary product path runs without an LLM, autonomous agent, or NVIDIA model service; later AI is explicitly disabled.",
+          "dependencies": [],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-PROD-02",
+          "action": "Inventory existing engines and gaps",
+          "input": "Repository revision, maintained source map, tests, available runtimes",
+          "output": "Capability-to-code-and-test inventory with observed limitations",
+          "acceptance": "Reuse working finance, ledger, storage, and workflow modules; distinguish source-reviewed, executed, and planned behavior.",
+          "dependencies": [
+            "BR-PROD-01"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-PROD-03",
+          "action": "Decompose a bounded product increment",
+          "input": "Business workflow, initial service segment, customer need, participant incentive, payer/revenue hypothesis, unresolved gaps, and acceptance constraints",
+          "output": "Initial-segment and unit-economics hypotheses plus a dependency-ordered work breakdown with stable capability IDs",
+          "acceptance": "Select an initial segment using service need, geography, obtainable evidence, and delivery capacity; state the participant incentive, payer, revenue/cost hypothesis, and validation measure. Every work item has an owner, inputs, outputs, completion evidence, and an explicit phase. The two-million-household goal remains an unproven scale hypothesis.",
+          "dependencies": [
+            "BR-PROD-02"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-PROD-04",
+          "action": "Specify shared contracts before implementation",
+          "input": "Evidence records, monetary types, identifiers, time conventions",
+          "output": "Versioned contract for engines, application services, and adapters",
+          "acceptance": "IDs, currency, units, dates, null semantics, rounding, and error behavior are explicit and can be validated without AI.",
+          "dependencies": [
+            "BR-PROD-03"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-PROD-05",
+          "action": "Dispatch and integrate builder work",
+          "input": "Shared contracts, permitted files, builder roles",
+          "output": "Disjoint work assignments and integration record",
+          "acceptance": "Concurrent builders have bounded ownership; dependencies and conflicts are resolved sequentially by the integrator.",
+          "dependencies": [
+            "BR-PROD-04",
+            "BR-COORD-02",
+            "BR-COORD-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-PROD-06",
+          "action": "Reconcile delivery claims against evidence",
+          "input": "Diff, test results, interface examples, known gaps",
+          "output": "Release summary with implemented, tested, deferred, and blocked sections",
+          "acceptance": "No planned capability, unavailable R/CUDA execution, or future AI service is reported as deployed.",
+          "dependencies": [
+            "BR-PROD-05",
+            "BR-VAL-06",
+            "BR-OPS-05"
+          ],
+          "delivery_state": "specified"
+        }
+      ],
+      "steps": [
+        "Read current instructions, inspect the existing implementation, and state the precise business workflow.",
+        "Assign engine ownership and freeze the smallest shared interface before parallel edits.",
+        "Dispatch builders with disjoint files and acceptance conditions; collect their artifacts rather than votes.",
+        "Integrate, reproduce the material success and failure paths, and report actual execution boundaries."
+      ],
+      "failure_modes": [
+        "Turning builder agents into production dependencies.",
+        "Duplicating authoritative financial rules across layers.",
+        "Treating a plan or configuration file as a deployed service."
+      ],
+      "example_prompts": [
+        "Build the document evidence engine first and integrate its reviewed inputs into underwriting.",
+        "Deploy a builder swarm for the next Black River increment while keeping product AI disabled."
+      ]
+    },
+    {
+      "name": "br-build-evidence-engine",
+      "display_name": "Black River Evidence Engine Builder",
+      "description": "Build deterministic document provenance, immutable claims, review decisions, and accepted-input projections for Black River. Use when source identity, version history, review status, or evidence freshness affects a financial or workflow decision.",
+      "owner": "evidence_builder",
+      "phase": "engine",
+      "scope_now": [
+        "Register document identity and source provenance.",
+        "Store typed candidate claims and explicit review events.",
+        "Project current accepted evidence with blockers."
+      ],
+      "scope_future": [
+        "Add richer custody, source signatures, retention policies, and production storage.",
+        "Support additional evidence kinds using the same review boundary."
+      ],
+      "capabilities": [
+        {
+          "id": "BR-EVID-01",
+          "action": "Register immutable document identity",
+          "input": "Deal ID, document ID, source reference, content hash, version, observation date",
+          "output": "Document registration record bound to one deal and version",
+          "acceptance": "Duplicate IDs cannot replace different content; malformed hashes and missing provenance are rejected.",
+          "dependencies": [
+            "BR-PROD-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-EVID-02",
+          "action": "Preserve source locations and units",
+          "input": "Document registration, page or structured location, extracted text or value",
+          "output": "Typed claim with a source locator and currency or physical unit",
+          "acceptance": "Page references are valid for the source type; money is not silently converted between dollars and cents.",
+          "dependencies": [
+            "BR-EVID-01"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-EVID-03",
+          "action": "Represent versions and supersession",
+          "input": "Old and new source versions with an explicit relationship",
+          "output": "Append-only version lineage and current-source determination",
+          "acceptance": "Old sources remain reproducible; a later upload alone does not silently erase previously reviewed evidence.",
+          "dependencies": [
+            "BR-EVID-01"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-EVID-04",
+          "action": "Record named review decisions",
+          "input": "Claim ID, reviewer, decision, review time, rationale",
+          "output": "Immutable acceptance, rejection, or conflict review event",
+          "acceptance": "Candidate claims cannot self-approve; review cannot silently alter the source value or deal binding.",
+          "dependencies": [
+            "BR-EVID-02"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-EVID-05",
+          "action": "Apply time and conflict validity",
+          "input": "Claims, reviews, effective and expiry dates, analysis date",
+          "output": "Current evidence set with stale, superseded, contradictory, and missing flags",
+          "acceptance": "Future or expired evidence cannot enter the projection; two incompatible accepted current values remain a blocker.",
+          "dependencies": [
+            "BR-EVID-03",
+            "BR-EVID-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-EVID-06",
+          "action": "Project accepted inputs with provenance",
+          "input": "Deal ID, analysis date, current reviewed claims, expected field schema",
+          "output": "Deterministic fact projection, source links, and blocking reasons",
+          "acceptance": "Wrong-deal, ambiguous, unreviewed, or incompatible-unit claims cannot become financial inputs; the projection is reproducible.",
+          "dependencies": [
+            "BR-EVID-05"
+          ],
+          "delivery_state": "specified"
+        }
+      ],
+      "steps": [
+        "Specify the document, claim, and review contracts before adding a storage implementation.",
+        "Keep source content and candidate claims immutable; append review and supersession history.",
+        "Evaluate identity, time, units, review status, and contradictory evidence when projecting inputs.",
+        "Reproduce the same projection from stored events and exercise a stale or conflicting case."
+      ],
+      "failure_modes": [
+        "Overwriting a prior claim to simulate a correction.",
+        "Using an OCR score as a review decision.",
+        "Losing source version or page identity during normalization."
+      ],
+      "example_prompts": [
+        "Build an evidence store that blocks expired and contradictory renovation estimates.",
+        "Add immutable document versions and source-linked review decisions."
+      ]
+    },
+    {
+      "name": "br-build-document-workflows",
+      "display_name": "Black River Document Workflow Builder",
+      "description": "Build non-AI document intake and application workflows around the Black River evidence engine. Use for native file parsing, manual claim entry, reconciliation queues, accepted-input mapping, and evidence change propagation.",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "scope_now": [
+        "Accept structured JSON or explicit manual-entry candidate claims.",
+        "Route missing or conflicting values to review.",
+        "Apply accepted values through a versioned underwriting input map."
+      ],
+      "scope_future": [
+        "Add tested native PDF, spreadsheet, CSV, and email intake by source type.",
+        "Introduce assisted extraction only through the later AI adapter contract."
+      ],
+      "capabilities": [
+        {
+          "id": "BR-DOC-01",
+          "action": "Define intake manifests and duplicate behavior",
+          "input": "Authorized files, content fingerprints, MIME or source types, deal scope",
+          "output": "Intake manifest with candidate, duplicate, unsupported, and error states",
+          "acceptance": "Reprocessing identical input is idempotent; corrupt or unsupported files remain visible without guessed content.",
+          "dependencies": [
+            "BR-EVID-01"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-DOC-02",
+          "action": "Normalize candidate extraction results",
+          "input": "Manual entries or deterministic parser output, source-location metadata",
+          "output": "Provider-neutral candidate-claim envelope",
+          "acceptance": "The envelope preserves raw values and provenance; absent fields remain missing and do not become zero.",
+          "dependencies": [
+            "BR-EVID-02",
+            "BR-PROD-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-DOC-03",
+          "action": "Reconcile financial document fields",
+          "input": "Candidate rent, cost, fee, balance, period, and unit fields",
+          "output": "Reconciliation findings tied to the affected claim IDs",
+          "acceptance": "Totals, period alignment, units, and source conflicts are checked with declared rules and no invented balancing amounts.",
+          "dependencies": [
+            "BR-DOC-02",
+            "BR-FIN-01"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-DOC-04",
+          "action": "Build the review application service",
+          "input": "Candidate claims, reconciliation findings, named operator action",
+          "output": "Reviewed evidence projection or explicit hold",
+          "acceptance": "Only valid state transitions create reviews; unresolved source conflicts cannot bypass the evidence engine.",
+          "dependencies": [
+            "BR-DOC-03",
+            "BR-EVID-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-DOC-05",
+          "action": "Map reviewed fields into model inputs",
+          "input": "Accepted evidence projection, binding map, model input version",
+          "output": "New underwriting packet plus changed-field provenance",
+          "acceptance": "Only permitted fields and scenarios are changed; evidence values never silently replace probability assumptions.",
+          "dependencies": [
+            "BR-DOC-04",
+            "BR-EVID-06"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-DOC-06",
+          "action": "Propagate evidence changes to downstream decisions",
+          "input": "Previous and current projection digest, affected model runs and reviews",
+          "output": "Invalidation and recomputation record with retained prior results",
+          "acceptance": "A changed material input cannot reuse an approval for an old packet; the old result remains inspectable.",
+          "dependencies": [
+            "BR-DOC-05",
+            "BR-FLOW-03"
+          ],
+          "delivery_state": "specified"
+        }
+      ],
+      "steps": [
+        "Choose the least lossy intake method for the actual source type and retain the original artifact.",
+        "Convert every parser result into candidate claims, not approved facts.",
+        "Reconcile, collect explicit review decisions, and project accepted inputs.",
+        "Apply only the declared field bindings and preserve a before-and-after calculation trace."
+      ],
+      "failure_modes": [
+        "Treating spreadsheet text extraction as a substitute for values and formulas.",
+        "Applying one quote change to every stochastic scenario without an explicit rule.",
+        "Advancing a transaction merely because a document contains a signature."
+      ],
+      "example_prompts": [
+        "Connect a reviewed contractor quote to the baseline renovation input and invalidate the old decision.",
+        "Build a manual document-review queue without an OCR or LLM dependency."
+      ]
+    },
+    {
+      "name": "br-build-financial-engine",
+      "display_name": "Black River Financial Engine Builder",
+      "description": "Implement or extend authoritative acquisition economics, cash requirements, valuation, financing, and reconciliation in Black River. Use when financial formulas, monetary precision, reserves, cost treatment, or binding price limits change.",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "scope_now": [
+        "Reuse existing authoritative financial modules.",
+        "Expose formula inputs, intermediate amounts, and policy limits.",
+        "Distinguish expenses, reserves, cash balances, and receipts."
+      ],
+      "scope_future": [
+        "Extend strategy-specific operating and financing schedules.",
+        "Add portfolio, development, tax, and cross-currency scope only with explicit models and evidence."
+      ],
+      "capabilities": [
+        {
+          "id": "BR-FIN-01",
+          "action": "Define monetary and time conventions",
+          "input": "Currency, integer cents or declared numeric type, rounding and dates",
+          "output": "Validated money and period contract",
+          "acceptance": "Boolean, nonfinite, missing, overflow, and incompatible currency/unit inputs fail explicitly.",
+          "dependencies": [
+            "BR-PROD-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-FIN-02",
+          "action": "Implement the complete cost bridge",
+          "input": "Purchase, sale, operating, renovation, closing, financing, and reserve assumptions",
+          "output": "Reconciled profit and cost trace",
+          "acceptance": "Every cost is counted once; refundable deposits and unspent reserves are distinguished from consumed expenses.",
+          "dependencies": [
+            "BR-FIN-01"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-FIN-03",
+          "action": "Calculate scenario economics",
+          "input": "Joint economic scenarios, offer terms, existing financial engine outputs",
+          "output": "Per-offer and per-scenario profit and liquidity requirements",
+          "acceptance": "Dependencies within each case are preserved; acquisition cash, terminal profit, and dated returns are labeled separately.",
+          "dependencies": [
+            "BR-FIN-02"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-FIN-04",
+          "action": "Calculate binding investment limits",
+          "input": "Baseline, downside, expected-return, liquidity, and financing policies",
+          "output": "Named price ceilings and failed constraints",
+          "acceptance": "The strictest applicable constraint is visible; higher seller acceptance never silently relaxes a financial rule.",
+          "dependencies": [
+            "BR-FIN-03"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-FIN-05",
+          "action": "Extend financing and valuation coherently",
+          "input": "Verified financing terms, dated forecasts, rate and debt schedules",
+          "output": "Debt service, funding gap, valuation, and return calculations",
+          "acceptance": "Loan proceeds and principal repayments reconcile; IRR/NPV claims require correctly dated cash-flow definitions.",
+          "dependencies": [
+            "BR-FIN-02"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-FIN-06",
+          "action": "Reconcile modeled and realized cash",
+          "input": "Approved packet, obligations, invoices, receipts, ledger entries",
+          "output": "Variance bridge and realized cash reconciliation",
+          "acceptance": "A billed amount is not a cash receipt; corrections preserve original postings and use explicit adjusting evidence.",
+          "dependencies": [
+            "BR-FIN-03",
+            "BR-EVID-06"
+          ],
+          "delivery_state": "specified"
+        }
+      ],
+      "steps": [
+        "Locate and reuse the authoritative financial implementation and its rounding conventions.",
+        "Write the complete sources-and-uses or cost bridge before optimizing.",
+        "Expose intermediate calculations and separate policy thresholds from valuation estimates.",
+        "Check a worked case and a material failure such as a duplicated cost, funding gap, or changed financing term."
+      ],
+      "failure_modes": [
+        "Counting a reserve both as spent cost and retained capital.",
+        "Confusing expected profit per attempt with profit conditional on closing.",
+        "Creating a conflicting production formula set in R or the UI."
+      ],
+      "example_prompts": [
+        "Add a fully traced renovation and carrying-cost bridge to the acquisition engine.",
+        "Reconcile final closing costs and receipts against the approved purchase model."
+      ]
+    },
+    {
+      "name": "br-build-probability-engine",
+      "display_name": "Black River Probability Engine Builder",
+      "description": "Build conditional offer, closing, and investment-outcome models with exact reference calculations and explicit uncertainty. Use for expected pursuit value, chance constraints, seller-counter conditioning, sensitivity, and later probability calibration.",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "scope_now": [
+        "Evaluate explicit joint scenario assumptions and one-round event trees.",
+        "Separate baseline, expected-conditional, and chance constraints.",
+        "Make missing or hypothetical probabilities visible."
+      ],
+      "scope_future": [
+        "Estimate probabilities from complete timestamped outcomes.",
+        "Model multi-round negotiations and correlated portfolio outcomes after validation."
+      ],
+      "capabilities": [
+        {
+          "id": "BR-PROB-01",
+          "action": "Define outcome events and conditioning",
+          "input": "Current negotiation state, offer version, observation window, economic scope",
+          "output": "Event definitions for agreement, closing, and post-acquisition profit",
+          "acceptance": "Every probability has a denominator and horizon; an existing live counter is distinguished from a fresh offer.",
+          "dependencies": [
+            "BR-PROD-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-PROB-02",
+          "action": "Enumerate a joint economic distribution",
+          "input": "Scenario IDs, probability weights, conditional financial outcomes",
+          "output": "Exact CPU weighted moments and target/loss probabilities",
+          "acceptance": "Weights sum to one; dependencies between sale prices and costs are represented jointly rather than silently assumed independent.",
+          "dependencies": [
+            "BR-PROB-01",
+            "BR-FIN-03"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-PROB-03",
+          "action": "Compute terminal pursuit value",
+          "input": "Agreement and conditional closing assumptions, branch-total costs, profit distribution",
+          "output": "Terminal states, mass check, expected cash per attempt",
+          "acceptance": "Branches are mutually exclusive and exhaustive; failed-pursuit costs are deducted once and unknown acceptance stays unknown.",
+          "dependencies": [
+            "BR-PROB-02"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-PROB-04",
+          "action": "Apply conditional risk policies",
+          "input": "Profit distribution, baseline threshold, expected threshold, chance requirement",
+          "output": "Eligibility results and labeled price ceilings",
+          "acceptance": "Conditional and unconditional criteria are never interchanged; discrete chance boundaries are checked directly.",
+          "dependencies": [
+            "BR-PROB-03",
+            "BR-FIN-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-PROB-05",
+          "action": "Evaluate decision sensitivity and continuation limits",
+          "input": "Probability ranges, shared-terms assumptions, one-round action set",
+          "output": "Switching thresholds, coherent parameter sweep, limitation record",
+          "acceptance": "Assumption ranges are not confidence intervals; grid-cell counts are not probabilities that a strategy is best; multi-round claims require transitions.",
+          "dependencies": [
+            "BR-PROB-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-PROB-06",
+          "action": "Design and validate empirical probability models",
+          "input": "All timestamped offers and outcomes, predictor cutoff, pending cases",
+          "output": "Time-separated evaluation, calibration, proper scores, uncertainty and model card",
+          "acceptance": "Use only information available at prediction time; handle pending/censored cases and related-deal leakage; no calibrated claim without evaluation evidence.",
+          "dependencies": [
+            "BR-PROB-01",
+            "BR-DATA-04"
+          ],
+          "delivery_state": "specified"
+        }
+      ],
+      "steps": [
+        "Define events, horizons, and the exact current offer/counter state.",
+        "Reproduce the conditional financial distribution with exact CPU arithmetic.",
+        "Build terminal branch values, then apply hard policy gates before ranking eligible actions.",
+        "Use switching thresholds and sensitivity first; fit probability models only when adequate outcome data exists."
+      ],
+      "failure_modes": [
+        "Averaging agent votes into seller acceptance probabilities.",
+        "Double-counting pursuit expenses in terminal states.",
+        "Treating repeated counters as independent retries or calling a grid share confidence."
+      ],
+      "example_prompts": [
+        "Evaluate the duplex offers using explicit acceptance and closing assumptions.",
+        "Compute the acceptance improvement needed to justify paying another $2,000."
+      ]
+    },
+    {
+      "name": "br-build-deal-workflow",
+      "display_name": "Black River Deal Workflow Builder",
+      "description": "Build evidence-gated deal states, independent buyable/fundable/sellable checks, review authority, and cash-cycle progression. Use when negotiation, contract, closing, operation, exit, or settlement states and their transitions are changed.",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "scope_now": [
+        "Keep deal status separate from documents and model scores.",
+        "Preserve scoped review, immutable packets, and idempotent transitions.",
+        "Connect evidence changes to existing transaction controls."
+      ],
+      "scope_future": [
+        "Extend strategy-specific contract, closing, operating, and exit stages.",
+        "Add real transaction integrations only with explicit authority and verified evidence."
+      ],
+      "capabilities": [
+        {
+          "id": "BR-FLOW-01",
+          "action": "Define independent qualification dimensions",
+          "input": "Deal identity and current acquisition, capital, and exit evidence",
+          "output": "Buyable, fundable, and sellable statuses with unknown/blocked reasons",
+          "acceptance": "Passing one dimension never substitutes for the evidence needed by another.",
+          "dependencies": [
+            "BR-EVID-06"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-FLOW-02",
+          "action": "Define event-driven transaction stages",
+          "input": "Versioned stage vocabulary, events, actors, dates, and prerequisites",
+          "output": "State-transition specification from discovery through exit",
+          "acceptance": "Extraction and inference cannot directly advance agreement, closing, ownership, or cash-settlement status.",
+          "dependencies": [
+            "BR-FLOW-01"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-FLOW-03",
+          "action": "Bind decisions to exact evidence packets",
+          "input": "Current input digest, model version, reviewer identity, permitted action",
+          "output": "Review decision tied to one immutable packet",
+          "acceptance": "Changed material inputs invalidate the prior review; scope, role, and review separation are checked.",
+          "dependencies": [
+            "BR-FLOW-02",
+            "BR-FIN-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-FLOW-04",
+          "action": "Make retries and concurrency safe",
+          "input": "Idempotency keys, current revision, transaction boundary, task lease",
+          "output": "At-most-once recorded transition and recoverable processing state",
+          "acceptance": "Concurrent or repeated requests cannot duplicate a financial effect or silently approve a stale revision.",
+          "dependencies": [
+            "BR-FLOW-03"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-FLOW-05",
+          "action": "Separate proposals from externally consequential actions",
+          "input": "Prepared offer, dispatch request, signing or funding action, explicit authority",
+          "output": "Action-specific execution boundary and audit trail",
+          "acceptance": "A builder or simulation cannot send offers, sign documents, move funds, or claim ownership without a separately authorized execution path.",
+          "dependencies": [
+            "BR-FLOW-03"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-FLOW-06",
+          "action": "Track completion, operation, exit, and reinvestment",
+          "input": "Contract/closing evidence, obligations, receipts, operating events, exit records",
+          "output": "Reconciled lifecycle history and capital allocation inputs",
+          "acceptance": "Only independently evidenced receipts become realized cash; living-expense or reinvestment allocations preserve obligations and reserves.",
+          "dependencies": [
+            "BR-FLOW-04",
+            "BR-FIN-06"
+          ],
+          "delivery_state": "specified"
+        }
+      ],
+      "steps": [
+        "Model the business event and evidence prerequisites before editing status fields.",
+        "Keep buyability, fundability, exit feasibility, and financial policy independent.",
+        "Bind each proposed action to the exact evidence and model revision.",
+        "Exercise stale-state, retry, concurrency, and reconciliation failures before enabling a transition."
+      ],
+      "failure_modes": [
+        "Equating an uploaded signed-looking page with a completed legal transaction.",
+        "Treating a model recommendation as execution authority.",
+        "Counting projected sale proceeds as available cash."
+      ],
+      "example_prompts": [
+        "Add a negotiation state transition that cannot bypass financing or source review.",
+        "Track acquisition through actual receipts and reinvestment without double-counting cash."
+      ]
+    },
+    {
+      "name": "br-build-cuda-compute",
+      "display_name": "Black River CUDA Compute Builder",
+      "description": "Design and verify efficient CUDA batches for Black River finance and analytics while preserving a readable CPU reference. Use for GPU backends, memory bounds, precision parity, profiling, batching, and R-originated accelerated workloads.",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "scope_now": [
+        "Batch independent offers and scenarios; retain sequential financial dependencies.",
+        "Make explicit CUDA requests fail visibly when unavailable.",
+        "Record actual execution and comparison evidence."
+      ],
+      "scope_future": [
+        "Tune device-resident services and measured concurrency on supported hardware.",
+        "Add multi-GPU execution only for demonstrated workloads."
+      ],
+      "capabilities": [
+        {
+          "id": "BR-CUDA-01",
+          "action": "Identify useful computational parallelism",
+          "input": "Profiled workload, dependency graph, input volume and device capabilities",
+          "output": "CPU/GPU partition with workload justification",
+          "acceptance": "Parallelize independent cases; preserve within-case financial order; retain tiny or irregular control work on CPU with reasons.",
+          "dependencies": [
+            "BR-FIN-03",
+            "BR-PROB-02"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-CUDA-02",
+          "action": "Define bounded batch interfaces",
+          "input": "Typed arrays, case IDs, precision contract, memory and arithmetic limits",
+          "output": "Versioned batch input/output contract and chunk policy",
+          "acceptance": "Shape, length, identifiers, finite values, overflow and maximum allocation are checked before execution.",
+          "dependencies": [
+            "BR-CUDA-01",
+            "BR-PROD-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-CUDA-03",
+          "action": "Implement reusable GPU execution",
+          "input": "Validated batches, explicit device/backend selection, CPU reference",
+          "output": "Vectorized or fused GPU operation with allocation reuse",
+          "acceptance": "Avoid per-record transfers and repeated model/kernel initialization; explicit CUDA failures never silently become CPU execution.",
+          "dependencies": [
+            "BR-CUDA-02"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-CUDA-04",
+          "action": "Verify numeric and decision parity",
+          "input": "CPU reference, GPU outputs, threshold cases, rounding rules",
+          "output": "Exact or tolerance-justified comparison report",
+          "acceptance": "Money and eligibility decisions match declared semantics; tolerance is meaningful in currency units and tested at policy boundaries.",
+          "dependencies": [
+            "BR-CUDA-03",
+            "BR-VAL-02"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-CUDA-05",
+          "action": "Measure complete workload performance",
+          "input": "Actual device, environment, cold/warm runs, transfers and synchronization",
+          "output": "Reproducible throughput, latency, memory, and error measurements",
+          "acceptance": "Every speedup names hardware, workload, precision, baseline, warmup and transfer scope; no speedup is inferred from utilization alone.",
+          "dependencies": [
+            "BR-CUDA-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-CUDA-06",
+          "action": "Integrate acceleration across callers",
+          "input": "Python service and planned R exchange, shared batch API",
+          "output": "Consistent backend metadata and minimal-return execution path",
+          "acceptance": "R and application callers invoke the same financial backend; results report actual execution and have stable case ordering.",
+          "dependencies": [
+            "BR-CUDA-02",
+            "BR-R-02"
+          ],
+          "delivery_state": "specified"
+        }
+      ],
+      "steps": [
+        "Measure or characterize the work and define a bounded batch contract.",
+        "Keep the exact or high-precision CPU path as the semantic reference.",
+        "Implement reusable device operations and minimize transfers without changing formulas.",
+        "Verify correctness first, then benchmark on actual hardware with explicit unavailable results when no GPU exists."
+      ],
+      "failure_modes": [
+        "Claiming CUDA execution from code inspection.",
+        "Using reduced financial precision solely to increase utilization.",
+        "Measuring kernel-only time while excluding required transfers or startup."
+      ],
+      "example_prompts": [
+        "Add a CUDA probability sweep that reproduces the exact CPU example.",
+        "Profile an R-to-Python GPU batch while preserving cents and source IDs."
+      ]
+    },
+    {
+      "name": "br-build-r-validation",
+      "display_name": "Black River R Validation Builder",
+      "description": "Design and implement R statistical research and independent validation against Black River's authoritative Python engines. Use for typed exchanges, R runtime reproducibility, calibration, survival analysis, diagnostics, and numerical parity.",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "scope_now": [
+        "Specify a versioned R/Python exchange and independent worked-case checks.",
+        "Keep R execution unavailable until a real runtime and dependency lock are verified.",
+        "Separate statistical research outputs from production decision authority."
+      ],
+      "scope_future": [
+        "Create and test an actual renv-managed R project.",
+        "Add calibration, econometrics, survival and reporting workflows after data and runtime readiness."
+      ],
+      "capabilities": [
+        {
+          "id": "BR-R-01",
+          "action": "Establish reproducible R and Python environments",
+          "input": "Actual installed R, renv packages, Python environment, device requirements",
+          "output": "Generated dependency lock, runtime manifest, restore procedure",
+          "acceptance": "Do not fabricate a renv lock or successful run; record actual R/Python versions and independently verify restoration.",
+          "dependencies": [
+            "BR-PROD-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-R-02",
+          "action": "Define typed cross-language exchange",
+          "input": "Versioned case, source, offer and scenario records with currency and dates",
+          "output": "Arrow/Parquet or validated interchange schema and conversion rules",
+          "acceptance": "Cents, nulls, IDs, dates/time zones and array order round-trip without lossy implicit conversion.",
+          "dependencies": [
+            "BR-PROD-04",
+            "BR-FIN-01"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-R-03",
+          "action": "Implement small independent reference checks",
+          "input": "Known financial cases and explicit outcome distributions",
+          "output": "R results compared with Python reference at declared tolerances",
+          "acceptance": "The check is independently expressed and executed; it does not become a competing authoritative production engine.",
+          "dependencies": [
+            "BR-R-02",
+            "BR-PROB-03"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-R-04",
+          "action": "Evaluate calibration and economic forecast loss",
+          "input": "Versioned historical predictions, observed outcomes, evaluation cutoff",
+          "output": "Reliability plots, proper scores, sample counts and economic-loss diagnostics",
+          "acceptance": "Out-of-sample evaluation excludes future information; uncertainty and thin samples remain explicit.",
+          "dependencies": [
+            "BR-R-02",
+            "BR-PROB-06"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-R-05",
+          "action": "Model time-to-event and competing outcomes",
+          "input": "Negotiation/closing event dates, current status, censoring rules",
+          "output": "Time-to-event analysis with declared event and risk-set definitions",
+          "acceptance": "Pending cases are not mislabeled failures; competing outcomes and observation windows are represented explicitly.",
+          "dependencies": [
+            "BR-R-02",
+            "BR-DATA-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-R-06",
+          "action": "Produce reproducible analytical reports",
+          "input": "Pinned inputs, model versions, diagnostics, execution manifest",
+          "output": "Traceable statistical report and discrepancy register",
+          "acceptance": "Every result resolves to data and executable analysis; unexecuted R/CUDA paths are explicitly marked.",
+          "dependencies": [
+            "BR-R-03",
+            "BR-R-04",
+            "BR-R-05"
+          ],
+          "delivery_state": "specified"
+        }
+      ],
+      "steps": [
+        "Check runtime availability and generate environment locks only from a real installation.",
+        "Choose an explicit typed exchange and bind the intended Python environment before imports.",
+        "Run small independent financial checks before adding statistical diagnostics.",
+        "Preserve model/data versions, uncertainty, and execution status in every report."
+      ],
+      "failure_modes": [
+        "Passing large monetary integers through an unchecked double conversion.",
+        "Claiming base R automatically uses CUDA.",
+        "Calling a source-reviewed R script an executed validation."
+      ],
+      "example_prompts": [
+        "Create an R validation contract for the exact offer probability engine.",
+        "Add survival analysis for open negotiations after collecting complete event histories."
+      ]
+    },
+    {
+      "name": "br-build-review-interface",
+      "display_name": "Black River Review Interface Builder",
+      "description": "Build understandable operator interfaces around existing Black River services. Use for source-to-number traces, evidence review, offer comparisons, policy controls, responsive accessibility, and explicit execution/status displays.",
+      "owner": "architect_integrator",
+      "phase": "presentation",
+      "scope_now": [
+        "Specify interfaces that expose current evidence, inputs, formulas, and blockers.",
+        "Connect a bounded interface only after engine/service contracts are stable.",
+        "Preserve source-linked explanations and clear unknown states."
+      ],
+      "scope_future": [
+        "Implement broader review queues, document side-by-side review, and responsive dashboards.",
+        "Add assistive AI explanations later without relocating financial formulas into prompts."
+      ],
+      "capabilities": [
+        {
+          "id": "BR-UX-01",
+          "action": "Design the source-to-number trace",
+          "input": "Accepted inputs, source locators, model trace, changed-field list",
+          "output": "Inspect input/source/formula/output navigation",
+          "acceptance": "An operator can explain one output and locate its source without relying on a generated narrative.",
+          "dependencies": [
+            "BR-EVID-06",
+            "BR-FIN-03"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-UX-02",
+          "action": "Display evidence conflicts and missingness",
+          "input": "Claim states, review findings, stale sources, required fields",
+          "output": "Prioritized review queue with explicit actions and reasons",
+          "acceptance": "Unknown, zero, rejected, expired and conflicting values remain visually and semantically distinct.",
+          "dependencies": [
+            "BR-DOC-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-UX-03",
+          "action": "Expose investment policy controls",
+          "input": "Baseline/expected/chance constraints, capital requirements, current values",
+          "output": "Labeled policy editor and eligible-action comparison",
+          "acceptance": "Changing a control records a new input version and visibly changes the affected policy output; no hidden relaxation occurs.",
+          "dependencies": [
+            "BR-PROB-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-UX-04",
+          "action": "Render complete offer and outcome comparisons",
+          "input": "Offer economics, agreement/closing assumptions, terminal outcomes",
+          "output": "Comparable measures with explicit conditioning and units",
+          "acceptance": "Acquisition probability, conditional profit, joint target probability and per-attempt value are not conflated.",
+          "dependencies": [
+            "BR-PROB-03"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-UX-05",
+          "action": "Implement usable and accessible interactions",
+          "input": "Actual UI framework, narrow-screen and assistive-access needs, supported languages, keyboard behavior, and participant comprehension tasks",
+          "output": "Responsive interface and observed interaction evidence",
+          "acceptance": "Primary workflows are legible and operable at supported sizes and with assistive access; declared locales preserve currency/date meaning, and comprehension is tested with intended users. No undocumented language coverage or hidden decision blockers are claimed.",
+          "dependencies": [
+            "BR-UX-01",
+            "BR-UX-02"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-UX-06",
+          "action": "Verify review and recalculation behavior",
+          "input": "Connected service, changed evidence, stale review, permissions",
+          "output": "UI replay and defect record for success and failure paths",
+          "acceptance": "The displayed result matches the actual service revision, and stale or unauthorized actions fail visibly.",
+          "dependencies": [
+            "BR-UX-03",
+            "BR-UX-04",
+            "BR-FLOW-03"
+          ],
+          "delivery_state": "specified"
+        }
+      ],
+      "steps": [
+        "Start with the decision the operator needs to make and the evidence they must inspect.",
+        "Use engine/service results for calculations; keep the UI a transparent client.",
+        "Expose assumptions, missingness, conditioning and backend status beside results.",
+        "Verify the actual interaction, narrow layout, and stale-evidence behavior before claiming usability."
+      ],
+      "failure_modes": [
+        "Embedding an independent financial formula in the browser.",
+        "Displaying an AI confidence score as a deal-success percentage.",
+        "Making unknown evidence look like a passing gate."
+      ],
+      "example_prompts": [
+        "Build an offer comparison showing conditional and per-attempt returns clearly.",
+        "Create a document review screen that links every changed cost to its page."
+      ]
+    },
+    {
+      "name": "br-build-data-connectors",
+      "display_name": "Black River Data Connector Builder",
+      "description": "Build authorized, traceable source connectors and deterministic normalization for Black River. Use for native file readers, registry/parcel feeds, source permissions, entity resolution, historical outcomes, incremental updates, and recoverable ingestion.",
+      "owner": "evidence_builder",
+      "phase": "integration",
+      "scope_now": [
+        "Define source scope, identity, provenance, and deterministic fixture adapters.",
+        "Reuse existing connector authorization boundaries.",
+        "Keep live account and source access separate from local simulation."
+      ],
+      "scope_future": [
+        "Add authorized Drive, registry, parcel, ledger and market-data connectors.",
+        "Scale incremental ingestion and entity-resolution review against verified source contracts."
+      ],
+      "capabilities": [
+        {
+          "id": "BR-DATA-01",
+          "action": "Define source access and permitted operations",
+          "input": "User authorization and participant consent where applicable, source contract, permitted purpose, fields, account or tenant scope, and retention requirements",
+          "output": "Read/write boundary, credential handling, retention and source manifest",
+          "acceptance": "Record permitted access and purpose before ingestion; support the applicable consent/retention boundary. A read-only task does not acquire write authority; secrets never enter source control or diagnostic output. Do not infer immigration or nationality from names to route financial decisions.",
+          "dependencies": [
+            "BR-PROD-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-DATA-02",
+          "action": "Read structured files without semantic loss",
+          "input": "Native CSV/XLSX/JSON or other declared schema, source revision",
+          "output": "Typed candidate records and per-row import errors",
+          "acceptance": "Preserve original values, units, nulls and locations; malformed or unsupported cells remain errors rather than guessed values.",
+          "dependencies": [
+            "BR-DATA-01",
+            "BR-EVID-01"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-DATA-03",
+          "action": "Resolve deal and entity identity explicitly",
+          "input": "Parcel identifiers, owner names, LLC records, addresses and relationship evidence",
+          "output": "Candidate entity links with deterministic keys and review status",
+          "acceptance": "Ambiguous matches never merge automatically; provenance and historical owner/version context remain visible.",
+          "dependencies": [
+            "BR-DATA-02",
+            "BR-EVID-03"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-DATA-04",
+          "action": "Capture complete timestamped outcomes",
+          "input": "Every offer version and accepted/rejected/expired/withdrawn/open/closed event",
+          "output": "Append-only outcome dataset with predictor-time cutoffs",
+          "acceptance": "Retain unsuccessful and pending cases; preserve related-deal grouping and avoid selection bias from successful-only ingestion.",
+          "dependencies": [
+            "BR-DATA-01",
+            "BR-FLOW-02"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-DATA-05",
+          "action": "Implement incremental and idempotent ingestion",
+          "input": "Source cursor or snapshot, hashes, retry state, schema revision",
+          "output": "Recoverable import batch with deduplication and change records",
+          "acceptance": "Replay does not duplicate claims; partial failure does not advance the source cursor beyond committed work.",
+          "dependencies": [
+            "BR-DATA-02"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-DATA-06",
+          "action": "Version source and schema changes",
+          "input": "Upstream revisions, observed changes, transformation versions",
+          "output": "Migration and affected-evidence report",
+          "acceptance": "Changed schemas and source revisions cannot silently alter existing accepted inputs or historical model runs.",
+          "dependencies": [
+            "BR-DATA-05",
+            "BR-EVID-03"
+          ],
+          "delivery_state": "specified"
+        }
+      ],
+      "steps": [
+        "Identify the authorized source and operation before accessing an account or endpoint.",
+        "Use deterministic native formats where available and preserve original field locations.",
+        "Normalize identity and time without merging ambiguous entities.",
+        "Commit bounded idempotent import batches and retain source/schema changes for replay."
+      ],
+      "failure_modes": [
+        "Using a scrape as proof of ownership or authority.",
+        "Silently dropping failed offers from a training dataset.",
+        "Advancing an import cursor after only part of a batch commits."
+      ],
+      "example_prompts": [
+        "Build a read-only rent-roll importer that preserves cell provenance.",
+        "Capture all offer outcomes for future calibration without leaking later facts."
+      ]
+    },
+    {
+      "name": "br-build-model-validation",
+      "display_name": "Black River Model Validation Builder",
+      "description": "Independently validate Black River evidence, finance, probability, and execution claims. Use for adverse-case tests, source reconciliation, exact references, runtime boundary checks, calibration evaluation, and honest delivery evidence.",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "scope_now": [
+        "Reproduce important financial and evidence outcomes independently.",
+        "Test missing, contradictory, expired, malformed and boundary inputs.",
+        "Record source-reviewed versus executed versus unavailable paths."
+      ],
+      "scope_future": [
+        "Build held-out field datasets, sustained monitoring and independently reviewed model approvals.",
+        "Expand validation for new strategies and live integrations."
+      ],
+      "capabilities": [
+        {
+          "id": "BR-VAL-01",
+          "action": "Define claims and acceptance evidence",
+          "input": "Requirements, current revision, model interfaces, risk scenarios",
+          "output": "Validation plan linking each material claim to evidence",
+          "acceptance": "Check actual product behavior, including a meaningful failure; avoid tests that merely repeat the implementation.",
+          "dependencies": [
+            "BR-PROD-05"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-VAL-02",
+          "action": "Construct independent numeric references",
+          "input": "Hand-worked examples, exact arithmetic, boundary conditions",
+          "output": "Known-answer cases and numerical discrepancy criteria",
+          "acceptance": "Cost bridges, terminal mass, chance thresholds and policy decisions reconcile without circularly reusing the same function.",
+          "dependencies": [
+            "BR-FIN-02",
+            "BR-PROB-02"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-VAL-03",
+          "action": "Challenge evidence and input integrity",
+          "input": "Malformed, wrong-deal, conflicting, stale, superseded and incomplete records",
+          "output": "Negative-case fixtures and observed blocking results",
+          "acceptance": "Unknown or invalid records cannot enter accepted-input projections or silently relax gates.",
+          "dependencies": [
+            "BR-EVID-06",
+            "BR-DOC-05"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-VAL-04",
+          "action": "Check backend and language parity",
+          "input": "CPU outputs, optional real CUDA and R results, typed interfaces",
+          "output": "Parity evidence with actual execution status",
+          "acceptance": "Unavailable hardware/runtime is an explicit limitation; no fallback or mocked execution is represented as a measured result.",
+          "dependencies": [
+            "BR-CUDA-03",
+            "BR-R-02"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-VAL-05",
+          "action": "Verify the non-AI runtime boundary",
+          "input": "Imports, service configuration, network behavior, dependency list",
+          "output": "Demonstration that engine and application flows work without AI services",
+          "acceptance": "No LLM, NIM, autonomous-agent loop, or unapproved remote call is required by the default path.",
+          "dependencies": [
+            "BR-PROD-01",
+            "BR-DOC-05"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-VAL-06",
+          "action": "Publish the validation and gap register",
+          "input": "Focused checks, regression gates, runtime inventory, unresolved issues",
+          "output": "Versioned evidence report and next required validation gates",
+          "acceptance": "Separate implemented, executed, reviewed, deferred and unavailable; agent consensus never substitutes for evidence.",
+          "dependencies": [
+            "BR-VAL-01",
+            "BR-VAL-02",
+            "BR-VAL-03",
+            "BR-VAL-05"
+          ],
+          "delivery_state": "specified"
+        }
+      ],
+      "steps": [
+        "Pin the source revision and identify material product claims.",
+        "Reproduce a positive case independently and challenge a concrete failure mode.",
+        "Verify the default non-AI path and actual backend behavior.",
+        "Record results and limits precisely; stop optional tests once the remaining identified risks are resolved."
+      ],
+      "failure_modes": [
+        "Marking a skipped GPU/R check as passed.",
+        "Comparing an implementation with itself and calling it independent validation.",
+        "Converting reviewer agreement into financial confidence."
+      ],
+      "example_prompts": [
+        "Validate the quote-to-underwriting path including conflicting and expired evidence.",
+        "Independently check the probability tree and its price-ceiling thresholds."
+      ]
+    },
+    {
+      "name": "br-build-ai-adapters",
+      "display_name": "Black River Future AI Adapter Builder",
+      "description": "Specify optional future AI and NVIDIA document-service adapters around the validated Black River product. Use for provider-neutral candidate-claim contracts, version compatibility, retrieval evaluation, and gated assistive AI design; never enable product AI merely by loading this skill.",
+      "owner": "evidence_builder",
+      "phase": "future_ai",
+      "scope_now": [
+        "Define provider-neutral interfaces and explicit disabled/not-configured behavior.",
+        "Document version-specific NVIDIA service contracts.",
+        "Keep all AI outputs in candidate or explanatory roles."
+      ],
+      "scope_future": [
+        "Deploy and evaluate extraction, embedding, reranking, and grounded explanations when authorized.",
+        "Consider bounded product agents only after separately validated capability, permissions and operating controls."
+      ],
+      "capabilities": [
+        {
+          "id": "BR-AI-01",
+          "action": "Define disabled optional provider contracts",
+          "input": "Candidate-claim schema, source identity, error and timeout policies",
+          "output": "Provider interface with explicit manual/native and disabled-AI states",
+          "acceptance": "No model is installed, contacted, or made a runtime dependency just because the interface exists.",
+          "dependencies": [
+            "BR-DOC-02",
+            "BR-PROD-01"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-AI-02",
+          "action": "Pin NVIDIA service and hardware compatibility",
+          "input": "Chosen NeMo Retriever/NIM/model versions, current official docs, actual GPU profile",
+          "output": "Compatibility matrix and deployment plan",
+          "acceptance": "Do not mix the newer Parse /v1/parse API with older VLM chat-completions examples; GPU/VRAM compatibility must be observed.",
+          "dependencies": [
+            "BR-AI-01",
+            "BR-CUDA-01"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-AI-03",
+          "action": "Evaluate assisted extraction against labeled documents",
+          "input": "Authorized benchmark documents, human labels, source-locator contract",
+          "output": "Field accuracy, omission, numeric, layout and confidence-calibration results",
+          "acceptance": "Model outputs remain candidate claims; extraction score, evidence authority and deal-outcome probability stay separate.",
+          "dependencies": [
+            "BR-AI-02",
+            "BR-VAL-03"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-AI-04",
+          "action": "Build scoped retrieval and reranking",
+          "input": "Authorized document collection, access metadata, query evaluation set",
+          "output": "Cited retrieval results with permission filtering and relevance evidence",
+          "acceptance": "Search cannot expose another scope's files; cited passages resolve to the exact document revision and location.",
+          "dependencies": [
+            "BR-AI-01",
+            "BR-DATA-01"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-AI-05",
+          "action": "Constrain assistive generation to accepted tools and evidence",
+          "input": "Reviewed facts, deterministic financial tools, user query, output schema",
+          "output": "Draft explanation or proposed change with references and explicit unknowns",
+          "acceptance": "Generated prose cannot overwrite canonical amounts, approve a transaction, or silently modify investment policy.",
+          "dependencies": [
+            "BR-AI-03",
+            "BR-AI-04",
+            "BR-FLOW-05"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-AI-06",
+          "action": "Evaluate any later product-agent runtime separately",
+          "input": "Validated tools, task permissions, budgets, stop conditions, monitoring and rollback",
+          "output": "Separate proposal and acceptance evidence for bounded automation",
+          "acceptance": "Builder-agent configuration never grants product autonomy; runtime agents remain disabled until the separate phase is explicitly implemented and validated.",
+          "dependencies": [
+            "BR-AI-05",
+            "BR-OPS-04"
+          ],
+          "delivery_state": "specified"
+        }
+      ],
+      "steps": [
+        "Confirm that the requested work is an adapter design or an explicitly authorized later AI deployment.",
+        "Read current primary provider documentation and pin the service, model, client and hardware combination.",
+        "Accept only candidate claims or cited explanatory outputs through the existing review boundary.",
+        "Require separate quality, access, cost and operational evidence before enabling an AI service or runtime agent."
+      ],
+      "failure_modes": [
+        "Putting NVIDIA model calls inside the financial core.",
+        "Copying an incompatible API from an older tutorial.",
+        "Treating a schema or feature flag as a deployed or validated AI capability."
+      ],
+      "example_prompts": [
+        "Define a disabled Nemotron Parse adapter that emits candidate claims for later review.",
+        "Plan document retrieval and reranking without adding product agents yet."
+      ]
+    },
+    {
+      "name": "br-build-release-operations",
+      "display_name": "Black River Release Operations Builder",
+      "description": "Package, configure, observe, and recover Black River product increments with accurate capability status. Use for reproducible releases, migrations, backups, runtime manifests, deployment gates, rollback, and operational monitoring.",
+      "owner": "quality_builder",
+      "phase": "release",
+      "scope_now": [
+        "Run bounded release checks and record exact environment and artifacts.",
+        "Keep AI providers disabled by default.",
+        "Verify recoverable local state and document unavailable runtimes."
+      ],
+      "scope_future": [
+        "Deploy authenticated services with measured service objectives.",
+        "Add capacity, cost, incident and model monitoring as real integrations become available."
+      ],
+      "capabilities": [
+        {
+          "id": "BR-OPS-01",
+          "action": "Package explicit runtime configuration",
+          "input": "Source revision, schema versions, dependencies, backend/provider settings",
+          "output": "Reproducible package and example configuration",
+          "acceptance": "Default operation needs no AI keys; secrets are external; installed capabilities and optional dependencies are visible.",
+          "dependencies": [
+            "BR-PROD-04",
+            "BR-AI-01"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-OPS-02",
+          "action": "Apply safe schema and data migrations",
+          "input": "Existing persistent state, migration version, rollback plan",
+          "output": "Atomic migration with compatibility and failure results",
+          "acceptance": "A failed migration preserves recoverable prior data; historical evidence and decisions are not silently rewritten.",
+          "dependencies": [
+            "BR-EVID-03",
+            "BR-FLOW-04"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-OPS-03",
+          "action": "Verify backup, restore, and replay",
+          "input": "Evidence store, decision history, manifests and checksums",
+          "output": "Restored state and independently reproduced projection/run",
+          "acceptance": "Backup existence alone does not count as recovery; restored identifiers, records and balances reconcile.",
+          "dependencies": [
+            "BR-OPS-02",
+            "BR-FIN-06"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-OPS-04",
+          "action": "Observe workload, quality, and failures",
+          "input": "Execution logs, queue state, runtime metadata, document/page volume, review rate, retained versions, and resource/cost measurements",
+          "output": "Scoped operational events, cost per reviewed case, capacity/load model, and actionable exceptions",
+          "acceptance": "Logs omit secrets and private document bodies by default. Measure actual backend, queue latency, error/review rates, storage, throughput, and unit economics. A two-million-household capacity claim requires representative sustained load and cost evidence, not a row count or GPU-utilization percentage.",
+          "dependencies": [
+            "BR-DATA-05",
+            "BR-CUDA-05"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-OPS-05",
+          "action": "Run release gates and document limitations",
+          "input": "Focused tests, existing required regression gates, environment inventory",
+          "output": "Release evidence and concrete rollback/recovery procedure",
+          "acceptance": "No unavailable R/CUDA/AI execution is claimed; failures stop the affected release path and remain explicitly described.",
+          "dependencies": [
+            "BR-OPS-01",
+            "BR-VAL-06"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-OPS-06",
+          "action": "Stage production enablement by capability",
+          "input": "Verified release, authorization, identity/storage/runtime requirements",
+          "output": "Capability-specific rollout and rollback record",
+          "acceptance": "Builder skills do not start production agents. Enable providers and external actions only within their implemented, authorized boundaries. Expand from a validated initial segment using observed participant value, unit economics, consent/accessibility coverage and measured capacity; no institutional-readiness or two-million-household claim follows from the prototype.",
+          "dependencies": [
+            "BR-OPS-05",
+            "BR-FLOW-05"
+          ],
+          "delivery_state": "specified"
+        }
+      ],
+      "steps": [
+        "Package only the actual implementation and make optional features explicit.",
+        "Run the required release gates plus tests that resolve identified remaining risks.",
+        "Verify state recovery and preserve source/model/runtime manifests.",
+        "Report what was delivered and what remains disabled or unavailable before any production enablement."
+      ],
+      "failure_modes": [
+        "Calling a local script a hosted production deployment.",
+        "Treating an existing backup as a verified restore.",
+        "Enabling model services or external actions as a side effect of installing builder skills."
+      ],
+      "example_prompts": [
+        "Prepare a reproducible release of the evidence and probability engines with AI disabled.",
+        "Verify restore and rollback before enabling a live document connector."
+      ]
+    },
+    {
+      "name": "br-coordinate-builder-resources",
+      "display_name": "Black River Builder Resource Coordinator",
+      "description": "Coordinate the Black River development swarm through a validated ticket DAG, bounded workers, critical-path estimates, file ownership, quality gates, and resource-aware roadmap reporting. Use to schedule builders and unblock development; this skill does not create product-runtime agents.",
+      "owner": "architect_integrator",
+      "phase": "builder_tooling",
+      "scope_now": [
+        "Plan a maximum of three worker agents plus one reserved integrator.",
+        "Schedule dependency-ready tasks with explicit time estimates and write scopes.",
+        "Report GPU/R resource shortages and future AI deferrals."
+      ],
+      "scope_future": [
+        "Integrate observed historical duration estimates after enough completed builds.",
+        "Evaluate additional build infrastructure only with demonstrated capacity and cost evidence."
+      ],
+      "capabilities": [
+        {
+          "id": "BR-COORD-01",
+          "action": "Maintain the dependency graph and ready queue",
+          "input": "Versioned tickets, dependencies, status, phase gates and observed blockers",
+          "output": "Validated DAG, topological order, ready/blocked/deferred sets",
+          "acceptance": "Reject missing dependencies and cycles; completed prerequisites satisfy dependencies and deferred/blocked work cannot become ready.",
+          "dependencies": [
+            "BR-PROD-03"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-COORD-02",
+          "action": "Allocate bounded builder and execution resources",
+          "input": "Ready tickets, three worker slots, reserved integrator, actual CUDA/R availability",
+          "output": "Feasible resource allocation with explicit shortage reasons",
+          "acceptance": "Never allocate more than three parallel workers and one integrator; zero CUDA or R capacity blocks tickets requiring those runtimes.",
+          "dependencies": [
+            "BR-COORD-01"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-COORD-03",
+          "action": "Schedule critical work with visible estimates",
+          "input": "DAG, assumption-based duration estimates, priorities and resource capacities",
+          "output": "Relative start/finish schedule, critical-path priority and estimated completion range",
+          "acceptance": "Durations are labeled planning assumptions; estimates never become promised dates or fabricated performance measurements.",
+          "dependencies": [
+            "BR-COORD-02"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-COORD-04",
+          "action": "Prevent concurrent file-ownership conflicts",
+          "input": "Ticket write scopes, shared files, assignment and integration plan",
+          "output": "Conflict-free work assignments and serialized shared-file edits",
+          "acceptance": "Overlapping file or ancestor-directory write scopes cannot run concurrently; no builder may overwrite another's unintegrated work.",
+          "dependencies": [
+            "BR-COORD-02"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-COORD-05",
+          "action": "Enforce quality, rework and handoff gates",
+          "input": "Acceptance criteria, validation evidence, failed checks and review findings",
+          "output": "Completed/returned-for-rework/blocked handoffs with named ownership",
+          "acceptance": "A task becomes completed only after its own evidence is reviewed; rework preserves failure history and invalidates affected downstream assumptions.",
+          "dependencies": [
+            "BR-COORD-04",
+            "BR-VAL-01"
+          ],
+          "delivery_state": "specified"
+        },
+        {
+          "id": "BR-COORD-06",
+          "action": "Report roadmap and resource-blocked work",
+          "input": "Scheduled waves, implemented evidence, unmet dependencies, unavailable runtimes",
+          "output": "Roadmap by phase and status with the next feasible work",
+          "acceptance": "Distinguish plan, active builders and actual runtime deployment; disclose AI deferral and resource shortages instead of pretending the full roadmap is complete.",
+          "dependencies": [
+            "BR-COORD-03",
+            "BR-COORD-05"
+          ],
+          "delivery_state": "specified"
+        }
+      ],
+      "steps": [
+        "Validate ticket IDs, dependencies, phase gates, acceptance criteria and estimates.",
+        "Reserve the integrator and allocate ready work within the observed worker and runtime capacities.",
+        "Serialize overlapping write scopes, prioritize critical work, and record handoffs or rework.",
+        "Recompute the plan when status or resources change and report estimated rather than promised completion."
+      ],
+      "failure_modes": [
+        "Treating the development scheduler as an autonomous product-agent runtime.",
+        "Assigning tasks that require a GPU/R runtime when capacity is zero.",
+        "Parallelizing overlapping write scopes or marking work complete from agent self-report alone."
+      ],
+      "example_prompts": [
+        "Schedule the builder swarm for the document engine with three workers and one integrator.",
+        "Show the next ready tickets, critical path, and GPU/R work blocked by unavailable resources."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "Local engineering preferences",
+      "reference": "AGENTS.md",
+      "purpose": "User's CUDA, R, precision, and actual-execution requirements"
+    },
+    {
+      "title": "Existing capability coverage",
+      "reference": "docs/architecture/capability-coverage.md",
+      "purpose": "Preserve the master backlog and existing implementation boundaries"
+    },
+    {
+      "title": "NeMo Retriever Library overview",
+      "reference": "https://docs.nvidia.com/nemo/retriever/latest/extraction/overview/",
+      "purpose": "Library roles and component-specific support scope; reverify on deployment"
+    },
+    {
+      "title": "Nemotron Parse NIM overview",
+      "reference": "https://docs.nvidia.com/nim/ingestion/parse/latest/overview.html",
+      "purpose": "Current standalone parse API versus older VLM examples; reverify selected version"
+    },
+    {
+      "title": "Nemotron Parse NIM support matrix",
+      "reference": "https://docs.nvidia.com/nim/ingestion/parse/latest/support-matrix.html",
+      "purpose": "Actual supported model/device combinations"
+    },
+    {
+      "title": "CUDA best practices",
+      "reference": "https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/",
+      "purpose": "Reference comparison and measured full-workload optimization"
+    },
+    {
+      "title": "R renv",
+      "reference": "https://rstudio.github.io/renv/articles/renv.html",
+      "purpose": "Generate and restore actual R project dependency locks"
+    },
+    {
+      "title": "reticulate Python configuration",
+      "reference": "https://rstudio.github.io/reticulate/articles/versions.html",
+      "purpose": "Explicit approved Python binding for this project's validation contract"
+    },
+    {
+      "title": "Apache Arrow R",
+      "reference": "https://arrow.apache.org/docs/r/articles/arrow.html",
+      "purpose": "Typed data exchange; validate concrete conversions"
+    },
+    {
+      "title": "Probability calibration",
+      "reference": "https://scikit-learn.org/stable/modules/calibration.html",
+      "purpose": "Calibrated outcome probabilities and proper scoring diagnostics"
+    }
+  ]
+}

@@ -28,6 +28,20 @@ In the commercial workspace, open **Orchard parcel**, advance the synthetic work
 
 Read [the synthetic workflows](../web/fixtures.js) to see which record owns each transition. Then read [the screen behavior](../web/app.js) to see where the interface enforces the funding requirement.
 
+## Lesson 3 — Trace a document into an offer decision
+
+Read the [document-to-offer demonstration](guides/run_document_offer.md), then
+run `python tools/run_document_offer.py --output .runs/document-offer.json`
+from the checkout. The synthetic quote moves through unreviewed, reviewed,
+replacement-pending and replacement-reviewed states. Inspect each result's
+evidence, input bindings, profit calculation and review hold.
+
+Open [the engine and layer architecture](architecture/document-engine-layers.md)
+to distinguish the deterministic engines from the application layer. The
+[ticket plan](plans/document-engine-tickets.md) explains the builder swarm,
+resource schedule and later AI phase. The builder agents are development
+tools; the demonstration has no runtime agent or AI-service dependency.
+
 ## What to open next
 
 Use **Screen Underwriting Scenarios with CUDA** in VS Code to run the sensitivity grid on an NVIDIA workstation. It verifies the result against the CPU model. See the [CUDA screening guide](guides/cuda_screen.md) for the architecture and inputs.

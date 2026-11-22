@@ -1,0 +1,4123 @@
+{
+  "schema_version": "br.build-ticket-plan.v1",
+  "created_on": "2026-11-22",
+  "purpose": "Offline development coordination and resource planning for builder agents. This plan does not launch agents or execute product-runtime work.",
+  "catalog": "config/builder-skills.json",
+  "scope": {
+    "skills": 14,
+    "capabilities": 84,
+    "tickets": 84,
+    "goal": "Future goal: serve two million U.S. households, including immigrants. The initial segment, participant incentive, payer/revenue model, accessibility/localization, representative workload and unit economics require validation before scale.",
+    "professional_rigor": "Wall Street-level rigor is a validation target; this catalog and prototype do not establish institutional readiness or approval.",
+    "excluded_from_this_increment": "Full implementation of all 338 master requirements, new property strategies, live provider deployments, actual transactions, trained predictive models, and autonomous product agents."
+  },
+  "resource_profile": {
+    "agent_worker": 3,
+    "integrator": 1,
+    "cuda_device": 0,
+    "r_runtime": 0
+  },
+  "resource_notes": {
+    "integrator": "One dedicated coordinator/integrator is reserved separately from three worker slots.",
+    "cuda_device": "No CUDA device is available in this build environment; code review is not a hardware execution result.",
+    "r_runtime": "No R runtime is available in this build environment; an exchange contract is not an executed R validation.",
+    "cpu": "CPU work is permitted, but physical CPU count, hardware model and production capacity are not asserted."
+  },
+  "scheduling_policy": {
+    "reserved_integrator": 1,
+    "enabled_phases": [
+      "foundation",
+      "engine",
+      "application",
+      "validation",
+      "release",
+      "builder_tooling"
+    ],
+    "priority_order": "Lower priority number first, then remaining critical-path estimate, then stable ticket ID.",
+    "estimate_basis": "All estimated_minutes values are planning assumptions. Relative start/finish times are simulated build effort; they are not calendar bookings, measured speed or delivery commitments.",
+    "dependency_rule": "Only completed prerequisites satisfy dependencies. Planned descendants of blocked/deferred/resource-unavailable prerequisites remain blocked.",
+    "ownership_rule": "Each active ticket consumes exactly one agent_worker or one integrator. Overlapping file or ancestor-directory write scopes serialize.",
+    "completion_rule": "Move a ticket to completed only after its acceptance evidence has been reviewed. Keep completed/skipped/unavailable distinctions and rework history.",
+    "in_progress_rule": "In-progress tickets occupy their resources from relative minute zero; estimated_minutes is the assumed remaining effort.",
+    "ai_rule": "Product AI and autonomous runtime-agent phases are disabled and deferred. A build-time scheduler does not create or host either.",
+    "scope_rule": "Ready work can be accelerated only within resource, file ownership, review and dependency constraints.",
+    "phase_gates": {
+      "builder_tooling": [
+        "BR-BUILD-003"
+      ],
+      "engine": [
+        "BR-BUILD-004"
+      ],
+      "application": [
+        "BR-BUILD-004",
+        "BR-BUILD-012"
+      ],
+      "validation": [
+        "BR-BUILD-004"
+      ],
+      "release": [
+        "BR-BUILD-066"
+      ],
+      "presentation": [
+        "BR-BUILD-017"
+      ],
+      "integration": [
+        "BR-BUILD-004"
+      ],
+      "assistive_ai": [
+        "BR-BUILD-066",
+        "BR-BUILD-077"
+      ],
+      "runtime_agents": [
+        "BR-BUILD-071",
+        "BR-BUILD-077"
+      ]
+    },
+    "owner_rule": "One active ticket per named builder owner/lane; reassign roles explicitly between planning runs rather than scheduling the same builder twice."
+  },
+  "roadmap": [
+    {
+      "wave": "W0",
+      "phase": "foundation",
+      "purpose": "Confirm product boundary, current code, first segment/incentive hypothesis, shared contracts and work breakdown.",
+      "exit_gate": "Versioned contracts and an acyclic plan with explicit acceptance and resource needs."
+    },
+    {
+      "wave": "W1",
+      "phase": "builder_tooling",
+      "purpose": "Operate the offline ready queue, resource planner, file-ownership rules and builder handoffs.",
+      "exit_gate": "Scheduler rejects invalid plans and reports blocked resources without launching agents."
+    },
+    {
+      "wave": "W2",
+      "phase": "engine",
+      "purpose": "Build and verify evidence records, financial semantics and conditional probability calculations.",
+      "exit_gate": "Meaningful positive and negative cases reconcile with independent references; CUDA limitations are explicit."
+    },
+    {
+      "wave": "W3",
+      "phase": "application",
+      "purpose": "Join reviewed document inputs to underwriting through explicit bindings and stale-input holds.",
+      "exit_gate": "Synthetic quote changes recompute the right fields; unresolved evidence and changed live-counter terms withhold adjusted decisions."
+    },
+    {
+      "wave": "W4",
+      "phase": "validation",
+      "purpose": "Verify default non-AI behavior, source integrity, exact arithmetic, typed R exchange and actual execution status.",
+      "exit_gate": "CPU evidence is recorded; actual R and GPU validation remain blocked until their runtimes exist."
+    },
+    {
+      "wave": "W5",
+      "phase": "release",
+      "purpose": "Package the bounded local demonstration, recovery evidence and honest capability status.",
+      "exit_gate": "Required local release checks pass and residual limitations are stated."
+    },
+    {
+      "wave": "W6",
+      "phase": "presentation",
+      "purpose": "Add an operator review interface, accessibility, localization and source-to-number navigation.",
+      "exit_gate": "Observed operator workflow, stale-evidence behavior and supported-screen accessibility checks."
+    },
+    {
+      "wave": "W7",
+      "phase": "integration",
+      "purpose": "Add authorized live sources, complete historical outcomes and measured operating economics.",
+      "exit_gate": "Source permissions, identity, ingestion replay, unit economics and representative capacity are validated."
+    },
+    {
+      "wave": "W8",
+      "phase": "assistive_ai",
+      "purpose": "Later add NVIDIA parsing/OCR, embedding/reranking and evidence-grounded assistance.",
+      "exit_gate": "Version/hardware compatibility, extraction/retrieval quality, permissions, costs and review boundary are independently verified.",
+      "status": "deferred"
+    },
+    {
+      "wave": "W9",
+      "phase": "runtime_agents",
+      "purpose": "Evaluate separately whether bounded product agents are justified.",
+      "exit_gate": "Explicit scope, permissions, tools, budgets, stop conditions, monitoring and rollback are implemented and validated.",
+      "status": "deferred"
+    }
+  ],
+  "epics": [
+    {
+      "id": "BR-BUILD-E01",
+      "skill": "br-build-product",
+      "title": "Black River Product Builder",
+      "owner": "architect_integrator",
+      "ticket_ids": [
+        "BR-BUILD-001",
+        "BR-BUILD-002",
+        "BR-BUILD-003",
+        "BR-BUILD-004",
+        "BR-BUILD-005",
+        "BR-BUILD-006"
+      ]
+    },
+    {
+      "id": "BR-BUILD-E02",
+      "skill": "br-build-evidence-engine",
+      "title": "Black River Evidence Engine Builder",
+      "owner": "evidence_builder",
+      "ticket_ids": [
+        "BR-BUILD-007",
+        "BR-BUILD-008",
+        "BR-BUILD-009",
+        "BR-BUILD-010",
+        "BR-BUILD-011",
+        "BR-BUILD-012"
+      ]
+    },
+    {
+      "id": "BR-BUILD-E03",
+      "skill": "br-build-document-workflows",
+      "title": "Black River Document Workflow Builder",
+      "owner": "evidence_builder",
+      "ticket_ids": [
+        "BR-BUILD-013",
+        "BR-BUILD-014",
+        "BR-BUILD-015",
+        "BR-BUILD-016",
+        "BR-BUILD-017",
+        "BR-BUILD-018"
+      ]
+    },
+    {
+      "id": "BR-BUILD-E04",
+      "skill": "br-build-financial-engine",
+      "title": "Black River Financial Engine Builder",
+      "owner": "quant_builder",
+      "ticket_ids": [
+        "BR-BUILD-019",
+        "BR-BUILD-020",
+        "BR-BUILD-021",
+        "BR-BUILD-022",
+        "BR-BUILD-023",
+        "BR-BUILD-024"
+      ]
+    },
+    {
+      "id": "BR-BUILD-E05",
+      "skill": "br-build-probability-engine",
+      "title": "Black River Probability Engine Builder",
+      "owner": "quant_builder",
+      "ticket_ids": [
+        "BR-BUILD-025",
+        "BR-BUILD-026",
+        "BR-BUILD-027",
+        "BR-BUILD-028",
+        "BR-BUILD-029",
+        "BR-BUILD-030"
+      ]
+    },
+    {
+      "id": "BR-BUILD-E06",
+      "skill": "br-build-deal-workflow",
+      "title": "Black River Deal Workflow Builder",
+      "owner": "evidence_builder",
+      "ticket_ids": [
+        "BR-BUILD-031",
+        "BR-BUILD-032",
+        "BR-BUILD-033",
+        "BR-BUILD-034",
+        "BR-BUILD-035",
+        "BR-BUILD-036"
+      ]
+    },
+    {
+      "id": "BR-BUILD-E07",
+      "skill": "br-build-cuda-compute",
+      "title": "Black River CUDA Compute Builder",
+      "owner": "quant_builder",
+      "ticket_ids": [
+        "BR-BUILD-037",
+        "BR-BUILD-038",
+        "BR-BUILD-039",
+        "BR-BUILD-040",
+        "BR-BUILD-041",
+        "BR-BUILD-042"
+      ]
+    },
+    {
+      "id": "BR-BUILD-E08",
+      "skill": "br-build-r-validation",
+      "title": "Black River R Validation Builder",
+      "owner": "quality_builder",
+      "ticket_ids": [
+        "BR-BUILD-043",
+        "BR-BUILD-044",
+        "BR-BUILD-045",
+        "BR-BUILD-046",
+        "BR-BUILD-047",
+        "BR-BUILD-048"
+      ]
+    },
+    {
+      "id": "BR-BUILD-E09",
+      "skill": "br-build-review-interface",
+      "title": "Black River Review Interface Builder",
+      "owner": "architect_integrator",
+      "ticket_ids": [
+        "BR-BUILD-049",
+        "BR-BUILD-050",
+        "BR-BUILD-051",
+        "BR-BUILD-052",
+        "BR-BUILD-053",
+        "BR-BUILD-054"
+      ]
+    },
+    {
+      "id": "BR-BUILD-E10",
+      "skill": "br-build-data-connectors",
+      "title": "Black River Data Connector Builder",
+      "owner": "evidence_builder",
+      "ticket_ids": [
+        "BR-BUILD-055",
+        "BR-BUILD-056",
+        "BR-BUILD-057",
+        "BR-BUILD-058",
+        "BR-BUILD-059",
+        "BR-BUILD-060"
+      ]
+    },
+    {
+      "id": "BR-BUILD-E11",
+      "skill": "br-build-model-validation",
+      "title": "Black River Model Validation Builder",
+      "owner": "quality_builder",
+      "ticket_ids": [
+        "BR-BUILD-061",
+        "BR-BUILD-062",
+        "BR-BUILD-063",
+        "BR-BUILD-064",
+        "BR-BUILD-065",
+        "BR-BUILD-066"
+      ]
+    },
+    {
+      "id": "BR-BUILD-E12",
+      "skill": "br-build-ai-adapters",
+      "title": "Black River Future AI Adapter Builder",
+      "owner": "evidence_builder",
+      "ticket_ids": [
+        "BR-BUILD-067",
+        "BR-BUILD-068",
+        "BR-BUILD-069",
+        "BR-BUILD-070",
+        "BR-BUILD-071",
+        "BR-BUILD-072"
+      ]
+    },
+    {
+      "id": "BR-BUILD-E13",
+      "skill": "br-build-release-operations",
+      "title": "Black River Release Operations Builder",
+      "owner": "quality_builder",
+      "ticket_ids": [
+        "BR-BUILD-073",
+        "BR-BUILD-074",
+        "BR-BUILD-075",
+        "BR-BUILD-076",
+        "BR-BUILD-077",
+        "BR-BUILD-078"
+      ]
+    },
+    {
+      "id": "BR-BUILD-E14",
+      "skill": "br-coordinate-builder-resources",
+      "title": "Black River Builder Resource Coordinator",
+      "owner": "architect_integrator",
+      "ticket_ids": [
+        "BR-BUILD-079",
+        "BR-BUILD-080",
+        "BR-BUILD-081",
+        "BR-BUILD-082",
+        "BR-BUILD-083",
+        "BR-BUILD-084"
+      ]
+    }
+  ],
+  "tickets": [
+    {
+      "id": "BR-BUILD-001",
+      "capability_id": "BR-PROD-01",
+      "epic_id": "BR-BUILD-E01",
+      "skill": "br-build-product",
+      "title": "Record the product and builder boundary",
+      "owner": "architect_integrator",
+      "phase": "foundation",
+      "dependencies": [],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 15,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        7,
+        30
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "AGENTS.md",
+        "docs/architecture/builder-swarm.md"
+      ],
+      "deliverables": [
+        "AGENTS.md",
+        "docs/architecture/builder-swarm.md"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "The ordinary product path runs without an LLM, autonomous agent, or NVIDIA model service; later AI is explicitly disabled."
+      ],
+      "input": "User objective, session instructions, AGENTS.md, current architecture",
+      "output": "Versioned boundary decision naming build-time agents and product runtime components",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Boundary recorded in AGENTS.md and builder architecture; complete synthetic application run succeeds with AI credentials empty and network construction forbidden.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-002",
+      "capability_id": "BR-PROD-02",
+      "epic_id": "BR-BUILD-E01",
+      "skill": "br-build-product",
+      "title": "Inventory existing engines and gaps",
+      "owner": "architect_integrator",
+      "phase": "foundation",
+      "dependencies": [
+        "BR-BUILD-001"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 25,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        12,
+        50
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "docs/code-map.md",
+        "docs/architecture/capability-coverage.md"
+      ],
+      "deliverables": [
+        "docs/code-map.md",
+        "docs/architecture/capability-coverage.md"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "Reuse working finance, ledger, storage, and workflow modules; distinguish source-reviewed, executed, and planned behavior."
+      ],
+      "input": "Repository revision, maintained source map, tests, available runtimes",
+      "output": "Capability-to-code-and-test inventory with observed limitations",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Existing engine inventory, source map and gaps inspected; current source coverage and executed regression results are linked in the verification record.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-003",
+      "capability_id": "BR-PROD-03",
+      "epic_id": "BR-BUILD-E01",
+      "skill": "br-build-product",
+      "title": "Decompose a bounded product increment",
+      "owner": "architect_integrator",
+      "phase": "foundation",
+      "dependencies": [
+        "BR-BUILD-002"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 30,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        15,
+        60
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "config/builder-skills.json",
+        "config/build-ticket-plan.json",
+        "docs/plans/initial-pilot-hypothesis.md"
+      ],
+      "deliverables": [
+        "config/builder-skills.json",
+        "config/build-ticket-plan.json",
+        "docs/plans/initial-pilot-hypothesis.md"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "Select an initial segment using service need, geography, obtainable evidence, and delivery capacity; state the participant incentive, payer, revenue/cost hypothesis, and validation measure. Every work item has an owner, inputs, outputs, completion evidence, and an explicit phase. The two-million-household goal remains an unproven scale hypothesis."
+      ],
+      "input": "Business workflow, initial service segment, customer need, participant incentive, payer/revenue hypothesis, unresolved gaps, and acceptance constraints",
+      "output": "Initial-segment and unit-economics hypotheses plus a dependency-ordered work breakdown with stable capability IDs",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Fourteen skill families and 84 dependency-linked tickets specify owners, contracts, resources and acceptance. The initial segment, incentive/payer and scale hypotheses are explicitly provisional.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-004",
+      "capability_id": "BR-PROD-04",
+      "epic_id": "BR-BUILD-E01",
+      "skill": "br-build-product",
+      "title": "Specify shared contracts before implementation",
+      "owner": "architect_integrator",
+      "phase": "foundation",
+      "dependencies": [
+        "BR-BUILD-003"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 30,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        15,
+        60
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "docs/architecture/document-engine-layers.md"
+      ],
+      "deliverables": [
+        "docs/architecture/document-engine-layers.md"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "IDs, currency, units, dates, null semantics, rounding, and error behavior are explicit and can be validated without AI."
+      ],
+      "input": "Evidence records, monetary types, identifiers, time conventions",
+      "output": "Versioned contract for engines, application services, and adapters",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Versioned evidence, offer and application contracts specify IDs, exact cents, currency, dates, time zone, missingness, offsets, hashes and error behavior.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-005",
+      "capability_id": "BR-PROD-05",
+      "epic_id": "BR-BUILD-E01",
+      "skill": "br-build-product",
+      "title": "Dispatch and integrate builder work",
+      "owner": "architect_integrator",
+      "phase": "foundation",
+      "dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-080",
+        "BR-BUILD-082"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 15,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        7,
+        30
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "docs/architecture/builder-swarm.md",
+        "config/build-ticket-plan.json"
+      ],
+      "deliverables": [
+        "docs/architecture/builder-swarm.md",
+        "config/build-ticket-plan.json"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "Concurrent builders have bounded ownership; dependencies and conflicts are resolved sequentially by the integrator."
+      ],
+      "input": "Shared contracts, permitted files, builder roles",
+      "output": "Disjoint work assignments and integration record",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Three bounded implementation builders ran in parallel with disjoint paths; the integrator owned the application and shared integration. A fresh-context reviewer inspected artifacts and returned findings.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-006",
+      "capability_id": "BR-PROD-06",
+      "epic_id": "BR-BUILD-E01",
+      "skill": "br-build-product",
+      "title": "Reconcile delivery claims against evidence",
+      "owner": "architect_integrator",
+      "phase": "foundation",
+      "dependencies": [
+        "BR-BUILD-005",
+        "BR-BUILD-066",
+        "BR-BUILD-077"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 30,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        15,
+        60
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "docs/plans/document-engine-tickets.md",
+        "docs/validation/document-engine-release.md"
+      ],
+      "deliverables": [
+        "docs/plans/document-engine-tickets.md",
+        "docs/validation/document-engine-release.md"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "No planned capability, unavailable R/CUDA execution, or future AI service is reported as deployed."
+      ],
+      "input": "Diff, test results, interface examples, known gaps",
+      "output": "Release summary with implemented, tested, deferred, and blocked sections",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-007",
+      "capability_id": "BR-EVID-01",
+      "epic_id": "BR-BUILD-E02",
+      "skill": "br-build-evidence-engine",
+      "title": "Register immutable document identity",
+      "owner": "evidence_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-004"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_evidence.py",
+        "tests/test_document_evidence.py"
+      ],
+      "deliverables": [
+        "pilot/document_evidence.py",
+        "tests/test_document_evidence.py"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "Duplicate IDs cannot replace different content; malformed hashes and missing provenance are rejected."
+      ],
+      "input": "Deal ID, document ID, source reference, content hash, version, observation date",
+      "output": "Document registration record bound to one deal and version",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Actual SQLite tests verify content hash/identity binding, immutable archival records, duplicate handling and atomic rollback.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-008",
+      "capability_id": "BR-EVID-02",
+      "epic_id": "BR-BUILD-E02",
+      "skill": "br-build-evidence-engine",
+      "title": "Preserve source locations and units",
+      "owner": "evidence_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-007"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 45,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        22,
+        90
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_evidence.py",
+        "data/document_evidence/duplex_quote.json"
+      ],
+      "deliverables": [
+        "pilot/document_evidence.py",
+        "data/document_evidence/duplex_quote.json"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "Page references are valid for the source type; money is not silently converted between dollars and cents."
+      ],
+      "input": "Document registration, page or structured location, extracted text or value",
+      "output": "Typed claim with a source locator and currency or physical unit",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Typed claims preserve page/location, raw text, value types, currency and units; invalid references and types are rejected.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-009",
+      "capability_id": "BR-EVID-03",
+      "epic_id": "BR-BUILD-E02",
+      "skill": "br-build-evidence-engine",
+      "title": "Represent versions and supersession",
+      "owner": "evidence_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-007"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 75,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        37,
+        150
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_evidence.py",
+        "tests/test_document_evidence.py"
+      ],
+      "deliverables": [
+        "pilot/document_evidence.py",
+        "tests/test_document_evidence.py"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "Old sources remain reproducible; a later upload alone does not silently erase previously reviewed evidence."
+      ],
+      "input": "Old and new source versions with an explicit relationship",
+      "output": "Append-only version lineage and current-source determination",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Explicit document-family versions and immutable supersession preserve old sources. An effective newer unreviewed quote blocks current reuse of the old quote.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-010",
+      "capability_id": "BR-EVID-04",
+      "epic_id": "BR-BUILD-E02",
+      "skill": "br-build-evidence-engine",
+      "title": "Record named review decisions",
+      "owner": "evidence_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-008"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_evidence.py",
+        "tests/test_document_evidence.py"
+      ],
+      "deliverables": [
+        "pilot/document_evidence.py",
+        "tests/test_document_evidence.py"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "Candidate claims cannot self-approve; review cannot silently alter the source value or deal binding."
+      ],
+      "input": "Claim ID, reviewer, decision, review time, rationale",
+      "output": "Immutable acceptance, rejection, or conflict review event",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Explicit accept/reject review events are immutable and cannot change claim values or deal binding; candidates are not accepted by ingestion. Conflict states are inferred, not a third review command.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-011",
+      "capability_id": "BR-EVID-05",
+      "epic_id": "BR-BUILD-E02",
+      "skill": "br-build-evidence-engine",
+      "title": "Apply time and conflict validity",
+      "owner": "evidence_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-009",
+        "BR-BUILD-010"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 75,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        37,
+        150
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_evidence.py",
+        "tests/test_document_evidence.py"
+      ],
+      "deliverables": [
+        "pilot/document_evidence.py",
+        "tests/test_document_evidence.py"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "Future or expired evidence cannot enter the projection; two incompatible accepted current values remain a blocker."
+      ],
+      "input": "Claims, reviews, effective and expiry dates, analysis date",
+      "output": "Current evidence set with stale, superseded, contradictory, and missing flags",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Actual SQLite cases cover future, expired, stale, rejected and incompatible current accepted claims. Invalid current facts cannot enter the projection.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-012",
+      "capability_id": "BR-EVID-06",
+      "epic_id": "BR-BUILD-E02",
+      "skill": "br-build-evidence-engine",
+      "title": "Project accepted inputs with provenance",
+      "owner": "evidence_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-011"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 45,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        22,
+        90
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_evidence.py",
+        "docs/guides/document_evidence.md"
+      ],
+      "deliverables": [
+        "pilot/document_evidence.py",
+        "docs/guides/document_evidence.md"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "Wrong-deal, ambiguous, unreviewed, or incompatible-unit claims cannot become financial inputs; the projection is reproducible."
+      ],
+      "input": "Deal ID, analysis date, current reviewed claims, expected field schema",
+      "output": "Deterministic fact projection, source links, and blocking reasons",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Required-field projection retains source/reviewer provenance and blocks unresolved evidence; application tests additionally enforce financial currency and monetary types.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-013",
+      "capability_id": "BR-DOC-01",
+      "epic_id": "BR-BUILD-E03",
+      "skill": "br-build-document-workflows",
+      "title": "Define intake manifests and duplicate behavior",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "dependencies": [
+        "BR-BUILD-007"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 40,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        20,
+        80
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_evidence.py",
+        "tests/test_document_evidence.py"
+      ],
+      "deliverables": [
+        "pilot/document_evidence.py",
+        "tests/test_document_evidence.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Reprocessing identical input is idempotent; corrupt or unsupported files remain visible without guessed content."
+      ],
+      "input": "Authorized files, content fingerprints, MIME or source types, deal scope",
+      "output": "Intake manifest with candidate, duplicate, unsupported, and error states",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "Atomic native JSON bundle intake and duplicate behavior are implemented.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "General file-intake manifest with supported/unsupported/error queue states remains to be built."
+      ]
+    },
+    {
+      "id": "BR-BUILD-014",
+      "capability_id": "BR-DOC-02",
+      "epic_id": "BR-BUILD-E03",
+      "skill": "br-build-document-workflows",
+      "title": "Normalize candidate extraction results",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "dependencies": [
+        "BR-BUILD-008",
+        "BR-BUILD-004"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 40,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        20,
+        80
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_evidence.py",
+        "data/document_evidence/duplex_quote.json"
+      ],
+      "deliverables": [
+        "pilot/document_evidence.py",
+        "data/document_evidence/duplex_quote.json"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "The envelope preserves raw values and provenance; absent fields remain missing and do not become zero."
+      ],
+      "input": "Manual entries or deterministic parser output, source-location metadata",
+      "output": "Provider-neutral candidate-claim envelope",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Manual/native candidate envelopes preserve raw values, locations, types and missingness; ingestion cannot import review decisions.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-015",
+      "capability_id": "BR-DOC-03",
+      "epic_id": "BR-BUILD-E03",
+      "skill": "br-build-document-workflows",
+      "title": "Reconcile financial document fields",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "dependencies": [
+        "BR-BUILD-014",
+        "BR-BUILD-019"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_offer_layer.py",
+        "tests/test_document_offer_layer.py"
+      ],
+      "deliverables": [
+        "pilot/document_offer_layer.py",
+        "tests/test_document_offer_layer.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Totals, period alignment, units, and source conflicts are checked with declared rules and no invented balancing amounts."
+      ],
+      "input": "Candidate rent, cost, fee, balance, period, and unit fields",
+      "output": "Reconciliation findings tied to the affected claim IDs",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "Whitelisted money mapping and currency/unit checks work.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "General cross-document totals, period alignment and reconciliation findings remain broader than the quote demonstration."
+      ]
+    },
+    {
+      "id": "BR-BUILD-016",
+      "capability_id": "BR-DOC-04",
+      "epic_id": "BR-BUILD-E03",
+      "skill": "br-build-document-workflows",
+      "title": "Build the review application service",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "dependencies": [
+        "BR-BUILD-015",
+        "BR-BUILD-010"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_offer_layer.py",
+        "tests/test_document_offer_layer.py"
+      ],
+      "deliverables": [
+        "pilot/document_offer_layer.py",
+        "tests/test_document_offer_layer.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Only valid state transitions create reviews; unresolved source conflicts cannot bypass the evidence engine."
+      ],
+      "input": "Candidate claims, reconciliation findings, named operator action",
+      "output": "Reviewed evidence projection or explicit hold",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "Local review projection and atomic application holds work.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "Authenticated reviewer service, authority and wider reconciliation prerequisites remain open."
+      ]
+    },
+    {
+      "id": "BR-BUILD-017",
+      "capability_id": "BR-DOC-05",
+      "epic_id": "BR-BUILD-E03",
+      "skill": "br-build-document-workflows",
+      "title": "Map reviewed fields into model inputs",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "dependencies": [
+        "BR-BUILD-016",
+        "BR-BUILD-012"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_offer_layer.py",
+        "tools/run_document_offer.py"
+      ],
+      "deliverables": [
+        "pilot/document_offer_layer.py",
+        "tools/run_document_offer.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Only permitted fields and scenarios are changed; evidence values never silently replace probability assumptions."
+      ],
+      "input": "Accepted evidence projection, binding map, model input version",
+      "output": "New underwriting packet plus changed-field provenance",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "Reviewed money mapping, scenario offsets, changed-field provenance and atomic context holds pass tests.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "Complete the review-service and reconciliation prerequisites before closing the broader ticket."
+      ]
+    },
+    {
+      "id": "BR-BUILD-018",
+      "capability_id": "BR-DOC-06",
+      "epic_id": "BR-BUILD-E03",
+      "skill": "br-build-document-workflows",
+      "title": "Propagate evidence changes to downstream decisions",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "dependencies": [
+        "BR-BUILD-017",
+        "BR-BUILD-033"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_offer_layer.py",
+        "tests/test_document_offer_layer.py"
+      ],
+      "deliverables": [
+        "pilot/document_offer_layer.py",
+        "tests/test_document_offer_layer.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "A changed material input cannot reuse an approval for an old packet; the old result remains inspectable."
+      ],
+      "input": "Previous and current projection digest, affected model runs and reviews",
+      "output": "Invalidation and recomputation record with retained prior results",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "The quote change preserves baseline history and recalculates the result.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "Connect change invalidation to the broader authenticated deal approval workflow."
+      ]
+    },
+    {
+      "id": "BR-BUILD-019",
+      "capability_id": "BR-FIN-01",
+      "epic_id": "BR-BUILD-E04",
+      "skill": "br-build-financial-engine",
+      "title": "Define monetary and time conventions",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-004"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 40,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        20,
+        80
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/underwriting.py",
+        "pilot/offer_probability.py"
+      ],
+      "deliverables": [
+        "pilot/underwriting.py",
+        "pilot/offer_probability.py"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "Boolean, nonfinite, missing, overflow, and incompatible currency/unit inputs fail explicitly."
+      ],
+      "input": "Currency, integer cents or declared numeric type, rounding and dates",
+      "output": "Validated money and period contract",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "CPU engine validation rejects malformed/nonfinite/Boolean monetary inputs, unsupported currency and out-of-range values, and preserves explicit integer-cent rounding.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-020",
+      "capability_id": "BR-FIN-02",
+      "epic_id": "BR-BUILD-E04",
+      "skill": "br-build-financial-engine",
+      "title": "Implement the complete cost bridge",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-019"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/underwriting.py",
+        "tests/test_pilot_domain.py"
+      ],
+      "deliverables": [
+        "pilot/underwriting.py",
+        "tests/test_pilot_domain.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Every cost is counted once; refundable deposits and unspent reserves are distinguished from consumed expenses."
+      ],
+      "input": "Purchase, sale, operating, renovation, closing, financing, and reserve assumptions",
+      "output": "Reconciled profit and cost trace",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "Current closed-deal and pursuit expenses are counted once in the synthetic case; existing finance modules remain available.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "Complete and review generalized cost treatment, refundable deposits, reserves and liquidity interfaces for this increment."
+      ]
+    },
+    {
+      "id": "BR-BUILD-021",
+      "capability_id": "BR-FIN-03",
+      "epic_id": "BR-BUILD-E04",
+      "skill": "br-build-financial-engine",
+      "title": "Calculate scenario economics",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-020"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "data/offer_probability/duplex.json"
+      ],
+      "deliverables": [
+        "pilot/offer_probability.py",
+        "data/offer_probability/duplex.json"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Dependencies within each case are preserved; acquisition cash, terminal profit, and dated returns are labeled separately."
+      ],
+      "input": "Joint economic scenarios, offer terms, existing financial engine outputs",
+      "output": "Per-offer and per-scenario profit and liquidity requirements",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "Exact per-offer/scenario profit is implemented and tested.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "Broader acquisition liquidity requirements and cost-bridge prerequisites remain open."
+      ]
+    },
+    {
+      "id": "BR-BUILD-022",
+      "capability_id": "BR-FIN-04",
+      "epic_id": "BR-BUILD-E04",
+      "skill": "br-build-financial-engine",
+      "title": "Calculate binding investment limits",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-021"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "deliverables": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "The strictest applicable constraint is visible; higher seller acceptance never silently relaxes a financial rule."
+      ],
+      "input": "Baseline, downside, expected-return, liquidity, and financing policies",
+      "output": "Named price ceilings and failed constraints",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "Baseline, conditional-mean and chance-policy ceilings are implemented.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "Complete full capital/liquidity and workflow integration prerequisites before closing the broad binding-limit ticket."
+      ]
+    },
+    {
+      "id": "BR-BUILD-023",
+      "capability_id": "BR-FIN-05",
+      "epic_id": "BR-BUILD-E04",
+      "skill": "br-build-financial-engine",
+      "title": "Extend financing and valuation coherently",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-020"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 120,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        60,
+        240
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/acquisition_finance.py",
+        "tests/test_acquisition_finance.py"
+      ],
+      "deliverables": [
+        "pilot/acquisition_finance.py",
+        "tests/test_acquisition_finance.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Loan proceeds and principal repayments reconcile; IRR/NPV claims require correctly dated cash-flow definitions."
+      ],
+      "input": "Verified financing terms, dated forecasts, rate and debt schedules",
+      "output": "Debt service, funding gap, valuation, and return calculations",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-024",
+      "capability_id": "BR-FIN-06",
+      "epic_id": "BR-BUILD-E04",
+      "skill": "br-build-financial-engine",
+      "title": "Reconcile modeled and realized cash",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-021",
+        "BR-BUILD-012"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 120,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        60,
+        240
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/ledger.py",
+        "tests/test_acceptance.py"
+      ],
+      "deliverables": [
+        "pilot/ledger.py",
+        "tests/test_acceptance.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "A billed amount is not a cash receipt; corrections preserve original postings and use explicit adjusting evidence."
+      ],
+      "input": "Approved packet, obligations, invoices, receipts, ledger entries",
+      "output": "Variance bridge and realized cash reconciliation",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-025",
+      "capability_id": "BR-PROB-01",
+      "epic_id": "BR-BUILD-E05",
+      "skill": "br-build-probability-engine",
+      "title": "Define outcome events and conditioning",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-004"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 45,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        22,
+        90
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "data/offer_probability/duplex.json"
+      ],
+      "deliverables": [
+        "pilot/offer_probability.py",
+        "data/offer_probability/duplex.json"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "Every probability has a denominator and horizon; an existing live counter is distinguished from a fresh offer."
+      ],
+      "input": "Current negotiation state, offer version, observation window, economic scope",
+      "output": "Event definitions for agreement, closing, and post-acquisition profit",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Agreement, closing conditional on agreement, and conditional economic events have explicit denominators and a declared descriptive horizon; live-counter premises are distinguished from new offers.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-026",
+      "capability_id": "BR-PROB-02",
+      "epic_id": "BR-BUILD-E05",
+      "skill": "br-build-probability-engine",
+      "title": "Enumerate a joint economic distribution",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-025",
+        "BR-BUILD-021"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "deliverables": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Weights sum to one; dependencies between sale prices and costs are represented jointly rather than silently assumed independent."
+      ],
+      "input": "Scenario IDs, probability weights, conditional financial outcomes",
+      "output": "Exact CPU weighted moments and target/loss probabilities",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "Joint scenario weights, exact moments and conditional loss/target probabilities are implemented.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "Full scenario-economics prerequisite remains open; current weights are assumptions."
+      ]
+    },
+    {
+      "id": "BR-BUILD-027",
+      "capability_id": "BR-PROB-03",
+      "epic_id": "BR-BUILD-E05",
+      "skill": "br-build-probability-engine",
+      "title": "Compute terminal pursuit value",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-026"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "deliverables": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Branches are mutually exclusive and exhaustive; failed-pursuit costs are deducted once and unknown acceptance stays unknown."
+      ],
+      "input": "Agreement and conditional closing assumptions, branch-total costs, profit distribution",
+      "output": "Terminal states, mass check, expected cash per attempt",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "Terminal event mass, expected value per attempt and unknown acceptance handling are verified.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "Complete broader prerequisite closure; no empirical or multi-round negotiation claim."
+      ]
+    },
+    {
+      "id": "BR-BUILD-028",
+      "capability_id": "BR-PROB-04",
+      "epic_id": "BR-BUILD-E05",
+      "skill": "br-build-probability-engine",
+      "title": "Apply conditional risk policies",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-027",
+        "BR-BUILD-022"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "deliverables": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Conditional and unconditional criteria are never interchanged; discrete chance boundaries are checked directly."
+      ],
+      "input": "Profit distribution, baseline threshold, expected threshold, chance requirement",
+      "output": "Eligibility results and labeled price ceilings",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "Separate conditional risk policies and discrete boundaries are verified.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "Complete broader financial-limit prerequisites; no policy-authority deployment."
+      ]
+    },
+    {
+      "id": "BR-BUILD-029",
+      "capability_id": "BR-PROB-05",
+      "epic_id": "BR-BUILD-E05",
+      "skill": "br-build-probability-engine",
+      "title": "Evaluate decision sensitivity and continuation limits",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-028"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "docs/guides/offer_probability.md"
+      ],
+      "deliverables": [
+        "pilot/offer_probability.py",
+        "docs/guides/offer_probability.md"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Assumption ranges are not confidence intervals; grid-cell counts are not probabilities that a strategy is best; multi-round claims require transitions."
+      ],
+      "input": "Probability ranges, shared-terms assumptions, one-round action set",
+      "output": "Switching thresholds, coherent parameter sweep, limitation record",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-030",
+      "capability_id": "BR-PROB-06",
+      "epic_id": "BR-BUILD-E05",
+      "skill": "br-build-probability-engine",
+      "title": "Design and validate empirical probability models",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-025",
+        "BR-BUILD-058"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 180,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        90,
+        360
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "docs/validation/probability-model-card.md",
+        "analysis/probability_calibration"
+      ],
+      "deliverables": [
+        "docs/validation/probability-model-card.md",
+        "analysis/probability_calibration"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Use only information available at prediction time; handle pending/censored cases and related-deal leakage; no calibrated claim without evaluation evidence."
+      ],
+      "input": "All timestamped offers and outcomes, predictor cutoff, pending cases",
+      "output": "Time-separated evaluation, calibration, proper scores, uncertainty and model card",
+      "blockers": [
+        "Requires complete timestamped historical offers/outcomes and a defined out-of-sample evaluation design."
+      ],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-031",
+      "capability_id": "BR-FLOW-01",
+      "epic_id": "BR-BUILD-E06",
+      "skill": "br-build-deal-workflow",
+      "title": "Define independent qualification dimensions",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "dependencies": [
+        "BR-BUILD-012"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 45,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        22,
+        90
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/underwriting.py",
+        "docs/architecture/document-engine-layers.md"
+      ],
+      "deliverables": [
+        "pilot/underwriting.py",
+        "docs/architecture/document-engine-layers.md"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Passing one dimension never substitutes for the evidence needed by another."
+      ],
+      "input": "Deal identity and current acquisition, capital, and exit evidence",
+      "output": "Buyable, fundable, and sellable statuses with unknown/blocked reasons",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-032",
+      "capability_id": "BR-FLOW-02",
+      "epic_id": "BR-BUILD-E06",
+      "skill": "br-build-deal-workflow",
+      "title": "Define event-driven transaction stages",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "dependencies": [
+        "BR-BUILD-031"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "docs/architecture/document-engine-layers.md",
+        "pilot/founder_service.py"
+      ],
+      "deliverables": [
+        "docs/architecture/document-engine-layers.md",
+        "pilot/founder_service.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Extraction and inference cannot directly advance agreement, closing, ownership, or cash-settlement status."
+      ],
+      "input": "Versioned stage vocabulary, events, actors, dates, and prerequisites",
+      "output": "State-transition specification from discovery through exit",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-033",
+      "capability_id": "BR-FLOW-03",
+      "epic_id": "BR-BUILD-E06",
+      "skill": "br-build-deal-workflow",
+      "title": "Bind decisions to exact evidence packets",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "dependencies": [
+        "BR-BUILD-032",
+        "BR-BUILD-022"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_offer_layer.py",
+        "pilot/founder_service.py"
+      ],
+      "deliverables": [
+        "pilot/document_offer_layer.py",
+        "pilot/founder_service.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Changed material inputs invalidate the prior review; scope, role, and review separation are checked."
+      ],
+      "input": "Current input digest, model version, reviewer identity, permitted action",
+      "output": "Review decision tied to one immutable packet",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-034",
+      "capability_id": "BR-FLOW-04",
+      "epic_id": "BR-BUILD-E06",
+      "skill": "br-build-deal-workflow",
+      "title": "Make retries and concurrency safe",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "dependencies": [
+        "BR-BUILD-033"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/storage.py",
+        "tests/test_pilot_storage.py"
+      ],
+      "deliverables": [
+        "pilot/storage.py",
+        "tests/test_pilot_storage.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Concurrent or repeated requests cannot duplicate a financial effect or silently approve a stale revision."
+      ],
+      "input": "Idempotency keys, current revision, transaction boundary, task lease",
+      "output": "At-most-once recorded transition and recoverable processing state",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-035",
+      "capability_id": "BR-FLOW-05",
+      "epic_id": "BR-BUILD-E06",
+      "skill": "br-build-deal-workflow",
+      "title": "Separate proposals from externally consequential actions",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "dependencies": [
+        "BR-BUILD-033"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 45,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        22,
+        90
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/connectors.py",
+        "tests/test_connectors.py"
+      ],
+      "deliverables": [
+        "pilot/connectors.py",
+        "tests/test_connectors.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "A builder or simulation cannot send offers, sign documents, move funds, or claim ownership without a separately authorized execution path."
+      ],
+      "input": "Prepared offer, dispatch request, signing or funding action, explicit authority",
+      "output": "Action-specific execution boundary and audit trail",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-036",
+      "capability_id": "BR-FLOW-06",
+      "epic_id": "BR-BUILD-E06",
+      "skill": "br-build-deal-workflow",
+      "title": "Track completion, operation, exit, and reinvestment",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "dependencies": [
+        "BR-BUILD-034",
+        "BR-BUILD-024"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 120,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        60,
+        240
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/ledger.py",
+        "tests/test_acceptance.py"
+      ],
+      "deliverables": [
+        "pilot/ledger.py",
+        "tests/test_acceptance.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Only independently evidenced receipts become realized cash; living-expense or reinvestment allocations preserve obligations and reserves."
+      ],
+      "input": "Contract/closing evidence, obligations, receipts, operating events, exit records",
+      "output": "Reconciled lifecycle history and capital allocation inputs",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-037",
+      "capability_id": "BR-CUDA-01",
+      "epic_id": "BR-BUILD-E07",
+      "skill": "br-build-cuda-compute",
+      "title": "Identify useful computational parallelism",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-021",
+        "BR-BUILD-026"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 45,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        22,
+        90
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "docs/architecture/cuda-screening.md",
+        "docs/guides/offer_probability.md"
+      ],
+      "deliverables": [
+        "docs/architecture/cuda-screening.md",
+        "docs/guides/offer_probability.md"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Parallelize independent cases; preserve within-case financial order; retain tiny or irregular control work on CPU with reasons."
+      ],
+      "input": "Profiled workload, dependency graph, input volume and device capabilities",
+      "output": "CPU/GPU partition with workload justification",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "CPU control/provenance versus batched GPU economics partition is documented.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "Complete broader scenario-engine prerequisite closure and actual workload measurement."
+      ]
+    },
+    {
+      "id": "BR-BUILD-038",
+      "capability_id": "BR-CUDA-02",
+      "epic_id": "BR-BUILD-E07",
+      "skill": "br-build-cuda-compute",
+      "title": "Define bounded batch interfaces",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-037",
+        "BR-BUILD-004"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 45,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        22,
+        90
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "deliverables": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Shape, length, identifiers, finite values, overflow and maximum allocation are checked before execution."
+      ],
+      "input": "Typed arrays, case IDs, precision contract, memory and arithmetic limits",
+      "output": "Versioned batch input/output contract and chunk policy",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "Explicit bounded offer/scenario arrays, arithmetic ranges and stable ordering are implemented.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "Complete wider backend batching integration and the preceding financial/practical workload gates."
+      ]
+    },
+    {
+      "id": "BR-BUILD-039",
+      "capability_id": "BR-CUDA-03",
+      "epic_id": "BR-BUILD-E07",
+      "skill": "br-build-cuda-compute",
+      "title": "Implement reusable GPU execution",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-038"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 75,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        37,
+        150
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "deliverables": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Avoid per-record transfers and repeated model/kernel initialization; explicit CUDA failures never silently become CPU execution."
+      ],
+      "input": "Validated batches, explicit device/backend selection, CPU reference",
+      "output": "Vectorized or fused GPU operation with allocation reuse",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "Optional fused CuPy computation and explicit unavailable-backend behavior are implemented.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "Actual CUDA execution, allocation behavior and parity remain unverified."
+      ]
+    },
+    {
+      "id": "BR-BUILD-040",
+      "capability_id": "BR-CUDA-04",
+      "epic_id": "BR-BUILD-E07",
+      "skill": "br-build-cuda-compute",
+      "title": "Verify numeric and decision parity",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-039",
+        "BR-BUILD-062"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 90,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        45,
+        180
+      ],
+      "required_resources": {
+        "agent_worker": 1,
+        "cuda_device": 1
+      },
+      "write_scopes": [
+        "tests/test_offer_probability.py",
+        "reports/cuda/probability-parity.json"
+      ],
+      "deliverables": [
+        "tests/test_offer_probability.py",
+        "reports/cuda/probability-parity.json"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Money and eligibility decisions match declared semantics; tolerance is meaningful in currency units and tested at policy boundaries."
+      ],
+      "input": "CPU reference, GPU outputs, threshold cases, rounding rules",
+      "output": "Exact or tolerance-justified comparison report",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-041",
+      "capability_id": "BR-CUDA-05",
+      "epic_id": "BR-BUILD-E07",
+      "skill": "br-build-cuda-compute",
+      "title": "Measure complete workload performance",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-040"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 120,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        60,
+        240
+      ],
+      "required_resources": {
+        "agent_worker": 1,
+        "cuda_device": 1
+      },
+      "write_scopes": [
+        "tools/benchmark_offer_probability.py",
+        "reports/cuda/probability-benchmark.json"
+      ],
+      "deliverables": [
+        "tools/benchmark_offer_probability.py",
+        "reports/cuda/probability-benchmark.json"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Every speedup names hardware, workload, precision, baseline, warmup and transfer scope; no speedup is inferred from utilization alone."
+      ],
+      "input": "Actual device, environment, cold/warm runs, transfers and synchronization",
+      "output": "Reproducible throughput, latency, memory, and error measurements",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-042",
+      "capability_id": "BR-CUDA-06",
+      "epic_id": "BR-BUILD-E07",
+      "skill": "br-build-cuda-compute",
+      "title": "Integrate acceleration across callers",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "dependencies": [
+        "BR-BUILD-038",
+        "BR-BUILD-044"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 90,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        45,
+        180
+      ],
+      "required_resources": {
+        "agent_worker": 1,
+        "cuda_device": 1,
+        "r_runtime": 1
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "analysis/r-validation"
+      ],
+      "deliverables": [
+        "pilot/offer_probability.py",
+        "analysis/r-validation"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "R and application callers invoke the same financial backend; results report actual execution and have stable case ordering."
+      ],
+      "input": "Python service and planned R exchange, shared batch API",
+      "output": "Consistent backend metadata and minimal-return execution path",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-043",
+      "capability_id": "BR-R-01",
+      "epic_id": "BR-BUILD-E08",
+      "skill": "br-build-r-validation",
+      "title": "Establish reproducible R and Python environments",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "dependencies": [
+        "BR-BUILD-004"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1,
+        "r_runtime": 1
+      },
+      "write_scopes": [
+        "analysis/r-validation/renv.lock",
+        "analysis/r-validation/runtime-manifest.json"
+      ],
+      "deliverables": [
+        "analysis/r-validation/renv.lock",
+        "analysis/r-validation/runtime-manifest.json"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Do not fabricate a renv lock or successful run; record actual R/Python versions and independently verify restoration."
+      ],
+      "input": "Actual installed R, renv packages, Python environment, device requirements",
+      "output": "Generated dependency lock, runtime manifest, restore procedure",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-044",
+      "capability_id": "BR-R-02",
+      "epic_id": "BR-BUILD-E08",
+      "skill": "br-build-r-validation",
+      "title": "Define typed cross-language exchange",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-019"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 45,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        22,
+        90
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_offer_layer.py",
+        "docs/guides/r-evidence-validation.md"
+      ],
+      "deliverables": [
+        "pilot/document_offer_layer.py",
+        "docs/guides/r-evidence-validation.md"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Cents, nulls, IDs, dates/time zones and array order round-trip without lossy implicit conversion."
+      ],
+      "input": "Versioned case, source, offer and scenario records with currency and dates",
+      "output": "Arrow/Parquet or validated interchange schema and conversion rules",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "Versioned CSV/JSON R exchange preserves exact strings, unknowns, IDs, dates/time zone and content hashes in Python.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "An independent R read/round-trip and executable environment are still required."
+      ]
+    },
+    {
+      "id": "BR-BUILD-045",
+      "capability_id": "BR-R-03",
+      "epic_id": "BR-BUILD-E08",
+      "skill": "br-build-r-validation",
+      "title": "Implement small independent reference checks",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "dependencies": [
+        "BR-BUILD-044",
+        "BR-BUILD-027"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 90,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        45,
+        180
+      ],
+      "required_resources": {
+        "agent_worker": 1,
+        "r_runtime": 1
+      },
+      "write_scopes": [
+        "analysis/r-validation/review.R",
+        "reports/r-validation/reference-comparison.json"
+      ],
+      "deliverables": [
+        "analysis/r-validation/review.R",
+        "reports/r-validation/reference-comparison.json"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "The check is independently expressed and executed; it does not become a competing authoritative production engine."
+      ],
+      "input": "Known financial cases and explicit outcome distributions",
+      "output": "R results compared with Python reference at declared tolerances",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-046",
+      "capability_id": "BR-R-04",
+      "epic_id": "BR-BUILD-E08",
+      "skill": "br-build-r-validation",
+      "title": "Evaluate calibration and economic forecast loss",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "dependencies": [
+        "BR-BUILD-044",
+        "BR-BUILD-030"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 180,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        90,
+        360
+      ],
+      "required_resources": {
+        "agent_worker": 1,
+        "r_runtime": 1
+      },
+      "write_scopes": [
+        "analysis/r-validation/calibration.R",
+        "reports/r-validation/calibration"
+      ],
+      "deliverables": [
+        "analysis/r-validation/calibration.R",
+        "reports/r-validation/calibration"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Out-of-sample evaluation excludes future information; uncertainty and thin samples remain explicit."
+      ],
+      "input": "Versioned historical predictions, observed outcomes, evaluation cutoff",
+      "output": "Reliability plots, proper scores, sample counts and economic-loss diagnostics",
+      "blockers": [
+        "Requires complete timestamped historical offers/outcomes and a defined out-of-sample evaluation design."
+      ],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-047",
+      "capability_id": "BR-R-05",
+      "epic_id": "BR-BUILD-E08",
+      "skill": "br-build-r-validation",
+      "title": "Model time-to-event and competing outcomes",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "dependencies": [
+        "BR-BUILD-044",
+        "BR-BUILD-058"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 180,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        90,
+        360
+      ],
+      "required_resources": {
+        "agent_worker": 1,
+        "r_runtime": 1
+      },
+      "write_scopes": [
+        "analysis/r-validation/time_to_event.R",
+        "reports/r-validation/time-to-event"
+      ],
+      "deliverables": [
+        "analysis/r-validation/time_to_event.R",
+        "reports/r-validation/time-to-event"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Pending cases are not mislabeled failures; competing outcomes and observation windows are represented explicitly."
+      ],
+      "input": "Negotiation/closing event dates, current status, censoring rules",
+      "output": "Time-to-event analysis with declared event and risk-set definitions",
+      "blockers": [
+        "Requires complete timestamped historical offers/outcomes and a defined out-of-sample evaluation design."
+      ],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-048",
+      "capability_id": "BR-R-06",
+      "epic_id": "BR-BUILD-E08",
+      "skill": "br-build-r-validation",
+      "title": "Produce reproducible analytical reports",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "dependencies": [
+        "BR-BUILD-045",
+        "BR-BUILD-046",
+        "BR-BUILD-047"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 90,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        45,
+        180
+      ],
+      "required_resources": {
+        "agent_worker": 1,
+        "r_runtime": 1
+      },
+      "write_scopes": [
+        "analysis/r-validation/report.qmd",
+        "reports/r-validation/review.html"
+      ],
+      "deliverables": [
+        "analysis/r-validation/report.qmd",
+        "reports/r-validation/review.html"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Every result resolves to data and executable analysis; unexecuted R/CUDA paths are explicitly marked."
+      ],
+      "input": "Pinned inputs, model versions, diagnostics, execution manifest",
+      "output": "Traceable statistical report and discrepancy register",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-049",
+      "capability_id": "BR-UX-01",
+      "epic_id": "BR-BUILD-E09",
+      "skill": "br-build-review-interface",
+      "title": "Design the source-to-number trace",
+      "owner": "architect_integrator",
+      "phase": "presentation",
+      "dependencies": [
+        "BR-BUILD-012",
+        "BR-BUILD-021"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 75,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        37,
+        150
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "web/document-review.html",
+        "web/document-review.js"
+      ],
+      "deliverables": [
+        "web/document-review.html",
+        "web/document-review.js"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "An operator can explain one output and locate its source without relying on a generated narrative."
+      ],
+      "input": "Accepted inputs, source locators, model trace, changed-field list",
+      "output": "Inspect input/source/formula/output navigation",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-050",
+      "capability_id": "BR-UX-02",
+      "epic_id": "BR-BUILD-E09",
+      "skill": "br-build-review-interface",
+      "title": "Display evidence conflicts and missingness",
+      "owner": "architect_integrator",
+      "phase": "presentation",
+      "dependencies": [
+        "BR-BUILD-016"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 75,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        37,
+        150
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "web/document-review.html",
+        "web/document-review.js"
+      ],
+      "deliverables": [
+        "web/document-review.html",
+        "web/document-review.js"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Unknown, zero, rejected, expired and conflicting values remain visually and semantically distinct."
+      ],
+      "input": "Claim states, review findings, stale sources, required fields",
+      "output": "Prioritized review queue with explicit actions and reasons",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-051",
+      "capability_id": "BR-UX-03",
+      "epic_id": "BR-BUILD-E09",
+      "skill": "br-build-review-interface",
+      "title": "Expose investment policy controls",
+      "owner": "architect_integrator",
+      "phase": "presentation",
+      "dependencies": [
+        "BR-BUILD-028"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 75,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        37,
+        150
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "web/offer-review.html",
+        "web/offer-review.js"
+      ],
+      "deliverables": [
+        "web/offer-review.html",
+        "web/offer-review.js"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Changing a control records a new input version and visibly changes the affected policy output; no hidden relaxation occurs."
+      ],
+      "input": "Baseline/expected/chance constraints, capital requirements, current values",
+      "output": "Labeled policy editor and eligible-action comparison",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-052",
+      "capability_id": "BR-UX-04",
+      "epic_id": "BR-BUILD-E09",
+      "skill": "br-build-review-interface",
+      "title": "Render complete offer and outcome comparisons",
+      "owner": "architect_integrator",
+      "phase": "presentation",
+      "dependencies": [
+        "BR-BUILD-027"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 75,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        37,
+        150
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "web/offer-review.html",
+        "web/offer-review.js"
+      ],
+      "deliverables": [
+        "web/offer-review.html",
+        "web/offer-review.js"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Acquisition probability, conditional profit, joint target probability and per-attempt value are not conflated."
+      ],
+      "input": "Offer economics, agreement/closing assumptions, terminal outcomes",
+      "output": "Comparable measures with explicit conditioning and units",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-053",
+      "capability_id": "BR-UX-05",
+      "epic_id": "BR-BUILD-E09",
+      "skill": "br-build-review-interface",
+      "title": "Implement usable and accessible interactions",
+      "owner": "architect_integrator",
+      "phase": "presentation",
+      "dependencies": [
+        "BR-BUILD-049",
+        "BR-BUILD-050"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 90,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        45,
+        180
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "web/document-review.css",
+        "tests/document-review-accessibility"
+      ],
+      "deliverables": [
+        "web/document-review.css",
+        "tests/document-review-accessibility"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Primary workflows are legible and operable at supported sizes and with assistive access; declared locales preserve currency/date meaning, and comprehension is tested with intended users. No undocumented language coverage or hidden decision blockers are claimed."
+      ],
+      "input": "Actual UI framework, narrow-screen and assistive-access needs, supported languages, keyboard behavior, and participant comprehension tasks",
+      "output": "Responsive interface and observed interaction evidence",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-054",
+      "capability_id": "BR-UX-06",
+      "epic_id": "BR-BUILD-E09",
+      "skill": "br-build-review-interface",
+      "title": "Verify review and recalculation behavior",
+      "owner": "architect_integrator",
+      "phase": "presentation",
+      "dependencies": [
+        "BR-BUILD-051",
+        "BR-BUILD-052",
+        "BR-BUILD-033"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 90,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        45,
+        180
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "tools/replay_document_review.py",
+        "reports/ui/document-review-replay"
+      ],
+      "deliverables": [
+        "tools/replay_document_review.py",
+        "reports/ui/document-review-replay"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "The displayed result matches the actual service revision, and stale or unauthorized actions fail visibly."
+      ],
+      "input": "Connected service, changed evidence, stale review, permissions",
+      "output": "UI replay and defect record for success and failure paths",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-055",
+      "capability_id": "BR-DATA-01",
+      "epic_id": "BR-BUILD-E10",
+      "skill": "br-build-data-connectors",
+      "title": "Define source access and permitted operations",
+      "owner": "evidence_builder",
+      "phase": "integration",
+      "dependencies": [
+        "BR-BUILD-004"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 40,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        20,
+        80
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/connectors.py",
+        "docs/guides/pilot_connectors.md"
+      ],
+      "deliverables": [
+        "pilot/connectors.py",
+        "docs/guides/pilot_connectors.md"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Record permitted access and purpose before ingestion; support the applicable consent/retention boundary. A read-only task does not acquire write authority; secrets never enter source control or diagnostic output. Do not infer immigration or nationality from names to route financial decisions."
+      ],
+      "input": "User authorization and participant consent where applicable, source contract, permitted purpose, fields, account or tenant scope, and retention requirements",
+      "output": "Read/write boundary, credential handling, retention and source manifest",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-056",
+      "capability_id": "BR-DATA-02",
+      "epic_id": "BR-BUILD-E10",
+      "skill": "br-build-data-connectors",
+      "title": "Read structured files without semantic loss",
+      "owner": "evidence_builder",
+      "phase": "integration",
+      "dependencies": [
+        "BR-BUILD-055",
+        "BR-BUILD-007"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 75,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        37,
+        150
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_connectors.py",
+        "tests/test_document_connectors.py"
+      ],
+      "deliverables": [
+        "pilot/document_connectors.py",
+        "tests/test_document_connectors.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Preserve original values, units, nulls and locations; malformed or unsupported cells remain errors rather than guessed values."
+      ],
+      "input": "Native CSV/XLSX/JSON or other declared schema, source revision",
+      "output": "Typed candidate records and per-row import errors",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-057",
+      "capability_id": "BR-DATA-03",
+      "epic_id": "BR-BUILD-E10",
+      "skill": "br-build-data-connectors",
+      "title": "Resolve deal and entity identity explicitly",
+      "owner": "evidence_builder",
+      "phase": "integration",
+      "dependencies": [
+        "BR-BUILD-056",
+        "BR-BUILD-009"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 120,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        60,
+        240
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/entity_resolution.py",
+        "tests/test_entity_resolution.py"
+      ],
+      "deliverables": [
+        "pilot/entity_resolution.py",
+        "tests/test_entity_resolution.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Ambiguous matches never merge automatically; provenance and historical owner/version context remain visible."
+      ],
+      "input": "Parcel identifiers, owner names, LLC records, addresses and relationship evidence",
+      "output": "Candidate entity links with deterministic keys and review status",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-058",
+      "capability_id": "BR-DATA-04",
+      "epic_id": "BR-BUILD-E10",
+      "skill": "br-build-data-connectors",
+      "title": "Capture complete timestamped outcomes",
+      "owner": "evidence_builder",
+      "phase": "integration",
+      "dependencies": [
+        "BR-BUILD-055",
+        "BR-BUILD-032"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 90,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        45,
+        180
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/offer_outcomes.py",
+        "tests/test_offer_outcomes.py"
+      ],
+      "deliverables": [
+        "pilot/offer_outcomes.py",
+        "tests/test_offer_outcomes.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Retain unsuccessful and pending cases; preserve related-deal grouping and avoid selection bias from successful-only ingestion."
+      ],
+      "input": "Every offer version and accepted/rejected/expired/withdrawn/open/closed event",
+      "output": "Append-only outcome dataset with predictor-time cutoffs",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-059",
+      "capability_id": "BR-DATA-05",
+      "epic_id": "BR-BUILD-E10",
+      "skill": "br-build-data-connectors",
+      "title": "Implement incremental and idempotent ingestion",
+      "owner": "evidence_builder",
+      "phase": "integration",
+      "dependencies": [
+        "BR-BUILD-056"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 90,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        45,
+        180
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_connectors.py",
+        "tests/test_document_connectors.py"
+      ],
+      "deliverables": [
+        "pilot/document_connectors.py",
+        "tests/test_document_connectors.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Replay does not duplicate claims; partial failure does not advance the source cursor beyond committed work."
+      ],
+      "input": "Source cursor or snapshot, hashes, retry state, schema revision",
+      "output": "Recoverable import batch with deduplication and change records",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-060",
+      "capability_id": "BR-DATA-06",
+      "epic_id": "BR-BUILD-E10",
+      "skill": "br-build-data-connectors",
+      "title": "Version source and schema changes",
+      "owner": "evidence_builder",
+      "phase": "integration",
+      "dependencies": [
+        "BR-BUILD-059",
+        "BR-BUILD-009"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 75,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        37,
+        150
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_connectors.py",
+        "docs/guides/document_connectors.md"
+      ],
+      "deliverables": [
+        "pilot/document_connectors.py",
+        "docs/guides/document_connectors.md"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Changed schemas and source revisions cannot silently alter existing accepted inputs or historical model runs."
+      ],
+      "input": "Upstream revisions, observed changes, transformation versions",
+      "output": "Migration and affected-evidence report",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-061",
+      "capability_id": "BR-VAL-01",
+      "epic_id": "BR-BUILD-E11",
+      "skill": "br-build-model-validation",
+      "title": "Define claims and acceptance evidence",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "dependencies": [
+        "BR-BUILD-005"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 30,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        15,
+        60
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "docs/validation/document-engine-validation-plan.md",
+        "config/build-ticket-plan.json"
+      ],
+      "deliverables": [
+        "docs/validation/document-engine-validation-plan.md",
+        "config/build-ticket-plan.json"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "Check actual product behavior, including a meaningful failure; avoid tests that merely repeat the implementation."
+      ],
+      "input": "Requirements, current revision, model interfaces, risk scenarios",
+      "output": "Validation plan linking each material claim to evidence",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "The validation plan maps material success and failure claims to independent or adverse evidence, and distinguishes unavailable runtimes from passed checks.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-062",
+      "capability_id": "BR-VAL-02",
+      "epic_id": "BR-BUILD-E11",
+      "skill": "br-build-model-validation",
+      "title": "Construct independent numeric references",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "dependencies": [
+        "BR-BUILD-020",
+        "BR-BUILD-026"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "tests/test_offer_probability.py",
+        "tests/test_document_offer_layer.py"
+      ],
+      "deliverables": [
+        "tests/test_offer_probability.py",
+        "tests/test_document_offer_layer.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Cost bridges, terminal mass, chance thresholds and policy decisions reconcile without circularly reusing the same function."
+      ],
+      "input": "Hand-worked examples, exact arithmetic, boundary conditions",
+      "output": "Known-answer cases and numerical discrepancy criteria",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "Independent known-answer event arithmetic and revised quote economics pass tests.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "Full cost-bridge and scenario prerequisite closure remain open."
+      ]
+    },
+    {
+      "id": "BR-BUILD-063",
+      "capability_id": "BR-VAL-03",
+      "epic_id": "BR-BUILD-E11",
+      "skill": "br-build-model-validation",
+      "title": "Challenge evidence and input integrity",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "dependencies": [
+        "BR-BUILD-012",
+        "BR-BUILD-017"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "tests/test_document_evidence.py",
+        "tests/test_document_offer_layer.py"
+      ],
+      "deliverables": [
+        "tests/test_document_evidence.py",
+        "tests/test_document_offer_layer.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Unknown or invalid records cannot enter accepted-input projections or silently relax gates."
+      ],
+      "input": "Malformed, wrong-deal, conflicting, stale, superseded and incomplete records",
+      "output": "Negative-case fixtures and observed blocking results",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "Adverse evidence and application cases pass.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "The broader authenticated mapping/review prerequisites remain open."
+      ]
+    },
+    {
+      "id": "BR-BUILD-064",
+      "capability_id": "BR-VAL-04",
+      "epic_id": "BR-BUILD-E11",
+      "skill": "br-build-model-validation",
+      "title": "Check backend and language parity",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "dependencies": [
+        "BR-BUILD-039",
+        "BR-BUILD-044"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 120,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        60,
+        240
+      ],
+      "required_resources": {
+        "agent_worker": 1,
+        "r_runtime": 1,
+        "cuda_device": 1
+      },
+      "write_scopes": [
+        "tests/test_offer_probability.py",
+        "reports/validation/backend-parity.json"
+      ],
+      "deliverables": [
+        "tests/test_offer_probability.py",
+        "reports/validation/backend-parity.json"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Unavailable hardware/runtime is an explicit limitation; no fallback or mocked execution is represented as a measured result."
+      ],
+      "input": "CPU outputs, optional real CUDA and R results, typed interfaces",
+      "output": "Parity evidence with actual execution status",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-065",
+      "capability_id": "BR-VAL-05",
+      "epic_id": "BR-BUILD-E11",
+      "skill": "br-build-model-validation",
+      "title": "Verify the non-AI runtime boundary",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "dependencies": [
+        "BR-BUILD-001",
+        "BR-BUILD-017"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 45,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        22,
+        90
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "tests/test_document_offer_layer.py",
+        "reports/validation/no-ai-runtime.json"
+      ],
+      "deliverables": [
+        "tests/test_document_offer_layer.py",
+        "reports/validation/no-ai-runtime.json"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "No LLM, NIM, autonomous-agent loop, or unapproved remote call is required by the default path."
+      ],
+      "input": "Imports, service configuration, network behavior, dependency list",
+      "output": "Demonstration that engine and application flows work without AI services",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "The complete synthetic demonstration runs with sockets forbidden and AI credentials empty.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "The broader application-service prerequisite remains open."
+      ]
+    },
+    {
+      "id": "BR-BUILD-066",
+      "capability_id": "BR-VAL-06",
+      "epic_id": "BR-BUILD-E11",
+      "skill": "br-build-model-validation",
+      "title": "Publish the validation and gap register",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "dependencies": [
+        "BR-BUILD-061",
+        "BR-BUILD-062",
+        "BR-BUILD-063",
+        "BR-BUILD-065"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 45,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        22,
+        90
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "docs/validation/document-engine-release.md",
+        "reports/validation/document-engine.json"
+      ],
+      "deliverables": [
+        "docs/validation/document-engine-release.md",
+        "reports/validation/document-engine.json"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Separate implemented, executed, reviewed, deferred and unavailable; agent consensus never substitutes for evidence."
+      ],
+      "input": "Focused checks, regression gates, runtime inventory, unresolved issues",
+      "output": "Versioned evidence report and next required validation gates",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "This increment has a precise verification record and gap register.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "Full ticket prerequisite closure and broader validation record remain open."
+      ]
+    },
+    {
+      "id": "BR-BUILD-067",
+      "capability_id": "BR-AI-01",
+      "epic_id": "BR-BUILD-E12",
+      "skill": "br-build-ai-adapters",
+      "title": "Define disabled optional provider contracts",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "dependencies": [
+        "BR-BUILD-014",
+        "BR-BUILD-001"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 40,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        20,
+        80
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "docs/architecture/document-engine-layers.md",
+        "pilot/document_evidence.py"
+      ],
+      "deliverables": [
+        "docs/architecture/document-engine-layers.md",
+        "pilot/document_evidence.py"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "No model is installed, contacted, or made a runtime dependency just because the interface exists."
+      ],
+      "input": "Candidate-claim schema, source identity, error and timeout policies",
+      "output": "Provider interface with explicit manual/native and disabled-AI states",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Manual/native candidate provider contract exists and AI provider selection is explicitly disabled; no model is invoked by loading an interface.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-068",
+      "capability_id": "BR-AI-02",
+      "epic_id": "BR-BUILD-E12",
+      "skill": "br-build-ai-adapters",
+      "title": "Pin NVIDIA service and hardware compatibility",
+      "owner": "evidence_builder",
+      "phase": "assistive_ai",
+      "dependencies": [
+        "BR-BUILD-067",
+        "BR-BUILD-037"
+      ],
+      "status": "deferred",
+      "priority": 2,
+      "estimated_minutes": 90,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        45,
+        180
+      ],
+      "required_resources": {
+        "agent_worker": 1,
+        "cuda_device": 1
+      },
+      "write_scopes": [
+        "docs/architecture/nvidia-adapter-compatibility.md",
+        "config/nvidia-document-providers.json"
+      ],
+      "deliverables": [
+        "docs/architecture/nvidia-adapter-compatibility.md",
+        "config/nvidia-document-providers.json"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Do not mix the newer Parse /v1/parse API with older VLM chat-completions examples; GPU/VRAM compatibility must be observed."
+      ],
+      "input": "Chosen NeMo Retriever/NIM/model versions, current official docs, actual GPU profile",
+      "output": "Compatibility matrix and deployment plan",
+      "blockers": [
+        "Later phase: product AI and runtime agents remain disabled. Separate authorization, implementation and validation are required."
+      ],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-069",
+      "capability_id": "BR-AI-03",
+      "epic_id": "BR-BUILD-E12",
+      "skill": "br-build-ai-adapters",
+      "title": "Evaluate assisted extraction against labeled documents",
+      "owner": "evidence_builder",
+      "phase": "assistive_ai",
+      "dependencies": [
+        "BR-BUILD-068",
+        "BR-BUILD-063"
+      ],
+      "status": "deferred",
+      "priority": 2,
+      "estimated_minutes": 180,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        90,
+        360
+      ],
+      "required_resources": {
+        "agent_worker": 1,
+        "cuda_device": 1
+      },
+      "write_scopes": [
+        "analysis/document-extraction-evaluation",
+        "reports/ai/document-field-quality.json"
+      ],
+      "deliverables": [
+        "analysis/document-extraction-evaluation",
+        "reports/ai/document-field-quality.json"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Model outputs remain candidate claims; extraction score, evidence authority and deal-outcome probability stay separate."
+      ],
+      "input": "Authorized benchmark documents, human labels, source-locator contract",
+      "output": "Field accuracy, omission, numeric, layout and confidence-calibration results",
+      "blockers": [
+        "Later phase: product AI and runtime agents remain disabled. Separate authorization, implementation and validation are required."
+      ],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-070",
+      "capability_id": "BR-AI-04",
+      "epic_id": "BR-BUILD-E12",
+      "skill": "br-build-ai-adapters",
+      "title": "Build scoped retrieval and reranking",
+      "owner": "evidence_builder",
+      "phase": "assistive_ai",
+      "dependencies": [
+        "BR-BUILD-067",
+        "BR-BUILD-055"
+      ],
+      "status": "deferred",
+      "priority": 2,
+      "estimated_minutes": 180,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        90,
+        360
+      ],
+      "required_resources": {
+        "agent_worker": 1,
+        "cuda_device": 1
+      },
+      "write_scopes": [
+        "pilot/ai_document_retrieval.py",
+        "tests/test_ai_document_retrieval.py"
+      ],
+      "deliverables": [
+        "pilot/ai_document_retrieval.py",
+        "tests/test_ai_document_retrieval.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Search cannot expose another scope's files; cited passages resolve to the exact document revision and location."
+      ],
+      "input": "Authorized document collection, access metadata, query evaluation set",
+      "output": "Cited retrieval results with permission filtering and relevance evidence",
+      "blockers": [
+        "Later phase: product AI and runtime agents remain disabled. Separate authorization, implementation and validation are required."
+      ],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-071",
+      "capability_id": "BR-AI-05",
+      "epic_id": "BR-BUILD-E12",
+      "skill": "br-build-ai-adapters",
+      "title": "Constrain assistive generation to accepted tools and evidence",
+      "owner": "evidence_builder",
+      "phase": "assistive_ai",
+      "dependencies": [
+        "BR-BUILD-069",
+        "BR-BUILD-070",
+        "BR-BUILD-035"
+      ],
+      "status": "deferred",
+      "priority": 2,
+      "estimated_minutes": 120,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        60,
+        240
+      ],
+      "required_resources": {
+        "agent_worker": 1,
+        "cuda_device": 1
+      },
+      "write_scopes": [
+        "pilot/ai_document_assistant.py",
+        "tests/test_ai_document_assistant.py"
+      ],
+      "deliverables": [
+        "pilot/ai_document_assistant.py",
+        "tests/test_ai_document_assistant.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Generated prose cannot overwrite canonical amounts, approve a transaction, or silently modify investment policy."
+      ],
+      "input": "Reviewed facts, deterministic financial tools, user query, output schema",
+      "output": "Draft explanation or proposed change with references and explicit unknowns",
+      "blockers": [
+        "Later phase: product AI and runtime agents remain disabled. Separate authorization, implementation and validation are required."
+      ],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-072",
+      "capability_id": "BR-AI-06",
+      "epic_id": "BR-BUILD-E12",
+      "skill": "br-build-ai-adapters",
+      "title": "Evaluate any later product-agent runtime separately",
+      "owner": "evidence_builder",
+      "phase": "runtime_agents",
+      "dependencies": [
+        "BR-BUILD-071",
+        "BR-BUILD-076"
+      ],
+      "status": "deferred",
+      "priority": 2,
+      "estimated_minutes": 180,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        90,
+        360
+      ],
+      "required_resources": {
+        "agent_worker": 1,
+        "cuda_device": 1
+      },
+      "write_scopes": [
+        "docs/architecture/runtime-agent-proposal.md",
+        "config/runtime-agents.disabled.json"
+      ],
+      "deliverables": [
+        "docs/architecture/runtime-agent-proposal.md",
+        "config/runtime-agents.disabled.json"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Builder-agent configuration never grants product autonomy; runtime agents remain disabled until the separate phase is explicitly implemented and validated."
+      ],
+      "input": "Validated tools, task permissions, budgets, stop conditions, monitoring and rollback",
+      "output": "Separate proposal and acceptance evidence for bounded automation",
+      "blockers": [
+        "Later phase: product AI and runtime agents remain disabled. Separate authorization, implementation and validation are required."
+      ],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-073",
+      "capability_id": "BR-OPS-01",
+      "epic_id": "BR-BUILD-E13",
+      "skill": "br-build-release-operations",
+      "title": "Package explicit runtime configuration",
+      "owner": "quality_builder",
+      "phase": "release",
+      "dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-067"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 45,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        22,
+        90
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "requirements-checks.txt",
+        "docs/guides/run_document_offer.md"
+      ],
+      "deliverables": [
+        "requirements-checks.txt",
+        "docs/guides/run_document_offer.md"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Default operation needs no AI keys; secrets are external; installed capabilities and optional dependencies are visible."
+      ],
+      "input": "Source revision, schema versions, dependencies, backend/provider settings",
+      "output": "Reproducible package and example configuration",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-074",
+      "capability_id": "BR-OPS-02",
+      "epic_id": "BR-BUILD-E13",
+      "skill": "br-build-release-operations",
+      "title": "Apply safe schema and data migrations",
+      "owner": "quality_builder",
+      "phase": "release",
+      "dependencies": [
+        "BR-BUILD-009",
+        "BR-BUILD-034"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 75,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        37,
+        150
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_evidence.py",
+        "tests/test_document_evidence.py"
+      ],
+      "deliverables": [
+        "pilot/document_evidence.py",
+        "tests/test_document_evidence.py"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "A failed migration preserves recoverable prior data; historical evidence and decisions are not silently rewritten."
+      ],
+      "input": "Existing persistent state, migration version, rollback plan",
+      "output": "Atomic migration with compatibility and failure results",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-075",
+      "capability_id": "BR-OPS-03",
+      "epic_id": "BR-BUILD-E13",
+      "skill": "br-build-release-operations",
+      "title": "Verify backup, restore, and replay",
+      "owner": "quality_builder",
+      "phase": "release",
+      "dependencies": [
+        "BR-BUILD-074",
+        "BR-BUILD-024"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 90,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        45,
+        180
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "tools/replay_document_evidence.py",
+        "reports/recovery/document-evidence.json"
+      ],
+      "deliverables": [
+        "tools/replay_document_evidence.py",
+        "reports/recovery/document-evidence.json"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Backup existence alone does not count as recovery; restored identifiers, records and balances reconcile."
+      ],
+      "input": "Evidence store, decision history, manifests and checksums",
+      "output": "Restored state and independently reproduced projection/run",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-076",
+      "capability_id": "BR-OPS-04",
+      "epic_id": "BR-BUILD-E13",
+      "skill": "br-build-release-operations",
+      "title": "Observe workload, quality, and failures",
+      "owner": "quality_builder",
+      "phase": "release",
+      "dependencies": [
+        "BR-BUILD-059",
+        "BR-BUILD-041"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 120,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        60,
+        240
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "docs/operations/document-capacity-model.md",
+        "reports/operations/document-workload.json"
+      ],
+      "deliverables": [
+        "docs/operations/document-capacity-model.md",
+        "reports/operations/document-workload.json"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Logs omit secrets and private document bodies by default. Measure actual backend, queue latency, error/review rates, storage, throughput, and unit economics. A two-million-household capacity claim requires representative sustained load and cost evidence, not a row count or GPU-utilization percentage."
+      ],
+      "input": "Execution logs, queue state, runtime metadata, document/page volume, review rate, retained versions, and resource/cost measurements",
+      "output": "Scoped operational events, cost per reviewed case, capacity/load model, and actionable exceptions",
+      "blockers": [
+        "Requires representative workload measurements; the two-million-household target is not observed capacity."
+      ],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-077",
+      "capability_id": "BR-OPS-05",
+      "epic_id": "BR-BUILD-E13",
+      "skill": "br-build-release-operations",
+      "title": "Run release gates and document limitations",
+      "owner": "quality_builder",
+      "phase": "release",
+      "dependencies": [
+        "BR-BUILD-073",
+        "BR-BUILD-066"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "tools/check_pilot.py",
+        "docs/validation/document-engine-release.md"
+      ],
+      "deliverables": [
+        "tools/check_pilot.py",
+        "docs/validation/document-engine-release.md"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "No unavailable R/CUDA/AI execution is claimed; failures stop the affected release path and remain explicitly described."
+      ],
+      "input": "Focused tests, existing required regression gates, environment inventory",
+      "output": "Release evidence and concrete rollback/recovery procedure",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-078",
+      "capability_id": "BR-OPS-06",
+      "epic_id": "BR-BUILD-E13",
+      "skill": "br-build-release-operations",
+      "title": "Stage production enablement by capability",
+      "owner": "quality_builder",
+      "phase": "release",
+      "dependencies": [
+        "BR-BUILD-077",
+        "BR-BUILD-035"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 90,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        45,
+        180
+      ],
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "docs/operations/document-rollout.md",
+        "config/document-runtime.disabled.json"
+      ],
+      "deliverables": [
+        "docs/operations/document-rollout.md",
+        "config/document-runtime.disabled.json"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Builder skills do not start production agents. Enable providers and external actions only within their implemented, authorized boundaries. Expand from a validated initial segment using observed participant value, unit economics, consent/accessibility coverage and measured capacity; no institutional-readiness or two-million-household claim follows from the prototype."
+      ],
+      "input": "Verified release, authorization, identity/storage/runtime requirements",
+      "output": "Capability-specific rollout and rollback record",
+      "blockers": [],
+      "completion_evidence": []
+    },
+    {
+      "id": "BR-BUILD-079",
+      "capability_id": "BR-COORD-01",
+      "epic_id": "BR-BUILD-E14",
+      "skill": "br-coordinate-builder-resources",
+      "title": "Maintain the dependency graph and ready queue",
+      "owner": "architect_integrator",
+      "phase": "builder_tooling",
+      "dependencies": [
+        "BR-BUILD-003"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "tools/schedule_builder_work.py",
+        "tests/test_builder_schedule.py"
+      ],
+      "deliverables": [
+        "tools/schedule_builder_work.py",
+        "tests/test_builder_schedule.py"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "Reject missing dependencies and cycles; completed prerequisites satisfy dependencies and deferred/blocked work cannot become ready."
+      ],
+      "input": "Versioned tickets, dependencies, status, phase gates and observed blockers",
+      "output": "Validated DAG, topological order, ready/blocked/deferred sets",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Scheduler tests validate unique IDs, dependency/phase DAG, cycles, prerequisite closure and ready/blocked/excluded reporting.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-080",
+      "capability_id": "BR-COORD-02",
+      "epic_id": "BR-BUILD-E14",
+      "skill": "br-coordinate-builder-resources",
+      "title": "Allocate bounded builder and execution resources",
+      "owner": "architect_integrator",
+      "phase": "builder_tooling",
+      "dependencies": [
+        "BR-BUILD-079"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        30,
+        120
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "tools/schedule_builder_work.py",
+        "tests/test_builder_schedule.py"
+      ],
+      "deliverables": [
+        "tools/schedule_builder_work.py",
+        "tests/test_builder_schedule.py"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "Never allocate more than three parallel workers and one integrator; zero CUDA or R capacity blocks tickets requiring those runtimes."
+      ],
+      "input": "Ready tickets, three worker slots, reserved integrator, actual CUDA/R availability",
+      "output": "Feasible resource allocation with explicit shortage reasons",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Scheduler tests enforce three-worker/one-integrator caps, one owner per lane and zero-runtime resource holds; in-progress overcommit is rejected.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-081",
+      "capability_id": "BR-COORD-03",
+      "epic_id": "BR-BUILD-E14",
+      "skill": "br-coordinate-builder-resources",
+      "title": "Schedule critical work with visible estimates",
+      "owner": "architect_integrator",
+      "phase": "builder_tooling",
+      "dependencies": [
+        "BR-BUILD-080"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 75,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        37,
+        150
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "tools/schedule_builder_work.py",
+        "docs/guides/schedule_builder_work.md"
+      ],
+      "deliverables": [
+        "tools/schedule_builder_work.py",
+        "docs/guides/schedule_builder_work.md"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Durations are labeled planning assumptions; estimates never become promised dates or fabricated performance measurements."
+      ],
+      "input": "DAG, assumption-based duration estimates, priorities and resource capacities",
+      "output": "Relative start/finish schedule, critical-path priority and estimated completion range",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "Priority/critical-path list schedule, relative starts/finishes and contention reasons are implemented.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "Ticket duration ranges are stored; propagation of low/high assumptions into a whole-schedule range remains open."
+      ]
+    },
+    {
+      "id": "BR-BUILD-082",
+      "capability_id": "BR-COORD-04",
+      "epic_id": "BR-BUILD-E14",
+      "skill": "br-coordinate-builder-resources",
+      "title": "Prevent concurrent file-ownership conflicts",
+      "owner": "architect_integrator",
+      "phase": "builder_tooling",
+      "dependencies": [
+        "BR-BUILD-080"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 45,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        22,
+        90
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "tools/schedule_builder_work.py",
+        "tests/test_builder_schedule.py"
+      ],
+      "deliverables": [
+        "tools/schedule_builder_work.py",
+        "tests/test_builder_schedule.py"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "Overlapping file or ancestor-directory write scopes cannot run concurrently; no builder may overwrite another's unintegrated work."
+      ],
+      "input": "Ticket write scopes, shared files, assignment and integration plan",
+      "output": "Conflict-free work assignments and serialized shared-file edits",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Scheduler tests serialize equal and ancestor/descendant write scopes while allowing disjoint available work.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-083",
+      "capability_id": "BR-COORD-05",
+      "epic_id": "BR-BUILD-E14",
+      "skill": "br-coordinate-builder-resources",
+      "title": "Enforce quality, rework and handoff gates",
+      "owner": "architect_integrator",
+      "phase": "builder_tooling",
+      "dependencies": [
+        "BR-BUILD-082",
+        "BR-BUILD-061"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 30,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        15,
+        60
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "docs/architecture/builder-swarm.md",
+        "config/build-ticket-plan.json"
+      ],
+      "deliverables": [
+        "docs/architecture/builder-swarm.md",
+        "config/build-ticket-plan.json"
+      ],
+      "deliverable_state": "Reviewed within the bounded development increment; limitations below remain explicit.",
+      "acceptance_criteria": [
+        "A task becomes completed only after its own evidence is reviewed; rework preserves failure history and invalidates affected downstream assumptions."
+      ],
+      "input": "Acceptance criteria, validation evidence, failed checks and review findings",
+      "output": "Completed/returned-for-rework/blocked handoffs with named ownership",
+      "blockers": [],
+      "completion_evidence": [
+        {
+          "reviewed_on": "2026-11-22",
+          "reviewer": "development integrator /root",
+          "reviewer_kind": "agent",
+          "source_revision_basis": "Versioned working-tree artifacts; source SHA-256 manifest in reports/validation/document-engine.json",
+          "criterion_evidence": "Named development handoffs, reproduced findings and repair evidence are recorded. The integrator reviews acceptance; completed prerequisites and unresolved blocker invariants are enforced by the planner.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-084",
+      "capability_id": "BR-COORD-06",
+      "epic_id": "BR-BUILD-E14",
+      "skill": "br-coordinate-builder-resources",
+      "title": "Report roadmap and resource-blocked work",
+      "owner": "architect_integrator",
+      "phase": "builder_tooling",
+      "dependencies": [
+        "BR-BUILD-081",
+        "BR-BUILD-083"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 30,
+      "estimate_basis": "Planning assumption for active builder effort, not measured duration or a promised completion date.",
+      "estimated_minutes_range": [
+        15,
+        60
+      ],
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "tools/schedule_builder_work.py",
+        "docs/plans/document-engine-tickets.md"
+      ],
+      "deliverables": [
+        "tools/schedule_builder_work.py",
+        "docs/plans/document-engine-tickets.md"
+      ],
+      "deliverable_state": "Target paths describe intended outputs; existence or completion must be verified separately.",
+      "acceptance_criteria": [
+        "Distinguish plan, active builders and actual runtime deployment; disclose AI deferral and resource shortages instead of pretending the full roadmap is complete."
+      ],
+      "input": "Scheduled waves, implemented evidence, unmet dependencies, unavailable runtimes",
+      "output": "Roadmap by phase and status with the next feasible work",
+      "blockers": [],
+      "completion_evidence": [],
+      "implementation_evidence": [
+        {
+          "observed_on": "2026-11-22",
+          "verified_portion": "Roadmap, resource-blocked report and next-ready queue exist.",
+          "verification_record": "docs/plans/document-engine-verification.md"
+        }
+      ],
+      "remaining_acceptance": [
+        "Complete the schedule-range prerequisite before closing the full coordination reporting ticket."
+      ]
+    }
+  ],
+  "review_history": [
+    {
+      "id": "BUILD-REVIEW-001",
+      "date": "2026-11-22",
+      "reviewer": "evidence builder",
+      "finding": "Synthetic evidence could lose its illustrative label in an adjusted packet.",
+      "resolution": "Root propagated illustrative status and added a mixed-packet regression.",
+      "state": "fixed_and_tested"
+    },
+    {
+      "id": "BUILD-REVIEW-002",
+      "date": "2026-11-22",
+      "reviewer": "evidence builder",
+      "finding": "Changed new-offer terms could retain old probability assumptions.",
+      "resolution": "Root added atomic holds for changed offer terms and external-estimate context changes, with regression tests.",
+      "state": "fixed_and_tested"
+    },
+    {
+      "id": "BUILD-REVIEW-003",
+      "date": "2026-11-22",
+      "reviewer": "fresh-context skill reviewer",
+      "finding": "Broader capability specifications must not be mistaken for implemented authority, historical knowledge replay or empirical calibration.",
+      "resolution": "Skills, guides and completion evidence explicitly preserve those limits; broad partially fulfilled tickets remain planned.",
+      "state": "documented_and_reviewed"
+    }
+  ],
+  "completion_review_boundary": "These are development-agent review records, not qualified independent human model validation or institutional approval. The scheduler trusts supplied evidence/status; it does not authenticate review."
+}

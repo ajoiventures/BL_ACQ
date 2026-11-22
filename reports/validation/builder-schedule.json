@@ -1,0 +1,2381 @@
+{
+  "schema_version": "br.builder-schedule.v1",
+  "plan_sha256": "73932385acba813f51621bc121bf479e30c0994c56edceca17eb08fd62bdfbd9",
+  "build_time_only": true,
+  "runtime_agents_enabled": false,
+  "spawns_agents": false,
+  "executes_tickets": false,
+  "network_used": false,
+  "estimate_basis": "All estimated_minutes values are planning assumptions. Relative start/finish times are simulated build effort; they are not calendar bookings, measured speed or delivery commitments.",
+  "time_unit": "relative planning minutes",
+  "algorithm": "bounded list scheduling: priority, remaining critical path, stable ID; no optimality claim",
+  "resource_profile": {
+    "agent_worker": 3,
+    "integrator": 1,
+    "cuda_device": 0,
+    "r_runtime": 0
+  },
+  "resource_basis": "Declared planning capacities; not hardware discovery",
+  "owner_concurrency_limit": 1,
+  "owner_assignment_basis": "Each named owner is one builder lane; pooled worker capacity does not duplicate that owner",
+  "reserved_integrator": 1,
+  "enabled_phases": [
+    "application",
+    "builder_tooling",
+    "engine",
+    "foundation",
+    "release",
+    "validation"
+  ],
+  "phase_gates": {
+    "builder_tooling": [
+      "BR-BUILD-003"
+    ],
+    "engine": [
+      "BR-BUILD-004"
+    ],
+    "application": [
+      "BR-BUILD-004",
+      "BR-BUILD-012"
+    ],
+    "validation": [
+      "BR-BUILD-004"
+    ],
+    "release": [
+      "BR-BUILD-066"
+    ],
+    "presentation": [
+      "BR-BUILD-017"
+    ],
+    "integration": [
+      "BR-BUILD-004"
+    ],
+    "assistive_ai": [
+      "BR-BUILD-066",
+      "BR-BUILD-077"
+    ],
+    "runtime_agents": [
+      "BR-BUILD-071",
+      "BR-BUILD-077"
+    ]
+  },
+  "quality_gate_basis": "Gate ticket completion is asserted by plan status. This planner does not execute acceptance checks or certify quality.",
+  "completed": [
+    "BR-BUILD-001",
+    "BR-BUILD-002",
+    "BR-BUILD-003",
+    "BR-BUILD-004",
+    "BR-BUILD-005",
+    "BR-BUILD-007",
+    "BR-BUILD-008",
+    "BR-BUILD-009",
+    "BR-BUILD-010",
+    "BR-BUILD-011",
+    "BR-BUILD-012",
+    "BR-BUILD-014",
+    "BR-BUILD-019",
+    "BR-BUILD-025",
+    "BR-BUILD-061",
+    "BR-BUILD-067",
+    "BR-BUILD-079",
+    "BR-BUILD-080",
+    "BR-BUILD-082",
+    "BR-BUILD-083"
+  ],
+  "dependency_ready_now": [
+    "BR-BUILD-015",
+    "BR-BUILD-020",
+    "BR-BUILD-031",
+    "BR-BUILD-081",
+    "BR-BUILD-044",
+    "BR-BUILD-013"
+  ],
+  "proposed_starts_at_zero": [
+    "BR-BUILD-015",
+    "BR-BUILD-020",
+    "BR-BUILD-081"
+  ],
+  "scheduled": [
+    {
+      "id": "BR-BUILD-015",
+      "title": "Reconcile financial document fields",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "priority": 0,
+      "start_minute": 0,
+      "end_minute": 60,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/document_offer_layer.py",
+        "tests/test_document_offer_layer.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-012",
+        "BR-BUILD-014",
+        "BR-BUILD-019"
+      ],
+      "dependency_ready_minute": 0,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 480
+    },
+    {
+      "id": "BR-BUILD-020",
+      "title": "Implement the complete cost bridge",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "priority": 0,
+      "start_minute": 0,
+      "end_minute": 60,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/underwriting.py",
+        "tests/test_pilot_domain.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-019"
+      ],
+      "dependency_ready_minute": 0,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 480
+    },
+    {
+      "id": "BR-BUILD-081",
+      "title": "Schedule critical work with visible estimates",
+      "owner": "architect_integrator",
+      "phase": "builder_tooling",
+      "priority": 0,
+      "start_minute": 0,
+      "end_minute": 75,
+      "estimated_minutes": 75,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 0,
+        "integrator": 1,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "tools/schedule_builder_work.py",
+        "docs/guides/schedule_builder_work.md"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-003",
+        "BR-BUILD-080"
+      ],
+      "dependency_ready_minute": 0,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 105
+    },
+    {
+      "id": "BR-BUILD-016",
+      "title": "Build the review application service",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "priority": 0,
+      "start_minute": 60,
+      "end_minute": 120,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/document_offer_layer.py",
+        "tests/test_document_offer_layer.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-010",
+        "BR-BUILD-012",
+        "BR-BUILD-015"
+      ],
+      "dependency_ready_minute": 60,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 420
+    },
+    {
+      "id": "BR-BUILD-021",
+      "title": "Calculate scenario economics",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "priority": 0,
+      "start_minute": 60,
+      "end_minute": 120,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "data/offer_probability/duplex.json"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-020"
+      ],
+      "dependency_ready_minute": 60,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 420
+    },
+    {
+      "id": "BR-BUILD-084",
+      "title": "Report roadmap and resource-blocked work",
+      "owner": "architect_integrator",
+      "phase": "builder_tooling",
+      "priority": 0,
+      "start_minute": 75,
+      "end_minute": 105,
+      "estimated_minutes": 30,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 0,
+        "integrator": 1,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "tools/schedule_builder_work.py",
+        "docs/plans/document-engine-tickets.md"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-003",
+        "BR-BUILD-081",
+        "BR-BUILD-083"
+      ],
+      "dependency_ready_minute": 75,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 30
+    },
+    {
+      "id": "BR-BUILD-026",
+      "title": "Enumerate a joint economic distribution",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "priority": 0,
+      "start_minute": 120,
+      "end_minute": 180,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-021",
+        "BR-BUILD-025"
+      ],
+      "dependency_ready_minute": 120,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 360
+    },
+    {
+      "id": "BR-BUILD-031",
+      "title": "Define independent qualification dimensions",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "priority": 0,
+      "start_minute": 120,
+      "end_minute": 165,
+      "estimated_minutes": 45,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/underwriting.py",
+        "docs/architecture/document-engine-layers.md"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-012"
+      ],
+      "dependency_ready_minute": 0,
+      "ready_wait_minutes": 120,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "evidence_builder"
+          ]
+        },
+        {
+          "code": "write_scope_conflict",
+          "values": [
+            "BR-BUILD-020"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 390
+    },
+    {
+      "id": "BR-BUILD-044",
+      "title": "Define typed cross-language exchange",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "priority": 0,
+      "start_minute": 120,
+      "end_minute": 165,
+      "estimated_minutes": 45,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/document_offer_layer.py",
+        "docs/guides/r-evidence-validation.md"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-019"
+      ],
+      "dependency_ready_minute": 0,
+      "ready_wait_minutes": 120,
+      "wait_reasons": [
+        {
+          "code": "write_scope_conflict",
+          "values": [
+            "BR-BUILD-015",
+            "BR-BUILD-016"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 45
+    },
+    {
+      "id": "BR-BUILD-017",
+      "title": "Map reviewed fields into model inputs",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "priority": 0,
+      "start_minute": 165,
+      "end_minute": 225,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/document_offer_layer.py",
+        "tools/run_document_offer.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-012",
+        "BR-BUILD-016"
+      ],
+      "dependency_ready_minute": 120,
+      "ready_wait_minutes": 45,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "evidence_builder"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 360
+    },
+    {
+      "id": "BR-BUILD-022",
+      "title": "Calculate binding investment limits",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "priority": 0,
+      "start_minute": 180,
+      "end_minute": 240,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-021"
+      ],
+      "dependency_ready_minute": 120,
+      "ready_wait_minutes": 60,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "quant_builder"
+          ]
+        },
+        {
+          "code": "write_scope_conflict",
+          "values": [
+            "BR-BUILD-026"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 345
+    },
+    {
+      "id": "BR-BUILD-032",
+      "title": "Define event-driven transaction stages",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "priority": 0,
+      "start_minute": 225,
+      "end_minute": 285,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "docs/architecture/document-engine-layers.md",
+        "pilot/founder_service.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-012",
+        "BR-BUILD-031"
+      ],
+      "dependency_ready_minute": 165,
+      "ready_wait_minutes": 60,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "evidence_builder"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 345
+    },
+    {
+      "id": "BR-BUILD-063",
+      "title": "Challenge evidence and input integrity",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "priority": 0,
+      "start_minute": 225,
+      "end_minute": 285,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "tests/test_document_evidence.py",
+        "tests/test_document_offer_layer.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-012",
+        "BR-BUILD-017"
+      ],
+      "dependency_ready_minute": 225,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 300
+    },
+    {
+      "id": "BR-BUILD-024",
+      "title": "Reconcile modeled and realized cash",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "priority": 0,
+      "start_minute": 240,
+      "end_minute": 360,
+      "estimated_minutes": 120,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/ledger.py",
+        "tests/test_acceptance.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-012",
+        "BR-BUILD-021"
+      ],
+      "dependency_ready_minute": 120,
+      "ready_wait_minutes": 120,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "quant_builder"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 240
+    },
+    {
+      "id": "BR-BUILD-033",
+      "title": "Bind decisions to exact evidence packets",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "priority": 0,
+      "start_minute": 285,
+      "end_minute": 345,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/document_offer_layer.py",
+        "pilot/founder_service.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-012",
+        "BR-BUILD-022",
+        "BR-BUILD-032"
+      ],
+      "dependency_ready_minute": 285,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 285
+    },
+    {
+      "id": "BR-BUILD-062",
+      "title": "Construct independent numeric references",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "priority": 0,
+      "start_minute": 285,
+      "end_minute": 345,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "tests/test_offer_probability.py",
+        "tests/test_document_offer_layer.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-020",
+        "BR-BUILD-026"
+      ],
+      "dependency_ready_minute": 180,
+      "ready_wait_minutes": 105,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "quality_builder"
+          ]
+        },
+        {
+          "code": "write_scope_conflict",
+          "values": [
+            "BR-BUILD-022",
+            "BR-BUILD-063"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 300
+    },
+    {
+      "id": "BR-BUILD-034",
+      "title": "Make retries and concurrency safe",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "priority": 0,
+      "start_minute": 345,
+      "end_minute": 405,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/storage.py",
+        "tests/test_pilot_storage.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-012",
+        "BR-BUILD-033"
+      ],
+      "dependency_ready_minute": 345,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 225
+    },
+    {
+      "id": "BR-BUILD-065",
+      "title": "Verify the non-AI runtime boundary",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "priority": 0,
+      "start_minute": 345,
+      "end_minute": 390,
+      "estimated_minutes": 45,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "tests/test_document_offer_layer.py",
+        "reports/validation/no-ai-runtime.json"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-001",
+        "BR-BUILD-004",
+        "BR-BUILD-017"
+      ],
+      "dependency_ready_minute": 225,
+      "ready_wait_minutes": 120,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "quality_builder"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        },
+        {
+          "code": "write_scope_conflict",
+          "values": [
+            "BR-BUILD-062",
+            "BR-BUILD-063"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 285
+    },
+    {
+      "id": "BR-BUILD-027",
+      "title": "Compute terminal pursuit value",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "priority": 0,
+      "start_minute": 360,
+      "end_minute": 420,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-026"
+      ],
+      "dependency_ready_minute": 180,
+      "ready_wait_minutes": 180,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "quant_builder"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        },
+        {
+          "code": "write_scope_conflict",
+          "values": [
+            "BR-BUILD-022",
+            "BR-BUILD-062"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 180
+    },
+    {
+      "id": "BR-BUILD-066",
+      "title": "Publish the validation and gap register",
+      "owner": "quality_builder",
+      "phase": "validation",
+      "priority": 0,
+      "start_minute": 390,
+      "end_minute": 435,
+      "estimated_minutes": 45,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "docs/validation/document-engine-release.md",
+        "reports/validation/document-engine.json"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-061",
+        "BR-BUILD-062",
+        "BR-BUILD-063",
+        "BR-BUILD-065"
+      ],
+      "dependency_ready_minute": 390,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 240
+    },
+    {
+      "id": "BR-BUILD-035",
+      "title": "Separate proposals from externally consequential actions",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "priority": 0,
+      "start_minute": 405,
+      "end_minute": 450,
+      "estimated_minutes": 45,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/connectors.py",
+        "tests/test_connectors.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-012",
+        "BR-BUILD-033"
+      ],
+      "dependency_ready_minute": 345,
+      "ready_wait_minutes": 60,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "evidence_builder"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 135
+    },
+    {
+      "id": "BR-BUILD-037",
+      "title": "Identify useful computational parallelism",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "priority": 0,
+      "start_minute": 420,
+      "end_minute": 465,
+      "estimated_minutes": 45,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "docs/architecture/cuda-screening.md",
+        "docs/guides/offer_probability.md"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-021",
+        "BR-BUILD-026"
+      ],
+      "dependency_ready_minute": 180,
+      "ready_wait_minutes": 240,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "quant_builder"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 165
+    },
+    {
+      "id": "BR-BUILD-073",
+      "title": "Package explicit runtime configuration",
+      "owner": "quality_builder",
+      "phase": "release",
+      "priority": 1,
+      "start_minute": 435,
+      "end_minute": 480,
+      "estimated_minutes": 45,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "requirements-checks.txt",
+        "docs/guides/run_document_offer.md"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-066",
+        "BR-BUILD-067"
+      ],
+      "dependency_ready_minute": 435,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 195
+    },
+    {
+      "id": "BR-BUILD-036",
+      "title": "Track completion, operation, exit, and reinvestment",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "priority": 0,
+      "start_minute": 450,
+      "end_minute": 570,
+      "estimated_minutes": 120,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/ledger.py",
+        "tests/test_acceptance.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-012",
+        "BR-BUILD-024",
+        "BR-BUILD-034"
+      ],
+      "dependency_ready_minute": 405,
+      "ready_wait_minutes": 45,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "evidence_builder"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 120
+    },
+    {
+      "id": "BR-BUILD-023",
+      "title": "Extend financing and valuation coherently",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "priority": 0,
+      "start_minute": 465,
+      "end_minute": 585,
+      "estimated_minutes": 120,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/acquisition_finance.py",
+        "tests/test_acquisition_finance.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-020"
+      ],
+      "dependency_ready_minute": 60,
+      "ready_wait_minutes": 405,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "quant_builder"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 120
+    },
+    {
+      "id": "BR-BUILD-074",
+      "title": "Apply safe schema and data migrations",
+      "owner": "quality_builder",
+      "phase": "release",
+      "priority": 1,
+      "start_minute": 480,
+      "end_minute": 555,
+      "estimated_minutes": 75,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/document_evidence.py",
+        "tests/test_document_evidence.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-009",
+        "BR-BUILD-034",
+        "BR-BUILD-066"
+      ],
+      "dependency_ready_minute": 435,
+      "ready_wait_minutes": 45,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "quality_builder"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 165
+    },
+    {
+      "id": "BR-BUILD-077",
+      "title": "Run release gates and document limitations",
+      "owner": "quality_builder",
+      "phase": "release",
+      "priority": 1,
+      "start_minute": 555,
+      "end_minute": 615,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "tools/check_pilot.py",
+        "docs/validation/document-engine-release.md"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-066",
+        "BR-BUILD-073"
+      ],
+      "dependency_ready_minute": 480,
+      "ready_wait_minutes": 75,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "quality_builder"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 150
+    },
+    {
+      "id": "BR-BUILD-018",
+      "title": "Propagate evidence changes to downstream decisions",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "priority": 0,
+      "start_minute": 570,
+      "end_minute": 630,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/document_offer_layer.py",
+        "tests/test_document_offer_layer.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-012",
+        "BR-BUILD-017",
+        "BR-BUILD-033"
+      ],
+      "dependency_ready_minute": 345,
+      "ready_wait_minutes": 225,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "evidence_builder"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        },
+        {
+          "code": "write_scope_conflict",
+          "values": [
+            "BR-BUILD-065"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 60
+    },
+    {
+      "id": "BR-BUILD-028",
+      "title": "Apply conditional risk policies",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "priority": 0,
+      "start_minute": 585,
+      "end_minute": 645,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-022",
+        "BR-BUILD-027"
+      ],
+      "dependency_ready_minute": 420,
+      "ready_wait_minutes": 165,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "quant_builder"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 120
+    },
+    {
+      "id": "BR-BUILD-006",
+      "title": "Reconcile delivery claims against evidence",
+      "owner": "architect_integrator",
+      "phase": "foundation",
+      "priority": 0,
+      "start_minute": 615,
+      "end_minute": 645,
+      "estimated_minutes": 30,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 0,
+        "integrator": 1,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "docs/plans/document-engine-tickets.md",
+        "docs/validation/document-engine-release.md"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-005",
+        "BR-BUILD-066",
+        "BR-BUILD-077"
+      ],
+      "dependency_ready_minute": 615,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 30
+    },
+    {
+      "id": "BR-BUILD-075",
+      "title": "Verify backup, restore, and replay",
+      "owner": "quality_builder",
+      "phase": "release",
+      "priority": 1,
+      "start_minute": 615,
+      "end_minute": 705,
+      "estimated_minutes": 90,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "tools/replay_document_evidence.py",
+        "reports/recovery/document-evidence.json"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-024",
+        "BR-BUILD-066",
+        "BR-BUILD-074"
+      ],
+      "dependency_ready_minute": 555,
+      "ready_wait_minutes": 60,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "quality_builder"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 90
+    },
+    {
+      "id": "BR-BUILD-013",
+      "title": "Define intake manifests and duplicate behavior",
+      "owner": "evidence_builder",
+      "phase": "application",
+      "priority": 0,
+      "start_minute": 630,
+      "end_minute": 670,
+      "estimated_minutes": 40,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/document_evidence.py",
+        "tests/test_document_evidence.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-007",
+        "BR-BUILD-012"
+      ],
+      "dependency_ready_minute": 0,
+      "ready_wait_minutes": 630,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "evidence_builder"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        },
+        {
+          "code": "write_scope_conflict",
+          "values": [
+            "BR-BUILD-063"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 40
+    },
+    {
+      "id": "BR-BUILD-038",
+      "title": "Define bounded batch interfaces",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "priority": 0,
+      "start_minute": 645,
+      "end_minute": 690,
+      "estimated_minutes": 45,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-037"
+      ],
+      "dependency_ready_minute": 465,
+      "ready_wait_minutes": 180,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "quant_builder"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        },
+        {
+          "code": "write_scope_conflict",
+          "values": [
+            "BR-BUILD-028"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 120
+    },
+    {
+      "id": "BR-BUILD-039",
+      "title": "Implement reusable GPU execution",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "priority": 0,
+      "start_minute": 690,
+      "end_minute": 765,
+      "estimated_minutes": 75,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "tests/test_offer_probability.py"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-038"
+      ],
+      "dependency_ready_minute": 690,
+      "ready_wait_minutes": 0,
+      "wait_reasons": [],
+      "remaining_critical_path_minutes": 75
+    },
+    {
+      "id": "BR-BUILD-078",
+      "title": "Stage production enablement by capability",
+      "owner": "quality_builder",
+      "phase": "release",
+      "priority": 1,
+      "start_minute": 705,
+      "end_minute": 795,
+      "estimated_minutes": 90,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "docs/operations/document-rollout.md",
+        "config/document-runtime.disabled.json"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-035",
+        "BR-BUILD-066",
+        "BR-BUILD-077"
+      ],
+      "dependency_ready_minute": 615,
+      "ready_wait_minutes": 90,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "quality_builder"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 90
+    },
+    {
+      "id": "BR-BUILD-029",
+      "title": "Evaluate decision sensitivity and continuation limits",
+      "owner": "quant_builder",
+      "phase": "engine",
+      "priority": 0,
+      "start_minute": 765,
+      "end_minute": 825,
+      "estimated_minutes": 60,
+      "already_in_progress": false,
+      "time_basis": "assumed future effort",
+      "required_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      },
+      "write_scopes": [
+        "pilot/offer_probability.py",
+        "docs/guides/offer_probability.md"
+      ],
+      "effective_dependencies": [
+        "BR-BUILD-004",
+        "BR-BUILD-028"
+      ],
+      "dependency_ready_minute": 645,
+      "ready_wait_minutes": 120,
+      "wait_reasons": [
+        {
+          "code": "owner_busy",
+          "values": [
+            "quant_builder"
+          ]
+        },
+        {
+          "code": "resource_busy",
+          "values": [
+            "agent_worker"
+          ]
+        },
+        {
+          "code": "write_scope_conflict",
+          "values": [
+            "BR-BUILD-038",
+            "BR-BUILD-039"
+          ]
+        }
+      ],
+      "remaining_critical_path_minutes": 60
+    }
+  ],
+  "blocked": [
+    {
+      "id": "BR-BUILD-030",
+      "title": "Design and validate empirical probability models",
+      "phase": "engine",
+      "reasons": [
+        {
+          "code": "declared_blocker",
+          "detail": "Requires complete timestamped historical offers/outcomes and a defined out-of-sample evaluation design."
+        },
+        {
+          "code": "dependency_blocked",
+          "dependencies": [
+            "BR-BUILD-058"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-040",
+      "title": "Verify numeric and decision parity",
+      "phase": "engine",
+      "reasons": [
+        {
+          "code": "resource_unavailable",
+          "resource": "cuda_device",
+          "required": 1,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-041",
+      "title": "Measure complete workload performance",
+      "phase": "engine",
+      "reasons": [
+        {
+          "code": "resource_unavailable",
+          "resource": "cuda_device",
+          "required": 1,
+          "capacity": 0
+        },
+        {
+          "code": "dependency_blocked",
+          "dependencies": [
+            "BR-BUILD-040"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-042",
+      "title": "Integrate acceleration across callers",
+      "phase": "engine",
+      "reasons": [
+        {
+          "code": "resource_unavailable",
+          "resource": "cuda_device",
+          "required": 1,
+          "capacity": 0
+        },
+        {
+          "code": "resource_unavailable",
+          "resource": "r_runtime",
+          "required": 1,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-043",
+      "title": "Establish reproducible R and Python environments",
+      "phase": "validation",
+      "reasons": [
+        {
+          "code": "resource_unavailable",
+          "resource": "r_runtime",
+          "required": 1,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-045",
+      "title": "Implement small independent reference checks",
+      "phase": "validation",
+      "reasons": [
+        {
+          "code": "resource_unavailable",
+          "resource": "r_runtime",
+          "required": 1,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-046",
+      "title": "Evaluate calibration and economic forecast loss",
+      "phase": "validation",
+      "reasons": [
+        {
+          "code": "declared_blocker",
+          "detail": "Requires complete timestamped historical offers/outcomes and a defined out-of-sample evaluation design."
+        },
+        {
+          "code": "resource_unavailable",
+          "resource": "r_runtime",
+          "required": 1,
+          "capacity": 0
+        },
+        {
+          "code": "dependency_blocked",
+          "dependencies": [
+            "BR-BUILD-030"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-047",
+      "title": "Model time-to-event and competing outcomes",
+      "phase": "validation",
+      "reasons": [
+        {
+          "code": "declared_blocker",
+          "detail": "Requires complete timestamped historical offers/outcomes and a defined out-of-sample evaluation design."
+        },
+        {
+          "code": "resource_unavailable",
+          "resource": "r_runtime",
+          "required": 1,
+          "capacity": 0
+        },
+        {
+          "code": "dependency_blocked",
+          "dependencies": [
+            "BR-BUILD-058"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-048",
+      "title": "Produce reproducible analytical reports",
+      "phase": "validation",
+      "reasons": [
+        {
+          "code": "resource_unavailable",
+          "resource": "r_runtime",
+          "required": 1,
+          "capacity": 0
+        },
+        {
+          "code": "dependency_blocked",
+          "dependencies": [
+            "BR-BUILD-045",
+            "BR-BUILD-046",
+            "BR-BUILD-047"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-064",
+      "title": "Check backend and language parity",
+      "phase": "validation",
+      "reasons": [
+        {
+          "code": "resource_unavailable",
+          "resource": "cuda_device",
+          "required": 1,
+          "capacity": 0
+        },
+        {
+          "code": "resource_unavailable",
+          "resource": "r_runtime",
+          "required": 1,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-076",
+      "title": "Observe workload, quality, and failures",
+      "phase": "release",
+      "reasons": [
+        {
+          "code": "declared_blocker",
+          "detail": "Requires representative workload measurements; the two-million-household target is not observed capacity."
+        },
+        {
+          "code": "dependency_blocked",
+          "dependencies": [
+            "BR-BUILD-041",
+            "BR-BUILD-059"
+          ]
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "id": "BR-BUILD-049",
+      "title": "Design the source-to-number trace",
+      "phase": "presentation",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "presentation"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-050",
+      "title": "Display evidence conflicts and missingness",
+      "phase": "presentation",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "presentation"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-051",
+      "title": "Expose investment policy controls",
+      "phase": "presentation",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "presentation"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-052",
+      "title": "Render complete offer and outcome comparisons",
+      "phase": "presentation",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "presentation"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-053",
+      "title": "Implement usable and accessible interactions",
+      "phase": "presentation",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "presentation"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-054",
+      "title": "Verify review and recalculation behavior",
+      "phase": "presentation",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "presentation"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-055",
+      "title": "Define source access and permitted operations",
+      "phase": "integration",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "integration"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-056",
+      "title": "Read structured files without semantic loss",
+      "phase": "integration",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "integration"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-057",
+      "title": "Resolve deal and entity identity explicitly",
+      "phase": "integration",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "integration"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-058",
+      "title": "Capture complete timestamped outcomes",
+      "phase": "integration",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "integration"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-059",
+      "title": "Implement incremental and idempotent ingestion",
+      "phase": "integration",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "integration"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-060",
+      "title": "Version source and schema changes",
+      "phase": "integration",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "integration"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-068",
+      "title": "Pin NVIDIA service and hardware compatibility",
+      "phase": "assistive_ai",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "assistive_ai"
+        },
+        {
+          "code": "deferred",
+          "detail": "Ticket is deliberately outside the active build scope"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-069",
+      "title": "Evaluate assisted extraction against labeled documents",
+      "phase": "assistive_ai",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "assistive_ai"
+        },
+        {
+          "code": "deferred",
+          "detail": "Ticket is deliberately outside the active build scope"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-070",
+      "title": "Build scoped retrieval and reranking",
+      "phase": "assistive_ai",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "assistive_ai"
+        },
+        {
+          "code": "deferred",
+          "detail": "Ticket is deliberately outside the active build scope"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-071",
+      "title": "Constrain assistive generation to accepted tools and evidence",
+      "phase": "assistive_ai",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "assistive_ai"
+        },
+        {
+          "code": "deferred",
+          "detail": "Ticket is deliberately outside the active build scope"
+        }
+      ]
+    },
+    {
+      "id": "BR-BUILD-072",
+      "title": "Evaluate any later product-agent runtime separately",
+      "phase": "runtime_agents",
+      "reasons": [
+        {
+          "code": "phase_disabled",
+          "phase": "runtime_agents"
+        },
+        {
+          "code": "deferred",
+          "detail": "Ticket is deliberately outside the active build scope"
+        }
+      ]
+    }
+  ],
+  "critical_path_lower_bound_minutes": 480,
+  "critical_path_ticket_ids": [
+    "BR-BUILD-015",
+    "BR-BUILD-016",
+    "BR-BUILD-017",
+    "BR-BUILD-063",
+    "BR-BUILD-066",
+    "BR-BUILD-073",
+    "BR-BUILD-077",
+    "BR-BUILD-078"
+  ],
+  "critical_path_scope": "Remaining schedulable work only; ignores resource, owner and write contention, excludes blocked and future work",
+  "estimated_makespan_minutes": 825,
+  "current_enabled_scope_fully_schedulable": false,
+  "resource_timeline": [
+    {
+      "minute": 0,
+      "active_ticket_ids": [
+        "BR-BUILD-015",
+        "BR-BUILD-020",
+        "BR-BUILD-081"
+      ],
+      "used_resources": {
+        "agent_worker": 2,
+        "integrator": 1,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 60,
+      "active_ticket_ids": [
+        "BR-BUILD-016",
+        "BR-BUILD-021",
+        "BR-BUILD-081"
+      ],
+      "used_resources": {
+        "agent_worker": 2,
+        "integrator": 1,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 75,
+      "active_ticket_ids": [
+        "BR-BUILD-016",
+        "BR-BUILD-021",
+        "BR-BUILD-084"
+      ],
+      "used_resources": {
+        "agent_worker": 2,
+        "integrator": 1,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 105,
+      "active_ticket_ids": [
+        "BR-BUILD-016",
+        "BR-BUILD-021"
+      ],
+      "used_resources": {
+        "agent_worker": 2,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 120,
+      "active_ticket_ids": [
+        "BR-BUILD-026",
+        "BR-BUILD-031",
+        "BR-BUILD-044"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 165,
+      "active_ticket_ids": [
+        "BR-BUILD-017",
+        "BR-BUILD-026"
+      ],
+      "used_resources": {
+        "agent_worker": 2,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 180,
+      "active_ticket_ids": [
+        "BR-BUILD-017",
+        "BR-BUILD-022"
+      ],
+      "used_resources": {
+        "agent_worker": 2,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 225,
+      "active_ticket_ids": [
+        "BR-BUILD-022",
+        "BR-BUILD-032",
+        "BR-BUILD-063"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 240,
+      "active_ticket_ids": [
+        "BR-BUILD-024",
+        "BR-BUILD-032",
+        "BR-BUILD-063"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 285,
+      "active_ticket_ids": [
+        "BR-BUILD-024",
+        "BR-BUILD-033",
+        "BR-BUILD-062"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 345,
+      "active_ticket_ids": [
+        "BR-BUILD-024",
+        "BR-BUILD-034",
+        "BR-BUILD-065"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 360,
+      "active_ticket_ids": [
+        "BR-BUILD-027",
+        "BR-BUILD-034",
+        "BR-BUILD-065"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 390,
+      "active_ticket_ids": [
+        "BR-BUILD-027",
+        "BR-BUILD-034",
+        "BR-BUILD-066"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 405,
+      "active_ticket_ids": [
+        "BR-BUILD-027",
+        "BR-BUILD-035",
+        "BR-BUILD-066"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 420,
+      "active_ticket_ids": [
+        "BR-BUILD-035",
+        "BR-BUILD-037",
+        "BR-BUILD-066"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 435,
+      "active_ticket_ids": [
+        "BR-BUILD-035",
+        "BR-BUILD-037",
+        "BR-BUILD-073"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 450,
+      "active_ticket_ids": [
+        "BR-BUILD-036",
+        "BR-BUILD-037",
+        "BR-BUILD-073"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 465,
+      "active_ticket_ids": [
+        "BR-BUILD-023",
+        "BR-BUILD-036",
+        "BR-BUILD-073"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 480,
+      "active_ticket_ids": [
+        "BR-BUILD-023",
+        "BR-BUILD-036",
+        "BR-BUILD-074"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 555,
+      "active_ticket_ids": [
+        "BR-BUILD-023",
+        "BR-BUILD-036",
+        "BR-BUILD-077"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 570,
+      "active_ticket_ids": [
+        "BR-BUILD-018",
+        "BR-BUILD-023",
+        "BR-BUILD-077"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 585,
+      "active_ticket_ids": [
+        "BR-BUILD-018",
+        "BR-BUILD-028",
+        "BR-BUILD-077"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 615,
+      "active_ticket_ids": [
+        "BR-BUILD-006",
+        "BR-BUILD-018",
+        "BR-BUILD-028",
+        "BR-BUILD-075"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 1,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 630,
+      "active_ticket_ids": [
+        "BR-BUILD-006",
+        "BR-BUILD-013",
+        "BR-BUILD-028",
+        "BR-BUILD-075"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 1,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 645,
+      "active_ticket_ids": [
+        "BR-BUILD-013",
+        "BR-BUILD-038",
+        "BR-BUILD-075"
+      ],
+      "used_resources": {
+        "agent_worker": 3,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 670,
+      "active_ticket_ids": [
+        "BR-BUILD-038",
+        "BR-BUILD-075"
+      ],
+      "used_resources": {
+        "agent_worker": 2,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 690,
+      "active_ticket_ids": [
+        "BR-BUILD-039",
+        "BR-BUILD-075"
+      ],
+      "used_resources": {
+        "agent_worker": 2,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 705,
+      "active_ticket_ids": [
+        "BR-BUILD-039",
+        "BR-BUILD-078"
+      ],
+      "used_resources": {
+        "agent_worker": 2,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 765,
+      "active_ticket_ids": [
+        "BR-BUILD-029",
+        "BR-BUILD-078"
+      ],
+      "used_resources": {
+        "agent_worker": 2,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 795,
+      "active_ticket_ids": [
+        "BR-BUILD-029"
+      ],
+      "used_resources": {
+        "agent_worker": 1,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    },
+    {
+      "minute": 825,
+      "active_ticket_ids": [],
+      "used_resources": {
+        "agent_worker": 0,
+        "integrator": 0,
+        "cuda_device": 0,
+        "r_runtime": 0
+      }
+    }
+  ],
+  "counts": {
+    "tickets": 84,
+    "completed": 20,
+    "scheduled": 36,
+    "blocked": 11,
+    "excluded": 17
+  },
+  "limitations": [
+    "Durations are estimates; no calendar commitment is made",
+    "Completion statuses require independent acceptance evidence",
+    "The planner models declared resources and path ownership, not every real-world bottleneck",
+    "No product runtime AI or autonomous transaction capability is installed or enabled"
+  ]
+}

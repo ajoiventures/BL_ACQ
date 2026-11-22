@@ -1,0 +1,1490 @@
+{
+  "schema_version": "br.build-ticket-plan.v1",
+  "created_on": "2026-11-22",
+  "purpose": "Doc AI product delivery children under existing master requirements; offline coordination of a separate builder swarm. This plan neither executes tickets nor enables a provider.",
+  "catalog": "config/builder-skills.json",
+  "master_register": "BR-ENG-MASTER-001",
+  "master_epic_crossrefs": [
+    "E17",
+    "E22",
+    "E29",
+    "E30",
+    "E32",
+    "E33"
+  ],
+  "scope": {
+    "tickets": 24,
+    "product": "Document intake, source identity, native parsing, candidate evidence, review, accepted output and a later optional provider connection.",
+    "builder_boundary": "Reuse the existing L1-L4/SW-00/SW-13 builder organization, skills library, learning and durable PROJECT_INTERNAL job patterns; do not embed that swarm in the Doc AI runtime.",
+    "child_id_policy": "BR-DOC IDs are stable local delivery child identifiers under existing BR-ENG parents, not replacement epics or claims that external tracker issues were created.",
+    "not_prerequisites": [
+      "acquisition finance engine",
+      "household market segmentation",
+      "all 84 earlier build tickets",
+      "all twelve parser classes",
+      "vector retrieval",
+      "local CUDA for hosted inference",
+      "R runtime for first extraction"
+    ],
+    "existing_84_plan": "Historical acquisition-oriented capability work remains separate; no completion status is inherited into this Doc AI plan.",
+    "source_policy": "Use approved generic contracts and stable parent references only. Private source text, URLs, personal finances and document content stay outside this repository."
+  },
+  "capability_status": {
+    "engine": "Implemented and locally tested neutral contracts, preserved native filing, bounded format readers, one invoice grammar and append-only local review projection. Authenticated ACLs/retention and durable jobs remain open.",
+    "application": "Implemented and locally tested synchronous local intake, inspect, review/correction and accepted export CLI. Actor labels are local attestations; the broader service and Gate A are incomplete.",
+    "provider": "NVIDIA Parse 2.4 selected as the disabled future client target. Neutral provenance contracts exist; generic seam, selected client and live connection remain unimplemented/unverified.",
+    "deployment": "No model download, live provider invocation or production deployment was performed. Builders remain outside the runtime."
+  },
+  "resource_profile": {
+    "agent_worker": 3,
+    "integrator": 1,
+    "cuda_device": 0,
+    "r_runtime": 0
+  },
+  "resource_notes": {
+    "agents": "One dedicated SW-00 integrator plus at most three concurrent workers. L1-L4 and SW-13 name lanes; they are not additional concurrent slots.",
+    "hardware": "CUDA and R capacity are zero until actual runtime evidence changes the profile. Worker slots do not imply CPU cores or GPU devices.",
+    "providers": "Hosted inference has no automatic local-GPU prerequisite. Self-hosted GPU runs need separately observed CUDA capacity and compatible model/runtime configuration."
+  },
+  "ownership": {
+    "L1_evidence": "Existing L1 intelligence/ontology lane: evidence contracts, identity and source/field semantics.",
+    "L2_engineering": "Existing L2 engineering/interoperability lane: parsers, adapters, compatibility and compute.",
+    "L3_quality": "Existing L3 capital/risk lane applied to evaluation error, cost, data rights and independent analytical checks.",
+    "L4_workflow": "Existing L4 execution/operations lane: intake, review, service workflows and monitored operation.",
+    "SW-00_integrator": "Existing coordinator/integrator: dispatch, file ownership, resource replanning and evidence-based promotion.",
+    "SW-13_independent_review": "Existing independent reviewer, distinct from implementation authors; SW-00 accepts the reviewed gate record."
+  },
+  "provider_policy": {
+    "ai_enabled": false,
+    "live_calls_enabled": false,
+    "model_downloads_enabled": false,
+    "default_provider": "disabled",
+    "production_enabled": false,
+    "activation_rule": "A generic mock or valid manifest is not a real provider implementation or connection. Gate C requires the independently reviewed BR-DOC-012 selected client plus verified endpoint/auth/version/data-policy/budget/timeout/provenance and test permission; Gate D is separate.",
+    "connector_rule": "A ChatGPT cloud connector is a chat capability, not an authenticated connection in this application backend.",
+    "selected_implementation_target": "config/docai-provider-target.json",
+    "selected_adapter_owner": "L2_engineering"
+  },
+  "scheduling_policy": {
+    "reserved_integrator": 1,
+    "enabled_phases": [
+      "contracts",
+      "engine",
+      "provider_contract",
+      "application",
+      "offline_validation",
+      "connector_contract",
+      "provider_preflight",
+      "provider_evaluation",
+      "quality_review",
+      "expansion",
+      "measurement",
+      "release_review",
+      "source_reconciliation"
+    ],
+    "estimate_basis": "All point estimates and ranges are planning assumptions for scoped builder effort. Simulated relative schedules are not calendar bookings, measured speed, delivery commitments or production throughput.",
+    "priority_order": "Lower priority number first, then remaining critical-path estimate, then stable child ID.",
+    "owner_rule": "One active ticket per owner lane; all L1-L4/SW-13 work consumes the same three-worker pool and overlapping write scopes serialize.",
+    "completion_rule": "A worker hands off revision, paths, exact commands, criterion-to-evidence mapping, failures and limitations. Independent SW-13 review and SW-00 promotion precede completed status; effective prerequisites must also be complete.",
+    "tracking_rule": "Mirror approved execution work into the existing PROJECT_INTERNAL durable ticket register with version/CAS and reviewed closure. Do not use the business transaction state machine for builder work.",
+    "phase_rule": "Enabled planning phases only determine offline schedule visibility; they do not activate APIs, agents, downloads or providers. Explicit live holds remain effective.",
+    "replan_rule": "Recompute after evidence, blocker, resource, owner, estimate or scope changes; do not increase concurrency to bypass a failed contract or review gate.",
+    "phase_gates": {
+      "provider_evaluation": [
+        "BR-DOC-009",
+        "BR-DOC-010",
+        "BR-DOC-012",
+        "BR-DOC-017"
+      ],
+      "quality_review": [
+        "BR-DOC-013"
+      ],
+      "production": [
+        "BR-DOC-022"
+      ]
+    }
+  },
+  "connection_gates": {
+    "A": {
+      "ticket": "BR-DOC-010",
+      "meaning": "Local native extraction, source lineage and human review work without AI."
+    },
+    "B": {
+      "ticket": "BR-DOC-009",
+      "meaning": "The disabled generic seam and offline mock contract are independently checked early; the selected actual client has its own BR-DOC-012 offline conformance requirement."
+    },
+    "C": {
+      "ticket": "BR-DOC-013",
+      "result_review": "BR-DOC-014",
+      "meaning": "Limited synthetic/permitted-test live evaluation after A, B, the implemented version-pinned selected client with independently reviewed offline conformance, preflight and adverse-case checks; no production activation."
+    },
+    "D": {
+      "ticket": "BR-DOC-024",
+      "release_review": "BR-DOC-022",
+      "meaning": "Separately enabled monitored production canary with accepted release, data scope, budgets and rollback."
+    }
+  },
+  "roadmap": [
+    {
+      "wave": "Contracts and fixtures",
+      "children": [
+        "BR-DOC-001",
+        "BR-DOC-002",
+        "BR-DOC-003"
+      ],
+      "outcome": "Extend existing audit/boundary/crosswalk evidence with canonical execution workspace, provenance and ownership decisions; fixture work can start beside coordination."
+    },
+    {
+      "wave": "Native engine and optional seam",
+      "children": [
+        "BR-DOC-004",
+        "BR-DOC-005",
+        "BR-DOC-006",
+        "BR-DOC-007",
+        "BR-DOC-009"
+      ],
+      "outcome": "Build native provenance/jobs and the disabled provider contract concurrently within owner/write limits."
+    },
+    {
+      "wave": "Application and offline acceptance",
+      "children": [
+        "BR-DOC-008",
+        "BR-DOC-010",
+        "BR-DOC-012",
+        "BR-DOC-017"
+      ],
+      "outcome": "Demonstrate the reviewable local slice; implement and register one disabled version-pinned provider client, review its offline conformance and prepare fail-closed preflight."
+    },
+    {
+      "wave": "Conditional live evaluation",
+      "children": [
+        "BR-DOC-013",
+        "BR-DOC-014"
+      ],
+      "outcome": "Only when verified preconditions and permitted test scope exist; candidate quality can fail or remain insufficient."
+    },
+    {
+      "wave": "Operate and extend",
+      "children": [
+        "BR-DOC-011",
+        "BR-DOC-015",
+        "BR-DOC-016",
+        "BR-DOC-018",
+        "BR-DOC-022"
+      ],
+      "outcome": "Connector contracts, telemetry, reviewed consumer outputs and incremental class coverage; release review is evidence-gated."
+    },
+    {
+      "wave": "Separate optional tracks",
+      "children": [
+        "BR-DOC-019",
+        "BR-DOC-020",
+        "BR-DOC-021",
+        "BR-DOC-023",
+        "BR-DOC-024"
+      ],
+      "outcome": "Retrieval, executed R/CUDA measurements, historical source reconciliation and production pilot retain explicit prerequisites and holds."
+    }
+  ],
+  "tickets": [
+    {
+      "id": "BR-DOC-001",
+      "title": "Confirm canonical Doc AI execution workspace and reuse ownership",
+      "parent_tickets": [
+        "BR-ENG-281",
+        "BR-ENG-286",
+        "BR-ENG-311",
+        "BR-ENG-313",
+        "BR-ENG-314"
+      ],
+      "owner": "SW-00_integrator",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "contracts",
+      "layer": "architecture",
+      "dependencies": [],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 50,
+      "estimated_minutes_range": [
+        30,
+        100
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "docs/architecture/docai-current-state.md",
+        "docs/architecture/document-engine-layers.md",
+        "config/swarm-library-extension.json",
+        "config/docai-provider-target.json"
+      ],
+      "acceptance_criteria": [
+        "Extend the current-state audit, engine/layer architecture and existing library crosswalk with the reviewed execution decision; preserve their existing findings instead of creating duplicate boundary or inventory documents.",
+        "Record the canonical execution repository/workspace, source revision/provenance and reviewed adapter ownership before migration. Verify interfaces for EvidenceStore, native filing, durable PROJECT_INTERNAL tickets and local-model client; distinguish code presence, tests, registration, connection and deployment.",
+        "Treat document_offer_layer.py as an optional downstream financial consumer. Initial extraction and provider evaluation have no finance, household-segment or all-84-ticket dependency.",
+        "Map every child to existing master requirements and L1-L4 ownership with SW-00 coordination and SW-13 independent review; no replacement master epic, agent roster or external issue is implied.",
+        "Record present provider compatibility gaps, including EvidenceStore rejecting provider metadata; do not describe NativeJsonProvider as document extraction or DisabledAIProvider as a working connection.",
+        "Select one initial provider backend and name the adapter owner using the audited reuse evidence; distinguish this implementation decision from endpoint activation and live connection permission."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-product",
+        "br-coordinate-builder-resources"
+      ],
+      "reuse_evidence": [
+        "pilot/document_evidence.py contains reusable provenance and review rules with acquisition-oriented scope.",
+        "tools/schedule_builder_work.py already validates the bounded development DAG.",
+        "Earlier local filing/inbox.py and backend/core/tickets.py are reuse candidates requiring revision and contract checks; folder names are not deployment evidence.",
+        "The existing docs/architecture/docai-current-state.md, docs/architecture/document-engine-layers.md and config/swarm-library-extension.json capture current-state, product-boundary and library-mapping evidence; their contents are partial fulfillment, not closure of the remaining workspace/provenance and ownership decisions."
+      ],
+      "completion_evidence": [
+        "docs/architecture/docai-current-state.md",
+        "docs/architecture/document-engine-layers.md",
+        "config/swarm-library-extension.json",
+        "config/docai-provider-target.json",
+        "docs/plans/docai-native-increment-verification.md"
+      ],
+      "status_basis": "Versioned BL_ACQ execution home, shared baseline tree, audited filing/ticket/model hashes, existing organization and L1/L2/L4/SW-00/SW-13 ownership are documented. Independent reuse review accepted the choice. NVIDIA Parse is a selected target only; deployment remains unverified."
+    },
+    {
+      "id": "BR-DOC-002",
+      "title": "Version document, extraction, candidate and review contracts",
+      "parent_tickets": [
+        "BR-ENG-124",
+        "BR-ENG-175",
+        "BR-ENG-272",
+        "BR-ENG-282",
+        "BR-ENG-286"
+      ],
+      "owner": "L1_evidence",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "contracts",
+      "layer": "engine",
+      "dependencies": [
+        "BR-DOC-001"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 100,
+      "estimated_minutes_range": [
+        60,
+        180
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_contracts.py",
+        "schemas/docai",
+        "tests/test_docai_contracts.py"
+      ],
+      "acceptance_criteria": [
+        "Define document-neutral identity plus optional typed asset links; preserve source revision, original hash, document version, run ID, schema version, actor and purpose/tenant scope.",
+        "Register the twelve existing document-class contracts and UNKNOWN; declare supported fields and parsers individually instead of claiming twelve implemented extractors.",
+        "Separate source observations, candidate claims, provider scores, human review decisions and accepted projections. A provider cannot submit its own review or authoritative status.",
+        "Define ExtractionRun and CandidateClaim metadata for truthful extraction method, parser/provider/model/API version, configuration hash, actual backend, evidence spans, input coverage, truncation/partial status, structured errors and protected raw-response reference/hash.",
+        "Define backward-compatible migration/version negotiation and reject unknown incompatible schemas; dates, currencies, units, decimals, missing values and page/row offsets have explicit types."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-evidence-engine",
+        "br-build-ai-adapters"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [
+        "pilot/document_contracts.py",
+        "schemas/docai/records.schema.json",
+        "schemas/docai/document-classes.json",
+        "schemas/docai/examples.json",
+        "tests/test_docai_contracts.py",
+        "docs/plans/docai-native-increment-verification.md"
+      ],
+      "status_basis": "Strict br.docai.v1 neutral validators and structural schemas cover document/run/candidate/review identity, twelve classes plus UNKNOWN, typed values, exact citations, coverage/errors, truthful provider provenance and version rejection. Seventeen focused tests and independent source/interface review passed; old deal tables stay compatible."
+    },
+    {
+      "id": "BR-DOC-003",
+      "title": "Prepare synthetic golden files and predeclared evaluation metrics",
+      "parent_tickets": [
+        "BR-ENG-184",
+        "BR-ENG-291",
+        "BR-ENG-317",
+        "BR-ENG-319"
+      ],
+      "owner": "L3_quality",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "offline_validation",
+      "layer": "evaluation",
+      "dependencies": [],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 120,
+      "estimated_minutes_range": [
+        80,
+        240
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "tests/fixtures/docai",
+        "docs/validation/docai-evaluation-policy.md",
+        "tools/docai_metrics.py",
+        "tests/test_docai_metrics.py",
+        "tools/evaluate_docai_native.py",
+        "tests/test_docai_evaluation.py"
+      ],
+      "acceptance_criteria": [
+        "Create or inventory licensed synthetic/test-only originals, hashes, labels and independently checked source spans; include native text, a scan, tables, ambiguous values and malformed/truncated files.",
+        "Define field precision/recall, exact-value accuracy, span fidelity, abstention/coverage, critical false accepts, review time, latency and cost with explicit denominators and small-sample limitations.",
+        "Predeclare test split, supported document classes, acceptance thresholds, minimum evidence and baseline before live results are seen; unsupported classes remain unsupported.",
+        "Keep provider confidence separate from empirical correctness; plan held-out reliability, Brier score or other appropriate calibration only where labeled probability-like scores exist.",
+        "Golden values and scoring code are independently reviewed, immutable per fixture version and usable without an AI provider, R or CUDA."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-model-validation",
+        "br-build-r-validation"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [
+        "tests/fixtures/docai/manifest.json",
+        "docs/validation/docai-evaluation-policy.md",
+        "tools/docai_metrics.py",
+        "tools/evaluate_docai_native.py",
+        "tests/test_docai_metrics.py",
+        "tests/test_docai_evaluation.py",
+        "docs/plans/docai-native-increment-verification.md"
+      ],
+      "status_basis": "Nine synthetic originals and 54 field labels have verified hashes and independently checked spans; the scorer, split, thresholds and limitations are declared. Independent review and 37 metrics/evaluation tests passed. Measured native baseline retains six CSV field misses (26/32 grounded recall); zero reviewed accepts cannot establish review safety. Preparation is complete, provider quality is unevaluated."
+    },
+    {
+      "id": "BR-DOC-004",
+      "title": "Adapt the evidence store into a versioned Doc AI vault",
+      "parent_tickets": [
+        "BR-ENG-124",
+        "BR-ENG-179",
+        "BR-ENG-272",
+        "BR-ENG-286"
+      ],
+      "owner": "L1_evidence",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "engine",
+      "layer": "engine",
+      "dependencies": [
+        "BR-DOC-002"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 180,
+      "estimated_minutes_range": [
+        120,
+        300
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_evidence.py",
+        "pilot/document_vault.py",
+        "tests/test_document_evidence.py",
+        "tests/test_docai_vault.py",
+        "tests/test_docai_application.py"
+      ],
+      "acceptance_criteria": [
+        "Preserve immutable original bytes separately from derived text, hashes, extraction runs and review events; preserve historical versions and explicit supersession.",
+        "Add typed provider-origin candidates and metadata through the reviewed contract, without relaxing accepted-input review or allowing a model to write decisions.",
+        "Enforce tenant/purpose ACLs on intake, source access, candidate reads, review and export; revoked access, deletion and retention changes invalidate derived visibility.",
+        "Replay identical document/claim requests idempotently; reject reused keys with a different payload and return explicit version/CAS conflicts for stale updates.",
+        "Keep ambiguous asset links in review, support multiple source references and asset links, and prevent stale/superseded/conflicting evidence from silently becoming accepted input.",
+        "Migration tests preserve current manual/native behavior and distinguish schema compatibility from a real provider connection."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-evidence-engine"
+      ],
+      "reuse_evidence": [
+        "pilot/document_evidence.py: EvidenceStore, append-only reviews, source hashes, supersession and conflict rules."
+      ],
+      "completion_evidence": [],
+      "status_basis": "Append-only neutral records, contextual queries, payload-bound replay, CAS reviews/corrections, version-supersession holds and transaction recovery exist. Authenticated ACLs, revocation/retention/delete propagation, full version-family intake and general asset-link review remain open. Trusted OS actor labels are not service authorization.",
+      "implementation_status": "partial",
+      "partial_evidence": [
+        "pilot/document_vault.py",
+        "tests/test_docai_application.py"
+      ]
+    },
+    {
+      "id": "BR-DOC-005",
+      "title": "Reuse native filing behind a safe document parser plugin",
+      "parent_tickets": [
+        "BR-ENG-125",
+        "BR-ENG-180",
+        "BR-ENG-286"
+      ],
+      "owner": "L2_engineering",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "engine",
+      "layer": "engine",
+      "dependencies": [
+        "BR-DOC-002"
+      ],
+      "status": "completed",
+      "priority": 0,
+      "estimated_minutes": 180,
+      "estimated_minutes_range": [
+        100,
+        320
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_native.py",
+        "pilot/document_parsers",
+        "tests/test_docai_native.py",
+        "filing",
+        "pilot/document_invoice.py"
+      ],
+      "acceptance_criteria": [
+        "Audit and adapt the existing file_document(path, root, destination=None) contract and native TXT/MD/CSV/DOCX/text-PDF behaviors; preserve originals and receipts without copying an unrelated application.",
+        "Ship one declared initial document-class vertical slice with native text extraction and manual candidate entry; recognize scanned/image-only input as needs_ocr rather than fabricate text.",
+        "Emit deterministic page/row/text-span provenance and parser version; record bytes/pages/rows covered, explicit truncation and partial failures, never label an incomplete parse complete.",
+        "Audit the legacy limits before reuse: TXT/MD/CSV reads capped at 150,000 bytes, DOCX XML guarded at 2 MB, and PDF extraction capped at five pages and 20,000 characters per page. Carry applied limits and detected incomplete coverage into explicit metadata; do not silently inherit completeness assumptions.",
+        "Bound file size, decompression, page count, parser time and memory; sanitize paths and quarantine malformed, unsupported or suspicious files without deleting the original.",
+        "Offline fixtures demonstrate native extraction and exact source references with provider imports, model downloads and network construction absent."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-document-workflows",
+        "br-build-data-connectors"
+      ],
+      "reuse_evidence": [
+        "Earlier local filing/inbox.py provides native extraction, routing, original preservation and receipts; exact migration compatibility is not yet established."
+      ],
+      "completion_evidence": [
+        "filing/inbox.py",
+        "filing/README.md",
+        "pilot/document_native.py",
+        "pilot/document_invoice.py",
+        "tests/test_docai_native.py",
+        "tests/test_docai_application.py",
+        "docs/plans/docai-native-increment-verification.md"
+      ],
+      "status_basis": "Additive filing port preserves the interface and receipt history, binds bounded original snapshots, and reports native coverage/errors with worker time/memory bounds. Twenty-three parser cases and application adverse cases passed, with independent review. First class uses exact invoice labels and cited manual candidates; CSV is native text only, scans need OCR, PDF pages containing image/Form XObjects stay partial. This is not twelve parser implementations."
+    },
+    {
+      "id": "BR-DOC-006",
+      "title": "Add durable intake jobs, leases and outbox recovery",
+      "parent_tickets": [
+        "BR-ENG-177",
+        "BR-ENG-178",
+        "BR-ENG-184"
+      ],
+      "owner": "L4_workflow",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "engine",
+      "layer": "engine",
+      "dependencies": [
+        "BR-DOC-002"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 180,
+      "estimated_minutes_range": [
+        120,
+        300
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_jobs.py",
+        "tests/test_docai_jobs.py"
+      ],
+      "acceptance_criteria": [
+        "Register source identity and durable work before file movement or extraction; define ordinary ingestion/extraction/index/action processing stages without creating AI agents.",
+        "Provide atomic lease acquisition, expiry, bounded retries/backoff, dead letters, cancellation and explicit terminal/partial states with request/run trace IDs.",
+        "Use payload-bound idempotency keys and optimistic version checks; duplicate arrivals, changed payloads and concurrent edits have distinct tested outcomes.",
+        "Crash/restart tests prove no lost source, duplicate finalization or contradictory accepted completion, including failure between outbox commit and processing.",
+        "Reuse audited persistence patterns from existing PROJECT_INTERNAL tickets for builder tracking, while keeping product ingestion jobs separate from development tickets and business Swarm.transition states."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-document-workflows",
+        "br-build-release-operations"
+      ],
+      "reuse_evidence": [
+        "Earlier local backend/core/tickets.py has durable PROJECT_INTERNAL jobs, version conflict checks and SW-13 closure patterns; do not reuse the business transaction lifecycle."
+      ],
+      "completion_evidence": [],
+      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+    },
+    {
+      "id": "BR-DOC-007",
+      "title": "Build the disabled provider seam and mock adapter contract",
+      "parent_tickets": [
+        "BR-ENG-282",
+        "BR-ENG-283",
+        "BR-ENG-286",
+        "BR-ENG-295"
+      ],
+      "owner": "L2_engineering",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "provider_contract",
+      "layer": "provider_connection",
+      "dependencies": [
+        "BR-DOC-002"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 120,
+      "estimated_minutes_range": [
+        80,
+        220
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_providers.py",
+        "tests/test_docai_provider_contract.py"
+      ],
+      "acceptance_criteria": [
+        "Implement a provider-neutral extraction request/result/error interface against the versioned contracts, with disabled-by-default construction and an offline mock adapter.",
+        "Carry endpoint profile ID, truthful extraction method, provider/model/API versions, schema version, run/config hash, raw-response reference/hash, structured errors, provenance, coverage and usage fields; unavailable provider metadata remains explicitly unknown.",
+        "Mock success, abstention, malformed output, incompatible schema, timeout, rate limit, partial parse and cancellation; candidates never import reviews or call financial actions.",
+        "A disabled profile fails explicitly before network or model loading. Mocks prove request/response behavior only, not compatibility with any NVIDIA, cloud or local service.",
+        "Keep potential NVIDIA and existing local-model clients behind adapters; selected actual service/model versions and authenticated reachability remain unverified until the later connection gate."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-ai-adapters",
+        "br-build-model-validation"
+      ],
+      "reuse_evidence": [
+        "CandidateProvider protocol and DisabledAIProvider are limited stubs; NativeJsonProvider only copies already structured claims."
+      ],
+      "completion_evidence": [],
+      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+    },
+    {
+      "id": "BR-DOC-008",
+      "title": "Expose Doc AI intake, status, review and source trace",
+      "parent_tickets": [
+        "BR-ENG-127",
+        "BR-ENG-178",
+        "BR-ENG-182",
+        "BR-ENG-185",
+        "BR-ENG-294"
+      ],
+      "owner": "L4_workflow",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "application",
+      "layer": "application",
+      "dependencies": [
+        "BR-DOC-004",
+        "BR-DOC-005",
+        "BR-DOC-006"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 180,
+      "estimated_minutes_range": [
+        120,
+        320
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_application.py",
+        "pilot/founder_service.py",
+        "tools/run_docai.py",
+        "tests/test_docai_application.py"
+      ],
+      "acceptance_criteria": [
+        "Provide a documented local/API vertical slice for upload or registered local-file intake, job status, source text, candidate list, review decisions and accepted export.",
+        "Use the engine for all invariants; application code must not duplicate parsing, identity, monetary conversions or evidence acceptance rules.",
+        "Show original source/version, exact evidence span, coverage/truncation, conflicts, missing fields and reviewer history so the operator can reconstruct every result.",
+        "Authorize review separately from extraction; conflicting or stale decisions require an explicit conflict response and refreshed version, with auditable compensating decisions.",
+        "Expose truthful provider state: disabled, configured, preflight-verified, test-evaluated or production-enabled; availability of a chat connector never changes backend connection state."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-document-workflows",
+        "br-build-review-interface"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [],
+      "status_basis": "Synchronous local intake, inspect, source traces, manual correction, review and accepted export are implemented and tested. Durable jobs/status lifecycle, authenticated review, service operations and full dependency acceptance remain open; BR-DOC-008 and Gate A are not completed.",
+      "implementation_status": "partial",
+      "partial_evidence": [
+        "pilot/document_application.py",
+        "tools/run_docai.py",
+        "tests/test_docai_application.py",
+        "docs/guides/run_docai.md"
+      ]
+    },
+    {
+      "id": "BR-DOC-009",
+      "title": "Gate B: independently verify the offline provider contract",
+      "parent_tickets": [
+        "BR-ENG-295",
+        "BR-ENG-313",
+        "BR-ENG-323"
+      ],
+      "owner": "SW-13_independent_review",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "offline_validation",
+      "layer": "quality_gate",
+      "dependencies": [
+        "BR-DOC-003",
+        "BR-DOC-007"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 60,
+      "estimated_minutes_range": [
+        40,
+        100
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "reports/validation/docai-provider-contract.json",
+        "docs/validation/docai-gate-b.md"
+      ],
+      "acceptance_criteria": [
+        "An independent reviewer checks the disabled and mock adapter against the frozen request/result/error schema, including provider metadata and rejected review injection.",
+        "Offline tests prove no model import, network client construction, credential access or provider invocation when disabled.",
+        "Record exact revision, fixture hashes, commands, failures and not-tested capabilities; no mock pass is described as live NVIDIA or local-model compatibility.",
+        "Allow this gate to run before the full application is complete; actual provider activation still depends on Gate A and the separate live preflight conditions."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-model-validation",
+        "br-build-ai-adapters"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [],
+      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+    },
+    {
+      "id": "BR-DOC-010",
+      "title": "Gate A: verify the local native extraction and review path",
+      "parent_tickets": [
+        "BR-ENG-125",
+        "BR-ENG-127",
+        "BR-ENG-180",
+        "BR-ENG-182",
+        "BR-ENG-184",
+        "BR-ENG-324"
+      ],
+      "owner": "SW-13_independent_review",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "offline_validation",
+      "layer": "quality_gate",
+      "dependencies": [
+        "BR-DOC-003",
+        "BR-DOC-004",
+        "BR-DOC-005",
+        "BR-DOC-006",
+        "BR-DOC-008"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 100,
+      "estimated_minutes_range": [
+        60,
+        180
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "reports/validation/docai-native-slice.json",
+        "docs/validation/docai-gate-a.md"
+      ],
+      "acceptance_criteria": [
+        "Demonstrate a synthetic native document from immutable intake through parsing, candidate review and accepted export with source/version/run provenance.",
+        "Exercise repeated intake, changed-key payload, stale review, conflicting value, revoked ACL, superseded document and truncated parse; fail visibly instead of silently accepting.",
+        "Demonstrate scanned input entering needs_ocr/manual review without an AI dependency; unsupported document classes are labeled and quarantined.",
+        "The complete local slice succeeds with providers disabled and no LLM/API credential/model download; no acquisition finance or household segment is needed.",
+        "SW-13 records independent evidence and SW-00 promotes the gate only after reviewing the reported revision and failures."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-model-validation"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [],
+      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+    },
+    {
+      "id": "BR-DOC-011",
+      "title": "Specify and dry-run a bounded source connector",
+      "parent_tickets": [
+        "BR-ENG-121",
+        "BR-ENG-123",
+        "BR-ENG-176",
+        "BR-ENG-177",
+        "BR-ENG-179",
+        "BR-ENG-295"
+      ],
+      "owner": "L4_workflow",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "connector_contract",
+      "layer": "application",
+      "dependencies": [
+        "BR-DOC-002",
+        "BR-DOC-004",
+        "BR-DOC-006"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 150,
+      "estimated_minutes_range": [
+        90,
+        260
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_connectors.py",
+        "tests/test_docai_connectors.py",
+        "docs/guides/docai-source-connector.md"
+      ],
+      "acceptance_criteria": [
+        "Define a source adapter for explicitly allowed folders/labels and stable source IDs/revisions, with scoped permissions, cursor pagination, quotas and retries.",
+        "Use synthetic event feeds and an offline dry-run to prove durable registration before any move, replay recovery, stale cursors, access revocation and duplicate cross-source references.",
+        "Keep source-provider credentials separate from inference-provider credentials and from ChatGPT connector availability; backend connectivity requires its own verified configuration.",
+        "Default live watches, mailbox scans, file moves and external writes to disabled; list the concrete source authorization and configuration needed for a later narrow pilot.",
+        "Initial local-file extraction and the limited provider test do not wait for a Drive/Gmail connector or whole-mailbox integration."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-data-connectors",
+        "br-build-release-operations"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [],
+      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+    },
+    {
+      "id": "BR-DOC-012",
+      "title": "Implement one version-pinned disabled provider client and preflight",
+      "parent_tickets": [
+        "BR-ENG-282",
+        "BR-ENG-283",
+        "BR-ENG-286",
+        "BR-ENG-295"
+      ],
+      "owner": "L2_engineering",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "provider_preflight",
+      "layer": "provider_connection",
+      "dependencies": [
+        "BR-DOC-003",
+        "BR-DOC-007"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 240,
+      "estimated_minutes_range": [
+        140,
+        420
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "config/document-providers.json",
+        "requirements-docai-provider.lock",
+        "pilot/document_provider_client.py",
+        "pilot/document_providers.py",
+        "pilot/document_provider_preflight.py",
+        "tests/test_docai_selected_provider.py",
+        "tests/test_docai_provider_preflight.py",
+        "tests/fixtures/docai/provider",
+        "reports/validation/docai-selected-adapter.json",
+        "docs/guides/docai-provider-connection.md"
+      ],
+      "acceptance_criteria": [
+        "Implement exactly one actual provider client/adapter selected under BR-DOC-001: wrap the audited existing Ollama client or implement the chosen NVIDIA service client. Record the choice, owner, compatible API/model versions and pinned client dependencies; do not build every provider.",
+        "Register that concrete adapter in the provider registry with enabled=false. Map real service request, response, partial coverage, provenance, raw-response reference/hash, usage and error fields into the BR-DOC-007 contract; do not substitute the generic mock for the client implementation.",
+        "Run offline recorded-response and contract tests through the actual adapter with injected transport: success, abstention, malformed response, version drift, timeout, rate limit, cancellation and partial extraction. Label fixture origin/version, use existing permitted recordings or documented examples, and report missing compatibility evidence rather than inventing a recording; no new live capture occurs in this ticket.",
+        "Have SW-13 independently review the selected adapter revision, request serialization, response parsing, output/store schema compatibility, pinned versions and offline evidence. BR-DOC-009 verifies the generic seam; its mock pass does not close this selected-adapter requirement.",
+        "Prove registry loading, disabled construction, tests and offline preflight make no network calls, access no live credentials and download/start no models. Enabled code reaches a transport only through the later explicitly permitted Gate C path.",
+        "Document the selected endpoint, authentication method/principal reference, permissions, supported service/model/API versions and required data-retention/residency/use policy without storing secrets. Manifest completeness is distinct from authenticated reachability or provider quality.",
+        "Declare test-only data scope, request/page/byte/token limits, spend ceiling, concurrency, timeout, bounded retries, cancellation and teardown; missing or incompatible fields keep the profile disabled.",
+        "Validate provenance, structured errors, output schemas and expected provider usage/cost fields, preserving unavailable values as unknown. Keep ai_enabled=false with no automatic health probe or model download.",
+        "Hosted inference does not require this build environment to own CUDA. Self-hosted inference requires separately verified hardware, runtime and model/license readiness before live execution; neither is executed by this offline ticket."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-ai-adapters",
+        "br-build-release-operations"
+      ],
+      "reuse_evidence": [
+        "The earlier local Ollama client is an implementation reuse candidate; registration, version compatibility and end-to-end invocation remain unverified. A selected NVIDIA client is an alternative implementation, not an additional required backend."
+      ],
+      "completion_evidence": [],
+      "status_basis": "One concrete selected adapter must be implemented, registered while disabled and independently checked offline before completion; the existing generic protocol/mock and a configuration manifest alone are insufficient."
+    },
+    {
+      "id": "BR-DOC-013",
+      "title": "Gate C: run a bounded live extraction on synthetic/test files",
+      "parent_tickets": [
+        "BR-ENG-283",
+        "BR-ENG-286",
+        "BR-ENG-291",
+        "BR-ENG-295",
+        "BR-ENG-319"
+      ],
+      "owner": "L2_engineering",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "provider_evaluation",
+      "layer": "provider_connection",
+      "dependencies": [
+        "BR-DOC-003",
+        "BR-DOC-009",
+        "BR-DOC-010",
+        "BR-DOC-012",
+        "BR-DOC-017"
+      ],
+      "status": "blocked",
+      "priority": 0,
+      "estimated_minutes": 100,
+      "estimated_minutes_range": [
+        60,
+        200
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "tools/evaluate_docai_provider.py",
+        "reports/validation/docai-live-evaluation.json"
+      ],
+      "acceptance_criteria": [
+        "Require the independently reviewed BR-DOC-012 selected-client implementation and recorded-response/contract evidence at the exact version to be evaluated; Gate B alone supplies only generic seam evidence.",
+        "Before the first request, verify the selected endpoint, authentication, service/model/API versions, data policy, explicit test-data permission, cost ceiling and timeout on the exact manifest.",
+        "Run only the declared synthetic or specifically permitted test corpus; record authenticated reachability separately from extraction success and quality acceptance.",
+        "Capture source/run/provider/model versions, truthful extraction method, protected raw-response reference/hash, full/partial coverage, response/error status, usage/cost, latency, retries and candidate source spans; redact secrets and sensitive content in logs.",
+        "Stop on a policy/version/schema mismatch, budget breach or safety-critical output; rejected/malformed candidates remain unaccepted and no outbound transaction or document movement is triggered.",
+        "Disable the test connection after the bounded run; a successful test does not enable production, retrieval, runtime agents or access to other documents."
+      ],
+      "blockers": [
+        "No selected provider adapter has independently reviewed offline conformance, and no endpoint, authenticated backend connection, verified service/model versions or approved test-data policy is recorded.",
+        "A concrete bounded test manifest, spend ceiling and permitted activation have not been verified; this planning change does not call or enable a provider."
+      ],
+      "skill_refs": [
+        "br-build-ai-adapters",
+        "br-build-model-validation"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [],
+      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+    },
+    {
+      "id": "BR-DOC-014",
+      "title": "Independently score the live candidate quality and costs",
+      "parent_tickets": [
+        "BR-ENG-185",
+        "BR-ENG-291",
+        "BR-ENG-317",
+        "BR-ENG-319",
+        "BR-ENG-320",
+        "BR-ENG-324"
+      ],
+      "owner": "SW-13_independent_review",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "quality_review",
+      "layer": "quality_gate",
+      "dependencies": [
+        "BR-DOC-003",
+        "BR-DOC-013"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 120,
+      "estimated_minutes_range": [
+        80,
+        220
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "reports/validation/docai-provider-verdict.json",
+        "docs/validation/docai-provider-evaluation.md"
+      ],
+      "acceptance_criteria": [
+        "Evaluate the frozen holdout against the predeclared baseline, field/type thresholds and source-span requirements; report denominators, confidence intervals and unsupported classes.",
+        "Publish a pass, fail or insufficient-evidence verdict per supported scope, preserving errors, abstentions, truncation and all critical false accepts.",
+        "Measure per-document/page latency, throughput, review effort and actual usage/cost; do not extrapolate pilot samples into a two-million-household capacity claim.",
+        "Assess calibration only for appropriate labeled scores and adequate samples; provider confidence never becomes evidence validity or an acquisition probability.",
+        "An independent verdict can reject or narrow the provider; passed mock tests, code presence and endpoint reachability are insufficient to claim useful extraction."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-model-validation",
+        "br-build-r-validation"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [],
+      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+    },
+    {
+      "id": "BR-DOC-015",
+      "title": "Add document operations telemetry and cost visibility",
+      "parent_tickets": [
+        "BR-ENG-185",
+        "BR-ENG-320",
+        "BR-ENG-326",
+        "BR-ENG-328"
+      ],
+      "owner": "L4_workflow",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "application",
+      "layer": "application",
+      "dependencies": [
+        "BR-DOC-006",
+        "BR-DOC-008"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 150,
+      "estimated_minutes_range": [
+        90,
+        260
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_observability.py",
+        "tests/test_docai_observability.py",
+        "docs/guides/docai-operations.md"
+      ],
+      "acceptance_criteria": [
+        "Expose queue age/depth, retries, dead letters, parse coverage, review backlog, accepted/rejected rates, supported class coverage and provider configuration state.",
+        "One trace reconstructs intake, version, extraction, review and export; tenant-scoped logs omit secrets and sensitive document content by default.",
+        "Report CPU/GPU/backend actually used, provider latency and measured usage/cost; unknown, unavailable and not-tested values must not appear as zeros or success.",
+        "Enforce the configured request/spend/time budgets before dispatch and test cancellation, exhausted quotas and partial provider failures with mocks.",
+        "Document alert thresholds, recovery ownership and operational bottlenecks without creating a second swarm dashboard or claiming production SLAs."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-review-interface",
+        "br-build-release-operations"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [],
+      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+    },
+    {
+      "id": "BR-DOC-016",
+      "title": "Publish reviewed document outputs to downstream consumers",
+      "parent_tickets": [
+        "BR-ENG-127",
+        "BR-ENG-182",
+        "BR-ENG-183",
+        "BR-ENG-282",
+        "BR-ENG-294"
+      ],
+      "owner": "L1_evidence",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "application",
+      "layer": "consumer_interface",
+      "dependencies": [
+        "BR-DOC-010"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 100,
+      "estimated_minutes_range": [
+        60,
+        180
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_exports.py",
+        "pilot/document_offer_layer.py",
+        "tests/test_docai_exports.py",
+        "docs/guides/docai-consumer-contract.md"
+      ],
+      "acceptance_criteria": [
+        "Export only authorized, reviewed, current fields through a versioned document-neutral contract with typed values, evidence references and explicit missing/conflict states.",
+        "Preserve retraction, expiry, supersession and ACL changes in consumer refresh; never treat a cached previously accepted field as permanently valid.",
+        "Keep document_offer_layer.py as one optional acquisition consumer that maps reviewed fields to existing finance rules; do not make it the Doc AI application layer.",
+        "Review tasks for consequential findings remain separate from external actions; no automated offers, messages, payment, legal status or transaction advancement occurs.",
+        "A simple nonfinancial consumer fixture demonstrates Doc AI usability without any underwriting or negotiation engine."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-evidence-engine",
+        "br-build-document-workflows"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [],
+      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+    },
+    {
+      "id": "BR-DOC-017",
+      "title": "Verify isolation, hostile inputs and recovery across the slice",
+      "parent_tickets": [
+        "BR-ENG-130",
+        "BR-ENG-184",
+        "BR-ENG-295",
+        "BR-ENG-323",
+        "BR-ENG-327"
+      ],
+      "owner": "L3_quality",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "offline_validation",
+      "layer": "quality_gate",
+      "dependencies": [
+        "BR-DOC-003",
+        "BR-DOC-004",
+        "BR-DOC-006",
+        "BR-DOC-007",
+        "BR-DOC-008"
+      ],
+      "status": "planned",
+      "priority": 0,
+      "estimated_minutes": 150,
+      "estimated_minutes_range": [
+        100,
+        260
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "tests/test_docai_adversarial.py",
+        "reports/validation/docai-adversarial.json"
+      ],
+      "acceptance_criteria": [
+        "Inject cross-tenant access, revoked ACL, malicious file paths, hostile document instructions, mismatched identity and forbidden review/action fields; no unintended authority or external call is granted.",
+        "Exercise changed payload with reused idempotency key, concurrent writes, stale version/CAS updates, lost leases, partial parsing, dead letters and crash recovery.",
+        "Mock provider timeout, quota, cancellation, malformed metadata, schema drift, missing provenance and truncated responses; all failures remain traceable and recoverable.",
+        "Check canonical source identity and review projection across supersession, deletion/retention and conflicting claims; permission changes invalidate derived access.",
+        "Record meaningful failure evidence for the local vertical slice independently of optional connector, full twelve-parser or retrieval completion."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-model-validation",
+        "br-build-release-operations"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [],
+      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+    },
+    {
+      "id": "BR-DOC-018",
+      "title": "Expand typed parsers through the twelve-class coverage matrix",
+      "parent_tickets": [
+        "BR-ENG-175",
+        "BR-ENG-180",
+        "BR-ENG-286"
+      ],
+      "owner": "L2_engineering",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "expansion",
+      "layer": "engine",
+      "dependencies": [
+        "BR-DOC-002",
+        "BR-DOC-005"
+      ],
+      "status": "planned",
+      "priority": 2,
+      "estimated_minutes": 240,
+      "estimated_minutes_range": [
+        160,
+        480
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_parsers",
+        "tests/test_docai_parser_coverage.py",
+        "docs/validation/docai-parser-coverage.md"
+      ],
+      "acceptance_criteria": [
+        "Implement and review one bounded parser increment at a time against all twelve registered class contracts; track implemented/tested/unsupported field coverage explicitly.",
+        "Provide page/row evidence, unit/date/currency normalization, abstention and UNKNOWN quarantine; parser availability is separate from validated field coverage.",
+        "Keep OCR/model extraction behind the provider contract and activation gates; installing a parser must not download or start a model.",
+        "Use reviewed fixtures and adversarial partial/truncated documents per class; publish residual gaps and migration/version compatibility.",
+        "Initial local extraction and the first bounded live provider evaluation do not wait for all twelve classes."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-document-workflows",
+        "br-build-data-connectors"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [],
+      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+    },
+    {
+      "id": "BR-DOC-019",
+      "title": "Later: add permission-aware retrieval and versioned embeddings",
+      "parent_tickets": [
+        "BR-ENG-181",
+        "BR-ENG-272",
+        "BR-ENG-286"
+      ],
+      "owner": "L2_engineering",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "optional_retrieval",
+      "layer": "application",
+      "dependencies": [
+        "BR-DOC-004",
+        "BR-DOC-018"
+      ],
+      "status": "deferred",
+      "priority": 3,
+      "estimated_minutes": 240,
+      "estimated_minutes_range": [
+        160,
+        480
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "pilot/document_retrieval.py",
+        "tests/test_docai_retrieval.py",
+        "docs/guides/docai-retrieval.md"
+      ],
+      "acceptance_criteria": [
+        "Design a revision-specific chunk/embedding/index contract with embedding model/version, typed metadata filters and full source citations.",
+        "Enforce tenant/purpose authorization at ingestion and query and propagate source deletion, revocation, supersession and retention to derived indexes.",
+        "Evaluate retrieval quality, index memory, latency and cost against a baseline before selecting an embedding or vector backend.",
+        "Embedding-provider activation has its own endpoint/data/budget/quality checks; extraction-provider success does not authorize it.",
+        "Retrieval remains an optional later feature and is never a dependency of first-page extraction, manual review or the initial provider evaluation."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-data-connectors",
+        "br-build-ai-adapters"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [],
+      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+    },
+    {
+      "id": "BR-DOC-020",
+      "title": "Run independent R diagnostics and calibration when available",
+      "parent_tickets": [
+        "BR-ENG-291",
+        "BR-ENG-317",
+        "BR-ENG-319",
+        "BR-ENG-328"
+      ],
+      "owner": "L3_quality",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "measurement",
+      "layer": "evaluation",
+      "dependencies": [
+        "BR-DOC-003",
+        "BR-DOC-010"
+      ],
+      "status": "blocked",
+      "priority": 2,
+      "estimated_minutes": 150,
+      "estimated_minutes_range": [
+        100,
+        280
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1,
+        "r_runtime": 1
+      },
+      "write_scopes": [
+        "research/docai",
+        "reports/validation/docai-r-validation.json"
+      ],
+      "acceptance_criteria": [
+        "Pin an executable R environment with renv and preserve typed document/run/provider/version identifiers and numeric missingness in the Python-to-R exchange.",
+        "Independently reproduce held-out accuracy/coverage/error interval metrics and reliability/calibration only when appropriate labeled provider scores exist.",
+        "Avoid leakage between versions of the same source across splits and report small/imbalanced samples and uncertainty instead of inventing calibrated probabilities.",
+        "Record R version, package lock, exact data hashes and executed commands; an export artifact or unexecuted script is not a completed R validation.",
+        "R execution is an optional independent measurement track; lack of R does not block the native product or a bounded provider experiment."
+      ],
+      "blockers": [
+        "No executable R runtime is verified in the present resource profile."
+      ],
+      "skill_refs": [
+        "br-build-r-validation",
+        "br-build-model-validation"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [],
+      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+    },
+    {
+      "id": "BR-DOC-021",
+      "title": "Measure useful CUDA batches against the CPU reference",
+      "parent_tickets": [
+        "BR-ENG-286",
+        "BR-ENG-288",
+        "BR-ENG-317",
+        "BR-ENG-320"
+      ],
+      "owner": "L2_engineering",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "measurement",
+      "layer": "compute",
+      "dependencies": [
+        "BR-DOC-005",
+        "BR-DOC-007",
+        "BR-DOC-010"
+      ],
+      "status": "blocked",
+      "priority": 2,
+      "estimated_minutes": 180,
+      "estimated_minutes_range": [
+        120,
+        360
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1,
+        "cuda_device": 1
+      },
+      "write_scopes": [
+        "tools/benchmark_docai_cuda.py",
+        "tests/test_docai_cuda_contract.py",
+        "reports/benchmarks/docai-cuda.json"
+      ],
+      "acceptance_criteria": [
+        "Identify sufficiently parallel preprocessing, tensor inference or scoring workloads; retain serial metadata/ACL/provenance transactions on CPU with the reason recorded.",
+        "Benchmark bounded batch sizes, device residence, pinned/reused buffers where appropriate, memory limits and host/device transfer overhead with a readable CPU reference.",
+        "Report actual device/runtime/provider/model versions, precision, parity/tolerances, cold/warm latency, throughput, peak memory and end-to-end transfer/synchronization time.",
+        "An explicit CUDA request fails visibly when unavailable; never report a speedup from mocks, utilization percentage alone, CPU fallbacks or remote hardware assumptions.",
+        "Optimize measured useful throughput within quality/cost limits. Hosted provider evaluation remains possible without local CUDA; self-hosted GPU execution is a distinct resource gate."
+      ],
+      "blockers": [
+        "No CUDA device is verified in the present resource profile."
+      ],
+      "skill_refs": [
+        "br-build-cuda-compute",
+        "br-build-model-validation"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [],
+      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+    },
+    {
+      "id": "BR-DOC-022",
+      "title": "Review a scoped production candidate and rollback evidence",
+      "parent_tickets": [
+        "BR-ENG-283",
+        "BR-ENG-295",
+        "BR-ENG-323",
+        "BR-ENG-324",
+        "BR-ENG-327"
+      ],
+      "owner": "SW-00_integrator",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "release_review",
+      "layer": "quality_gate",
+      "dependencies": [
+        "BR-DOC-014",
+        "BR-DOC-015",
+        "BR-DOC-017"
+      ],
+      "status": "planned",
+      "priority": 1,
+      "estimated_minutes": 100,
+      "estimated_minutes_range": [
+        60,
+        200
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "integrator": 1
+      },
+      "write_scopes": [
+        "docs/operations/docai-release-gate.md",
+        "reports/validation/docai-release-verdict.json"
+      ],
+      "acceptance_criteria": [
+        "Assemble an immutable release manifest of code/schema/provider versions, supported classes, permitted data, ACLs, budgets, operational owners and independent SW-13 verdicts.",
+        "Verify migrations, backup/restore, revocation, rollback/disable, alert routing and failure containment against the exact release candidate.",
+        "A failed or insufficient-evidence quality/security verdict blocks release or narrows supported scope; twelve-class expansion, R and GPU claims require their own evidence.",
+        "Name the actual deployment target and accepted production scope before promotion; this review does not activate a provider or authorize external document access.",
+        "Do not gate Doc AI on acquisition finance or commercial transaction readiness; downstream consumers have independent release responsibilities."
+      ],
+      "blockers": [],
+      "skill_refs": [
+        "br-build-product",
+        "br-build-release-operations",
+        "br-build-model-validation"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [],
+      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+    },
+    {
+      "id": "BR-DOC-023",
+      "title": "Reconcile the unavailable original document-platform specification",
+      "parent_tickets": [
+        "BR-ENG-186",
+        "BR-ENG-313",
+        "BR-ENG-314"
+      ],
+      "owner": "L1_evidence",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "source_reconciliation",
+      "layer": "requirements",
+      "dependencies": [],
+      "status": "blocked",
+      "priority": 2,
+      "estimated_minutes": 100,
+      "estimated_minutes_range": [
+        60,
+        200
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "docs/plans/docai-source-reconciliation.md"
+      ],
+      "acceptance_criteria": [
+        "When the original referenced document-platform PDF is available, record its hash/version and compare the exact task, schema and review contracts to existing master requirements.",
+        "List supported, contradictory, missing and already satisfied requirements with precise source provenance; do not invent the unavailable twenty microtasks or SQL.",
+        "Dedupe any needed changes against existing BR-ENG parents and this child plan; retain provenance gaps as explicit evidence states.",
+        "Current verified contracts and the latest user instruction are sufficient to begin the local Doc AI slice; this historical source gap is not a blanket prerequisite."
+      ],
+      "blockers": [
+        "The original referenced document-platform PDF required by BR-ENG-186 has not been inspected; other unrelated PDFs do not satisfy that provenance requirement."
+      ],
+      "skill_refs": [
+        "br-build-product",
+        "br-build-model-validation"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [],
+      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+    },
+    {
+      "id": "BR-DOC-024",
+      "title": "Gate D: conduct a separately enabled monitored production pilot",
+      "parent_tickets": [
+        "BR-ENG-130",
+        "BR-ENG-185",
+        "BR-ENG-283",
+        "BR-ENG-320",
+        "BR-ENG-327",
+        "BR-ENG-328"
+      ],
+      "owner": "L4_workflow",
+      "coordinator": "SW-00",
+      "independent_reviewer": "SW-13",
+      "phase": "production",
+      "layer": "deployment",
+      "dependencies": [
+        "BR-DOC-022"
+      ],
+      "status": "deferred",
+      "priority": 3,
+      "estimated_minutes": 180,
+      "estimated_minutes_range": [
+        120,
+        360
+      ],
+      "estimate_basis": "Assumed active builder effort for one scoped increment; not measured throughput, elapsed delivery time or a production capacity claim.",
+      "required_resources": {
+        "agent_worker": 1
+      },
+      "write_scopes": [
+        "docs/operations/docai-pilot-runbook.md",
+        "reports/operations/docai-pilot.json"
+      ],
+      "acceptance_criteria": [
+        "Enable only the approved release, deployment target, document classes, users/data sources and provider manifest; verify effective authorization and budgets before live production traffic.",
+        "Start at a small bounded canary with human review, traceable usage/cost, error/coverage thresholds, alerts, stop controls and a demonstrated rollback.",
+        "Track actual extraction quality, review workload, latency, failure recovery and cost using production denominators; expand only with reviewed evidence.",
+        "Report connection state, supported scope and deployment evidence accurately; no automatic negotiation, messages, property acquisition or runtime agent swarm is introduced.",
+        "Production activation is a distinct later step. This plan and any synthetic test do not enable production or establish two-million-household capacity."
+      ],
+      "blockers": [
+        "No production deployment target, approved release manifest or monitored rollout scope is verified."
+      ],
+      "skill_refs": [
+        "br-build-release-operations",
+        "br-build-model-validation"
+      ],
+      "reuse_evidence": [],
+      "completion_evidence": [],
+      "status_basis": "Planned child acceptance remains open; existing reusable code does not establish completion of this child item."
+    }
+  ],
+  "updated_on": "2026-11-22",
+  "implementation_increment": {
+    "name": "native_document_review_v1",
+    "date": "2026-11-22",
+    "baseline_tree": "42fe36afc14efd46fa441f76c50c6ee7b95980ec",
+    "verification": "docs/plans/docai-native-increment-verification.md",
+    "local_status_rule": "Completed means locally implemented and reviewed for this child scope, not closed in PROJECT_INTERNAL or deployed. Partial artifacts do not complete broader acceptance.",
+    "next_parallel_wave": [
+      "BR-DOC-004",
+      "BR-DOC-006",
+      "BR-DOC-007"
+    ],
+    "estimate_note": "Existing effort ranges remain assumptions for open acceptance work. Completed work is excluded from the regenerated remaining schedule; no measured worker speed or delivery promise is inferred."
+  }
+}

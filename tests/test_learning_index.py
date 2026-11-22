@@ -1,5 +1,7 @@
 """Exercise learning retrieval against disposable, staged repository snapshots."""
 from pathlib import Path
+import hashlib
+import json
 import sqlite3
 import subprocess
 from tempfile import TemporaryDirectory
@@ -92,6 +94,78 @@ class LearningIndexTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "maintained"):
             build(self.repo, self.db)
         self.assertEqual(search(self.db, "zephyr"), before)
+
+    def test_registered_builder_sources_are_searchable(self):
+        registrations = [
+            "config/builder-skills.json", "config/build-ticket-plan.json",
+            "config/docai-ticket-plan.json", "config/swarm-library-extension.json",
+            ".codex/agents/br-product-integrator.toml",
+            ".codex/agents/br-evidence-builder.toml",
+            ".codex/agents/br-quant-builder.toml",
+            ".codex/agents/br-quality-builder.toml",
+            "docs/plans/document-roadmap.md",
+        ]
+        for number, name in enumerate(registrations):
+            marker = f"registeredbuilder{number}"
+            if name.endswith(".json"):
+                body = json.dumps({"description": marker}) + "\n"
+            elif name.endswith(".toml"):
+                body = f'description = "{marker}"\n'
+            else:
+                body = f"# Builder roadmap\n{marker}\n"
+            self.stage(name, body)
+        result = build(self.repo, self.db)
+        self.assertEqual(result["documents"], 12)
+        for number, name in enumerate(registrations):
+            hits = search(self.db, f"registeredbuilder{number}")
+            self.assertEqual([hit["path"] for hit in hits], [name])
+
+    def test_structured_artifact_citations_resolve_to_staged_content(self):
+        name = "config/docai-ticket-plan.json"
+        original = json.dumps({"schema_version": "docai.fixture.v1", "tickets": [
+            {"id": "DOC-AI-001", "title": "Orchid provider connection", "state": "unconnected"}
+        ]}, indent=2) + "\n"
+        self.stage(name, original)
+        # An author can change the working copy without publishing that draft.
+        (self.repo / name).write_text('{"private_draft": "unpublishedorchid"}\n', encoding="utf-8")
+        blob = self.git("rev-parse", ":" + name).stdout.decode().strip()
+        build(self.repo, self.db)
+        hit = search(self.db, "orchid")[0]
+        self.assertEqual(hit["path"], name)
+        self.assertEqual(hit["git_blob"], blob)
+        self.assertEqual(hit["source_sha256"], hashlib.sha256(original.encode()).hexdigest())
+        self.assertEqual((hit["start_line"], hit["end_line"]), (1, len(original.splitlines())))
+        self.assertEqual(read(self.db, hit["chunk_id"])["text"], original.rstrip("\n"))
+        self.assertEqual(self.git("cat-file", "blob", blob).stdout.decode(), original)
+        self.assertEqual(search(self.db, "unpublishedorchid"), [])
+
+    def test_builder_registration_does_not_expand_private_or_recursive_scope(self):
+        for name in (
+            "config/private.json", "config/nested/docai-ticket-plan.json",
+            ".codex/agents/unregistered-agent.toml",
+            "docs/plans/private/notes.md",
+            "personal-skills/skill-private/SKILL.md",
+        ):
+            self.stage(name, "privatebuildermarker\n")
+        for name in ("config/docai-ticket-plan.json", "docs/plans/untracked.md"):
+            path = self.repo / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("untrackedbuildermarker\n", encoding="utf-8")
+        build(self.repo, self.db)
+        self.assertEqual(search(self.db, "privatebuildermarker untrackedbuildermarker"), [])
+
+    def test_registered_symlink_is_not_followed(self):
+        outside = self.repo.parent / "outside-plan.json"
+        outside.write_text('{"private": "outsidebuildermarker"}\n', encoding="utf-8")
+        link = self.repo / "config/docai-ticket-plan.json"
+        link.parent.mkdir(parents=True)
+        try:
+            link.symlink_to(outside)
+        except OSError as exc:
+            self.skipTest(f"Symbolic links unavailable: {exc}")
+        self.git("add", "--", "config/docai-ticket-plan.json")
+        build(self.repo, self.db)
+        self.assertEqual(search(self.db, "outsidebuildermarker"), [])
 
     def test_foreign_database_is_preserved(self):
         conn = sqlite3.connect(self.db)
