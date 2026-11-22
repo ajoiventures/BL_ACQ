@@ -2,6 +2,32 @@
 
 **Status** Implemented for the synthetic pilot on November 20, 2026.
 
+## Standing engineering preference · November 22, 2026
+
+The user requires code to maximize productive CUDA utilization. The repository
+[agent instructions](../../AGENTS.md) make this a default design requirement
+for new and modified computational features. The architecture agent carries
+the same instruction.
+
+Expose parallelism across independent deals, scenarios and simulations; retain
+ordered dependencies within a case. Batch work, reuse device allocations, keep
+intermediate data on the GPU, reduce transfers and profile realistic complete
+workloads. Preserve financial precision and compare with a readable CPU
+reference. Explicit CUDA requests must report failure or unavailable hardware
+rather than silently change backends. Any acceleration claim needs actual
+device, workload and timing evidence.
+
+This follows NVIDIA's emphasis on profiling, parallel workloads, transfer cost
+and device-resident intermediate data in its
+[CUDA Best Practices Guide](https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/).
+Useful end-to-end performance and correct results are the optimization targets.
+
+**Current scope remains explicit:** the synthetic underwriting screen below has
+a CUDA backend. The linked corporate statement, DCF and acquisition-finance
+engines currently run on CPU; a batched CUDA implementation for those modules
+is future work. Recording this preference does not claim that migration or a
+new benchmark has been completed.
+
 ## Context
 
 A single deal decision uses a handful of conservative price calculations. A sensitivity exercise can ask the same question for hundreds of thousands of combinations of resale value and stress. The Windows development workstation has an NVIDIA GPU. The browser, CI and other developer machines need a reproducible path on CPU.
