@@ -1,0 +1,35 @@
+/* Corporate case additions reuse the valuation workspace's visual language. */
+.corporate-case-name { font: 22px/1.25 Georgia, serif; margin-bottom: 10px; }
+.corporate-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin: 24px 0 0; }
+.corporate-actions .field-help { flex: 1; min-width: 200px; }
+.corporate-summary-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; margin: 18px 0 23px; }
+.corporate-summary-item { border-left: 2px solid var(--line); padding: 2px 12px; min-width: 0; }
+.corporate-summary-item .small-label { display: block; color: var(--muted); font-size: 8px; }
+.corporate-summary-item strong { display: block; font: 21px/1.4 Georgia, serif; margin-top: 5px; overflow-wrap: anywhere; }
+.corporate-table-space { margin-top: 24px; }
+.corporate-details { margin-top: 18px; }
+.corporate-details summary { color: var(--teal); font-size: 12px; padding: 7px 0; }
+.corporate-sources { padding-left: 19px; font-size: 12px; line-height: 1.65; }
+.corporate-sources li { margin: 0 0 14px; }
+.corporate-sources p { color: var(--muted); font-size: 11px; margin: 3px 0 0; }
+.corporate-digest { display: block; overflow-wrap: anywhere; font: 10px/1.6 ui-monospace, monospace; margin-top: 5px; }
+.corporate-total th, .corporate-total td { font-weight: 650; border-top: 1px solid #bec6bd; }
+#corporate-report table { min-width: 650px; }
+#corporate-report th[scope="row"] { white-space: normal; min-width: 180px; max-width: 240px; background: var(--surface); font-size: 11px; color: var(--ink); text-transform: none; letter-spacing: normal; }
+#corporate-report .statement-gap { color: var(--red); }
+#corporate-report .metric-card strong { font-size: clamp(29px, 2.8vw, 40px); }
+#case-json { min-height: 370px; }
+@media (max-width: 1150px) {
+  .masthead { gap: 22px; flex-wrap: wrap; }
+  .top-nav { gap: 17px; }
+}
+@media (max-width: 700px) {
+  .corporate-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .corporate-summary-item strong { font-size: 19px; }
+  .corporate-actions { align-items: stretch; }
+  .corporate-actions .button { width: 100%; }
+}
+@media print {
+  .corporate-actions { display: none !important; }
+  #corporate-report table { min-width: 0; }
+}

@@ -1,0 +1,281 @@
+{
+  "id": "nvidia_workbook_reproduction",
+  "label": "Nvidia: audited workbook reproduction",
+  "description": "Historical author arithmetic under an input verification hold; dated assumptions and an unstamped stored quote.",
+  "request": {
+    "schema_version": "1.0",
+    "deal_id": "BR-VAL-NVDA-HISTORICAL",
+    "asset_id": "NVDA-AUTHOR-MODEL-2026-10-29",
+    "as_of": "2026-11-21",
+    "model_type": "corporate_dcf",
+    "assumptions": {
+      "revenue": 302970000000.0,
+      "operating_margin": 0.6647200189215705,
+      "growth_rate": 0.2,
+      "target_margin": 0.5,
+      "tax_rate": 0.25,
+      "wacc": 0.0979423938135254,
+      "terminal_growth": 0.0495,
+      "sales_to_capital": 1.206668138058751,
+      "terminal_roic": 0.12,
+      "years": 10,
+      "cash": 56586000000.0,
+      "non_operating_assets": 51157000000.0,
+      "debt": 38351000000.0,
+      "debt_like_claims": 448070655203.99054,
+      "units": 24315000000.0,
+      "growth_path": [
+        0.45,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.1699,
+        0.1398,
+        0.10969999999999999,
+        0.07959999999999999,
+        0.04949999999999999
+      ],
+      "margin_path": [
+        0.65,
+        0.5900000000000001,
+        0.56,
+        0.53,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "tax_path": [
+        0.175,
+        0.175,
+        0.175,
+        0.175,
+        0.175,
+        0.19,
+        0.20500000000000002,
+        0.22000000000000003,
+        0.23500000000000004,
+        0.25000000000000006
+      ],
+      "discount_path": [
+        0.0979423938135254,
+        0.0979423938135254,
+        0.0979423938135254,
+        0.0979423938135254,
+        0.0979423938135254,
+        0.09635391505082032,
+        0.09476543628811523,
+        0.09317695752541015,
+        0.09158847876270507,
+        0.08999999999999998
+      ],
+      "reinvestment_timing": "next_year"
+    },
+    "market": {
+      "price": 163.0,
+      "as_of": null,
+      "source_id": "nvda-workbook-quote"
+    },
+    "policy": {
+      "margin_of_safety": 0.3,
+      "max_downside_probability": 0.35,
+      "max_source_age_days": 365,
+      "max_quote_age_days": 7
+    },
+    "sources": [
+      {
+        "id": "nvda-author-article",
+        "title": "Aswath Damodaran: dated valuation discussion, November 19, 2026",
+        "url": "https://aswathdamodaran.substack.com/p/the-value-of-human-frailty-nvidias",
+        "observed_on": "2026-11-19",
+        "verified": false,
+        "kind": "assumptions",
+        "notes": "Primary author states an October 29, 2026 baseline of approximately $4.8 trillion, approximately $200 per share, and a separate approximately $140 entry threshold. Historical author estimates, not a live quote or approved current value.",
+        "issues": [
+          "historical_author_estimate",
+          "independent_financial_input_verification_pending"
+        ]
+      },
+      {
+        "id": "nvda-workbook-financials",
+        "title": "NYU source workbook: historical financial inputs and equity bridge",
+        "url": "https://pages.stern.nyu.edu/~adamodar/pc/blog/NvidiaJensenEffect.xlsx",
+        "observed_on": "2026-10-29",
+        "verified": false,
+        "kind": "financials",
+        "notes": "Date is the article-stated valuation date. Workbook Input sheet B3 instead contains 2022-10-31; reporting periods and contractual commitments have not been reconciled to filings. File modified metadata: 2026-11-19T19:08:45Z. Source USD millions and shares millions are converted to absolute USD and actual shares.",
+        "issues": [
+          "valuation_date_conflict_2022_10_31_vs_2026_10_29",
+          "financial_period_not_independently_reconciled",
+          "commitment_composition_not_independently_reconciled"
+        ]
+      },
+      {
+        "id": "nvda-workbook-model",
+        "title": "NYU source workbook: audited formula paths and historical WACC inputs",
+        "url": "https://pages.stern.nyu.edu/~adamodar/pc/blog/NvidiaJensenEffect.xlsx",
+        "observed_on": "2026-11-19",
+        "verified": false,
+        "kind": "assumptions",
+        "notes": "Formula paths and cached baseline outputs were independently reproduced. Active WACC uses an industry-average multibusiness mix of Computers/Peripherals, Electronics (General), and Entertainment despite the front-sheet Semiconductor label; review is required. Explicit paths preserve saved source behavior.",
+        "issues": [
+          "wacc_multibusiness_mix_requires_review",
+          "terminal_reinvestment_discontinuity",
+          "historical_model_not_current_valuation"
+        ]
+      },
+      {
+        "id": "nvda-workbook-quote",
+        "title": "Stored source-workbook price of $163; timestamp unavailable",
+        "url": "https://pages.stern.nyu.edu/~adamodar/pc/blog/NvidiaJensenEffect.xlsx",
+        "observed_on": null,
+        "verified": false,
+        "kind": "quote",
+        "notes": "Input sheet B22 contains $163 without a quote timestamp. Retained only to demonstrate provenance handling; it must not support a current price-gap or trade decision.",
+        "issues": [
+          "missing_quote_timestamp",
+          "historical_stored_price_not_live"
+        ]
+      },
+      {
+        "id": "nvda-example-scenarios",
+        "title": "Illustrative scenario weights and stress assumptions",
+        "url": "https://example.invalid/black-river/valuation/nvidia-scenario-assumptions",
+        "observed_on": "2026-11-21",
+        "verified": false,
+        "kind": "assumptions",
+        "notes": "Weights 0.50/0.30/0.20 and the adverse scenario are illustrative design inputs, not author-supplied or market-implied probabilities. The middle scenario uses the saved replacement-case paths.",
+        "issues": [
+          "illustrative_probabilities",
+          "illustrative_stress_not_author_estimate"
+        ]
+      }
+    ],
+    "input_source_ids": [
+      "nvda-workbook-financials",
+      "nvda-workbook-model"
+    ],
+    "scenarios": [
+      {
+        "id": "author_baseline",
+        "label": "Saved author baseline; illustrative 50% weight",
+        "probability": 0.5,
+        "shock": {},
+        "source_ids": [
+          "nvda-workbook-model",
+          "nvda-example-scenarios"
+        ]
+      },
+      {
+        "id": "saved_replacement",
+        "label": "Saved replacement assumptions; illustrative 30% weight",
+        "probability": 0.3,
+        "shock": {},
+        "source_ids": [
+          "nvda-workbook-model",
+          "nvda-example-scenarios"
+        ],
+        "assumptions_override": {
+          "growth_path": [
+            0.4,
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.1699,
+            0.1398,
+            0.10969999999999999,
+            0.07959999999999999,
+            0.04949999999999999
+          ],
+          "margin_path": [
+            0.6,
+            0.5599999999999999,
+            0.54,
+            0.52,
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "sales_to_capital": 1.21
+        }
+      },
+      {
+        "id": "illustrative_adverse",
+        "label": "Illustrative persistent impairment; 20% weight",
+        "probability": 0.2,
+        "shock": {
+          "near_term_growth_delta": -0.1,
+          "near_term_margin_delta": -0.08,
+          "long_term_growth_delta": -0.05,
+          "long_term_margin_delta": -0.1,
+          "discount_rate_delta": 0.02,
+          "reinvestment_multiplier": 1.2,
+          "one_time_cost": 20000000000.0,
+          "duration_years": 2
+        },
+        "source_ids": [
+          "nvda-example-scenarios"
+        ]
+      }
+    ],
+    "qualification": {
+      "buyable": "unknown",
+      "fundable": "unknown",
+      "sellable": "unknown"
+    },
+    "qualification_source_ids": {
+      "buyable": [],
+      "fundable": [],
+      "sellable": []
+    },
+    "claims": [
+      {
+        "id": "nvda-author-model-2026-10-29-book-debt",
+        "amount": 38351000000.0,
+        "in_cash_flows": false,
+        "in_equity_bridge": true,
+        "source_id": "nvda-workbook-financials"
+      },
+      {
+        "id": "nvda-capitalized-commitments",
+        "amount": 446512655203.99054,
+        "in_cash_flows": false,
+        "in_equity_bridge": true,
+        "source_id": "nvda-workbook-financials"
+      },
+      {
+        "id": "nvda-minority-interests",
+        "amount": 1558000000.0,
+        "in_cash_flows": false,
+        "in_equity_bridge": true,
+        "source_id": "nvda-workbook-financials"
+      }
+    ],
+    "notes": "Audited workbook reproduction / input verification hold. Reproducing author arithmetic does not verify filings, current value, current price, or suitability. The article threshold is 30% below a rounded pre-event $200 estimate; it differs from the saved replacement value and from this application policy applied to scenario-adjusted value. The stored $163 quote lacks a timestamp. Scenario weights are illustrative and were not supplied by the author.",
+    "illustrative": false,
+    "reference_values": {
+      "author_baseline": 199.49058622677524,
+      "author_entry_threshold": 140.0,
+      "author_entry_discount_to_rounded_baseline": 0.3,
+      "source_operating_asset_value": 5229292259308.031,
+      "source_equity_value": 4850613604104.04,
+      "source_replacement_equity_value": 4633745545905.537,
+      "source_replacement_value_per_unit": 190.57148039915842,
+      "source_replacement_impairment_fraction": 0.04470940707687254,
+      "source_terminal_value_share": 0.6694205249893902,
+      "source_total_debt_excluding_minority": 484863655203.99054,
+      "article_stated_valuation_date": "2026-10-29",
+      "workbook_input_date": "2022-10-31",
+      "workbook_modified_at": "2026-11-19T19:08:45Z",
+      "source_workbook_units": "USD millions and shares millions",
+      "example_units": "absolute USD and actual shares"
+    }
+  }
+}

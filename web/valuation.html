@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Valuation &amp; Risk | Black River</title>
+  <link rel="stylesheet" href="valuation.css">
+  <script type="module" src="valuation.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to valuation workspace</a>
+  <header class="masthead">
+    <a class="brand" href="index.html" aria-label="Black River home">BLACK RIVER<span>Investment intelligence</span></a>
+    <nav class="top-nav" aria-label="Workspace navigation">
+      <a href="index.html">Command</a>
+      <a href="connected.html">Deal review</a>
+      <a href="valuation.html" aria-current="page">Valuation &amp; Risk</a>
+      <a href="corporate.html">Corporate case</a>
+    </nav>
+    <div class="session-controls"><span id="session-state" class="session-state">Not signed in</span><button id="session-button" class="button button-header" type="button">Sign in</button></div>
+  </header>
+
+  <main id="workspace" tabindex="-1">
+    <section class="page-heading" aria-labelledby="page-title">
+      <div><p class="eyebrow">Acquisition desk <span>/</span> Decision support</p><h1 id="page-title">Valuation <em>&amp;</em> Risk</h1><p class="intro">Understand the cash flows. Price the uncertainty. Set a disciplined entry.</p></div>
+      <div class="heading-note"><span class="small-label">Three independent tests</span><p>Buyable <span>·</span> Fundable <span>·</span> Sellable</p></div>
+    </section>
+
+    <div id="connection-notice" class="notice notice-warning" hidden></div>
+    <section id="sign-in-panel" class="sign-in-panel" aria-labelledby="sign-in-title" hidden>
+      <div><p class="eyebrow">Private workspace</p><h2 id="sign-in-title">Sign in to calculate and save</h2><p>Use a current access key for this workspace. Your inputs stay in this tab.</p></div>
+      <form id="sign-in-form" class="sign-in-form">
+        <div class="field"><label for="actor">Account</label><select id="actor"><option value="reviewer">Independent reviewer</option><option value="founder">Founder</option></select></div>
+        <div class="field"><label for="access-key">Access key</label><input id="access-key" type="password" autocomplete="off" required></div>
+        <button class="button button-primary" type="submit">Sign in</button>
+        <button id="close-sign-in" class="button button-quiet" type="button">Close</button>
+      </form>
+      <p id="sign-in-error" class="field-error" role="alert"></p>
+    </section>
+
+    <div class="workspace-grid">
+      <aside class="input-column" aria-label="Valuation inputs">
+        <form id="valuation-form">
+          <section class="input-section asset-section" aria-labelledby="asset-heading">
+            <div class="section-heading"><span class="section-number">01</span><h2 id="asset-heading">Asset &amp; reference</h2></div>
+            <div class="field"><label for="asset-type">Asset class</label><select id="asset-type"><option value="public-equity">Public equity</option><option value="operating-business">Operating business</option><option value="property">Income property</option></select><p class="field-help" id="model-description">Value operating cash flows and the claims on them.</p></div>
+            <div class="field"><label for="example-select">Starting example</label><select id="example-select"><option value="">Loading examples…</option></select></div>
+            <p id="example-description" class="example-note">Illustrative inputs · No live quote</p>
+            <div id="identity-fields" class="field-grid"></div>
+            <div id="market-fields" class="field-grid"></div>
+            <p class="units-note"><span class="unit-mark">$</span> Enter USD in actual dollars. Rates are displayed as percentages. No hidden thousands or millions.</p>
+          </section>
+
+          <details class="input-section" open>
+            <summary><span class="section-number">02</span><span>Operating assumptions</span><span class="disclosure-icon" aria-hidden="true">+</span></summary>
+            <div class="details-body"><p class="section-note" id="assumptions-note">Forecast cash flows, then discount them to today.</p><div id="annual-path-control" class="annual-path-control" hidden><label><input id="use-annual-paths" type="checkbox"> Use explicit annual paths</label><p id="path-warning" class="field-help">Annual paths override the matching scalar assumptions. Edit individual years in the advanced packet.</p></div><div id="assumption-fields" class="field-grid"></div></div>
+          </details>
+
+          <details class="input-section" open>
+            <summary><span class="section-number">03</span><span>Event scenarios</span><span class="disclosure-icon" aria-hidden="true">+</span></summary>
+            <div class="details-body"><p class="section-note">Give each scenario an assumed weight and the assumptions that change. The engine validates the full set.</p><div id="scenario-fields"></div><button id="add-scenario" class="button button-secondary button-full" type="button">+ Add scenario</button><p id="scenario-note" class="field-help"></p></div>
+          </details>
+
+          <details class="input-section" open>
+            <summary><span class="section-number">04</span><span>Entry discipline</span><span class="disclosure-icon" aria-hidden="true">+</span></summary>
+            <div class="details-body"><div id="decision-fields" class="field-grid"></div><div class="form-divider"></div><p class="small-label">Independent qualifications</p><div id="qualification-fields" class="qualification-fields"></div><p class="field-help">Value alone does not establish access to the asset, available financing, or a credible exit.</p></div>
+          </details>
+
+          <details class="input-section">
+            <summary><span class="section-number">05</span><span>Evidence &amp; sources</span><span class="disclosure-icon" aria-hidden="true">+</span></summary>
+            <div class="details-body"><p class="section-note">Attach the origin and date of your assumptions. Illustrative or incomplete evidence can keep a valuation on hold.</p><div id="evidence-fields" class="field-grid"></div><div id="source-fields"></div><button id="add-source" class="button button-secondary button-full" type="button">+ Add source</button></div>
+          </details>
+
+          <details id="advanced-section" class="input-section">
+            <summary><span class="section-number">06</span><span>Advanced packet</span><span class="disclosure-icon" aria-hidden="true">+</span></summary>
+            <div class="details-body"><p class="section-note">Inspect or edit the complete inputs, including annual paths, source references, scenario overrides, and claims. Amounts are actual USD; rates here are decimals.</p><label class="small-label" for="advanced-packet">Complete request JSON</label><textarea id="advanced-packet" class="packet-editor" spellcheck="false" rows="14"></textarea><p id="advanced-status" class="field-help">Apply any JSON edits before calculating.</p><div class="advanced-actions"><button id="apply-packet" class="button button-secondary" type="button">Apply edits</button><button id="reset-packet" class="button button-quiet" type="button">Discard JSON edits</button></div></div>
+          </details>
+
+          <div class="evaluate-bar"><p id="input-status">Choose an example to begin.</p><button id="evaluate-button" class="button button-primary button-full" type="submit" disabled><span>Calculate value</span><span aria-hidden="true">↗</span></button><p class="evaluation-caption">A valuation supports review. It does not approve a transaction.</p></div>
+        </form>
+      </aside>
+
+      <div class="analysis-column">
+        <div id="evaluation-error" class="notice notice-error" role="alert" hidden></div>
+        <div id="stale-notice" class="notice notice-warning" hidden><strong>Inputs have changed.</strong> Recalculate before using or saving these results.</div>
+
+        <section id="empty-state" class="empty-state" aria-labelledby="empty-title">
+          <p class="eyebrow">The investment case</p><h2 id="empty-title">Price is the starting point.<br><em>Value needs a case.</em></h2><p>Build a baseline, account for distinct outcomes, and compare the entry price with the cash flows you expect to own.</p>
+          <div class="empty-steps"><div><span>01</span><strong>Set the economics</strong><p>Operating cash flow and an explicit valuation model.</p></div><div><span>02</span><strong>Weigh the outcomes</strong><p>Assumed scenario weights and operating changes.</p></div><div><span>03</span><strong>Test the entry</strong><p>Margin of safety, evidence, and deal qualifications.</p></div></div>
+          <p class="empty-footnote">Load an illustrative example at left, adjust the inputs, and calculate.</p>
+        </section>
+
+        <section id="report" aria-labelledby="report-title" hidden>
+          <div class="report-header"><div><p id="report-kicker" class="eyebrow">Valuation summary</p><h2 id="report-title">The investment case</h2><p id="report-meta" class="report-meta"></p></div><span id="decision-status" class="status-pill">Awaiting calculation</span></div>
+          <div id="illustrative-notice" class="notice notice-subtle" hidden>Illustrative assumptions and reference price. This example does not use a live quote.</div>
+          <div class="metric-grid">
+            <article class="metric-card"><p class="small-label">Baseline value</p><strong id="baseline-value">—</strong><span id="baseline-unit" class="metric-note">Per unit</span></article>
+            <article class="metric-card metric-adjusted"><p class="small-label">Event-adjusted value</p><strong id="adjusted-value">—</strong><span class="metric-note">Assumed scenario weights</span></article>
+            <article class="metric-card metric-entry"><p class="small-label">Entry ceiling</p><strong id="entry-value">—</strong><span id="entry-margin" class="metric-note">After margin of safety</span></article>
+          </div>
+          <div class="market-strip"><div><span class="small-label">Reference price</span><strong id="reference-price">—</strong></div><div><span class="small-label"><span id="upside-label">Upside to value</span> <span class="info" tabindex="0" data-tip="(Event-adjusted value − reference price) ÷ reference price. This uses the price paid as its denominator." aria-label="Upside is the difference divided by reference price.">i</span></span><strong id="upside-value">—</strong></div><div><span class="small-label">Discount to value <span class="info" tabindex="0" data-tip="(Event-adjusted value − reference price) ÷ event-adjusted value. This uses estimated value as its denominator." aria-label="Discount to value is the difference divided by estimated value.">i</span></span><strong id="discount-value">—</strong></div><div><span class="small-label">Scenario weight below price <span class="info" tabindex="0" data-tip="Sum of assumed weights for scenarios whose current modeled intrinsic value is below the reference price. This does not estimate the probability of a realized loss over a holding period." aria-label="Assumed scenario weights comparing current modeled intrinsic value with reference price, not the probability of a realized loss over a holding period.">i</span></span><strong id="downside-value">—</strong></div></div>
+          <p id="price-context-note" class="field-help price-context-note"></p>
+
+          <section class="report-section" aria-labelledby="entry-heading"><div class="report-section-heading"><div><p class="eyebrow">01 / Price discipline</p><h3 id="entry-heading">Where the price sits</h3></div><span id="value-unit-label" class="small-label">USD per unit</span></div><div id="price-comparison" class="comparison-chart"></div><div id="entry-references" class="reference-notes"></div><ul id="decision-reasons" class="reason-list"></ul><div id="qualification-results" class="qualification-results"></div><div id="capital-results" class="capital-results" hidden></div></section>
+
+          <section class="report-section" aria-labelledby="forecast-heading"><div class="report-section-heading"><div><p class="eyebrow">02 / Cash flow</p><h3 id="forecast-heading">The baseline forecast</h3></div><span id="forecast-units" class="small-label">USD, actual dollars</span></div><div id="forecast-chart" class="forecast-chart" role="img" aria-label="Forecast chart; detailed values follow in the table"></div><div class="table-scroll"><table id="forecast-table"><caption class="visually-hidden">Baseline cash flow forecast in actual USD</caption><thead></thead><tbody></tbody></table></div><div id="terminal-summary" class="terminal-summary"></div></section>
+
+          <section class="report-section" aria-labelledby="scenario-heading"><div class="report-section-heading"><div><p class="eyebrow">03 / Uncertainty</p><h3 id="scenario-heading">Distinct outcomes, assumed weights</h3></div></div><div id="scenario-results" class="scenario-results"></div><p id="scenario-result-note" class="section-note"></p></section>
+
+          <section class="report-section" aria-labelledby="sensitivity-heading"><div class="report-section-heading"><div><p class="eyebrow">04 / Sensitivity</p><h3 id="sensitivity-heading">How assumptions move value</h3></div></div><p id="sensitivity-description" class="section-note"></p><div class="table-scroll"><table id="sensitivity-table" class="sensitivity-table"><caption class="visually-hidden">Valuation sensitivity</caption><thead></thead><tbody></tbody></table></div><p id="sensitivity-note" class="field-help"></p><div class="reverse-card"><div><p class="small-label">Reverse DCF</p><h4>What growth does the price imply?</h4><p id="reverse-note"></p></div><strong id="implied-growth">—</strong></div></section>
+
+          <section class="report-section" aria-labelledby="evidence-heading"><div class="report-section-heading"><div><p class="eyebrow">05 / Confidence</p><h3 id="evidence-heading">Evidence behind the numbers</h3></div><span id="evidence-status" class="status-pill">Unverified</span></div><div id="evidence-holds"></div><div id="obligation-results" class="obligation-results" hidden></div><ul id="source-results" class="source-results"></ul><details class="methodology"><summary>Model notes and calculation identity</summary><div id="model-notes"></div><p class="small-label">Calculation reference</p><code id="packet-digest"></code></details></section>
+
+          <div class="report-actions"><p id="save-status">Save a dated record of this valuation and its inputs.</p><div><button id="export-button" class="button button-secondary" type="button" disabled>Export JSON</button><button id="save-button" class="button button-primary" type="button" disabled>Save valuation</button></div></div>
+        </section>
+
+        <section class="history-section" aria-labelledby="history-heading"><div class="report-section-heading"><div><p class="eyebrow">Research record</p><h2 id="history-heading">Saved valuations</h2></div><button id="refresh-history" class="button button-quiet" type="button">Refresh</button></div><p id="history-empty" class="section-note">Sign in to see saved valuations.</p><div id="history-list" class="history-list"></div></section>
+      </div>
+    </div>
+    <footer class="page-footer"><span>BLACK RIVER <span class="footer-divider">/</span> Valuation &amp; Risk</span><p>Assumptions are explicit. Evidence is inspectable. Every decision remains a separate review.</p></footer>
+  </main>
+  <div id="feedback" class="feedback" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
