@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Corporate case | Black River</title>
+  <link rel="stylesheet" href="valuation.css">
+  <link rel="stylesheet" href="corporate.css">
+  <script type="module" src="corporate.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#corporate-workspace">Skip to corporate case</a>
+  <header class="masthead">
+    <a class="brand" href="index.html">BLACK RIVER<span>Investment intelligence</span></a>
+    <nav class="top-nav" aria-label="Workspace navigation">
+      <a href="index.html">Command</a>
+      <a href="connected.html">Deal review</a>
+      <a href="valuation.html">Valuation &amp; Risk</a>
+      <a href="corporate.html" aria-current="page">Corporate case</a>
+    </nav>
+    <div class="session-controls"><span id="session-state" class="session-state">Not signed in</span><button id="session-button" class="button button-header" type="button">Sign in</button></div>
+  </header>
+  <main id="corporate-workspace" tabindex="-1">
+    <section class="page-heading" aria-labelledby="page-title">
+      <div><p class="eyebrow">Corporate valuation and acquisition finance</p><h1 id="page-title">Follow the <em>financials.</em></h1><p class="intro">A sourced historical company case with linked statements, valuation and hypothetical financing.</p></div>
+    </section>
+    <section id="sign-in-panel" class="sign-in-panel" aria-labelledby="sign-in-title" hidden>
+      <div><p class="eyebrow">Private research workspace</p><h2 id="sign-in-title">Sign in to calculate</h2><p>Use a current reviewer or founder key from the local service.</p></div>
+      <form id="sign-in-form" class="sign-in-form">
+        <div class="field"><label for="actor">Account</label><select id="actor"><option value="reviewer">Reviewer</option><option value="founder">Founder</option></select></div>
+        <div class="field"><label for="access-key">Access key</label><input id="access-key" type="password" autocomplete="off" required></div>
+        <button class="button button-primary" type="submit">Sign in</button>
+        <button id="close-sign-in" class="button button-quiet" type="button">Close</button>
+      </form>
+      <p id="sign-in-error" class="field-error" role="alert"></p>
+    </section>
+    <div id="service-error" class="notice notice-error" role="alert" hidden></div>
+    <div class="workspace-grid">
+      <aside class="input-column" aria-label="Corporate case assumptions">
+        <form id="case-form">
+          <section class="input-section">
+            <div class="section-heading"><span class="section-number">01</span><h2>The research case</h2></div>
+            <p id="case-identity" class="corporate-case-name">Sign in to load the case.</p>
+            <p id="case-dates" class="section-note"></p>
+            <div class="field"><label for="selected-case">Operating case</label><select id="selected-case" disabled><option value="">No case loaded</option></select></div>
+            <p class="field-help">Case names describe assumptions. They do not assign probabilities or establish a forecast.</p>
+            <button id="reload-case" class="button button-secondary button-full" type="button" disabled>Reload original case</button>
+          </section>
+          <details class="input-section" open>
+            <summary><span class="section-number">02</span><span>Assumptions and financing</span><span class="disclosure-icon" aria-hidden="true">+</span></summary>
+            <div class="details-body">
+              <p class="section-note">Edit the complete assumption packet. Money is in actual USD, rates are decimals, and share counts are actual shares. Reported source facts remain fixed for this case.</p>
+              <label for="case-json" class="small-label">Case JSON</label>
+              <textarea id="case-json" class="packet-editor" rows="19" spellcheck="false" disabled></textarea>
+              <p id="editor-note" class="field-help">Calculate to validate and apply your edits.</p>
+            </div>
+          </details>
+          <div class="evaluate-bar">
+            <button id="calculate-case" class="button button-primary button-full" type="submit" disabled>Calculate case</button>
+            <p id="case-progress" class="evaluation-caption" aria-live="polite">Research only. No transaction is approved or executed.</p>
+          </div>
+        </form>
+      </aside>
+      <div class="analysis-column">
+        <div id="stale-notice" class="notice notice-warning" hidden><strong>Inputs changed.</strong> Recalculate before using or downloading the results.</div>
+        <section id="empty-state" class="empty-state">
+          <p class="eyebrow">The complete case</p><h2>See how operating assumptions<br>become <em>cash and value.</em></h2>
+          <p>The calculation links financial statements to DCF, selected comparable companies, acquisition funding and investor returns.</p>
+          <p class="section-note">Historical source periods and hypothetical model periods are shown separately. Reported facts do not make the forecast or financing terms verified.</p>
+        </section>
+        <section id="corporate-report" aria-labelledby="report-title" hidden>
+          <div class="report-header"><div><p class="eyebrow">Historical corporate research</p><h2 id="report-title">Corporate case</h2><p id="report-meta" class="report-meta"></p></div><span id="report-status" class="status-pill status-hold">Research requires review</span></div>
+          <div id="date-convention" class="notice notice-warning"></div>
+          <div id="financing-alert" class="notice notice-error" hidden></div>
+          <div class="metric-grid">
+            <article class="metric-card"><p class="small-label">DCF value per share</p><strong id="dcf-price">—</strong><span id="dcf-rate" class="metric-note"></span></article>
+            <article class="metric-card metric-adjusted"><p class="small-label">Reference close</p><strong id="reference-price">—</strong><span id="reference-date" class="metric-note"></span></article>
+            <article class="metric-card"><p class="small-label">Acquisition annual IRR</p><strong id="acquisition-irr">—</strong><span id="acquisition-multiple" class="metric-note"></span></article>
+          </div>
+          <div class="report-actions corporate-actions"><button id="download-json" class="button button-secondary" type="button" disabled>Download research JSON</button><span id="calculation-status" class="field-help" aria-live="polite"></span></div>
+
+          <section class="report-section" aria-labelledby="review-heading"><div class="report-section-heading"><div><p class="eyebrow">Review</p><h3 id="review-heading">Assumptions and unresolved items</h3></div></div><ul id="review-items" class="reason-list"></ul><details class="corporate-details"><summary>Forecast and transaction assumptions</summary><ul id="assumption-notes" class="reason-list"></ul></details><details class="corporate-details"><summary>Calculation conventions</summary><ul id="model-conventions" class="reason-list"></ul></details></section>
+
+          <section class="report-section" aria-labelledby="income-heading"><div class="report-section-heading"><div><p class="eyebrow">01 / Linked forecast</p><h3 id="income-heading">Income statement</h3></div><span class="small-label">USD millions except EPS and shares</span></div><p class="section-note">Forecast COGS and gross margin are before D&amp;A. All modeled D&amp;A is deducted below EBITDA.</p><div class="table-scroll"><table id="income-table"><caption>Hypothetical model years</caption><thead></thead><tbody></tbody></table></div></section>
+
+          <section class="report-section" aria-labelledby="balance-heading"><div class="report-section-heading"><div><p class="eyebrow">02 / Linked forecast</p><h3 id="balance-heading">Balance sheet</h3></div><span class="small-label">USD millions</span></div><p class="section-note">Other assets and liabilities follow the stated frozen-balance convention. Debt is shown in aggregate.</p><div class="table-scroll"><table id="balance-table"><caption>Hypothetical model years</caption><thead></thead><tbody></tbody></table></div></section>
+
+          <section class="report-section" aria-labelledby="cash-heading"><div class="report-section-heading"><div><p class="eyebrow">03 / Linked forecast</p><h3 id="cash-heading">Cash-flow statement</h3></div><span class="small-label">USD millions</span></div><div class="table-scroll"><table id="cash-table"><caption>Hypothetical model years</caption><thead></thead><tbody></tbody></table></div><p id="statement-checks" class="field-help"></p></section>
+
+          <section class="report-section" aria-labelledby="valuation-heading"><div class="report-section-heading"><div><p class="eyebrow">04 / Valuation</p><h3 id="valuation-heading">DCF and comparable companies</h3></div></div><div id="valuation-bridge" class="corporate-summary-grid"></div><div class="table-scroll"><table id="comparables-table"><caption>Selected historical comparison companies</caption><thead></thead><tbody></tbody></table></div><p id="comparables-note" class="field-help"></p><div id="comparable-range" class="corporate-summary-grid"></div></section>
+
+          <section class="report-section" aria-labelledby="acquisition-heading"><div class="report-section-heading"><div><p class="eyebrow">05 / Acquisition finance</p><h3 id="acquisition-heading">Funding and investor cash flows</h3></div></div><p id="financing-state" class="section-note"></p><div class="table-scroll"><table id="funding-table"><caption>Sources and uses, USD millions</caption><thead></thead><tbody></tbody></table></div><div class="table-scroll corporate-table-space"><table id="debt-table"><caption>Annual financing schedule, USD millions except ratios</caption><thead></thead><tbody></tbody></table></div><ul id="financing-issues" class="reason-list"></ul><div id="exit-summary" class="corporate-summary-grid"></div><div class="table-scroll"><table id="investor-table"><caption>Investor cash flows, USD millions</caption><thead></thead><tbody></tbody></table></div><p id="returns-note" class="field-help"></p></section>
+
+          <section class="report-section" aria-labelledby="historical-heading"><div class="report-section-heading"><div><p class="eyebrow">06 / Reported actuals</p><h3 id="historical-heading">Historical financial controls</h3></div><span class="small-label">USD millions</span></div><p class="section-note">Reported August fiscal years retain their original presentation. These are source controls, separate from the model-year forecast. The JSON export contains every transcribed source line.</p><div class="table-scroll"><table id="historical-table"><caption>Reported fiscal periods</caption><thead></thead><tbody></tbody></table></div><p id="historical-checks" class="field-help"></p></section>
+
+          <section class="report-section" aria-labelledby="sources-heading"><div class="report-section-heading"><div><p class="eyebrow">07 / Evidence</p><h3 id="sources-heading">Sources and input record</h3></div></div><p id="source-review" class="section-note"></p><ul id="sources-list" class="corporate-sources"></ul><p class="field-help">Calculation digest</p><code id="input-digest" class="corporate-digest"></code></section>
+        </section>
+      </div>
+    </div>
+    <footer class="page-footer"><span>BLACK RIVER</span><p>Historical research case. Financial assumptions, source completeness and professional use require review.</p></footer>
+  </main>
+</body>
+</html>

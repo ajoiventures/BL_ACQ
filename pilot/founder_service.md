@@ -9,3 +9,25 @@ A save supplies its expected version, evidence ID and operation ID. Within the c
 The HTTP service binds to 127.0.0.1 and serves an explicit static-file list. Use separate browser profiles to exercise session boundaries on one machine. Production identity, TLS termination, physical-device connectivity, live orders, and external payment services are outside this local acceptance run.
 
 Publishing a changed fixture stores another immutable evidence row keyed by the underwriting packet digest. The UI reads the stored snapshot and marks earlier decisions as superseded. A prior approval carries no authority over a new packet. Old draft or decision submissions return a conflict.
+
+## Corporate research case
+
+The same service serves `/corporate.html`. Its two API routes require a current
+reviewer or founder session in the commercial workspace. Civic identities have
+no access. A supplied Origin must match the loopback host, and POSTs require
+JSON with a maximum body of 65,536 bytes.
+
+- `GET /api/corporate/case` returns `{case, facts, actor}` from the checked-in
+  historical case and source-fact files.
+- `POST /api/corporate/evaluate` accepts the editable case object directly. It
+  always reloads source facts on the server and returns `{case, facts, report}`
+  together so a downloaded research packet contains the exact facts evaluated.
+  Additional client fact fields do not replace the server's evidence.
+
+These routes calculate research outputs only. They do not insert a saved run,
+record an approval, place an order or change the acquisition ledger. Their
+results remain `research_requires_review` with execution disabled. Malformed
+case objects return HTTP 400; unavailable source files return HTTP 503. The
+interface distinguishes reported August fiscal periods from the hypothetical
+October opening and model years. See the [page guide](../web/corporate_html.md)
+and [service tests](../docs/guides/test_corporate_service.md).

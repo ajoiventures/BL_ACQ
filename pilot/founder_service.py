@@ -35,6 +35,9 @@ STATIC = {
     "valuation.html",
     "valuation.css",
     "valuation.js",
+    "corporate.html",
+    "corporate.js",
+    "corporate.css",
 }
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS founder_active_evidence (
@@ -328,13 +331,13 @@ class Handler(BaseHTTPRequestHandler):
                 raise Rejected(403, "Same-origin JSON requests required.")
             try:
                 length = int(self.headers.get("Content-Length", 0))
-                maximum = 65536 if path.startswith("/api/valuation/") else 16384
+                maximum = 65536 if path.startswith(("/api/valuation/", "/api/corporate/")) else 16384
                 if not 1 <= length <= maximum:
                     raise ValueError
                 body = json.loads(self.rfile.read(length))
                 if not isinstance(body, dict):
                     raise ValueError
-            except (ValueError, UnicodeError):
+            except (ValueError, UnicodeError, RecursionError):
                 raise Rejected(400, "Invalid JSON request.") from None
         if path == "/api/session" and method == "POST":
             actor, token = body.get("actor"), body.get("token")
@@ -365,6 +368,9 @@ class Handler(BaseHTTPRequestHandler):
             return
         if path.startswith("/api/valuation/"):
             self.valuation_route(method, path, body if method == "POST" else None)
+            return
+        if path.startswith("/api/corporate/"):
+            self.corporate_route(method, path, body if method == "POST" else None)
             return
         matches = re.fullmatch(r"/api/workspaces/([\w-]+)/records/([\w-]+)", path)
         if not matches:
@@ -423,6 +429,33 @@ class Handler(BaseHTTPRequestHandler):
             raise Rejected(400, str(error)) from None
         raise Rejected(404, "Valuation resource unavailable")
 
+    def corporate_route(self, method, path, body):
+        from .corporate_case import evaluate_case, load_case
+
+        cookie = SimpleCookie()
+        cookie.load(self.headers.get("Cookie", ""))
+        actor = self.server.identify(cookie["br_session"].value if "br_session" in cookie else "")
+        if actor not in ("reviewer", "founder"):
+            raise Rejected(403, "Corporate research requires the commercial workspace.")
+        if self.headers.get("Origin") not in (None, "http://" + self.headers.get("Host", "")):
+            raise Rejected(403, "Same-origin requests required.")
+        if (method, path) not in (("GET", "/api/corporate/case"), ("POST", "/api/corporate/evaluate")):
+            raise Rejected(404, "Corporate research resource unavailable.")
+        try:
+            default_case, facts = load_case()
+        except (OSError, ValueError, UnicodeError):
+            raise Rejected(503, "Corporate source case is unavailable.") from None
+        if method == "GET":
+            self.respond(200, {"case": default_case, "facts": facts, "actor": actor})
+            return
+        try:
+            report = evaluate_case(body, facts)
+            # Return the exact facts used, not a client copy from an earlier GET.
+            # This route intentionally has no Store transaction or saved run.
+            self.respond(200, {"case": body, "facts": facts, "report": report})
+        except (ValueError, TypeError, KeyError, OverflowError, RecursionError) as error:
+            raise Rejected(400, "Invalid corporate case: " + str(error)) from None
+
     def dispatch(self, method):
         try:
             self.route(method)
@@ -450,6 +483,7 @@ if __name__ == "__main__":
     with Server(args.database, args.port) as server:
         print(f"Open http://127.0.0.1:{server.server_port}/connected.html")
         print(f"Valuation http://127.0.0.1:{server.server_port}/valuation.html")
+        print(f"Corporate case http://127.0.0.1:{server.server_port}/corporate.html")
         print("Synthetic local access keys expire on server restart.")
         for name, key in server.keys.items():
             print(f"{name}  {key}")

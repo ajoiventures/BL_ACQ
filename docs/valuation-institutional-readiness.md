@@ -1,6 +1,6 @@
 # Institutional readiness and coverage
 
-Assessment date: **November 21, 2026**. Status: **research prototype; institutional use has not been validated or approved**.
+Baseline assessment: **November 21, 2026**. Coverage updated **November 22, 2026**. Status: **research prototype; institutional use has not been validated or approved**.
 
 This document defines a higher development target for the valuation feature. It separates implemented behavior, missing coverage, proposed acceptance evidence and employer authorization. It is a project specification and assessment, not a certification, legal opinion, independent model-validation report or claim that the future modules already exist.
 
@@ -8,9 +8,9 @@ This document defines a higher development target for the valuation feature. It 
 
 The current code supports learning, inspectable research calculations and a demonstration of software engineering around valuation. A professional user can examine its formulas and restricted cases. Using a result in an employer's research, client work, reporting or capital decision requires the applicable software, data, security and model-review processes, as well as validation for that particular use.
 
-The implemented financial models are unlevered corporate FCFF and aggregate property NOI DCF. There are scenario reruns, sensitivity tables, a scalar reverse-growth solver, source-consistency checks, entry-price rules, optional research sizing and saved snapshots. See the [feature guide](valuation.md), [mathematical specification](guides/valuation.md), [decision layer](../pilot/valuation_layer.py) and [snapshot store](../pilot/valuation_store.py).
+The generic valuation module supports unlevered corporate FCFF and aggregate property NOI DCF, with scenario reruns, sensitivity tables, a scalar reverse-growth solver, source-consistency checks, entry-price rules, optional research sizing and saved snapshots. The separate [WD-40 corporate case](corporate-case.md) now adds three years of sourced historical statements, a linked five-year forecast, a constructed WACC, two historical peer comparisons, hypothetical acquisition financing and sponsor returns, and an editable workbook builder. See the [feature guide](valuation.md), [mathematical specification](guides/valuation.md), [corporate adapter](guides/corporate_case.md), [decision layer](../pilot/valuation_layer.py) and [snapshot store](../pilot/valuation_store.py).
 
-The current examples do not establish an independently verified company valuation. The Nvidia workbook is a numerical reproduction with unresolved input-quality questions; the business and property examples are synthetic. Reproducing a workbook and passing code tests demonstrate specific behaviors, not the economic truth of the source assumptions.
+The current examples do not establish an independently validated company valuation. The Nvidia workbook is a numerical reproduction with unresolved input-quality questions; the original business and property examples are synthetic. The WD-40 case has source locations, reconciled reported statements and explicit normalization judgments, but its October opening balances are an August carry-forward proxy and its quote history lacks an archived point-in-time vendor vintage. Reproducing a workbook and passing code tests demonstrate specific behaviors, not the economic truth of the source assumptions.
 
 Deterministic code is appropriate for reproducible calculations. It still requires correct accounting, an appropriate method, reliable data, numerical verification and qualified judgment. AI assistance with development or review does not supply institutional approval.
 
@@ -24,10 +24,10 @@ The following coverage map is a proposed product boundary. Each extension needs 
 
 | Workstream | Coverage to build and demonstrate | Current position |
 | --- | --- | --- |
-| Fundamental equity research | Historical financials; linked statements and business drivers; diluted earnings/share schedules; FCFF/FCFE; appropriate peer and sector valuation; valuation reconciliation and investment explanation. | Restricted FCFF, scenarios and sensitivities exist. Linked accounting, market comparables and sector models are missing. |
-| Investment banking and M&A | Corporate valuation; trading comparables; precedent transactions; sum-of-the-parts; sources and uses; financing; purchase accounting; combined pro forma statements; synergies; accretion/dilution. | A generic enterprise-to-equity bridge exists. Transaction models are missing. |
-| Private equity and LBO | Entry financing/fees; operating forecast; debt tranches and interest; amortization; minimum cash/revolver; cash sweep; exit bridge; investor cash flows; MOIC/IRR and attribution. | Unlevered value does not establish sponsor returns or financing feasibility. |
-| Corporate and private credit | Cash generation; liquidity runway; leverage/coverage; maturities/refinancing; covenants; collateral/seniority; recovery. Calibrated default-loss estimation is a separate extension. | The current engine has no loan schedule, covenant or recovery model. |
+| Fundamental equity research | Historical financials; linked statements and business drivers; diluted earnings/share schedules; FCFF/FCFE; appropriate peer and sector valuation; valuation reconciliation and investment explanation. | The sourced WD-40 case adds linked accounting, basic share movements, a WACC build and two historical peers. Complete award dilution, broader normalized peer coverage and sector models remain missing. |
+| Investment banking and M&A | Corporate valuation; trading comparables; precedent transactions; sum-of-the-parts; sources and uses; financing; purchase accounting; combined pro forma statements; synergies; accretion/dilution. | The corporate case adds sources/uses and acquisition financing. Precedents, purchase accounting, combined statements and accretion/dilution remain missing. |
+| Private equity and LBO | Entry financing/fees; operating forecast; debt tranches and interest; amortization; minimum cash/revolver; cash sweep; exit bridge; investor cash flows; MOIC/IRR and attribution. | A bounded annual term-loan/revolver acquisition case now calculates funding, liquidity, sale repayment and sponsor MOIC/IRR. Complex tranches, stub periods, interim distributions and investor waterfalls remain outside scope. |
+| Corporate and private credit | Cash generation; liquidity runway; leverage/coverage; maturities/refinancing; covenants; collateral/seniority; recovery. Calibrated default-loss estimation is a separate extension. | The acquisition case has annual debt/liquidity schedules and simplified leverage/coverage thresholds. It does not model actual credit-agreement definitions, collateral, recovery or calibrated default losses. |
 | CRE acquisitions | Rent roll; lease expiration; vacancy/concessions; operating costs; taxes/insurance; TI/LC/capex; debt/refinance; DSCR/LTV/debt yield; dated investor returns. Add development draws and waterfalls when required. | Aggregate NOI DCF is available for a narrow screen. Lease-level and financing models are missing. |
 | Rates and fixed income | Instrument schedules; calendars/day counts; accrued interest; clean/dirty price; curve construction/repricing; duration, convexity, DV01 and key-rate risk. | Outside current scope. |
 | Options and structured products | Contract/exercise conventions; appropriate no-arbitrage models; volatility inputs/calibration; Greeks; convergence and hedging checks. Structured products require additional instrument-specific treatment. | Outside current scope. |
@@ -39,7 +39,7 @@ The [CFA statement-modeling reading](https://www.cfainstitute.org/insights/profe
 
 ### Accounting and financing
 
-Corporate reinvestment currently uses a sales-to-capital relationship. It does not produce separate capex, depreciation, working-capital and balance-sheet schedules. Taxes on operating losses are floored at zero; there is no tax-loss carryforward model. Debt and shares are opening valuation inputs, without a dynamic financing, repayment, dilution or repurchase schedule.
+The generic corporate DCF still uses a sales-to-capital relationship and opening debt/share inputs. The separate WD-40 case now produces capex, depreciation, operating working-capital, linked balance-sheet and cash schedules. It includes a simplified nominal NOL schedule, explicit financing and year-end share movements, and a separate acquisition waterfall. It freezes selected taxes, lease, FX and other accounts and does not provide complete statutory accounting, purchase accounting or option/award valuation. These new case conventions do not silently change the older generic model.
 
 Property cash flows are before investor income tax and debt service. Subtracting outstanding debt in the equity bridge does not compute annual cash available for distribution, DSCR, a refinancing gap, levered IRR or a lender's covenant position. Those need actual financing cash flows and dates.
 
@@ -47,7 +47,7 @@ Claims have unique IDs and their aggregate bridge amounts reconcile. That does n
 
 ### Method and timing
 
-The forecast uses annual end-of-year discounting, with optional annual paths. It has no calendar-aware stub periods, quarterly cash flows, midyear convention, or currency conversion. WACC is supplied; there is no independent construction of risk-free rates, beta, risk premiums, debt cost or market capital weights.
+The models use annual end-of-year discounting. They have no calendar-aware stub periods, quarterly cash flows, midyear convention, or currency conversion. The generic model takes supplied discount rates; the corporate case constructs WACC from explicit risk-free, beta, premium, debt-cost and debt-weight assumptions. Those assumptions have not been independently estimated from an approved market dataset.
 
 Corporate terminal growth must be nonnegative and terminal NOPAT positive. Negative equity values are retained rather than valued as a limited-liability option. The model does not automatically switch to a liquidation, restructuring or financial-institution method. A supported mathematical input range is not an economic endorsement of every value inside that range.
 
@@ -63,11 +63,11 @@ The optional sizing bound uses the most adverse included positive-weight scenari
 
 ### Data and operational evidence
 
-Source review is a user assertion. A source URL and observation date do not bind each financial number to a document location, publication timestamp, security identifier or transformation. The current asset ID is a stable local identifier; it does not reconcile an issuer, share class, filing and market quote against a security master.
+Source review in the generic layer is a user assertion. The corporate dataset adds statement-level locations, supplemental fact locations, publication dates, units and transformations, and validates source references and historical arithmetic. It remains a manually assembled issuer-specific dataset without a security master, automated filing ingestion or a qualified human sign-off. Date-level disclosure does not establish intraday availability.
 
 Only date-level observation fields and USD inputs are supported. There is no filing ingestion, restatement management, authorized quote feed, market-session handling, corporate-action adjustment or point-in-time data store.
 
-Snapshot digests bind the request and a model-version label. They do not independently authenticate every financial output, prove a source's truth, bind the executable code/dependency environment, or prevent a privileged database operator from changing data and checksums together. The local session service and SQLite store are not evidence of enterprise access, disaster recovery or records-governance acceptance.
+Generic saved snapshot digests bind the request and a model-version label. The corporate JSON bundle additionally records its source facts, Python version and SHA-256 fingerprints of its three financial modules. These records do not independently authenticate output, prove source truth, lock every dependency, or prevent a privileged operator from changing data and hashes together. The corporate case is evaluated/exported without saving an approval or research-history row. The local session service and SQLite store are not evidence of enterprise access, disaster recovery or records-governance acceptance.
 
 Browser verification and hosted CI remain outstanding for the first draft. A launch restriction must remain visible as an incomplete gate, not be counted as a passed UI test.
 
@@ -96,7 +96,9 @@ Additional cases should isolate working-capital investment, capex/depreciation, 
 
 Scaling tests should preserve economic decisions when monetary inputs and comparison prices are rescaled consistently. They must not treat a fixed absolute tolerance as negligible for every allowed unit price. Boundary tests should cover exact entry thresholds, zero and negative values, high claim balances, terminal-rate limits and inverse roots. Directional expectations must be conditional: higher growth does not always create value when its reinvestment economics are poor.
 
-## 5. Data and financial-model architecture to add
+## 5. Data and financial-model architecture to extend
+
+The [first sourced corporate case](corporate-case.md) now implements a bounded version of the historical-to-forecast path below and provides an editable workbook builder. The remaining work is to broaden the data contract and accounting coverage, obtain qualified challenge, and complete operational acceptance; a single case is not evidence that these requirements are closed for every issuer.
 
 The next complete workflow should begin with historical statements rather than a manually entered revenue number. A proposed input record contains an issuer/security ID, financial concept, amount, currency, scale, period start/end, fiscal period, source filing/accession, source location, publication time, retrieval time, any restatement status, transformation and reviewer attribution.
 
@@ -114,7 +116,7 @@ An Excel output layer is a priority for the initial corporate/transaction scope.
 
 After the accounting and valuation foundation passes its gates, M&A modeling can add consideration mix, financing/fees, purchase accounting, incremental depreciation/amortization, synergies and combined statements. Accretion/dilution should be calculated from explicit combined earnings and shares, with the economic value conclusion assessed separately.
 
-LBO modeling can reuse the operating forecast but requires actual entry funding, tranche terms, interest, mandatory repayment, revolver behavior, cash sweeps, minimum liquidity, exit debt and dated sponsor cash flows. Report MOIC and IRR with their cash-flow basis and timing. Multiple or absent IRR roots must be handled explicitly. Investor waterfalls and fund economics belong in separate, documented modules.
+The new acquisition model reuses the operating forecast and implements entry funding, one term loan, one revolver, beginning-debt interest, mandatory repayment, cash sweeps, minimum liquidity, exit debt repayment and dated sponsor cash flows. A maturity coinciding with exit settles the remaining balloon once through sale proceeds; an earlier maturity remains an annual funding requirement. MOIC and IRR identify their equal-period, terminal-distribution convention. The solver rejects unsupported nonconventional cash-flow patterns. Additional tranches, interim distributions, investor waterfalls and fund economics need separately documented extensions.
 
 CRE underwriting should introduce lease-level revenues and costs, contractual dates, vacancy/renewal assumptions, TI/LC, maintenance and growth capex, debt service and refinance. Property value, distributable cash, lender coverage and investor return are different outputs. Development adds draw schedules, interest capitalization, absorption, delivery milestones and completion risk.
 
@@ -135,8 +137,8 @@ Monitoring a fundamental model should track forecast revenue, margins, investmen
 ## 8. Build order and promotion rule
 
 1. **Harden the present research module.** Correct identified defects, clarify output semantics, retain scope limits, complete the supported-environment test gate and assemble independent reference cases.
-2. **Deliver one complete corporate case.** Source and normalize a nonfinancial company's historical statements; construct a linked forecast; reconcile DCF and comparables; export the workbook and memo; obtain independent challenge.
-3. **Add acquisition finance.** Demonstrate a balanced sources-and-uses schedule, debt/cash roll-forwards, sponsor cash flows and return sensitivities on a fully reviewable transaction case.
+2. **Validate the first corporate case.** The WD-40 source pack, linked forecast, DCF/comparables, workbook builder and memo are implemented. Complete qualified economic/accounting challenge, native workbook review and outstanding operational gates before promoting the intended use.
+3. **Validate acquisition finance.** The annual funding, debt/cash, exit and sponsor-return case is implemented with adverse-case checks. Challenge financing definitions and timing against the intended transaction before extending tranches or claiming live-use readiness.
 4. **Extend by desk.** Add M&A, detailed CRE, credit or another selected module with separate acceptance evidence. Expand the supported-use register only after that module passes.
 5. **Obtain employer acceptance for intended use.** Validate the actual deployment, data, permissions, outputs and operating process. A project's internal completion label cannot authorize use inside a firm.
 
@@ -150,4 +152,4 @@ Claim reconciliation now uses accurate summation and a relative numerical tolera
 
 The reverse-growth solver now combines a target-relative tolerance with a local floating-point roundoff allowance and reports the achieved price tolerance. Tests cover scaled roots, out-of-range targets, a flat curve and a zero target with distant extreme sample values. The method and its limits are documented in [the mathematical specification](guides/valuation.md).
 
-The model version advances to `br-valuation-2` so revised behavior is distinguished from saved version-one results. This is a bounded numerical correction with targeted verification. It does not implement the missing statement, transaction, sector or enterprise-control modules described above, and it does not change the prototype's institutional-readiness status.
+The generic model version advanced to `br-valuation-2` so revised behavior is distinguished from saved version-one results. That numerical correction did not implement statement or transaction coverage. The November 22 case adds separate `br-statements-1`, `br-acquisition-finance-1` and `br-corporate-case-1` modules as documented above; institutional-readiness status remains unchanged.

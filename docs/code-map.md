@@ -51,5 +51,17 @@ Pick the behavior you want to understand. The first link opens the source. The s
 | [Valuation markup](../web/valuation.html) | [Explore valuation page structure](../web/valuation_html.md) |
 | [Valuation client](../web/valuation.js) | [Follow calculation and saved runs](../web/valuation_js.md) |
 | [Valuation presentation](../web/valuation.css) | [Inspect responsive valuation layout](../web/valuation_css.md) |
+| [Linked corporate statements](../pilot/corporate_model.py) | [Follow accounting and cash rollforwards](guides/corporate_model.md) |
+| [Acquisition finance](../pilot/acquisition_finance.py) | [Follow entry funding and sponsor returns](guides/acquisition_finance.md) |
+| [Sourced corporate adapter](../pilot/corporate_case.py) | [Trace normalization, DCF and peers](guides/corporate_case.md) |
+| [Corporate statement tests](../tests/test_corporate_model.py) | [Check linked financial identities](guides/test_corporate_model.md) |
+| [Acquisition finance tests](../tests/test_acquisition_finance.py) | [Check funding, maturity and exit repayment](guides/test_acquisition_finance.md) |
+| [Corporate integration tests](../tests/test_corporate_case.py) | [Check sources, units and valuation](guides/test_corporate_case.md) |
+| [Corporate API tests](../tests/test_corporate_service.py) | [Check scope and calculation delivery](guides/test_corporate_service.md) |
+| [Corporate command line](../tools/run_corporate_case.py) | [Reproduce a case bundle](guides/run_corporate_case.md) |
+| [Corporate workbook builder](../tools/build_corporate_workbook.mjs) | [Build and inspect the analyst workbook](guides/build_corporate_workbook.md) |
+| [Corporate markup](../web/corporate.html) | [Explore the case workspace](../web/corporate_html.md) |
+| [Corporate client](../web/corporate.js) | [Edit assumptions and export a current result](../web/corporate_js.md) |
+| [Corporate styles](../web/corporate.css) | [Read corporate workspace presentation](../web/corporate_css.md) |
 
 The [five-row sample](../Python_Asset_Demo/SYNTHETIC_assets.csv) supplies the reporting inputs. The [founder workflow guide](../web/README.md) walks through the browser simulation. For a first debugging session, follow [Start Here](START_HERE.md).

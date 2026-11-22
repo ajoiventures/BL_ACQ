@@ -1,0 +1,1456 @@
+{
+  "schema_version": "1.0",
+  "entity": {
+    "name": "WD-40 Company",
+    "ticker": "WDFC",
+    "cik": "0000105132",
+    "fiscal_year_end": "08-31",
+    "currency": "USD"
+  },
+  "analysis_cutoff": "2025-10-31",
+  "retrieved_on": "2026-11-22",
+  "purpose": "Historical filing-based modeling case. This is not a current quote or investment recommendation.",
+  "units": "USD thousands unless a field-specific unit says otherwise",
+  "review_status": "Transcribed from primary filings and arithmetically reconciled; no independent human verification or institutional approval is implied.",
+  "sources": [
+    {
+      "id": "wdfc_2025_10k",
+      "title": "WD-40 Company FY2025 Form 10-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/105132/000010513225000067/wdfc-20250831.htm",
+      "filing_index_url": "https://www.sec.gov/Archives/edgar/data/105132/000010513225000067/0000105132-25-000067-index.htm",
+      "accession": "0000105132-25-000067",
+      "published_on": "2025-10-27",
+      "accepted_at_sec": "2025-10-27 16:12:49",
+      "period_end": "2025-08-31",
+      "source_type": "issuer_sec_filing",
+      "content_snapshot_sha256": null
+    },
+    {
+      "id": "wdfc_2024_10k",
+      "title": "WD-40 Company FY2024 Form 10-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/105132/000010513224000064/wdfc-20240831.htm",
+      "filing_index_url": "https://www.sec.gov/Archives/edgar/data/105132/000010513224000064/0000105132-24-000064-index.htm",
+      "accession": "0000105132-24-000064",
+      "published_on": "2024-10-21",
+      "period_end": "2024-08-31",
+      "source_type": "issuer_sec_filing",
+      "content_snapshot_sha256": null
+    },
+    {
+      "id": "rpm_2025_annual_report",
+      "title": "RPM International FY2025 annual report, including audited Form 10-K financial statements",
+      "url": "https://www.sec.gov/Archives/edgar/data/110621/000119312525185357/d944593dars.pdf",
+      "filing_index_url": "https://www.sec.gov/Archives/edgar/data/110621/000119312525185357/0001193125-25-185357-index.htm",
+      "accession": "0001193125-25-185357",
+      "published_on": "2025-08-21",
+      "period_end": "2025-05-31",
+      "source_type": "issuer_sec_annual_report",
+      "content_snapshot_sha256": null,
+      "note": "SEC ARS publication date used conservatively; the embedded Form 10-K is dated July 24, 2025. Page references below refer to the embedded Form 10-K, not the introductory unaudited summary."
+    },
+    {
+      "id": "clx_2025_10k",
+      "title": "The Clorox Company FY2025 Form 10-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/21076/000002107625000039/clx-20250630.htm",
+      "filing_index_url": "https://www.sec.gov/Archives/edgar/data/21076/000002107625000039/0000021076-25-000039-index.htm",
+      "accession": "0000021076-25-000039",
+      "published_on": "2025-08-08",
+      "period_end": "2025-06-30",
+      "source_type": "issuer_sec_filing",
+      "content_snapshot_sha256": null
+    },
+    {
+      "id": "clx_2025_financial_exhibit",
+      "title": "Clorox FY2025 Form 10-K Exhibit 99.1: MD&A and audited financial statements",
+      "url": "https://www.sec.gov/Archives/edgar/data/21076/000002107625000039/clx-20250630_d2.htm",
+      "filing_index_url": "https://www.sec.gov/Archives/edgar/data/21076/000002107625000039/0000021076-25-000039-index.htm",
+      "accession": "0000021076-25-000039",
+      "published_on": "2025-08-08",
+      "period_end": "2025-06-30",
+      "source_type": "issuer_sec_filing_exhibit",
+      "content_snapshot_sha256": null
+    },
+    {
+      "id": "clx_2025_proxy",
+      "title": "Clorox 2025 definitive proxy statement",
+      "url": "https://www.sec.gov/Archives/edgar/data/21076/000155278125000311/e25287_clx-def14a.htm",
+      "filing_index_url": "https://www.sec.gov/Archives/edgar/data/21076/000155278125000311/0001552781-25-000311-index.htm",
+      "accession": "0001552781-25-000311",
+      "published_on": "2025-10-07",
+      "source_type": "issuer_sec_filing",
+      "content_snapshot_sha256": null
+    },
+    {
+      "id": "wdfc_chartexchange_history",
+      "title": "ChartExchange WDFC historical daily price table",
+      "url": "https://chartexchange.com/symbol/nasdaq-wdfc/historical/",
+      "published_on": null,
+      "market_event_date": "2025-10-31",
+      "retrieved_on": "2026-11-22",
+      "source_type": "public_market_data_publisher",
+      "content_snapshot_sha256": null,
+      "vintage_status": "Historical daily closing row retrieved after the case cutoff; original publication timestamp and unaltered point-in-time vendor snapshot are unavailable."
+    },
+    {
+      "id": "rpm_chartexchange_history",
+      "title": "ChartExchange RPM historical daily price table",
+      "url": "https://chartexchange.com/symbol/nyse-rpm/historical/",
+      "published_on": null,
+      "market_event_date": "2025-10-31",
+      "retrieved_on": "2026-11-22",
+      "source_type": "public_market_data_publisher",
+      "content_snapshot_sha256": null,
+      "vintage_status": "Historical daily closing row retrieved after the case cutoff; original publication timestamp and unaltered point-in-time vendor snapshot are unavailable."
+    },
+    {
+      "id": "clx_chartexchange_history",
+      "title": "ChartExchange CLX historical daily price table",
+      "url": "https://chartexchange.com/symbol/nyse-clx/historical/",
+      "published_on": null,
+      "market_event_date": "2025-10-31",
+      "retrieved_on": "2026-11-22",
+      "source_type": "public_market_data_publisher",
+      "content_snapshot_sha256": null,
+      "vintage_status": "Historical daily closing row retrieved after the case cutoff; original publication timestamp and unaltered point-in-time vendor snapshot are unavailable."
+    }
+  ],
+  "statement_provenance": {
+    "income_statement": {
+      "source_id": "wdfc_2025_10k",
+      "locator": "F-4, Consolidated Statements of Operations",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "classification": "reported_actual"
+    },
+    "cash_flow": {
+      "source_id": "wdfc_2025_10k",
+      "locator": "F-7, Consolidated Statements of Cash Flows",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "classification": "reported_actual"
+    },
+    "equity_rollforward": {
+      "source_id": "wdfc_2025_10k",
+      "locator": "F-6, Consolidated Statements of Stockholders' Equity",
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "classification": "reported_actual"
+    },
+    "balance_sheet_2025_2024": {
+      "source_id": "wdfc_2025_10k",
+      "locator": "F-3, Consolidated Balance Sheets",
+      "years": [
+        2024,
+        2025
+      ],
+      "classification": "reported_actual"
+    },
+    "balance_sheet_2023": {
+      "source_id": "wdfc_2024_10k",
+      "locator": "F-3, Consolidated Balance Sheets",
+      "years": [
+        2023
+      ],
+      "classification": "reported_actual"
+    }
+  },
+  "field_units": {
+    "income_statement.basic_eps": "USD per share",
+    "income_statement.diluted_eps": "USD per share",
+    "income_statement.basic_weighted_average_shares": "shares thousands",
+    "income_statement.diluted_weighted_average_shares": "shares thousands",
+    "balance_sheet.shares_outstanding": "shares",
+    "balance_sheet.shares_issued": "shares",
+    "balance_sheet.treasury_shares": "shares"
+  },
+  "periods": {
+    "2023": {
+      "period_start": "2022-09-01",
+      "period_end": "2023-08-31",
+      "income_statement": {
+        "revenue": 537255,
+        "cost_of_products_sold": 263035,
+        "gross_profit": 274220,
+        "selling_general_administrative": 154684,
+        "advertising_sales_promotion": 28807,
+        "intangible_amortization": 1005,
+        "total_operating_expenses": 184496,
+        "operating_income": 89724,
+        "interest_income": 231,
+        "interest_expense": 5614,
+        "other_income_expense_net": 822,
+        "pretax_income": 85163,
+        "income_tax_expense": 19170,
+        "net_income": 65993,
+        "basic_eps": 4.84,
+        "diluted_eps": 4.83,
+        "basic_weighted_average_shares": 13578,
+        "diluted_weighted_average_shares": 13604
+      },
+      "balance_sheet": {
+        "cash": 48143,
+        "accounts_receivable_net": 98039,
+        "inventory": 86522,
+        "other_current_assets": 15821,
+        "current_assets": 248525,
+        "ppe_net": 66791,
+        "goodwill": 95505,
+        "intangibles_net": 4670,
+        "right_of_use_assets": 7820,
+        "deferred_tax_assets_net": 1201,
+        "other_noncurrent_assets": 13454,
+        "total_assets": 437966,
+        "accounts_payable": 30826,
+        "accrued_liabilities": 30000,
+        "accrued_payroll": 16722,
+        "short_term_borrowings": 10800,
+        "income_taxes_payable": 494,
+        "current_liabilities": 88842,
+        "long_term_borrowings": 109743,
+        "deferred_tax_liabilities_net": 10305,
+        "long_term_operating_lease_liabilities": 5832,
+        "other_long_term_liabilities": 13066,
+        "total_liabilities": 227788,
+        "common_stock": 20,
+        "additional_paid_in_capital": 171546,
+        "retained_earnings": 477488,
+        "accumulated_other_comprehensive_income": -31206,
+        "treasury_stock_cost": -407670,
+        "total_equity": 210178,
+        "total_liabilities_equity": 437966,
+        "shares_outstanding": 13563434,
+        "shares_issued": 19905815,
+        "treasury_shares": 6342381
+      },
+      "cash_flow": {
+        "net_income": 65993,
+        "depreciation_amortization": 8151,
+        "cloud_implementation_amortization": 270,
+        "deferred_income_taxes": -1254,
+        "uncertain_tax_position_release": 0,
+        "stock_based_compensation": 6434,
+        "unrealized_fx_losses_gains": -1702,
+        "credit_loss_provision": 391,
+        "inventory_writeoffs": 713,
+        "other_noncash": -90,
+        "change_receivables": -5339,
+        "change_inventory": 19367,
+        "change_other_assets": -1637,
+        "change_operating_leases_net": 49,
+        "change_accounts_payable_accrued": -213,
+        "change_payroll": 4965,
+        "change_other_long_term_liabilities_taxes": 2293,
+        "operating_cash_flow": 98391,
+        "ppe_purchases": -6871,
+        "ppe_sale_proceeds": 655,
+        "business_sale_proceeds": 0,
+        "business_acquisition_net_cash": 0,
+        "investing_cash_flow": -6216,
+        "treasury_stock_purchases": -10434,
+        "dividends_paid": -44581,
+        "senior_note_repayments": -800,
+        "net_revolver_repayments": -28372,
+        "award_tax_withholding": -861,
+        "financing_cash_flow": -85048,
+        "fx_cash_effect": 3173,
+        "net_cash_change": 10300,
+        "beginning_cash": 37843,
+        "ending_cash": 48143,
+        "accrued_capex": 80,
+        "finance_lease_settled_with_prepaid_deposit": 0,
+        "cash_interest_paid": 5522,
+        "cash_taxes_paid_net": 12811
+      },
+      "equity_rollforward": {
+        "beginning_equity": 188624,
+        "net_income": 65993,
+        "dividends": -44581,
+        "stock_based_compensation": 6434,
+        "award_tax_withholding": -861,
+        "treasury_stock_purchases": -10434,
+        "other_comprehensive_income": 5003,
+        "ending_equity": 210178
+      }
+    },
+    "2024": {
+      "period_start": "2023-09-01",
+      "period_end": "2024-08-31",
+      "income_statement": {
+        "revenue": 590557,
+        "cost_of_products_sold": 275330,
+        "gross_profit": 315227,
+        "selling_general_administrative": 183859,
+        "advertising_sales_promotion": 33911,
+        "intangible_amortization": 1106,
+        "total_operating_expenses": 218876,
+        "operating_income": 96351,
+        "interest_income": 474,
+        "interest_expense": 4287,
+        "other_income_expense_net": -1030,
+        "pretax_income": 91508,
+        "income_tax_expense": 21864,
+        "net_income": 69644,
+        "basic_eps": 5.12,
+        "diluted_eps": 5.11,
+        "basic_weighted_average_shares": 13554,
+        "diluted_weighted_average_shares": 13580
+      },
+      "balance_sheet": {
+        "cash": 46699,
+        "accounts_receivable_net": 117493,
+        "inventory": 79088,
+        "other_current_assets": 12161,
+        "current_assets": 255441,
+        "ppe_net": 62983,
+        "goodwill": 96985,
+        "intangibles_net": 6222,
+        "right_of_use_assets": 11611,
+        "deferred_tax_assets_net": 993,
+        "other_noncurrent_assets": 14804,
+        "total_assets": 449039,
+        "accounts_payable": 35960,
+        "accrued_liabilities": 31272,
+        "accrued_payroll": 26055,
+        "short_term_borrowings": 8659,
+        "income_taxes_payable": 1554,
+        "current_liabilities": 103500,
+        "long_term_borrowings": 85977,
+        "deferred_tax_liabilities_net": 9066,
+        "long_term_operating_lease_liabilities": 5904,
+        "other_long_term_liabilities": 14066,
+        "total_liabilities": 218513,
+        "common_stock": 20,
+        "additional_paid_in_capital": 175642,
+        "retained_earnings": 499931,
+        "accumulated_other_comprehensive_income": -29268,
+        "treasury_stock_cost": -415799,
+        "total_equity": 230526,
+        "total_liabilities_equity": 449039,
+        "shares_outstanding": 13548581,
+        "shares_issued": 19925212,
+        "treasury_shares": 6376631
+      },
+      "cash_flow": {
+        "net_income": 69644,
+        "depreciation_amortization": 9456,
+        "cloud_implementation_amortization": 1221,
+        "deferred_income_taxes": -1156,
+        "uncertain_tax_position_release": 0,
+        "stock_based_compensation": 6535,
+        "unrealized_fx_losses_gains": 200,
+        "credit_loss_provision": 325,
+        "inventory_writeoffs": 1425,
+        "other_noncash": -241,
+        "change_receivables": -15498,
+        "change_inventory": 6414,
+        "change_other_assets": -1444,
+        "change_operating_leases_net": -35,
+        "change_accounts_payable_accrued": 4322,
+        "change_payroll": 8879,
+        "change_other_long_term_liabilities_taxes": 1987,
+        "operating_cash_flow": 92034,
+        "ppe_purchases": -4206,
+        "ppe_sale_proceeds": 672,
+        "business_sale_proceeds": 0,
+        "business_acquisition_net_cash": -6201,
+        "investing_cash_flow": -9735,
+        "treasury_stock_purchases": -8094,
+        "dividends_paid": -47201,
+        "senior_note_repayments": -800,
+        "net_revolver_repayments": -25402,
+        "award_tax_withholding": -2439,
+        "financing_cash_flow": -83936,
+        "fx_cash_effect": 193,
+        "net_cash_change": -1444,
+        "beginning_cash": 48143,
+        "ending_cash": 46699,
+        "accrued_capex": 111,
+        "finance_lease_settled_with_prepaid_deposit": 3855,
+        "cash_interest_paid": 4459,
+        "cash_taxes_paid_net": 19843
+      },
+      "equity_rollforward": {
+        "beginning_equity": 210178,
+        "net_income": 69644,
+        "dividends": -47201,
+        "stock_based_compensation": 6535,
+        "award_tax_withholding": -2439,
+        "treasury_stock_purchases": -8129,
+        "other_comprehensive_income": 1938,
+        "ending_equity": 230526
+      }
+    },
+    "2025": {
+      "period_start": "2024-09-01",
+      "period_end": "2025-08-31",
+      "income_statement": {
+        "revenue": 619985,
+        "cost_of_products_sold": 278642,
+        "gross_profit": 341343,
+        "selling_general_administrative": 199936,
+        "advertising_sales_promotion": 37431,
+        "intangible_amortization": 183,
+        "total_operating_expenses": 237550,
+        "operating_income": 103793,
+        "interest_income": 517,
+        "interest_expense": 3441,
+        "other_income_expense_net": 757,
+        "pretax_income": 101626,
+        "income_tax_expense": 10632,
+        "net_income": 90994,
+        "basic_eps": 6.7,
+        "diluted_eps": 6.69,
+        "basic_weighted_average_shares": 13544,
+        "diluted_weighted_average_shares": 13567
+      },
+      "balance_sheet": {
+        "cash": 58130,
+        "accounts_receivable_net": 120589,
+        "inventory": 79871,
+        "other_current_assets": 26366,
+        "current_assets": 284956,
+        "ppe_net": 60394,
+        "goodwill": 97150,
+        "intangibles_net": 2416,
+        "right_of_use_assets": 13534,
+        "deferred_tax_assets_net": 1027,
+        "other_noncurrent_assets": 16332,
+        "total_assets": 475809,
+        "accounts_payable": 37955,
+        "accrued_liabilities": 34230,
+        "accrued_payroll": 28415,
+        "short_term_borrowings": 800,
+        "income_taxes_payable": 857,
+        "current_liabilities": 102257,
+        "long_term_borrowings": 86195,
+        "deferred_tax_liabilities_net": 9375,
+        "long_term_operating_lease_liabilities": 8423,
+        "other_long_term_liabilities": 1407,
+        "total_liabilities": 207657,
+        "common_stock": 20,
+        "additional_paid_in_capital": 180065,
+        "retained_earnings": 540665,
+        "accumulated_other_comprehensive_income": -24485,
+        "treasury_stock_cost": -428113,
+        "total_equity": 268152,
+        "total_liabilities_equity": 475809,
+        "shares_outstanding": 13527614,
+        "shares_issued": 19954495,
+        "treasury_shares": 6426881
+      },
+      "cash_flow": {
+        "net_income": 90994,
+        "depreciation_amortization": 8191,
+        "cloud_implementation_amortization": 1688,
+        "deferred_income_taxes": -455,
+        "uncertain_tax_position_release": -11929,
+        "stock_based_compensation": 7306,
+        "unrealized_fx_losses_gains": 355,
+        "credit_loss_provision": 929,
+        "inventory_writeoffs": 1109,
+        "other_noncash": 244,
+        "change_receivables": 319,
+        "change_inventory": -5212,
+        "change_other_assets": -10513,
+        "change_operating_leases_net": 33,
+        "change_accounts_payable_accrued": 2920,
+        "change_payroll": 1881,
+        "change_other_long_term_liabilities_taxes": 65,
+        "operating_cash_flow": 87925,
+        "ppe_purchases": -4528,
+        "ppe_sale_proceeds": 409,
+        "business_sale_proceeds": 1731,
+        "business_acquisition_net_cash": 0,
+        "investing_cash_flow": -2388,
+        "treasury_stock_purchases": -12314,
+        "dividends_paid": -50260,
+        "senior_note_repayments": -800,
+        "net_revolver_repayments": -7859,
+        "award_tax_withholding": -2883,
+        "financing_cash_flow": -74116,
+        "fx_cash_effect": 10,
+        "net_cash_change": 11431,
+        "beginning_cash": 46699,
+        "ending_cash": 58130,
+        "accrued_capex": 292,
+        "finance_lease_settled_with_prepaid_deposit": 0,
+        "cash_interest_paid": 3522,
+        "cash_taxes_paid_net": 26437
+      },
+      "equity_rollforward": {
+        "beginning_equity": 230526,
+        "net_income": 90994,
+        "dividends": -50260,
+        "stock_based_compensation": 7306,
+        "award_tax_withholding": -2883,
+        "treasury_stock_purchases": -12314,
+        "other_comprehensive_income": 4783,
+        "ending_equity": 268152
+      }
+    }
+  },
+  "supplemental_facts": [
+    {
+      "key": "research_and_development_expense",
+      "values": {
+        "2023": 6200,
+        "2024": 8000,
+        "2025": 8700
+      },
+      "unit": "USD thousands",
+      "precision": "source rounded to 0.1 million",
+      "source_id": "wdfc_2025_10k",
+      "locator": "Note 2, Research and Development, F-14",
+      "classification": "reported_actual",
+      "note": "Already included in SG&A; do not deduct again."
+    },
+    {
+      "key": "ppe_depreciation_expense",
+      "values": {
+        "2023": 7100,
+        "2024": 8000,
+        "2025": 7600
+      },
+      "unit": "USD thousands",
+      "precision": "source rounded to 0.1 million",
+      "source_id": "wdfc_2025_10k",
+      "locator": "Note 2, Property and Equipment, F-9",
+      "classification": "reported_actual",
+      "note": "This rounded disclosure is not identical to total cash-flow-statement depreciation and amortization."
+    },
+    {
+      "key": "depreciation_in_cost_of_products_sold",
+      "values": {
+        "2023": 3000,
+        "2024": 3900,
+        "2025": 4000
+      },
+      "unit": "USD thousands",
+      "precision": "source rounded to 0.1 million",
+      "source_id": "wdfc_2025_10k",
+      "locator": "Note 2, Property and Equipment, F-9",
+      "classification": "reported_actual",
+      "note": "Included in COGS, not an additional expense."
+    },
+    {
+      "key": "income_tax_receivable",
+      "values": {
+        "2023": 1100,
+        "2024": 500,
+        "2025": 4900
+      },
+      "unit": "USD thousands",
+      "precision": "source rounded to 0.1 million",
+      "source_id": "wdfc_2025_10k",
+      "source_id_by_year": {
+        "2023": "wdfc_2024_10k"
+      },
+      "locator": "FY2025 Note 15, Income Taxes, F-28; FY2024 Note 14, Income Taxes, F-27",
+      "classification": "reported_actual",
+      "note": "Included in other current assets; any separation uses rounded note values."
+    },
+    {
+      "key": "assets_held_for_sale",
+      "values": {
+        "2025": 7290
+      },
+      "components_2025": {
+        "inventory": 3349,
+        "goodwill": 1120,
+        "intangibles_net": 2821
+      },
+      "unit": "USD thousands",
+      "source_id": "wdfc_2025_10k",
+      "locator": "Note 3, Assets Held for Sale, F-17",
+      "classification": "reported_actual",
+      "note": "Included in other current assets. No disposal-group liabilities. Planned Americas sale was not classified as discontinued operations."
+    },
+    {
+      "key": "cloud_implementation_gross_cost",
+      "values": {
+        "2024": 13400,
+        "2025": 16600
+      },
+      "unit": "USD thousands",
+      "precision": "source rounded to 0.1 million",
+      "source_id": "wdfc_2025_10k",
+      "locator": "Note 6, F-19",
+      "classification": "reported_actual"
+    },
+    {
+      "key": "cloud_implementation_accumulated_amortization",
+      "values": {
+        "2024": 2100,
+        "2025": 3800
+      },
+      "unit": "USD thousands",
+      "precision": "source rounded to 0.1 million",
+      "source_id": "wdfc_2025_10k",
+      "locator": "Note 6, F-19",
+      "classification": "reported_actual",
+      "note": "Net cloud assets are part of other noncurrent assets; costs and amortization are rounded, so do not manufacture precision."
+    },
+    {
+      "key": "operating_lease_rou_assets",
+      "values": {
+        "2024": 8077,
+        "2025": 10385
+      },
+      "unit": "USD thousands",
+      "source_id": "wdfc_2025_10k",
+      "locator": "Note 8, Leases, F-21",
+      "classification": "reported_actual"
+    },
+    {
+      "key": "finance_lease_rou_assets",
+      "values": {
+        "2024": 3534,
+        "2025": 3149
+      },
+      "unit": "USD thousands",
+      "source_id": "wdfc_2025_10k",
+      "locator": "Note 8, Leases, F-21",
+      "classification": "reported_actual",
+      "note": "Fully prepaid at commencement in FY2024; no finance lease liability."
+    },
+    {
+      "key": "current_operating_lease_liabilities",
+      "values": {
+        "2024": 2294,
+        "2025": 2282
+      },
+      "unit": "USD thousands",
+      "source_id": "wdfc_2025_10k",
+      "locator": "Note 8, F-21 and Note 9, F-22",
+      "classification": "reported_actual",
+      "note": "Already included in accrued liabilities. Adding it separately to historical liabilities would double-count it."
+    },
+    {
+      "key": "tax_benefit_release_uncertain_tax_position",
+      "values": {
+        "2025": 11929
+      },
+      "unit": "USD thousands",
+      "source_id": "wdfc_2025_10k",
+      "locator": "F-7 cash-flow adjustment; Note 15, F-28",
+      "classification": "reported_actual",
+      "note": "Tax-release benefit is nonrecurring. The reported 10.5% FY2025 effective rate should not automatically become a recurring forecast rate."
+    },
+    {
+      "key": "uncertain_tax_position_liability_including_interest_penalties",
+      "values": {
+        "2025": 1100,
+        "2024": 13700
+      },
+      "unit": "USD thousands",
+      "precision": "source rounded to0.1million",
+      "source_id": "wdfc_2025_10k",
+      "locator": "Note15, Income Taxes, F-28, unrecognized tax benefits including interest and penalties",
+      "classification": "reported_actual",
+      "note": "Included within Other long-term liabilities; settlement date and exact unrounded amount were not established. A valuation bridge deduction is an analyst decision; do not silently assume zero claims if forecast freezes this liability forever."
+    }
+  ],
+  "normalization_decisions_for_modeler": [
+    "Preserve reported financials. Forecast normalization is a separately identified analyst assumption.",
+    "Use a separately selected recurring tax rate, with FY2023/FY2024 reported ETRs and the FY2025 tax-release reconciliation visible.",
+    "Do not grow all other current assets as operating working capital: held-for-sale assets and tax receivables are identified separately.",
+    "Keep cloud amortization distinct from reported cash-flow D&A; cloud implementation spending sits in operating cash flows and other assets, not necessarily PPE capex.",
+    "Do not subtract R&D, advertising already included in an aggregate opex measure, or stock compensation twice.",
+    "For a rent-expensed valuation, do not also deduct operating lease liabilities as debt without corresponding cash-flow adjustments. Finance lease ROU is prepaid and has no outstanding lease liability.",
+    "Beginning/ending cash reconciles with reported FX effects; historical cash changes are not simply changes in USD balance-sheet operating accounts because FX, acquisitions and reclassifications also occur.",
+    "FY2024 treasury purchases in equity are 8129 while cash payments are 8094. Preserve the 35 difference instead of forcing equality.",
+    "A period-end basic share count is not the diluted weighted-average denominator used for reported EPS. Prospective dilution needs a separately specified share schedule.",
+    "Freezing unsupported nonoperating balances is a forecast convention, not a prediction or a fact from the filings."
+  ],
+  "comparables": [
+    {
+      "entity": {
+        "name": "RPM International Inc.",
+        "ticker": "RPM",
+        "cik": "0000110621"
+      },
+      "comparison_type": "Historical fiscal-year operating-EBIT reference; not latest-LTM or fully pro-forma trading comparables",
+      "fiscal_period_start": "2024-06-01",
+      "fiscal_period_end": "2025-05-31",
+      "financials_published_on": "2025-08-21",
+      "quote": {
+        "date": "2025-10-31",
+        "close": 109.28,
+        "open": 107.67,
+        "high": 109.67,
+        "low": 107.55,
+        "volume_shares": 1405279,
+        "price_unit": "USD per share",
+        "price_field": "Close, not adjusted-close or after-hours banner",
+        "source_id": "rpm_chartexchange_history",
+        "locator": "Historical Data table; dated row 2025-10-31; columns Date (EST), Open, High, Low, Close, Change, Volume",
+        "reported_or_derived": "vendor_reported",
+        "adjustment_policy": "No adjusted-close field was used. Long-history split adjustment policy was not independently audited; nominal CLX June 30, 2025 close was cross-checked to its proxy reference."
+      },
+      "shares": {
+        "value": 128376265,
+        "unit": "actual shares",
+        "as_of": "2025-07-21",
+        "source_id": "rpm_2025_annual_report",
+        "locator": "Embedded Form 10-K cover",
+        "reported_or_derived": "reported",
+        "note": "Dated cover count; not asserted to be the actual count on October 31. Annual balance-sheet count is rounded to thousands."
+      },
+      "income_statement": {
+        "revenue": 7372644,
+        "cost_of_sales": 4322166,
+        "gross_profit": 3050478,
+        "selling_general_administrative": 2150537,
+        "restructuring_expense": 24979,
+        "goodwill_impairment": 11352,
+        "interest_expense": 96543,
+        "investment_income_net": 24099,
+        "other_income_net": 1594,
+        "pretax_income": 792760,
+        "income_tax_expense": 102433,
+        "net_income_consolidated": 690327,
+        "net_income_noncontrolling_interests": 1639,
+        "net_income_parent": 688688,
+        "depreciation_amortization_cashflow": 193840
+      },
+      "balance_sheet": {
+        "cash": 302137,
+        "current_debt": 7691,
+        "long_term_debt": 2638922,
+        "total_debt_book_including_finance_leases": 2646613,
+        "unamortized_debt_issuance_costs": 11008,
+        "debt_disclosed_fair_value": 2523202,
+        "noncontrolling_interests_book": 1426,
+        "preferred_stock": 0,
+        "operating_lease_liabilities_total": 387180,
+        "operating_lease_liabilities_noncurrent": 317334,
+        "contingent_acquisition_consideration_liability": 17252,
+        "marketable_debt_securities": 24323,
+        "marketable_equity_securities": 135419,
+        "pension_assets_recognized_noncurrent": 37470,
+        "pension_liabilities_current": 968,
+        "pension_liabilities_noncurrent": 13118,
+        "pension_net_surplus_all_plans": 23384
+      },
+      "source_provenance": {
+        "income_statement": {
+          "source_id": "rpm_2025_annual_report",
+          "locator": "Embedded Form 10-K p35, Consolidated Statements of Income"
+        },
+        "depreciation_amortization_cashflow": {
+          "source_id": "rpm_2025_annual_report",
+          "locator": "Embedded Form 10-K p37, Consolidated Statements of Cash Flows"
+        },
+        "balance_sheet": {
+          "source_id": "rpm_2025_annual_report",
+          "locator": "Embedded Form 10-K p34, Consolidated Balance Sheets; debt details Note G p52; fair values Note E p50; operating leases Note M p63; pensions Note N pp64-65"
+        },
+        "contingent_consideration_and_securities": {
+          "source_id": "rpm_2025_annual_report",
+          "locator": "Notes D-E, pp48-50; recurring fair-value table at May 31, 2025"
+        },
+        "pension": {
+          "source_id": "rpm_2025_annual_report",
+          "locator": "Note N pp64-65; recognized balances by US and non-US plans"
+        }
+      },
+      "constructed_operating_ebit": {
+        "value": 863610,
+        "reported_or_derived": "analyst_derived",
+        "formula": "revenue - cost_of_sales - selling_general_administrative - restructuring_expense - goodwill_impairment",
+        "definition": "Operating line-item profit after reported restructuring and impairment expenses; excludes financing expense, investment income, and net other income. Not issuer adjusted EBIT or recurring normalized profit.",
+        "source_ids": [
+          "rpm_2025_annual_report"
+        ]
+      },
+      "suggested_enterprise_value_bridge": {
+        "debt_including_finance_leases": 2646613,
+        "cash_to_deduct": 302137,
+        "noncontrolling_interests": 1426,
+        "preferred_stock": 0,
+        "other_claims": 31338,
+        "other_claims_components": {
+          "contingent_acquisition_consideration": 17252,
+          "recognized_underfunded_pension_plan_liabilities": 14086
+        },
+        "nonoperating_assets_to_deduct": 0,
+        "classification": "analyst_convention",
+        "notes": [
+          "Book debt and book NCI are proxies, not as-of-market fair values.",
+          "Add contingent consideration at its disclosed fair value. Add gross recognized pension deficit liabilities without assuming surplus assets in separate plans can fund them. No tax-effect adjustment is applied to those liabilities.",
+          "Do not deduct captive-insurance marketable securities or pension surplus as automatically distributable excess cash; reported securities total159742 is available for a documented alternative bridge.",
+          "Exclude operating lease liabilities while retaining operating rent in EBIT. Finance leases are already inside reported total debt and must not be added twice."
+        ]
+      },
+      "comparability_rationale": "Consumer maintenance, coatings and household brands offer an adjacent economic comparison; the whole company also has substantial construction and industrial exposure, materially different from WD-40.",
+      "limitations": [
+        "Fiscal year ends May 31, 2025; cash/debt and equity components are annual reference balances, not October 31 balances or latest-quarter updates.",
+        "Share count is dated July 21, 2025 and can change before the October 31 quote.",
+        "Acquired Star Brands Group on April 30, 2025: annual earnings include only the post-acquisition period while closing debt includes acquisition financing. No full-year pro-forma EBITDA is invented. The issuer states pro-forma results were not materially different and does not present them.",
+        "Reported results include restructuring24979 and goodwill impairment11352. These have not been automatically added back.",
+        "Captive insurance investments and separately funded pension plans complicate the bridge. Two adjacent peers do not establish a statistically robust sector multiple."
+      ],
+      "arithmetic_example": {
+        "classification": "analyst_derived_from_disclosed_facts_and_explicit_bridge_conventions",
+        "market_cap": 14028958.239200002,
+        "enterprise_value": 16406198.239200002,
+        "ev_operating_ebit": 18.997230508215516
+      }
+    },
+    {
+      "entity": {
+        "name": "The Clorox Company",
+        "ticker": "CLX",
+        "cik": "0000021076"
+      },
+      "comparison_type": "Historical fiscal-year operating-EBIT reference; not latest-LTM or fully pro-forma trading comparables",
+      "fiscal_period_start": "2024-07-01",
+      "fiscal_period_end": "2025-06-30",
+      "financials_published_on": "2025-08-08",
+      "quote": {
+        "date": "2025-10-31",
+        "close": 112.46,
+        "open": 112.0,
+        "high": 113.55,
+        "low": 111.6,
+        "volume_shares": 2231489,
+        "price_unit": "USD per share",
+        "price_field": "Close, not adjusted-close or after-hours banner",
+        "source_id": "clx_chartexchange_history",
+        "locator": "Historical Data table; dated row 2025-10-31; columns Date (EST), Open, High, Low, Close, Change, Volume",
+        "reported_or_derived": "vendor_reported",
+        "adjustment_policy": "No adjusted-close field was used. Long-history split adjustment policy was not independently audited; nominal CLX June 30, 2025 close was cross-checked to its proxy reference."
+      },
+      "shares": {
+        "value": 121773579,
+        "unit": "actual shares",
+        "as_of": "2025-09-22",
+        "source_id": "clx_2025_proxy",
+        "locator": "Voting information, Who Is Entitled to Vote, record date September 22, 2025",
+        "reported_or_derived": "reported",
+        "note": "Dated proxy count; not asserted to be the actual count on October 31. Form 10-K cover additionally reports122309414 on July23,2025; year-end BS reports122694263 on June30,2025."
+      },
+      "income_statement": {
+        "revenue": 7104000,
+        "cost_of_products_sold": 3891000,
+        "gross_profit": 3213000,
+        "selling_administrative": 1124000,
+        "advertising": 770000,
+        "research_development": 121000,
+        "loss_on_divestiture": 118000,
+        "pension_settlement_charge": 0,
+        "interest_expense": 88000,
+        "other_income_net": 86000,
+        "pretax_income": 1078000,
+        "income_tax_expense": 254000,
+        "net_income_consolidated": 824000,
+        "net_income_noncontrolling_interests": 14000,
+        "net_income_parent": 810000,
+        "depreciation_amortization_cashflow": 219000,
+        "other_income_expense_components": {
+          "intangible_amortization_expense": 21000,
+          "trust_investment_gains": 18000,
+          "net_periodic_benefit_expense": 2000,
+          "fx_transaction_losses": 2000,
+          "equity_investee_income": 4000,
+          "interest_income": 9000,
+          "restructuring": 0,
+          "cyberattack_insurance_recoveries": 65000,
+          "other_income": 15000
+        },
+        "insurance_recoveries_in_cost_of_sales": 5000
+      },
+      "balance_sheet": {
+        "cash": 167000,
+        "notes_loans_payable": 4000,
+        "long_term_debt_book": 2484000,
+        "long_term_debt_face": 2500000,
+        "finance_lease_liabilities_current": 15000,
+        "finance_lease_liabilities_noncurrent": 21000,
+        "total_finance_lease_liabilities": 36000,
+        "total_debt_book_including_finance_leases": 2524000,
+        "noncontrolling_interests_book": 161000,
+        "preferred_stock": 0,
+        "operating_lease_liabilities_current": 87000,
+        "operating_lease_liabilities_noncurrent": 305000,
+        "operating_lease_liabilities_total": 392000,
+        "glad_venture_terminal_obligation_carrying": 501000,
+        "glad_venture_terminal_obligation_estimated_fair_value": 476000,
+        "pension_net_funded_deficit": 90000,
+        "retirement_healthcare_net_funded_deficit": 17000,
+        "pension_surplus_asset": 9000
+      },
+      "source_provenance": {
+        "income_statement": {
+          "source_id": "clx_2025_financial_exhibit",
+          "locator": "p25, Consolidated Statements of Earnings; original units USD millions, multiplied by1000"
+        },
+        "balance_sheet": {
+          "source_id": "clx_2025_financial_exhibit",
+          "locator": "p27, Consolidated Balance Sheets; original units USD millions, multiplied by1000"
+        },
+        "depreciation_amortization_cashflow": {
+          "source_id": "clx_2025_financial_exhibit",
+          "locator": "p29, Consolidated Statements of Cash Flows"
+        },
+        "other_income_expense_components": {
+          "source_id": "clx_2025_financial_exhibit",
+          "locator": "Note18 p54"
+        },
+        "lease_debt": {
+          "source_id": "clx_2025_financial_exhibit",
+          "locator": "Note14 p49; finance liabilities are in AP/accruals and Other liabilities, not Long-term debt"
+        },
+        "glad_obligation": {
+          "source_id": "clx_2025_financial_exhibit",
+          "locator": "Note8 p41; settlement expected January2026"
+        },
+        "pension": {
+          "source_id": "clx_2025_financial_exhibit",
+          "locator": "Note20 p59; accrued benefit cost and net funded status"
+        },
+        "cashflow_da_definition": {
+          "source_id": "clx_2025_financial_exhibit",
+          "locator": "Note6 p40 PPE D&A198m; Note7 p41 intangible amort21m; Note14 p49 separately discloses finance ROU amort15m; no unsupported all-inclusive EBITDA is used"
+        }
+      },
+      "constructed_operating_ebit": {
+        "value": 1059000,
+        "face_line_subtotal_before_other_income": 1080000,
+        "intangibles_amortization_reclassified_from_other_expense": 21000,
+        "reported_or_derived": "analyst_derived",
+        "formula": "revenue - cost_of_products_sold - selling_administrative - advertising - research_development - loss_on_divestiture - intangible_amortization_in_other_expense",
+        "definition": "Explicit operating line-item profit including the intangible amortization presented within Other expense. Excludes the remaining other-income/expense components and interest expense; retains divestiture loss and the insurance recovery classified in COGS. Not issuer adjusted EBIT or recurring normalized profit.",
+        "source_ids": [
+          "clx_2025_financial_exhibit"
+        ]
+      },
+      "suggested_enterprise_value_bridge": {
+        "debt_including_finance_leases": 2524000,
+        "cash_to_deduct": 167000,
+        "noncontrolling_interests": 161000,
+        "preferred_stock": 0,
+        "other_claims": 608000,
+        "other_claims_components": {
+          "glad_venture_terminal_obligation_carrying": 501000,
+          "net_retirement_income_deficit": 90000,
+          "net_retirement_healthcare_deficit": 17000
+        },
+        "nonoperating_assets_to_deduct": 0,
+        "classification": "analyst_convention",
+        "notes": [
+          "Book debt and book NCI are proxies, not as-of-market fair values.",
+          "The $36m finance lease liability is outside reported borrowings; it is included once. Operating leases are excluded while rent stays in operating EBIT.",
+          "Glad contractual terminal obligation is treated as a separate debt-like claim at501m carrying value. Disclosed fair-value estimate476m supports a25m alternative-bridge sensitivity. No assumed royalty-removal synergy is added to historical earnings.",
+          "Net retirement deficits are included without tax-effect adjustment; valuation of gross deficits and pension surplus separately is an alternative requiring judgment.",
+          "Trust assets supporting deferred compensation are not assumed freely distributable excess cash."
+        ]
+      },
+      "comparability_rationale": "Branded consumer and professional cleaning products, retailer distribution and international brands offer an adjacent comparison. Its broader portfolio, scale, product mix, leverage and exceptional items differ materially from WD-40.",
+      "limitations": [
+        "Fiscal year ends June30,2025; cash/debt and other balance-sheet inputs are annual reference balances, not October31 balances.",
+        "Share count is dated September22,2025 and can change before the October31 quote.",
+        "Annual EBIT retains118m divestiture loss and5m insurance benefit in COGS; other65m insurance income is excluded with nonoperating lines. This explicit line-item convention is not a recurring-profit normalization.",
+        "ERP-related advance shipments boosted FY2025 sales and were expected to reverse; no undocumented normalization is estimated.",
+        "The Glad terminal payment is included as a claim; reported earnings contain related royalty costs. No unreported acquisition pro-forma benefit is assumed.",
+        "Two adjacent peers do not establish a statistically robust sector multiple."
+      ],
+      "arithmetic_example": {
+        "classification": "analyst_derived_from_disclosed_facts_and_explicit_bridge_conventions",
+        "market_cap": 13694656.69434,
+        "enterprise_value": 16820656.694339998,
+        "ev_operating_ebit": 15.883528512124643
+      }
+    }
+  ],
+  "limitations": [
+    "Historical cutoff is 2025-10-31; retrieved in 2026. Later information must not be imported into this case without advancing the cutoff.",
+    "The source documents are linked rather than archived. Source-content hashes are unavailable in this dataset.",
+    "No current market quote, independent human source verification, or employer approval is represented. Historical quotes below are publicly attributable vendor data retrieved later; they are not an archived point-in-time market feed."
+  ],
+  "market_quote": {
+    "date": "2025-10-31",
+    "close": 194.28,
+    "open": 194.3,
+    "high": 196.38,
+    "low": 192.09,
+    "volume_shares": 120543,
+    "price_unit": "USD per share",
+    "price_field": "Close, not adjusted-close or after-hours banner",
+    "source_id": "wdfc_chartexchange_history",
+    "locator": "Historical Data table; dated row 2025-10-31; columns Date (EST), Open, High, Low, Close, Change, Volume",
+    "reported_or_derived": "vendor_reported",
+    "adjustment_policy": "No adjusted-close field was used. Long-history split adjustment policy was not independently audited; nominal CLX June 30, 2025 close was cross-checked to its proxy reference."
+  },
+  "comparison_policy": {
+    "unit": "USD thousands except share counts and per-share quotes",
+    "quote_date": "2025-10-31",
+    "market_cap_formula": "close_USD_per_share * actual_shares / 1000",
+    "enterprise_value_formula": "market_cap + debt_including_finance_leases + noncontrolling_interests + preferred_stock + other_claims - cash_to_deduct - nonoperating_assets_to_deduct",
+    "multiple_formula": "enterprise_value / constructed_operating_ebit",
+    "method_status": "Working, explicitly classified annual-reference calculation. Peer selection, operating-line classifications, restricted assets and other claims require analyst review. This is not an issuer-reported enterprise value, a licensed vendor snapshot, latest-LTM analytics, or current advice.",
+    "data_eligibility": "All SEC sources were published on/before2025-10-31. Vendor quotes carry an October31 market-event date but were retrieved in2026; original point-in-time vendor vintage has not been established."
+  },
+  "quote_crosscheck": {
+    "ticker": "CLX",
+    "date": "2025-06-30",
+    "close": 120.07,
+    "sources": [
+      "clx_2025_proxy",
+      "clx_chartexchange_history"
+    ],
+    "locator": "Proxy Potential Payments Upon Termination or Change in Control states June30 closingprice120.07; ChartExchange dated historical row agrees. This cross-check does not independently verify all three October31 prices."
+  },
+  "source_arithmetic_checks": {
+    "method": "Independent arithmetic over transcribed source facts; not a substitute for an independent human source-to-cell check.",
+    "performed_on": "2026-11-22",
+    "results": [
+      {
+        "period": "2023",
+        "check": "gross_profit",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "operating_expenses",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "operating_income",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "pretax_income",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "net_income",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "current_assets",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "total_assets",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "current_liabilities",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "total_liabilities",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "equity_components",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "balance_sheet_identity",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "shares_identity",
+        "difference": 0,
+        "unit": "actual shares",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "operating_cashflow",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "investing_cashflow",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "financing_cashflow",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "cash_change_including_fx",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "cash_rollforward",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "cashflow_to_balance_sheet",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "equity_rollforward",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2023",
+        "check": "equity_rollforward_to_bs",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "gross_profit",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "operating_expenses",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "operating_income",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "pretax_income",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "net_income",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "current_assets",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "total_assets",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "current_liabilities",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "total_liabilities",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "equity_components",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "balance_sheet_identity",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "shares_identity",
+        "difference": 0,
+        "unit": "actual shares",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "operating_cashflow",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "investing_cashflow",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "financing_cashflow",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "cash_change_including_fx",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "cash_rollforward",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "cashflow_to_balance_sheet",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "equity_rollforward",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2024",
+        "check": "equity_rollforward_to_bs",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "gross_profit",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "operating_expenses",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "operating_income",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "pretax_income",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "net_income",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "current_assets",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "total_assets",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "current_liabilities",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "total_liabilities",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "equity_components",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "balance_sheet_identity",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "shares_identity",
+        "difference": 0,
+        "unit": "actual shares",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "operating_cashflow",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "investing_cashflow",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "financing_cashflow",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "cash_change_including_fx",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "cash_rollforward",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "cashflow_to_balance_sheet",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "equity_rollforward",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      },
+      {
+        "period": "2025",
+        "check": "equity_rollforward_to_bs",
+        "difference": 0,
+        "unit": "USD thousands",
+        "passed": true
+      }
+    ]
+  },
+  "target_claim_review": {
+    "source_id": "wdfc_2025_10k",
+    "as_of": "2025-08-31",
+    "reported_borrowings": 86995,
+    "borrowings_components": {
+      "revolver": 20995,
+      "senior_notes": 66000
+    },
+    "borrowing_locator": "Note10, Debt, F-23",
+    "operating_lease_liabilities": 10705,
+    "finance_lease_liability": 0,
+    "uncertain_tax_claim_rounded": 1100,
+    "other_long_term_liabilities_total": 1407,
+    "noncontrolling_or_preferred_claims": "No separate preferred-stock or noncontrolling-interest balance is presented in the consolidated balance sheet; absence of a presented balance is not a legal capitalization opinion.",
+    "modeling_decision": "For a rent-expensed convention exclude operating leases from financing debt. If the tax claim is never settled in forecast cash flows, either deduct an explicitly rounded1100 tax-claim proxy in the equity bridge or disclose the omission and sensitivity. Do not deduct the same claim again if its settlement is already in forecast cash flows.",
+    "coverage_limit": "This record is not a complete closing claims register. Accrued liabilities, uncertain taxes, contingent liabilities, cash accessibility, dilution, and events between Aug31 reported balances and Oct31 hypothetical model start require closing-date review."
+  }
+}

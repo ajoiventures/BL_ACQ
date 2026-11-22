@@ -21,3 +21,9 @@ The [valuation workspace](docs/valuation.md) adds corporate and property discoun
 The dated Nvidia example reproduces its source workbook numerically while keeping conflicting dates and the unverified price visible. Existing acquisition approvals and settlement remain separate from valuation research.
 
 The feature is a research prototype. The [institutional readiness assessment](docs/valuation-institutional-readiness.md) defines the financial coverage and validation evidence required for a professional-use target.
+
+## Corporate valuation and acquisition case
+
+The [WD-40 case memo](docs/corporate-case.md) connects three years of sourced financial statements to a five-year linked forecast, DCF, two historical peer comparisons, acquisition funding, debt schedules and sponsor returns. It includes a formula-based Excel builder and a separate authenticated workspace at `http://127.0.0.1:8765/corporate.html`.
+
+Run `python tools/run_corporate_case.py --case Base --output .runs/wdfc-base.json` to reproduce the complete case without an AI service or network connection. The historical cutoff is October 31, 2025; assumptions and unresolved closing-balance, data-vintage and professional-review limits remain explicit. This is a bounded research case, not a claim of institutional approval.

@@ -4,6 +4,8 @@ The valuation engine turns operating assumptions into cash flows and equity valu
 
 **Current maturity: research prototype.** See [institutional readiness and coverage](valuation-institutional-readiness.md) for supported uses, material gaps, desk-specific extensions and proposed acceptance gates. Tested calculations do not establish employer approval or institutional model validation.
 
+The separate [WD-40 corporate case](corporate-case.md) now adds sourced historical statements, linked accounting, a constructed WACC, historical peer comparison and hypothetical acquisition financing. Open `/corporate.html` on the same local service, or use [its command-line exporter](guides/run_corporate_case.md). Its separate contracts and stated conventions apply; the generic valuation module described below retains its original scope.
+
 ## Run it
 
 From the repository root, with Python 3.12 or later:
