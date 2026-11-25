@@ -27,7 +27,37 @@ def prepare(raw,*,source_url,observed_date,source_sha256,previous_raw=None):
         return out
     rows=parse(raw); old=parse(previous_raw) if previous_raw is not None else {}
     return {'mode':'RESEARCH_QUEUE_ONLY','source_url':source_url,'observed_date':observed_date,'normalized_excerpt_sha256':source_sha256,'publisher_roster_complete':False,'official_2026_announcement':{'total':1291,'Accredited':838,'Affiliate':453,'as_of':'2026-05-06','url':'https://mainstreet.org/the-latest/news/main-spotlight-celebrating-1291-nationally-designated-main-street-programs-in-2026'},'observed_program_records':len(rows),'designation_counts':dict(Counter(r['designation'] for r in rows.values())), 'added_keys':sorted(rows.keys()-old.keys()),'changed_keys':sorted(k for k in rows.keys()&old.keys() if rows[k]!=old[k]),'not_observed_keys':sorted(old.keys()-rows.keys()),'removal_inferred':False,'accepted_district_boundaries':0,'offer_ready':0,'records':[dict(r,identity_state='PROVISIONAL_LOCAL_KEY',district_ids=[],decision=('HOLD' if r['designation'] in {'Accredited','Affiliate'} else 'PARTNER_SCOPE_REVIEW' if r['designation']=='Partner' else 'DESIGNATION_REVIEW'),stages=[{'stage':s,'ticket_id':t,'owner':o,'status':'PREPARE' if i==0 else 'WAITING_FOR_INPUTS','depends_on':STAGES[i-1][0] if i else None} for i,(s,t,o) in enumerate(STAGES if r['designation'] in {'Accredited','Affiliate'} else STAGES[:1])]) for k,r in sorted(rows.items())]}
+def attach_boundary_evidence(queue, manifest, *, workspace):
+    if manifest['roster_sha256'] != queue['normalized_excerpt_sha256']:
+        raise ValueError('boundary manifest roster digest mismatch')
+    workspace = workspace.resolve()
+    records = {row['program_key']: row for row in queue['records']}
+    linked = {}
+    for evidence in manifest['verified_program_vectors']:
+        key = evidence['program_key']
+        row = records.get(key)
+        if row is None or key in linked:
+            raise ValueError('unknown or duplicate boundary program key')
+        if any(row[field] != evidence[field] for field in ('name', 'city', 'state')):
+            raise ValueError('boundary program identity mismatch')
+        path = (workspace / evidence['geometry_path']).resolve()
+        if not path.is_relative_to(workspace):
+            raise ValueError('boundary artifact outside workspace')
+        if digest(path.read_bytes()) != evidence['geometry_sha256']:
+            raise ValueError('boundary geometry digest mismatch')
+        if row['designation'] not in {'Accredited', 'Affiliate'}:
+            raise ValueError('boundary program designation is out of scope')
+        linked[key] = evidence
+    for key, evidence in linked.items():
+        stage = next(s for s in records[key]['stages'] if s['stage'] == 'boundary_and_jurisdiction')
+        stage['program_boundary_evidence'] = evidence
+    queue['verified_publisher_program_vectors'] = len(linked)
+    return queue
+
+
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--input',type=Path,required=True);p.add_argument('--sha256',required=True);p.add_argument('--source-url',required=True);p.add_argument('--observed-date',required=True);p.add_argument('--previous',type=Path);p.add_argument('--output',type=Path,required=True);a=p.parse_args();r=prepare(a.input.read_bytes(),source_url=a.source_url,observed_date=a.observed_date,source_sha256=a.sha256,previous_raw=a.previous.read_bytes() if a.previous else None)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--input',type=Path,required=True);p.add_argument('--sha256',required=True);p.add_argument('--source-url',required=True);p.add_argument('--observed-date',required=True);p.add_argument('--previous',type=Path);p.add_argument('--boundary-manifest',type=Path);p.add_argument('--output',type=Path,required=True);a=p.parse_args();r=prepare(a.input.read_bytes(),source_url=a.source_url,observed_date=a.observed_date,source_sha256=a.sha256,previous_raw=a.previous.read_bytes() if a.previous else None)
+    if a.boundary_manifest:
+        attach_boundary_evidence(r, json.loads(a.boundary_manifest.read_bytes()), workspace=ROOT)
     with a.output.open('x',encoding='utf-8') as f:json.dump(r,f,indent=2,ensure_ascii=False);f.write('\n')
 if __name__=='__main__':main()
