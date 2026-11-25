@@ -5,6 +5,8 @@ import hashlib
 import csv
 import json
 
+from .acquisition_runs import sha
+
 ROOT = Path(__file__).resolve().parents[2]
 CATALOG = ROOT / 'docs/acquisition/strategy-library/strategy-library.json'
 STRATEGY_CSV = 'Black_River_Main_Street_83_Strategies.csv'
@@ -37,7 +39,7 @@ def load_catalog(path=CATALOG):
         raise ValueError('Missing or duplicate strategy specialist role')
     if len({t['work_package_id'] for t in tasks}) != len(tasks):
         raise ValueError('Duplicate strategy work package')
-    extract = (CATALOG.parent / 'workflow_extract.json').read_bytes()
+    extract = (path.parent / 'workflow_extract.json').read_bytes()
     if hashlib.sha256(extract).hexdigest() != WORKFLOW_EXTRACT_SHA256:
         raise ValueError('Strategy workflow extract revision mismatch')
     workbook = json.loads(extract)
@@ -65,6 +67,6 @@ def prepare_strategy(strategy_id, case_ref):
     record=next((r for r in catalog['records'] if r['source']['ID']==strategy_id),None)
     if record is None:
         raise ValueError('Unknown strategy ID')
-    packet={'case_ref':case_ref.strip(),'strategy':record,'work_packages':[t for t in catalog['work_packages'] if t['strategy_id']==strategy_id], 'source_hashes':catalog['source_hashes'],'eligibility':'UNKNOWN','status':'PREPARATION_ONLY','dispatch_performed':False,'external_authority':False,'financial_authority':False}
+    packet={'case_ref':case_ref.strip(),'strategy':record,'work_packages':[t for t in catalog['work_packages'] if t['strategy_id']==strategy_id], 'source_hashes':catalog['source_hashes'],'catalog_sha256':sha(catalog),'catalog_schema_version':catalog['schema_version'],'eligibility':'UNKNOWN','status':'PREPARATION_ONLY','dispatch_performed':False,'external_authority':False,'financial_authority':False}
     packet['packet_sha256']=hashlib.sha256(json.dumps(packet,sort_keys=True,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()
     return packet

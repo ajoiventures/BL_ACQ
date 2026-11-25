@@ -78,8 +78,15 @@ def screen(arrays, name='cpu_reference'):
     t2 = perf_counter()
     out = {k:(xp.asnumpy(v) if name=='cuda' else v) for k,v in values.items()}
     t3 = perf_counter()
+    # These arrays are simultaneously live after readback. Intermediate
+    # allocations, the CUDA context and the allocator's cache are excluded.
+    live_array_bytes = (
+        sum(v.nbytes for v in a.values()) + sum(v.nbytes for v in values.values())
+        if name == 'cuda' else None
+    )
     return out, {'backend':name,'records':n,'transfer_in_s':t1-t0 if name=='cuda' else None,
-                 'compute_s':t2-t1,'transfer_out_s':t3-t2 if name=='cuda' else None}
+                 'compute_s':t2-t1,'transfer_out_s':t3-t2 if name=='cuda' else None,
+                 'cuda_live_input_output_bytes':live_array_bytes}
 
 def summarize(out):
     masks=('eligible','unknown','excluded','conflict','noi_known','pre_reserve_known','cash_known','known_deficit',
