@@ -1,0 +1,165 @@
+{
+  "schema_version": "br-economic-development/1",
+  "review_id": "SYNTHETIC-DC-SHORTFALL",
+  "domain": "COMMERCIAL",
+  "mode": "ANALYST_SCREENING",
+  "as_of": "2026-11-23",
+  "geography": {
+    "id": "SYNTHETIC-CORRIDOR",
+    "label": "Synthetic demonstration district; not an actual site",
+    "boundary_ref": "urn:black-river:synthetic-boundary"
+  },
+  "source": {
+    "reference": "urn:black-river:synthetic-economic-screen",
+    "source_date": "2026-11-23",
+    "evidence_status": "HYPOTHETICAL"
+  },
+  "program": {
+    "it_load_mw": {
+      "value": "10",
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    },
+    "pue": {
+      "value": "1.3",
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    },
+    "requested_peak_facility_mw": {
+      "value": "15",
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    },
+    "required_operation_date": {
+      "value": "2029-01-01",
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    },
+    "it_load_basis": {
+      "value": "ANNUAL_AVERAGE",
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Hypothetical annual-average IT load over the same period as the annual PUE assumption."
+    }
+  },
+  "utility": {
+    "deliverable_mw": {
+      "value": "12",
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    },
+    "energization_date": {
+      "value": "2030-01-01",
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    },
+    "evidence_stage": {
+      "value": "PRELIMINARY_ASSESSMENT",
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    }
+  },
+  "context": {
+    "land_acres": {
+      "value": "500",
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    },
+    "nearby_substation": {
+      "value": true,
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    }
+  },
+  "gates": {
+    "demand_profile": {
+      "value": true,
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    },
+    "reserve_redundancy_headroom": {
+      "value": true,
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    },
+    "utility_service_terms_reliability": {
+      "value": true,
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    },
+    "utility_study_service_costs": {
+      "value": true,
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    },
+    "land_control_title": {
+      "value": true,
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    },
+    "land_use_permit_path": {
+      "value": true,
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    },
+    "cooling_water": {
+      "value": true,
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    },
+    "environmental_flood": {
+      "value": true,
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    },
+    "noise_air_generator_community": {
+      "value": true,
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    },
+    "customer_commercial_readiness": {
+      "value": true,
+      "evidence_status": "HYPOTHETICAL",
+      "source_ref": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "note": "Synthetic demonstration assumption; no real site or accepted evidence."
+    }
+  }
+}

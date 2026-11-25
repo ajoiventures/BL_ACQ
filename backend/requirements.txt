@@ -1,0 +1,7 @@
+fastapi==0.115.12
+uvicorn==0.34.2
+httpx==0.28.1
+pytest==8.3.5
+
+numpy==2.3.5
+tzdata==2026.6; sys_platform == "win32"

@@ -1,0 +1,364 @@
+{
+  "schema_version": "1.0",
+  "classification": "PLANNING_PILLARS_NOT_DATA_DOMAINS_OR_SECURITY_ROLES",
+  "parent_layer": "CITIES_PLANNING",
+  "catalog_revision": "138D",
+  "pillar_count": 18,
+  "domains": [
+    "Physical",
+    "Economic",
+    "Human",
+    "Natural",
+    "Governance"
+  ],
+  "boundary_rule": "Program identity is not district geometry. Each report needs a versioned study and applicable source geography, scope, vintage, permissions, review status and uncertainty.",
+  "lifecycle": [
+    "inventory",
+    "analysis",
+    "diagnosis",
+    "forecast_or_scenario",
+    "strategy",
+    "design",
+    "feasibility",
+    "implementation",
+    "evaluation"
+  ],
+  "pillars": [
+    {
+      "id": "UP-01",
+      "name": "Land use and zoning",
+      "domain": "Physical",
+      "engine_id": "CP-LAND-HOUSING",
+      "primary_ticket": "BR-T023",
+      "supporting_tickets": [
+        "BR-T049",
+        "BR-T053",
+        "BR-T084"
+      ],
+      "required_evidence": "Current adopted future land use, zoning, overlays, rights and jurisdiction",
+      "output": "Permitted-use and conditional capacity matrix; actual units separate",
+      "method_reference": "LaGro ch. 7–8; Steiner & Butler implementation",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-03",
+      "review_owner": "SW-13"
+    },
+    {
+      "id": "UP-02",
+      "name": "Transportation and mobility",
+      "domain": "Physical",
+      "engine_id": "CP-TRANSPORTATION",
+      "primary_ticket": "BR-T139",
+      "supporting_tickets": [
+        "BR-T100",
+        "BR-T120",
+        "BR-T053"
+      ],
+      "required_evidence": "Agency jurisdiction, mode-specific networks, project phase, access and safety",
+      "output": "Existing vs scenario accessibility and access constraints",
+      "method_reference": "LaGro ch. 7–8; O’Sullivan transportation; Urban Analytics networks",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-01",
+      "review_owner": "SW-13"
+    },
+    {
+      "id": "UP-03",
+      "name": "Urban design and morphology",
+      "domain": "Physical",
+      "engine_id": "CP-MAIN-STREET",
+      "primary_ticket": "BR-T055",
+      "supporting_tickets": [
+        "BR-T025",
+        "BR-T051",
+        "BR-T086"
+      ],
+      "required_evidence": "Street/block/parcel geometry, frontages, heights, condition and public realm",
+      "output": "Comparative design determinants, alternatives and quantities",
+      "method_reference": "LaGro ch. 2, 9–10; Steiner & Butler places",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-08",
+      "review_owner": "SW-13"
+    },
+    {
+      "id": "UP-04",
+      "name": "Housing and neighborhoods",
+      "domain": "Physical",
+      "engine_id": "CP-LAND-HOUSING",
+      "primary_ticket": "BR-T053",
+      "supporting_tickets": [
+        "BR-T030",
+        "BR-T049",
+        "BR-T076",
+        "BR-T111"
+      ],
+      "required_evidence": "Stock, lawful units, tenure, vacancy, rents, costs, household needs",
+      "output": "Housing capacity and demand alternatives; no inferred legality",
+      "method_reference": "LaGro ch. 4, 7–8; O’Sullivan housing",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-01",
+      "review_owner": "SW-13"
+    },
+    {
+      "id": "UP-05",
+      "name": "Infrastructure and utilities",
+      "domain": "Physical",
+      "engine_id": "CP-INFRASTRUCTURE",
+      "primary_ticket": "BR-T100",
+      "supporting_tickets": [
+        "BR-T104",
+        "BR-T105",
+        "BR-T139",
+        "BR-T140"
+      ],
+      "required_evidence": "Service owners, network extent, actual capacity, constraints and dated commitments",
+      "output": "Service-readiness and delivery requirements",
+      "method_reference": "LaGro ch. 5, 7–8; Steiner & Butler utilities",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-04",
+      "review_owner": "SW-13"
+    },
+    {
+      "id": "UP-06",
+      "name": "Economic development",
+      "domain": "Economic",
+      "engine_id": "CP-ECONOMIC-DEVELOPMENT",
+      "primary_ticket": "BR-T098",
+      "supporting_tickets": [
+        "BR-T097",
+        "BR-T099",
+        "BR-T102",
+        "BR-T108"
+      ],
+      "required_evidence": "Establishments, employment, industry mix, business continuity and needs",
+      "output": "Economic mechanisms, alternatives and outcome measures",
+      "method_reference": "O’Sullivan urban growth; Hack local economy",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-06",
+      "review_owner": "SW-13"
+    },
+    {
+      "id": "UP-07",
+      "name": "Commercial districts and Main Streets",
+      "domain": "Economic",
+      "engine_id": "CP-MAIN-STREET",
+      "primary_ticket": "BR-T097",
+      "supporting_tickets": [
+        "BR-T021",
+        "BR-T026",
+        "BR-T098",
+        "BR-T102",
+        "BR-T138"
+      ],
+      "required_evidence": "Accepted district boundary, premise inventory, businesses, vacancy and market context",
+      "output": "Whole-corridor baseline and transformation alternatives",
+      "method_reference": "Main Street Approach; Measuring Impact; LaGro",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-01",
+      "review_owner": "SW-13"
+    },
+    {
+      "id": "UP-08",
+      "name": "Real estate and capital markets",
+      "domain": "Economic",
+      "engine_id": "CP-CAPITAL-ACQUISITION",
+      "primary_ticket": "BR-T136",
+      "supporting_tickets": [
+        "BR-T032",
+        "BR-T054",
+        "BR-T076",
+        "BR-T132",
+        "BR-T135"
+      ],
+      "required_evidence": "Transactions, market rents, costs, rights, funding and comparable evidence",
+      "output": "Conditional acquisition economics and capital paths",
+      "method_reference": "Sowers; Keller; O’Sullivan land rent",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-05",
+      "review_owner": "SW-13"
+    },
+    {
+      "id": "UP-09",
+      "name": "Municipal finance",
+      "domain": "Economic",
+      "engine_id": "CP-PUBLIC-FINANCE",
+      "primary_ticket": "BR-T101",
+      "supporting_tickets": [
+        "BR-T100",
+        "BR-T108",
+        "BR-T140"
+      ],
+      "required_evidence": "Adopted budgets, tax bases, CIP, incremental revenues and service costs",
+      "output": "Public fiscal impact separate from private returns",
+      "method_reference": "O’Sullivan local government; Steiner & Butler fiscal impact",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-05",
+      "review_owner": "SW-13"
+    },
+    {
+      "id": "UP-10",
+      "name": "Population and migration",
+      "domain": "Human",
+      "engine_id": "CP-TOWN-GROWTH",
+      "primary_ticket": "BR-T111",
+      "supporting_tickets": [
+        "BR-T097",
+        "BR-T110",
+        "BR-T113"
+      ],
+      "required_evidence": "Same-vintage population, households, migration stocks/flows and boundaries",
+      "output": "Growth components, assumptions and calibrated forecasts where supported",
+      "method_reference": "O’Sullivan growth; Urban Analytics",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-01",
+      "review_owner": "SW-13"
+    },
+    {
+      "id": "UP-11",
+      "name": "Education and workforce",
+      "domain": "Human",
+      "engine_id": "CP-EMPLOYERS-WORKFORCE",
+      "primary_ticket": "BR-T099",
+      "supporting_tickets": [
+        "BR-T140",
+        "BR-T139",
+        "BR-T097"
+      ],
+      "required_evidence": "School/training locations, capacity, labor and aggregate skill demand",
+      "output": "Workforce fit and educational service-access gaps",
+      "method_reference": "O’Sullivan education; Hack urban systems",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-02",
+      "review_owner": "SW-13"
+    },
+    {
+      "id": "UP-12",
+      "name": "Health and public services",
+      "domain": "Human",
+      "engine_id": "CP-PUBLIC-SERVICES",
+      "primary_ticket": "BR-T140",
+      "supporting_tickets": [
+        "BR-T100",
+        "BR-T139",
+        "BR-T101"
+      ],
+      "required_evidence": "Facility authority, service areas, access, capacity, response and public budgets",
+      "output": "Public facility capacity/gaps; no personal health or individual safety ranking",
+      "method_reference": "Steiner & Butler facilities; Hack urban systems",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-01",
+      "review_owner": "SW-13"
+    },
+    {
+      "id": "UP-13",
+      "name": "Culture and community",
+      "domain": "Human",
+      "engine_id": "CP-MAIN-STREET",
+      "primary_ticket": "BR-T131",
+      "supporting_tickets": [
+        "BR-T023",
+        "BR-T055",
+        "BR-T102"
+      ],
+      "required_evidence": "Historic assets, community input, cultural institutions and public spaces",
+      "output": "Participation evidence and preservation/design requirements",
+      "method_reference": "LaGro ch. 4,7; Main Street Approach",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-02",
+      "review_owner": "SW-13"
+    },
+    {
+      "id": "UP-14",
+      "name": "Environment and natural resources",
+      "domain": "Natural",
+      "engine_id": "CP-ENVIRONMENT-RESILIENCE",
+      "primary_ticket": "BR-T141",
+      "supporting_tickets": [
+        "BR-T053",
+        "BR-T088",
+        "BR-T100"
+      ],
+      "required_evidence": "Soil, topography, water, wetlands, habitats and verified environmental records",
+      "output": "Resource constraints and mitigation research, program-dependent",
+      "method_reference": "LaGro ch. 5–6,8; Steiner & Butler environmental planning",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-01",
+      "review_owner": "SW-13"
+    },
+    {
+      "id": "UP-15",
+      "name": "Parks and green infrastructure",
+      "domain": "Natural",
+      "engine_id": "CP-ENVIRONMENT-RESILIENCE",
+      "primary_ticket": "BR-T141",
+      "supporting_tickets": [
+        "BR-T055",
+        "BR-T088",
+        "BR-T140"
+      ],
+      "required_evidence": "Canopy, parks, open space, trails, ecology and access",
+      "output": "Green infrastructure and conservation alternatives",
+      "method_reference": "LaGro ch. 6,10; Steiner & Butler open space",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-01",
+      "review_owner": "SW-13"
+    },
+    {
+      "id": "UP-16",
+      "name": "Resilience and hazards",
+      "domain": "Natural",
+      "engine_id": "CP-ENVIRONMENT-RESILIENCE",
+      "primary_ticket": "BR-T141",
+      "supporting_tickets": [
+        "BR-T108",
+        "BR-T132",
+        "BR-T139"
+      ],
+      "required_evidence": "Dated hazard layers, exposure, vulnerability, recovery and service continuity",
+      "output": "Hazard-specific conditions and residual risk; no insurance quote",
+      "method_reference": "LaGro ch. 5,8; Hack hazards",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-01",
+      "review_owner": "SW-13"
+    },
+    {
+      "id": "UP-17",
+      "name": "Government, institutions and policy",
+      "domain": "Governance",
+      "engine_id": "CP-PLAN-COORDINATION",
+      "primary_ticket": "BR-T023",
+      "supporting_tickets": [
+        "BR-T083",
+        "BR-T131",
+        "BR-T138",
+        "BR-T139"
+      ],
+      "required_evidence": "Authority, adopted documents, effective dates, jurisdiction and engagement",
+      "output": "Policy/authority register; proposals separate from binding rules",
+      "method_reference": "Hack; Kelly contents only; Florida handbook historical",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-03",
+      "review_owner": "SW-13"
+    },
+    {
+      "id": "UP-18",
+      "name": "Implementation and performance",
+      "domain": "Governance",
+      "engine_id": "CP-FORECAST-EVALUATION",
+      "primary_ticket": "BR-T112",
+      "supporting_tickets": [
+        "BR-T071",
+        "BR-T108",
+        "BR-T113",
+        "BR-T133",
+        "BR-T139"
+      ],
+      "required_evidence": "Plan revision, responsible authority, funding by phase, observed outcomes",
+      "output": "Delivery/monitoring record; private/community/public accounts separate",
+      "method_reference": "LaGro ch. 11; Measuring Impact; Hack",
+      "coverage": "SPECIFIED_NOT_DISTRICT_ACCEPTED",
+      "owner": "SW-00",
+      "review_owner": "SW-13"
+    }
+  ],
+  "no_automatic_authorization": true,
+  "status": "SPECIFIED_AND_QUEUE_PREPARATION_ONLY"
+}

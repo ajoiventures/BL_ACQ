@@ -1,0 +1,7 @@
+{
+  "Family Office/Insurance": ["policy number", "insurance policy", "renewal premium"],
+  "Family Office/Taxes": ["tax return", "property tax", "form 1099"],
+  "Family Office/Bills": ["utility bill", "amount due", "billing statement"],
+  "Home Manager/Maintenance": ["maintenance checklist", "repair estimate", "service work order"],
+  "Gardening/Plant Records": ["plant care", "pruning schedule", "harvest log"]
+}

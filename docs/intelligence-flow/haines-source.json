@@ -1,0 +1,22 @@
+{
+  "request_id": "demo-haines-capture-v1",
+  "source_key": "census-v2025-haines-city-growth",
+  "security_domain": "COMMERCIAL",
+  "source_url": "https://www.census.gov/newsroom/press-releases/2026/vintage-2025-city-town-pop-estimates.html",
+  "title": "Population Growth Holds Steady in Midsized Cities Amid Widespread Slowdown",
+  "content": "For Immediate Release: Thursday, May 14, 2026\nTable 3. The 15 Fastest-Growing Cities and Towns With Populations of 20,000 or More: July 1, 2024-July 1, 2025\nRank | Area | State | Percent Increase | 2025 Total Population\n6 | Haines City city | Florida | 10.0 | 45,973\nPopulation as of July 1, 2024 Source: U.S. Census Bureau, Vintage 2025 Population Estimates",
+  "capture_kind": "EXCERPT_ONLY",
+  "published_at": "2026-05-14",
+  "event_at": "2025-07-01",
+  "topic_tags": ["TOWN_GROWTH", "ECONOMIC_DEVELOPMENT", "MAIN_STREET", "ACQUISITION"],
+  "source_claims": [
+    {
+      "claim": "Census reports 45,973 residents and 10.0 percent annual growth for Haines City in its Vintage 2025 comparison. This is population growth, not a count of immigrant arrivals.",
+      "quote": "6 | Haines City city | Florida | 10.0 | 45,973"
+    },
+    {
+      "claim": "The ranking compares incorporated places with at least 20,000 residents at the start of the July 2024 to July 2025 comparison period.",
+      "quote": "The 15 Fastest-Growing Cities and Towns With Populations of 20,000 or More: July 1, 2024-July 1, 2025"
+    }
+  ]
+}

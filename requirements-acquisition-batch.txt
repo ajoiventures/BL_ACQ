@@ -1,0 +1,4 @@
+# CPU reference; use a compatible environment. Tested locally with Python 3.13.5.
+numpy==2.3.5
+# CUDA: install a CuPy distribution matched to the actual CUDA driver/runtime
+# in a separate environment. Do not assume device availability.

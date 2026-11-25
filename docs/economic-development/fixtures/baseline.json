@@ -1,0 +1,62 @@
+{
+  "schema_version": "br-economic-development/1",
+  "review_id": "SYNTHETIC-BASELINE-001",
+  "domain": "MAIN_STREET_INSTITUTIONAL",
+  "mode": "ANALYST_SCREENING",
+  "as_of": "2026-11-23",
+  "geography": {
+    "id": "SYNTHETIC-CORRIDOR",
+    "label": "Synthetic demonstration district; not an actual site",
+    "boundary_ref": "urn:black-river:synthetic-boundary"
+  },
+  "source": {
+    "reference": "urn:black-river:synthetic-economic-screen",
+    "source_date": "2026-11-23",
+    "evidence_status": "HYPOTHETICAL"
+  },
+  "storefronts": {
+    "eligible_count": 100,
+    "occupied_count": 70,
+    "vacant_count": 10,
+    "unknown_count": 20
+  },
+  "local_ownership": {
+    "eligible_assets_count": 50,
+    "known_owner_count": 30,
+    "locally_owned_count": 18,
+    "local_definition": "Synthetic ownership residency within the supplied district boundary; definition only.",
+    "source": {
+      "reference": "urn:black-river:synthetic-economic-screen",
+      "source_date": "2026-11-23",
+      "evidence_status": "HYPOTHETICAL"
+    }
+  },
+  "employment": {
+    "local": {
+      "geography_id": "SYNTHETIC-CORRIDOR",
+      "period": "2025-ANNUAL",
+      "industry_definition": "NAICS-2022-54",
+      "employment_basis": "ANNUAL_AVERAGE_JOBS",
+      "industry_count": 200,
+      "total_count": 1000,
+      "source": {
+        "reference": "urn:black-river:synthetic-economic-screen",
+        "source_date": "2026-11-23",
+        "evidence_status": "HYPOTHETICAL"
+      }
+    },
+    "reference": {
+      "geography_id": "SYNTHETIC-REGION",
+      "period": "2025-ANNUAL",
+      "industry_definition": "NAICS-2022-54",
+      "employment_basis": "ANNUAL_AVERAGE_JOBS",
+      "industry_count": 500,
+      "total_count": 5000,
+      "source": {
+        "reference": "urn:black-river:synthetic-economic-screen",
+        "source_date": "2026-11-23",
+        "evidence_status": "HYPOTHETICAL"
+      }
+    }
+  }
+}

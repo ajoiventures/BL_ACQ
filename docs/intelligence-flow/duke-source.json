@@ -1,0 +1,16 @@
+{
+  "request_id": "demo-duke-capture-v1",
+  "source_key": "duke-florida-site-readiness-2026",
+  "security_domain": "COMMERCIAL",
+  "source_url": "https://news.duke-energy.com/releases/duke-energy-site-readiness-program-drives-773-million-in-florida-investment",
+  "title": "Duke Energy Site Readiness Program drives $773 million in Florida investment",
+  "content": "selected five high-potential business and industrial sites",
+  "capture_kind": "EXCERPT_ONLY",
+  "published_at": "2026-10-28",
+  "event_at": null,
+  "topic_tags": ["ECONOMIC_DEVELOPMENT", "DATA_CENTER", "MAIN_STREET"],
+  "source_claims": [{
+    "claim": "The utility reports selecting five locations for industrial or business development analysis. This does not establish available electrical capacity.",
+    "quote": "selected five high-potential business and industrial sites"
+  }]
+}

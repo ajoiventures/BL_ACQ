@@ -1,0 +1,3 @@
+# Optional bounded GIS research tool; tested in Python 3.13
+shapely==2.1.2
+pyproj==3.7.2
